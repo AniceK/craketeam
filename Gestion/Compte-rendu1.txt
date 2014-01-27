@@ -1,0 +1,29 @@
+Réunion du 24/01/2014 : Lancement du Projet
+
+Rémi élu chef de projet à l'unanimité.
+
+Nom du groupe : CRAKE's
+
+Documentaliste : Colas
+
+adresse : crake.team.picross@gmail.com  mdp : craketeam
+
+
+Tâches :
+-un dépôt GIT et organisation de l'architecture(Gestion de Projet; Documentation; Code; Ressources)
+-Analyse des besoins
+-Compréhension du Picross
+-Maitrise du LaTeX -> création de Templates/modèles pour la documentation et les bilans de séances
+-Les grilles seront de taille 5x5; 10x10;15x15; 20x20; 25x25;
+
+
+Questions : 
+-L'aide doit elle être automatique, ou se lancer à des conditions particulières(simplement cliquer sur un bouton, ou après un temps)
+-Possibilité de sauvegarde/chargement?
+-Gestion uniquement temporelle du score?
+-Est-ce les clients désirent être informé de l'avancement du projet régulièrement.
+-Prix?
+-Personnalisation de l'interface possible? Différents thèmes?
+-Possibilité de créer sa propre grille -> module d'édition de grille?
+-Question de condition de fin de jeu -> temps, nombre de coup -> Possibilité de proposer différents jeu.
+
