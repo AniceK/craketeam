@@ -18,12 +18,15 @@ Tâches :
 
 
 Questions : 
--L'aide doit elle être automatique, ou se lancer à des conditions particulières(simplement cliquer sur un bouton, ou après un temps)
--Possibilité de sauvegarde/chargement?
--Gestion uniquement temporelle du score?
+-L'aide doit elle être automatique, ou se lancer à des conditions particulières(simplement cliquer sur un bouton, ou après un temps), et qu’apportera-t-elle ?
+-Possibilité de sauvegarde/chargement? - Persistance des données
+-Gestion uniquement temporelle du score? Difficulté croissante ? Classement ?
 -Est-ce les clients désirent être informé de l'avancement du projet régulièrement.
 -Prix?
 -Personnalisation de l'interface possible? Différents thèmes?
 -Possibilité de créer sa propre grille -> module d'édition de grille?
 -Question de condition de fin de jeu -> temps, nombre de coup -> Possibilité de proposer différents jeu.
 
+- Son ?
+- Destination logicielle ?
+- OS ?
