@@ -1,0 +1,555 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{multirow} %Ligne multiple pour les tableaux
+\usepackage[utf8]{inputenc}
+
+\usepackage{colortbl} %Clouleur tableau protoypes de fonctions
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ - \hmwkTitle} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ sur\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{PROJET JEU} % Titre du document
+\newcommand{\hmwkDueDate}{Vendredi 22 février 2013} % Date
+\newcommand{\hmwkClass}{CAHIER DES CHARGES } % Type de document
+\newcommand{\hmwkClassInstructor}{ } % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Groupe A} % Your name
+\newcommand{\hmwkAuthorClasse}{L3 info SPI} % Classe
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\pagenumbering{roman} \setcounter{page}{0} %La page courante sera numérotée en roman et aura l'indice 0 => Pas de numéro car pas de 0 en roman
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{\hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+
+
+\date{\hmwkAuthorClasse} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\thispagestyle{empty}
+\maketitle
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\thispagestyle{empty}
+\pagenumbering{arabic} \setcounter{page}{0} %Le reste du document est numéroté en arabic à partir de la page 1
+\renewcommand\contentsname{Sommaire}
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	Présentation du projet
+%----------------------------------------------------------------------------------------
+
+\section{Présentation du projet}
+
+\subsection{Contexte}
+
+Ce projet s'inscrit dans le cadre du second semestre de la 3ème année de la Licence SPI (Sciences Pour l'Ingénieur) enseignée à l'Université du Mans. Il a pour but de faire développer un logiciel à une équipe d'étudiants (ici, 7 étudiants) en mettant en œuvre les concepts de Génie Logiciel vus en cours au premier semestre.\\
+En effet, des professeurs de l'Université jouant le rôle de client, commandent un logiciel de jeu d'aventure simple. Tout le monde devra pouvoir utiliser ce logiciel, car il doit au final être "commercialisable".
+
+
+\subsection{Objectifs}
+
+Le logiciel à concevoir est un jeu d'aventure simple, en tour par tour, dans lequel un personnage se déplace et interagit dans un monde fini.\\
+Le but général pour le joueur est de se déplacer le plus longtemps possible. Il peut y trouver des objets ainsi que des Personnages Non Joueurs (PNJ) ennemis ou apportant de l'aide. Le jeu ne propose pas de scénario ou de quête mais il se termine quand le joueur "meurt". L’utilisateur doit donc jouer le plus longtemps possible afin d'améliorer son score.
+
+
+\subsection{Utilisateur cible}
+
+Ce logiciel ne prévoit qu'une seule catégorie d'utilisateur~: le joueur. Le jeu ne permet qu'à un seul joueur de jouer simultanément.
+
+
+\subsection{État de l'art}
+
+Le projet reprend quelques idées de jeu de rôle en tour par tour telles que~:
+\begin{itemize}
+   \item La présence d'expérience et de niveaux, permettant au joueur de faire évoluer son personnage~;
+   \item L'utilisation d'objets octroie des bonus lors des combats, ce qui en facilite l'issue et amène le joueur à développer une stratégie de consommation d'objets~;
+   \item Un classement permettant aux joueurs de comparer leur progression.
+\end{itemize}
+
+
+
+%----------------------------------------------------------------------------------------
+%	Contraintes initiales
+%----------------------------------------------------------------------------------------
+
+\section{Contraintes initiales}
+
+
+\subsection{Contraintes de jeu}
+
+
+\begin{itemize}
+   \item Le jeu est en tour par tour. Le joueur n'effectue qu'une seul action par tour puis l’environnement du jeu évolue~;
+   \item Le personnage se caractérise principalement par une quantité d'énergie. Cette énergie est dépensée lors des déplacements et des combats. Le joueur meurt lorsque cette énergie atteint une valeur inférieure ou égale à zéro~;
+   \item Le jeu se déroule dans un monde fini. La carte de jeu est divisée en cases ayant chacune quatre cases voisines (la carte est torique). Elle est générée aléatoirement au début d'une partie (sans vérifier l’accessibilité de toutes les zones) et est constituée de différentes unités de terrains causant chacune leur propre dépense d'énergie~;
+   \item On peut trouver dans le monde du jeu des PNJ et des objets. Les PNJ d'aide sont immobiles tandis que les PNJ offensifs se déplacent. Les objets apportent une amélioration à l'énergie du joueur~;
+   \item L'or régit les échanges avec les PNJ d'aide~;
+   \item Les combats sont obligatoires avec les ennemis rencontrés, ne requièrent pas d'interaction de la part du joueur et se font avec un ennemi à la fois. L'énergie dont dispose l'ennemi est soustraite à celle du joueur. Le joueur peut récupérer l'or et les objets d'un ennemi vaincu.
+\end{itemize}
+
+
+
+
+\subsection{Contraintes de conception}
+
+
+\begin{itemize}
+   \item Le langage de programmation est Ruby/GTK~;
+   \item Les paramètres de l’application doivent être externalisés afin de pouvoir être modifiés par le joueur (difficulté de la partie)~;
+   \item Le logiciel doit être développé en Programmation Orientée Objet (POO). Il doit être conçu de manière à pouvoir ajouter ultérieurement de nouveaux éléments pour faire évoluer le jeu. Il peut s'agir de PNJ, d'objets, de types de terrain ainsi que de nouvelles langues. De plus les menus doivent pouvoir être étendus~;
+   \item Le jeu doit supporter plusieurs langues~;
+   \item On doit pouvoir sauvegarder une partie pour la reprendre ultérieurement~;
+   \item La gestion du joueur se fait au travers d'un menu affichant les actions possibles.
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+%	Spécifications du projet
+%----------------------------------------------------------------------------------------
+
+
+\section{Spécification du projet}
+
+\subsection{Règles détaillées}
+
+\subsubsection{Éléments constituant le jeu}
+
+\paragraph{L’énergie}
+
+Le joueur ainsi que les PNJ ennemis disposent d'une énergie. La difficulté du jeu est  de gérer cette énergie au mieux. Pour le joueur, celle ci diminue lors des déplacements et lors des combats (les ennemis ne perdent pas d'énergie lors des déplacements). Si elle est inférieure ou égale à zéro, le joueur meurt.
+
+\paragraph{Le repos}
+
+Le joueur débute avec un nombre de repos adapté en fonction de la difficulté, il en gagne un nouveau tout les cinq niveaux. Un repos lui permet de regagner toute son énergie, il consomme dix tours. Si un ennemi déclenche un combat pendant le repos, alors seul une partie de l'énergie est récupérée.
+
+\paragraph{Les PNJ ennemis et les combats}
+
+Les combats ne requièrent pas d'interaction de la part du joueur. Ils se font toujours avec un ennemi à la fois et tiennent compte de l'énergie du joueur ainsi que de son équipement et de celle de l'ennemi. Lors d'un combat, l'énergie dont dispose l'ennemi est soustraite à celle du joueur. Le joueur peut donc remporter le combat s'il dispose de plus d'énergie que l'ennemi. Dans le cas inverse il meurt.\\
+Certains ennemis se déplacent aléatoirement sur la carte tandis que d'autres ont pour but de pister le joueur s'il est à moins de 20 cases de lui. Ils connaissent donc la position du joueur et se rapprochent de lui tour après tour. Lorsqu'un joueur se trouve sur la même case qu'un ennemi, le combat est obligatoire. Un ennemi a sur lui des objets et/ou de l'or. Plus l'ennemi est puissant et plus ce que l'on trouve sur lui sera intéressant mais il n'est pas possible pour le joueur de connaître ces objets avant l'issue du combat.\\
+Voici la liste de base des PNJ ennemis~:
+
+\begin{itemize}
+    \item La chauve souris : énergie de base 30 ~;
+    \item Le loup : énergie de base 50 ~;
+    \item Le brigand : énergie de base 90 (pisteur)~;
+    \item Le soldat : énergie de base 150 (pisteur)~;
+    \item L'ogre : énergie de base 210.
+\end{itemize}
+
+Les ennemis sont générés avec un interval de tours régulier dépendant de la difficulté.
+
+\paragraph{Les PNJ d'aide}
+
+Les PNJ d'aide sont générés au début de la partie, immobiles et non attaquables. Lorsque le personnage rencontre un PNJ d'aide, celui-ci lui demande s’il veut faire une transaction (une seule transaction par tour). Si le personnage accepte, alors une liste de ce qui est proposé apparaît avec les prix correspondants. Le personnage sélectionne donc ce qu’il souhaite dans la limite de son capital d’or disponible et de son inventaire dans le cas d'un achat d'objet.
+
+\begin{itemize}
+   \item \textbf{Les guérisseurs : }Les guérisseurs proposent au joueur qui vient les trouver un regain d'énergie en échange d'or. La quantité d'énergie proposée est un pourcentage de l'énergie maximale du joueur (+25\% = 30 pièces d'or, +50\% = 50 pièces d'or, +75\% = 70 pièces d'or). Le joueur ne sera pas remboursé s'il paye pour plus d'énergie qu'il n'en a besoin.
+   \item \textbf{Les commerçants : }Les commerçants permettent au joueur d'acheter ou de vendre des objets contre de l'or. Le joueur ne peut revendre que des objets qui se trouvent dans son inventaire~: les objets avec lesquels il est équipé ne sont pas vendables. Lorsque le personnage rencontre un commerçant, il lui demande s’il veut acheter des objets ou non. 
+\end{itemize}
+
+\paragraph{Les objets du jeu et l'inventaire}
+
+Des objets et de l'or sont disséminés sur la carte. Les ennemis vaincus donnent également de l'or et/ou des objets. Enfin les commerçants peuvent vendre des objets contre de l'or et inversement.\\
+Voici les différentes catégories d'objets du jeu~:
+
+\begin{itemize}
+   \item \textbf{Les objets défensifs/offensifs : }Parmi ces objets figurent des boucliers et des épées. Ces objets se caractérisent par le pourcentage de protection/attaque qu'ils procurent et permettent de réduire la perte d'énergie liée à un ennemi lors d'un combat. Par exemple, si le joueur s'est revêtu d'une armure de pourcentage 20\% avant de combattre un ennemi d'énergie 200, il ne perdra que 80\% (= 160) de l'énergie de l'ennemi. Ces objets ne sont valables que pour un seul combat.
+   \item \textbf{Les bottes : }Les bottes permettent de réduire le coût en énergie d'un déplacement d'une certaine quantité (variable selon les bottes) et pour un nombre fixé de déplacements (également variable). Il est impossible de les retirer une fois que le joueur s'en est équipé.
+   \item \textbf{La nourriture : }Ces objets permettent de regagner de l'énergie. Ils sont consommés en une seule fois. Selon le type de nourriture consommée, le joueur gagnera plus ou moins d'énergie~:
+   \begin{itemize}
+      \item Le bout de pain augmentera de 70 l'énergie~;
+      \item Le brocoli vapeur augmentera de 100 l'énergie~;
+      \item Le steack de dinde augmentera de 200 l'énergie~;
+      \item Le pavé d'émeu augmentera de 500 l'énergie.
+      \item Le poulet rôti augmentera de 800 l'énergie.
+   \end{itemize}
+\end{itemize}
+
+Le joueur dispose de trois emplacements d'équipements : pieds pour les bottes, main gauche pour le bouclier et main droite pour l'épée. \\
+Les différentes caractéristiques d'un objet (regain d'énergie, pourcentage de protection, nombre d'utilisations pour les bottes) lui confèrent une valeur. Plus l'objet a de valeur et plus il sera cher, difficile à trouver sur la carte et présent dans l'inventaire d'ennemis puissants.\\
+Le joueur dispose d'un inventaire limité à quinze objets, pour stocker des objets qu'il ne veut pas utiliser immédiatement. Les objets d'un ennemi vaincu se retrouvent directement dans l'inventaire du joueur sauf si ce dernier est plein, auquel cas le joueur devra choisir quels objets du monstre ou de son inventaire il souhaite jeter. Un objet jeté de l'inventaire est détruit. Si un joueur passe sur une case où se trouve un objet, il peut décider de le ramasser ou non (et également de jeter des objets de son inventaire si besoin).\\
+L'or ne prend pas de place dans l'inventaire. Par conséquent, l'or d'un ennemi vaincu ou ramassé s'ajoutera automatiquement à la cagnotte du joueur.
+
+\paragraph{La carte du jeu}
+
+Le monde dans lequel le joueur évolue est fini mais torique, évitant ainsi de limiter les déplacements aux bords de la carte. Le jeu est en deux dimensions et vu du dessus. La carte est divisée en cases carrées qui sont d'un certain type de terrains. Selon le type de terrains, un déplacement consommera plus ou moins d'énergie. Certains types de terrains sont infranchissables.\\
+Voici la liste des types de terrains~:
+
+\begin{itemize}
+   \item Eau : infranchissable~;
+   \item Plaine : coûte 10 d'énergie pour s'y déplacer~;
+   \item Forêt : coûte 20 d'énergie pour s'y déplacer~;
+   \item Désert : coûte 30 d'énergie pour s'y déplacer~;
+   \item Montagne : coûte 50 d'énergie pour s'y déplacer.
+\end{itemize}
+
+
+
+\subsubsection{Principe de fonctionnement du jeu}
+
+\paragraph{But du jeu}
+
+Le but général pour le joueur est de se déplacer le plus longtemps possible dans cet environnement. Le jeu se termine quand le joueur meurt, c'est à dire quand il n'a plus d'énergie. Le but est d'obtenir le meilleur score possible.
+
+\paragraph{Début d'une partie}
+
+Au début d'une nouvelle partie, le personnage se trouve au centre de la carte. Il dispose d'une quantité d'énergie liée à la difficulté. Il n'a aucun objet et aucune pièce d'or.\\
+Le logiciel fournit au joueur une interface lui affichant les seules actions possibles sous forme de bouton à cliquer
+
+\paragraph{Le jeu au tour par tour}
+
+Le déroulement du jeu se fait tour par tour. Une action pour un tour correspond à un déplacement (dans les quatre directions nord, sud, est et ouest sauf cas de cases inaccessibles) plus une interaction dans la case où se trouve le joueur à la fin de ce déplacement : il n'est possible d’interagir qu'avec les éléments présents sur la même case que le personnage. Lors d'un tour, le joueur peut décider de rester sur place (ce qui compte pour un déplacement nul). Il pourra ensuite agir sur la case sur laquelle il est resté avant la fin du tour. Une fois le tour du joueur fini, le monde évolue (mouvement des ennemis, génération de nouveaux ennemis et/ou objets sur la carte).\\
+Se reposer (utilisation d'un repos) permet au joueur de récupérer 10\% de la totalité de son énergie à chaque tour pendant 10 tours sauf si ce dernier est attaqué durant son someil, auquel cas le repos s'arrêtre et un combat s'engage.\\
+Lors d'une interaction avec un PNJ d'aide, chaque transaction compte pour un tour~: pour acheter trois objets, il faudra rester sur place trois fois de suite. Le joueur ne se déplaçant pas, il ne consomme (ni ne gagne) aucune énergie.\\
+Dans le cas où plusieurs éléments sont présents sur une même case, le joueur peut décider d’interagir avec, dans l'ordre qu'il souhaite, sachant que chaque action équivaut à un tour en restant sur place (ramassage de plusieurs objets, interaction avec un/des PNJ d'aide). Si des ennemis se trouvent parmi ces éléments, la règle est différente~: les ennemis doivent être traités en priorité et en un seul tour, ce qui signifie que l'énergie soustraite à celle du joueur correspond à la somme des énergies de tous les ennemis présents sur la même case et qu'il est impossible au joueur d'utiliser des équipements ou de la nourriture entre chacun des combats (seulement pour le premier). Si le joueur survit, il peut ensuite interagir avec les éléments non offensifs restants (s'il y en a) comme vu précédemment.
+
+\paragraph{Les niveaux}
+
+Lorsque le joueur remporte un combat il acquiert de l’expérience. Elle lui permet de devenir plus puissant afin de combattre des ennemis qui étaient auparavant hors de portée du joueur.
+Le joueur se voit attribuer un bonus de 1,2 fois son énergie, ainsi qu'un repos tout les cinq niveaux.\\
+À chaque passage de niveau, des ennemis et des objets supplémentaires apparaissent, leur nombre dépendant de la difficulté. Le niveau des ennemis ajoutés est calculé en fonction de celui du joueur.
+
+
+\paragraph{Lancement d'une partie}
+
+Au lancement d'une partie, on propose au joueur d'entrer son pseudonyme et de choisir une difficulté entre novice, moyen et expert. C'est la difficulté d'une partie qui détermine les proportions des différents éléments du jeu~:
+
+\begin{itemize}
+ \item \textbf{Novice} :
+
+	\begin{itemize}
+		\item Quantités PNJ :
+		
+		\begin{itemize}
+			\item Ennemis : 50 au départ et 5 à chaque nouvelle génération~;
+			\item Aides : 50~;
+		\end{itemize}
+
+		\item Pourcentage Terrain : 80 \% de la dépense énergétique du terrain~;
+		\item Quantité d'objet : 100 répartis dans toute la carte~;
+		\item Dimensions carte : 500 cases * 500 cases~;
+		\item Energie initiale du joueur : 1000~;
+		\item Nombre de repos initial du joueur : 15~;
+		\item Nombre de tours entre chaque génération d'ennemis : 15.
+
+	\end{itemize}
+
+ \item \textbf{Moyen} :
+
+		\begin{itemize}
+			\item Quantités de PNJ :
+			
+			\begin{itemize}
+				\item Ennemis : 100 au départ et 10 à chaque nouvelle génération~;
+				\item Aides : 25~;
+			\end{itemize}
+
+			\item Pourcentage Terrain : 100 \% de la dépense énergétique du terrain~;
+			\item Quantité d'objet : 75 répartis dans toute la carte~;
+			\item Dimensions carte : 1000 cases * 1000 cases~;
+			\item Energie initiale du joueur : 750~;
+			\item Nombre de repos initial du joueur : 10~;
+			\item Nombre de tours entre chaque génération d'ennemis : 10.
+
+		\end{itemize}
+                     \item \textbf{Expert} :
+		\begin{itemize}
+			\item Quantités de PNJ :
+			
+			\begin{itemize}
+				\item Ennemis : 200 au départ et 200 à chaque nouvelle génération~;
+				\item Aides : 25~;
+			\end{itemize}
+
+			\item Pourcentage Terrain : 120 \% de la dépense énergétique du terrain~;
+			\item Quantité d'objet : 50 répartis dans toute la carte~;
+			\item Dimensions carte : 2000 cases * 2000 cases~;
+			\item Energie initiale du joueur : 500~;
+			\item Nombre de repos initial du joueur : 5~;
+			\item Nombre de tours entre chaque génération d'ennemis : 5.
+
+		\end{itemize}
+\end{itemize}
+
+Ensuite une nouvelle partie commence.
+
+
+\paragraph{Le menu en cours de partie}
+
+En cours de partie, le joueur peut accéder à un menu spécial où se trouvent~:
+
+
+\begin{itemize}
+   \item \textbf{Sauvegarde de la partie : }L'utilisateur peut sauvegarder sa partie en cours. Le joueur peut ensuite continuer à jouer ou quitter le jeu~;
+   \item \textbf{Son : }Active ou désactive le son~;
+   \item \textbf{Quitter la partie : }Renvoie le joueur au menu principal. Il devra avoir pris le soin de sauvegarder ou non sa partie.  
+\end{itemize}
+
+
+\paragraph{L'interface joueur}
+
+Le joueur peut exécuter toutes les actions via l'interface graphique, il pourra également utiliser le pavé directionnel du clavier pour se déplacer et la touche échap pour accéder au menu. Un bouton lui permet d’accéder à l'inventaire. Une console affiche les interactions effectués, objets trouvés et utilisés. Il voit également une barre représentant son expérience et une barre représentant son énergie, avec leur valeur affichée au dessus, ainsi que les objets dont il est équipé, les repos dont il dispose et l'or de sa cagnotte.
+D'autre part si le même méchant est présent plusieurs fois sur la même case, un nombre apparaît à côté de son image pour spécifier le nombre.
+
+
+
+
+
+
+\subsection{Besoins fonctionnels}
+
+\vspace{0.5cm}
+
+\small
+\begin{tabular}{|p{4cm}|p{10cm}|p{1cm}|}
+  \hline
+  \textbf{FONCTIONNALITE} & \textbf{DESCRIPTION} & \textbf{M/m*}\\
+  \hline
+     \multirow{9}{*}{Gestion du jeu}
+        & Lancer une nouvelle partie                                  & M \\  \cline{2-3}
+        & Sauvegarder une partie (à tout instant)                     & M \\  \cline{2-3}
+        & Charger une partie sauvegardée                              & M \\  \cline{2-3}
+        & Supprimer une partie sauvegardée                            & M \\  \cline{2-3}
+        & Quitter le jeu                                              & M \\  \cline{2-3}
+        & Choisir le niveau de difficulté (Facile, Moyen, Difficile)  & M \\  \cline{2-3}
+        & Choisir la langue                                           & M \\  \cline{2-3}
+        & Afficher les statistiques/classement (nom du joueur, nombre d'ennemis tués, distance parcourue, capital) & M \\  \cline{2-3}
+        & Afficher une aide                                           & m \\  \cline{2-3}
+        & Activer / Désactiver le son                                 & m \\
+  \hline
+     \multirow{13}{*}{Gestion du joueur}
+        & Choisir un pseudo pour le joueur                                            & m \\  \cline{2-3}
+        & Déplacer le joueur d'une seule case (Haut, Bas, Gauche, Droite)             & M \\  \cline{2-3}
+        & Laisser le joueur immobile                                                  & M \\  \cline{2-3}
+        & Visualiser l’énergie du joueur à tout moment                                & M \\  \cline{2-3}
+        & Visualiser l'expérience du joueur à tout moment                                & M \\  \cline{2-3}
+        & Visualiser le capital du joueur à tout moment (or)                          & M \\  \cline{2-3}
+        & Perdre de l’énergie (lors d’un combat, lors d’un déplacement)               & M \\  \cline{2-3}
+        & Gagner de l’énergie (en utilisant un repos, en mangeant de la nourriture, en consultant un guérisseur)  & M \\  \cline{2-3}
+        & Ramasser/Jeter/Acheter/Vendre des objets (nourriture, armure, épée, …)               & M \\  \cline{2-3}
+        & Stocker des objets dans un inventaire                                       & M \\  \cline{2-3}
+        & Permettre l'affichage de l' inventaire                                      & M \\  \cline{2-3}
+        & Utiliser des objets (nourriture, armure, épée, …)                           & M \\  \cline{2-3}
+        & Interagir avec les PNJ (combat, achat d’objet, …)                           & M \\  \cline{2-3}
+        & Mourir (plus d’énergie)                                                     & M \\ 
+  \hline
+     \multirow{3}{*}{Gestion des PNJ}
+        & Placer aléatoirement les PNJ                                               & M \\  \cline{2-3}
+        & Déplacer les PNJ ennemis aléatoirement ou pistant le joueur à chaque tour             & M \\  \cline{2-3}
+        & Interagir avec le joueur (combat, vente d’objet, …)                         & M \\
+  \hline
+     \multirow{1}{*}{Gestion des objets}
+        & Placer aléatoirement des objets sur la carte                                & M \\  \cline{2-3}
+        & Attribuer des objets (armure, épée) aux ennemis                             & M \\
+  \hline
+     \multirow{2}{*}{Gestion de la carte}
+        & Générer aléatoirement la carte                                              & M \\  \cline{2-3}
+        & Gérer différents types de terrains (montagne, forêt, eau, …)                & M \\
+  \hline
+     \multirow{6}{*}{Interface du jeu}
+        & Afficher la carte                                                           & M \\  \cline{2-3}
+        & Pouvoir accéder à l’inventaire, au menu et utiliser du repos    & M \\  \cline{2-3}
+        & Afficher la console des messages                                            & M \\  \cline{2-3}
+        & Afficher le pavé directionnel                                                       & M \\  \cline{2-3}
+        & Afficher l’inventaire                                                       & M \\  \cline{2-3}
+        & Afficher le score                                                       & M \\  \cline{2-3}
+        & Afficher le menu de jeu                                                     & M \\
+  \hline
+\end{tabular}
+\normalsize
+
+* M = Majeure / m = mineure
+
+
+
+\subsection{Interface avec l'utilisateur}
+
+\subsubsection{Interface Homme-Machine}
+
+Le jeu est une application pour ordinateur qui se lance dans une fenêtre. Le joueur regarde l'écran et interagit à la fois avec son clavier et sa souris.
+
+
+\subsubsection{Les menus}
+
+
+\paragraph{Le menu principal}
+
+Après le lancement de l'application, le joueur se trouve dans le menu principal où figure~:
+
+\begin{itemize}
+   \item \textbf{Lancement d'une nouvelle partie}~;
+   \item \textbf{Charger une partie : }Ce menu permet de retrouver une partie à l'endroit où on l'avait laissé. Il permet aussi la suppression d'une sauvegarde~;
+   \item \textbf{Le "Hall of Fame" : }On y trouve les meilleurs scores de tous les joueurs ayant utilisé cette application. Les 10 meilleurs scores et leurs statistiques associées sont visibles dans trois sous-menus différents pour chaque difficulté (novice, moyen, expert). Il y a trois statistiques représentant une partie~: le nombre d'ennemis tués, la distance parcourue, (une case = un mètre), l'or total accumulé et le temps de jeu. Le score associé à une partie est synthétisé à partir de l'ensemble de ces statistiques~;
+   \item \textbf{Langue : }Permet de changer la langue parmi celles disponibles~;
+   \item \textbf{Aide : }Donne accès à une base d'aide permettant à l’utilisateur de prendre facilement le jeu en main~;
+   \item \textbf{Quitter le jeu}.
+\end{itemize}
+
+
+\newpage %pas bien
+
+\subsubsection{Interface Graphique}
+
+Voici un schéma général de l'interface graphique dont diposera le jeu :
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=12cm]{IHM.png}
+\caption{Schéma de l'IHM envisagée}
+\end{figure}
+
+\vspace{1cm}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=12cm]{IHM2.png}
+\caption{Zoom sur le panel de contrôle et les barres}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+%	Déroulement du projet
+%----------------------------------------------------------------------------------------
+
+\newpage %pas bien
+
+\section{Déroulement du projet}
+
+
+\subsection{Livrables}
+
+Les livrables prévus sont :
+
+\begin{itemize}
+   \item Le présent cahier des charges validé par le client~;
+   \item Dossier d'analyse~;
+   \item Manuel utilisateur~;
+   \item Le jeu fonctionnel (livraison le jeudi 23 mai 2013).
+\end{itemize}
+
+
+\subsection{Planning}
+
+Afin de mener à bien ce projet, il est mis à disposition des étudiants 16 séances de 3h (en plus du temps libre) pour permettre aux membres de l'équipe de se retrouver et au chef d'équipe de distribuer les tâches en respectant au mieux le planning mis en place au début du projet.
+
+
+
+\subsection{Équipe}
+
+Les membres de l'équipe sont Jérémy VOISIN (chef d'équipe), Florent BOSSART, Adrien FROGER, Ludovic ROUCOUX, Edwin SIMONNET, Yannis VESSEREAU, Xavier VIRVOULET.
+
+
+
+
+
+\subsection{Outils de développement}
+
+Voici les différents outils utilisés pour le projet :
+
+\begin{itemize}
+   \item Le language de programmation Ruby~;
+   \item GTK pour Ruby pour le développement des interfaces graphiques~;
+   \item YAML : outil qui permet la sérialisation de données, et qui sera donc utilisé pour la sauvegarde de données, telles que l'inventaire, la carte, la partie en cours.
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+%	Gloassaire
+%----------------------------------------------------------------------------------------
+
+\section{Glossaire}
+
+\textbf{PNJ : }Personnage Non Joueur\\
+\textbf{GTK : }Gimp ToolKit\\
+\textbf{POO : }Programmation Orientée Objet\\
+\textbf{YAML : }YAML ain't markup language (acronyme récursif)\\
+
+
+\renewcommand{\thefootnote}{\*} %Ne pas numéroter la note de bas de page
+\footnotetext{Note : Les chiffres et pourcentages sont fournis à titre indicatif. Il pourront être modifiés pour une meilleure jouabilité.}
+
+
+
+\end{document}
