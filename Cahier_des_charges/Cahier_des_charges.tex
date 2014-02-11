@@ -35,6 +35,7 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{multirow} %Ligne multiple pour les tableaux
 \usepackage[utf8]{inputenc}
+\usepackage{indentfirst} %Indentation début de paragraphe
 
 \usepackage{colortbl} %Clouleur tableau protoypes de fonctions
 
@@ -60,7 +61,7 @@
 \renewcommand\headrulewidth{0.4pt} % Size of the header rule
 \renewcommand\footrulewidth{0.4pt} % Size of the footer rule
 
-\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\setlength\parindent{10pt} % Removes all indentation from paragraphs
 
 
 
@@ -70,7 +71,7 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\hmwkTitle}{PROJET JEU} % Titre du document
-\newcommand{\hmwkDueDate}{Vendredi 22 février 2013} % Date
+\newcommand{\hmwkDueDate}{Mercredi 5 février 2014} % Date
 \newcommand{\hmwkClass}{CAHIER DES CHARGES } % Type de document
 \newcommand{\hmwkClassInstructor}{ } % Teacher/lecturer
 \newcommand{\hmwkAuthorName}{Groupe A} % Your name
@@ -125,28 +126,29 @@
 
 \subsection{Contexte}
 
-Ce projet s'inscrit dans le cadre du second semestre de la 3ème année de la Licence SPI (Sciences Pour l'Ingénieur) enseignée à l'Université du Mans. Il a pour but de faire développer un logiciel à une équipe d'étudiants (ici, 7 étudiants) en mettant en œuvre les concepts de Génie Logiciel vus en cours au premier semestre.\\
-En effet, des professeurs de l'Université jouant le rôle de client, commandent un logiciel de jeu d'aventure simple. Tout le monde devra pouvoir utiliser ce logiciel, car il doit au final être "commercialisable".
-
+Lors du second semestre de troisième année de licence SPI, il est demandé de réaliser un projet. Ce projet à thème imposé n'est autre que le développement d'un logiciel complexe demandant un travail en équipe.\\
+Notre équipe de cinq étudiants aura donc du 24 janvier au 16 Mai 2014 pour mettre en œuvre les préceptes de Génie Logiciel vus au premier semestre afin de présenter un logiciel potentiellement commercialisable au client, ici représenté par les enseignants.
 
 \subsection{Objectifs}
 
-Le logiciel à concevoir est un jeu d'aventure simple, en tour par tour, dans lequel un personnage se déplace et interagit dans un monde fini.\\
-Le but général pour le joueur est de se déplacer le plus longtemps possible. Il peut y trouver des objets ainsi que des Personnages Non Joueurs (PNJ) ennemis ou apportant de l'aide. Le jeu ne propose pas de scénario ou de quête mais il se termine quand le joueur "meurt". L’utilisateur doit donc jouer le plus longtemps possible afin d'améliorer son score.
+L'objectif de ce projet est la conception d'une application permettant la création et l'aide à la résolution de puzzles de type picross (henjie).\\
+Le joueur pourra commencer des puzzles de différentes tailles ; le but étant de terminer le plus vite possible la partie.
 
 
 \subsection{Utilisateur cible}
 
-Ce logiciel ne prévoit qu'une seule catégorie d'utilisateur~: le joueur. Le jeu ne permet qu'à un seul joueur de jouer simultanément.
+Ce logiciel n'est destiné qu'à un seul joueur à la fois. Cependant, il permet à de nombreux joueurs d'apposer leur score à la table des scores.
 
 
 \subsection{État de l'art}
 
-Le projet reprend quelques idées de jeu de rôle en tour par tour telles que~:
+Le jeu permet différentes fonctionnalités :
 \begin{itemize}
-   \item La présence d'expérience et de niveaux, permettant au joueur de faire évoluer son personnage~;
-   \item L'utilisation d'objets octroie des bonus lors des combats, ce qui en facilite l'issue et amène le joueur à développer une stratégie de consommation d'objets~;
-   \item Un classement permettant aux joueurs de comparer leur progression.
+   \item La création et édition d'une grille de picross,
+   \item La résolution du puzzle avec ou sans aide à la résolution,
+   \item La sauvegarde et le chargement d'une partie,
+   \item L'enregistrement et consultation des scores,
+   \item Le partage de ses grilles déjà jouées.
 \end{itemize}
 
 
@@ -162,12 +164,10 @@ Le projet reprend quelques idées de jeu de rôle en tour par tour telles que~:
 
 
 \begin{itemize}
-   \item Le jeu est en tour par tour. Le joueur n'effectue qu'une seul action par tour puis l’environnement du jeu évolue~;
-   \item Le personnage se caractérise principalement par une quantité d'énergie. Cette énergie est dépensée lors des déplacements et des combats. Le joueur meurt lorsque cette énergie atteint une valeur inférieure ou égale à zéro~;
-   \item Le jeu se déroule dans un monde fini. La carte de jeu est divisée en cases ayant chacune quatre cases voisines (la carte est torique). Elle est générée aléatoirement au début d'une partie (sans vérifier l’accessibilité de toutes les zones) et est constituée de différentes unités de terrains causant chacune leur propre dépense d'énergie~;
-   \item On peut trouver dans le monde du jeu des PNJ et des objets. Les PNJ d'aide sont immobiles tandis que les PNJ offensifs se déplacent. Les objets apportent une amélioration à l'énergie du joueur~;
-   \item L'or régit les échanges avec les PNJ d'aide~;
-   \item Les combats sont obligatoires avec les ennemis rencontrés, ne requièrent pas d'interaction de la part du joueur et se font avec un ennemi à la fois. L'énergie dont dispose l'ennemi est soustraite à celle du joueur. Le joueur peut récupérer l'or et les objets d'un ennemi vaincu.
+   \item Le jeu est un picross, le joueur doit noircir les cases en fonction des information donné par les chiffres en
+       tête de ligne et de colonne,
+   \item Le jeu doit proposer plusieurs tailles de grille (5x5 10x10 15x15 25x25),
+   \item L'application doit proposer un éditeur de grille.
 \end{itemize}
 
 
@@ -177,12 +177,34 @@ Le projet reprend quelques idées de jeu de rôle en tour par tour telles que~:
 
 
 \begin{itemize}
-   \item Le langage de programmation est Ruby/GTK~;
-   \item Les paramètres de l’application doivent être externalisés afin de pouvoir être modifiés par le joueur (difficulté de la partie)~;
-   \item Le logiciel doit être développé en Programmation Orientée Objet (POO). Il doit être conçu de manière à pouvoir ajouter ultérieurement de nouveaux éléments pour faire évoluer le jeu. Il peut s'agir de PNJ, d'objets, de types de terrain ainsi que de nouvelles langues. De plus les menus doivent pouvoir être étendus~;
-   \item Le jeu doit supporter plusieurs langues~;
-   \item On doit pouvoir sauvegarder une partie pour la reprendre ultérieurement~;
-   \item La gestion du joueur se fait au travers d'un menu affichant les actions possibles.
+   \item Le langage de programmation est Ruby/GTK,
+   \item Les paramètres de l’application doivent être externalisés afin de pouvoir être modifiés par le joueur (taille
+       de la grille),
+   \item Le logiciel doit être développé en Programmation Orientée Objet (POO),
+   \item Le jeu doit supporter plusieurs langues,
+   \item Le joueur doit pouvoir sauvegarder une partie pour la reprendre ultérieurement.
+\end{itemize}
+
+
+
+
+\subsection{Contraintes temporelles}
+
+
+\begin{itemize}
+    \item Le client impose une réunion hebdomadaire entre les différents acteurs de notre groupe,
+    \item Le projet final doit être présenté au client le 16 mai 2014.
+\end{itemize}
+
+
+
+
+\subsection{Contraintes matérielles}
+
+
+\begin{itemize}
+    \item Le présent Cahier des Charges doit être remis au client le 16 mai 2014,
+    \item Au terme de chaque réunion un compte rendu doit être remis au client.
 \end{itemize}
 
 
@@ -388,53 +410,23 @@ D'autre part si le même méchant est présent plusieurs fois sur la même case,
   \hline
   \textbf{FONCTIONNALITE} & \textbf{DESCRIPTION} & \textbf{M/m*}\\
   \hline
-     \multirow{9}{*}{Gestion du jeu}
+     \multirow{8}{*}{Gestion du jeu}
         & Lancer une nouvelle partie                                  & M \\  \cline{2-3}
         & Sauvegarder une partie (à tout instant)                     & M \\  \cline{2-3}
         & Charger une partie sauvegardée                              & M \\  \cline{2-3}
         & Supprimer une partie sauvegardée                            & M \\  \cline{2-3}
         & Quitter le jeu                                              & M \\  \cline{2-3}
-        & Choisir le niveau de difficulté (Facile, Moyen, Difficile)  & M \\  \cline{2-3}
+        & Choisir lea taille de la grille (Facile, Moyen, Difficile)  & M \\  \cline{2-3}
         & Choisir la langue                                           & M \\  \cline{2-3}
-        & Afficher les statistiques/classement (nom du joueur, nombre d'ennemis tués, distance parcourue, capital) & M \\  \cline{2-3}
+        & Afficher les statistiques/classement (nom du joueur, nombre de partie jouées, victoire, temps, score) & M \\  \cline{2-3}
         & Afficher une aide                                           & m \\  \cline{2-3}
         & Activer / Désactiver le son                                 & m \\
   \hline
-     \multirow{13}{*}{Gestion du joueur}
-        & Choisir un pseudo pour le joueur                                            & m \\  \cline{2-3}
-        & Déplacer le joueur d'une seule case (Haut, Bas, Gauche, Droite)             & M \\  \cline{2-3}
-        & Laisser le joueur immobile                                                  & M \\  \cline{2-3}
-        & Visualiser l’énergie du joueur à tout moment                                & M \\  \cline{2-3}
-        & Visualiser l'expérience du joueur à tout moment                                & M \\  \cline{2-3}
-        & Visualiser le capital du joueur à tout moment (or)                          & M \\  \cline{2-3}
-        & Perdre de l’énergie (lors d’un combat, lors d’un déplacement)               & M \\  \cline{2-3}
-        & Gagner de l’énergie (en utilisant un repos, en mangeant de la nourriture, en consultant un guérisseur)  & M \\  \cline{2-3}
-        & Ramasser/Jeter/Acheter/Vendre des objets (nourriture, armure, épée, …)               & M \\  \cline{2-3}
-        & Stocker des objets dans un inventaire                                       & M \\  \cline{2-3}
-        & Permettre l'affichage de l' inventaire                                      & M \\  \cline{2-3}
-        & Utiliser des objets (nourriture, armure, épée, …)                           & M \\  \cline{2-3}
-        & Interagir avec les PNJ (combat, achat d’objet, …)                           & M \\  \cline{2-3}
-        & Mourir (plus d’énergie)                                                     & M \\ 
+     \multirow{2}{*}{Gestion du joueur}
+        & Choisir un pseudo pour le joueur                                            & m \\  \cline{2-3}           & Gerer ses parties 														  & M \\  \cline{2-3}
   \hline
-     \multirow{3}{*}{Gestion des PNJ}
-        & Placer aléatoirement les PNJ                                               & M \\  \cline{2-3}
-        & Déplacer les PNJ ennemis aléatoirement ou pistant le joueur à chaque tour             & M \\  \cline{2-3}
-        & Interagir avec le joueur (combat, vente d’objet, …)                         & M \\
-  \hline
-     \multirow{1}{*}{Gestion des objets}
-        & Placer aléatoirement des objets sur la carte                                & M \\  \cline{2-3}
-        & Attribuer des objets (armure, épée) aux ennemis                             & M \\
-  \hline
-     \multirow{2}{*}{Gestion de la carte}
-        & Générer aléatoirement la carte                                              & M \\  \cline{2-3}
-        & Gérer différents types de terrains (montagne, forêt, eau, …)                & M \\
-  \hline
-     \multirow{6}{*}{Interface du jeu}
-        & Afficher la carte                                                           & M \\  \cline{2-3}
-        & Pouvoir accéder à l’inventaire, au menu et utiliser du repos    & M \\  \cline{2-3}
-        & Afficher la console des messages                                            & M \\  \cline{2-3}
-        & Afficher le pavé directionnel                                                       & M \\  \cline{2-3}
-        & Afficher l’inventaire                                                       & M \\  \cline{2-3}
+     \multirow{3}{*}{Interface du jeu}
+        & Afficher les informations de la grille                                                 & M \\  \cline{2-3}
         & Afficher le score                                                       & M \\  \cline{2-3}
         & Afficher le menu de jeu                                                     & M \\
   \hline
@@ -475,19 +467,19 @@ Après le lancement de l'application, le joueur se trouve dans le menu principal
 
 Voici un schéma général de l'interface graphique dont diposera le jeu :
 
-\begin{figure}[!h]
-\centering
-\includegraphics[width=12cm]{IHM.png}
-\caption{Schéma de l'IHM envisagée}
-\end{figure}
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=12cm]{IHM.png}
+%\caption{Schéma de l'IHM envisagée}
+%\end{figure}
 
-\vspace{1cm}
+%\vspace{1cm}
 
-\begin{figure}[!h]
-\centering
-\includegraphics[width=12cm]{IHM2.png}
-\caption{Zoom sur le panel de contrôle et les barres}
-\end{figure}
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=12cm]{IHM2.png}
+%\caption{Zoom sur le panel de contrôle et les barres}
+%\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	Déroulement du projet
