@@ -164,12 +164,10 @@ Le jeu permet différentes fonctionnalités :
 
 
 \begin{itemize}
-   \item Le jeu est en tour par tour. Le joueur n'effectue qu'une seul action par tour puis l’environnement du jeu évolue~;
-   \item Le personnage se caractérise principalement par une quantité d'énergie. Cette énergie est dépensée lors des déplacements et des combats. Le joueur meurt lorsque cette énergie atteint une valeur inférieure ou égale à zéro~;
-   \item Le jeu se déroule dans un monde fini. La carte de jeu est divisée en cases ayant chacune quatre cases voisines (la carte est torique). Elle est générée aléatoirement au début d'une partie (sans vérifier l’accessibilité de toutes les zones) et est constituée de différentes unités de terrains causant chacune leur propre dépense d'énergie~;
-   \item On peut trouver dans le monde du jeu des PNJ et des objets. Les PNJ d'aide sont immobiles tandis que les PNJ offensifs se déplacent. Les objets apportent une amélioration à l'énergie du joueur~;
-   \item L'or régit les échanges avec les PNJ d'aide~;
-   \item Les combats sont obligatoires avec les ennemis rencontrés, ne requièrent pas d'interaction de la part du joueur et se font avec un ennemi à la fois. L'énergie dont dispose l'ennemi est soustraite à celle du joueur. Le joueur peut récupérer l'or et les objets d'un ennemi vaincu.
+   \item Le jeu est un picross, le joueur doit noircir les cases en fonction des information donné par les chiffres en
+       tête de ligne et de colonne.~;
+   \item Le jeu doit proposer plusieurs tailles de grille (5x5 10x10 15x15 25x25).~;
+   \item L'application doit proposer un éditeur de grille.~;
 \end{itemize}
 
 
@@ -180,11 +178,33 @@ Le jeu permet différentes fonctionnalités :
 
 \begin{itemize}
    \item Le langage de programmation est Ruby/GTK~;
-   \item Les paramètres de l’application doivent être externalisés afin de pouvoir être modifiés par le joueur (difficulté de la partie)~;
-   \item Le logiciel doit être développé en Programmation Orientée Objet (POO). Il doit être conçu de manière à pouvoir ajouter ultérieurement de nouveaux éléments pour faire évoluer le jeu. Il peut s'agir de PNJ, d'objets, de types de terrain ainsi que de nouvelles langues. De plus les menus doivent pouvoir être étendus~;
+   \item Les paramètres de l’application doivent être externalisés afin de pouvoir être modifiés par le joueur (taille
+       de la grille)~;
+   \item Le logiciel doit être développé en Programmation Orientée Objet (POO).~;
    \item Le jeu doit supporter plusieurs langues~;
-   \item On doit pouvoir sauvegarder une partie pour la reprendre ultérieurement~;
-   \item La gestion du joueur se fait au travers d'un menu affichant les actions possibles.
+   \item Le joueur doit pouvoir sauvegarder une partie pour la reprendre ultérieurement~;
+\end{itemize}
+
+
+
+
+\subsection{Contraintes temporelles}
+
+
+\begin{itemize}
+    \item Le client impose une réunion hebdomadaire entre les différents acteurs de notre groupe.~;
+    \item Le projet final doit être présenté au client le 26 mai 2014.~;
+\end{itemize}
+
+
+
+
+\subsection{Contraintes matérielles}
+
+
+\begin{itemize}
+    \item Le présent Cahier des Charges doit être remis au client le 26 mai 2014.~;
+    \item Au terme de chaque réunion un compte rendu doit être remis au client.~;
 \end{itemize}
 
 
