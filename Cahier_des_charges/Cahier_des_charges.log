@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.28)  11 FEB 2014 11:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.28)  11 FEB 2014 11:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -465,56 +465,51 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 147.
 
-Overfull \hbox (6.5605pt too wide) in paragraph at lines 167--168
-[]\OT1/cmr/m/n/10.95 Le jeu est en tour par tour. Le joueur n'effectue qu'une s
-eul ac-tion par tour puis l'environnement
- []
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[1] [2] [3] [4] [5]
-Overfull \hbox (15.80109pt too wide) in paragraph at lines 300--301
+[1] [2] [3] [4]
+Overfull \hbox (15.80109pt too wide) in paragraph at lines 320--321
  \OT1/cmr/bx/n/10.95 Lance-ment d'une par-tie[] \OT1/cmr/m/n/10.95 Au lance-men
 t d'une par-tie, on pro-pose au joueur d'entrer son pseudonyme
  []
 
-[6]
+[5] [6]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 389.
+(Font)              <7> on input line 409.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 389.
+(Font)              <5> on input line 409.
 
-Overfull \hbox (3.54709pt too wide) in paragraph at lines 391--392
+Overfull \hbox (3.54709pt too wide) in paragraph at lines 411--412
 []|\OT1/cmr/bx/n/10 M/m*| 
  []
 
 
-Overfull \hbox (4.6363pt too wide) in paragraph at lines 389--415
+Overfull \hbox (4.6363pt too wide) in paragraph at lines 409--435
 [][] 
  []
 
 [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 516--520
+Underfull \hbox (badness 10000) in paragraph at lines 536--540
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 523.
+(Font)              <9> on input line 543.
 
 AED: lastpage setting LastPage
 [10] (./Cahier_des_charges.aux) ) 
 Here is how much of TeX's memory you used:
  3830 strings out of 493315
  53887 string characters out of 6137904
- 215594 words of memory out of 5000000
+ 216594 words of memory out of 5000000
  7215 multiletter control sequences out of 15000+600000
  10685 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,11n,43p,871b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,11n,43p,871b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/
@@ -522,7 +517,7 @@ public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb>
-Output written on Cahier_des_charges.pdf (12 pages, 114071 bytes).
+Output written on Cahier_des_charges.pdf (12 pages, 113292 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream
