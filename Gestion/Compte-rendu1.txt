@@ -24,9 +24,29 @@ Questions :
 -Est-ce les clients désirent être informé de l'avancement du projet régulièrement.
 -Prix?
 -Personnalisation de l'interface possible? Différents thèmes?
--Possibilité de créer sa propre grille -> module d'édition de grille?
+-Condition de création des grilles? Tailles(personalisable)?Possibilité de créer sa propre grille -> module d'édition de grille?
 -Question de condition de fin de jeu -> temps, nombre de coup -> Possibilité de proposer différents jeu.
 
 - Son ?
 - Destination logicielle ?
 - OS ?
+
+plusieurs mode de jeu -> avec différents niveaux d'aide -> facile, sans aide, etc. L'utilisateur demande de l'aide sur commande.
+Différents types d'aides possibles, avec auto complétion, indices, ou remplissage de la grille par le logiciel, ou aide tactique.
+
+Gestion difficulté pas forcément gérable (nbre de cas à noircir pourrait être un facteur).
+Le score sera essentiellement temporel, avec pénalité dues à des demandes d'aides.
+
+Mémorisation des temps, mémorisation des grilles, et sauvegarde de grille en cours.
+
+Gestionn des utilisateurs -> simplement un nom correspondant à un score. ??? optionnel
+
+Choix des grilles pré-établi (5n*5n)
+
+Possibilité d'exporter des grilles -> éditeur inclus.
+Fin de jeu possiblement différente selon le mode de jeu.
+
+Génération aléatoire de grilles (avec un paramétrage).
+
+Pas de retour en dehors du rapport d'activité
+
