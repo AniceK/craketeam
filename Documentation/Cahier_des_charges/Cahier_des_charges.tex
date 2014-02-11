@@ -219,88 +219,21 @@ Le jeu permet différentes fonctionnalités :
 
 \subsubsection{Éléments constituant le jeu}
 
-\paragraph{L’énergie}
-
-Le joueur ainsi que les PNJ ennemis disposent d'une énergie. La difficulté du jeu est  de gérer cette énergie au mieux. Pour le joueur, celle ci diminue lors des déplacements et lors des combats (les ennemis ne perdent pas d'énergie lors des déplacements). Si elle est inférieure ou égale à zéro, le joueur meurt.
-
-\paragraph{Le repos}
-
-Le joueur débute avec un nombre de repos adapté en fonction de la difficulté, il en gagne un nouveau tout les cinq niveaux. Un repos lui permet de regagner toute son énergie, il consomme dix tours. Si un ennemi déclenche un combat pendant le repos, alors seul une partie de l'énergie est récupérée.
-
-\paragraph{Les PNJ ennemis et les combats}
-
-Les combats ne requièrent pas d'interaction de la part du joueur. Ils se font toujours avec un ennemi à la fois et tiennent compte de l'énergie du joueur ainsi que de son équipement et de celle de l'ennemi. Lors d'un combat, l'énergie dont dispose l'ennemi est soustraite à celle du joueur. Le joueur peut donc remporter le combat s'il dispose de plus d'énergie que l'ennemi. Dans le cas inverse il meurt.\\
-Certains ennemis se déplacent aléatoirement sur la carte tandis que d'autres ont pour but de pister le joueur s'il est à moins de 20 cases de lui. Ils connaissent donc la position du joueur et se rapprochent de lui tour après tour. Lorsqu'un joueur se trouve sur la même case qu'un ennemi, le combat est obligatoire. Un ennemi a sur lui des objets et/ou de l'or. Plus l'ennemi est puissant et plus ce que l'on trouve sur lui sera intéressant mais il n'est pas possible pour le joueur de connaître ces objets avant l'issue du combat.\\
-Voici la liste de base des PNJ ennemis~:
-
-\begin{itemize}
-    \item La chauve souris : énergie de base 30 ~;
-    \item Le loup : énergie de base 50 ~;
-    \item Le brigand : énergie de base 90 (pisteur)~;
-    \item Le soldat : énergie de base 150 (pisteur)~;
-    \item L'ogre : énergie de base 210.
-\end{itemize}
-
-Les ennemis sont générés avec un interval de tours régulier dépendant de la difficulté.
-
-\paragraph{Les PNJ d'aide}
-
-Les PNJ d'aide sont générés au début de la partie, immobiles et non attaquables. Lorsque le personnage rencontre un PNJ d'aide, celui-ci lui demande s’il veut faire une transaction (une seule transaction par tour). Si le personnage accepte, alors une liste de ce qui est proposé apparaît avec les prix correspondants. Le personnage sélectionne donc ce qu’il souhaite dans la limite de son capital d’or disponible et de son inventaire dans le cas d'un achat d'objet.
-
-\begin{itemize}
-   \item \textbf{Les guérisseurs : }Les guérisseurs proposent au joueur qui vient les trouver un regain d'énergie en échange d'or. La quantité d'énergie proposée est un pourcentage de l'énergie maximale du joueur (+25\% = 30 pièces d'or, +50\% = 50 pièces d'or, +75\% = 70 pièces d'or). Le joueur ne sera pas remboursé s'il paye pour plus d'énergie qu'il n'en a besoin.
-   \item \textbf{Les commerçants : }Les commerçants permettent au joueur d'acheter ou de vendre des objets contre de l'or. Le joueur ne peut revendre que des objets qui se trouvent dans son inventaire~: les objets avec lesquels il est équipé ne sont pas vendables. Lorsque le personnage rencontre un commerçant, il lui demande s’il veut acheter des objets ou non. 
-\end{itemize}
-
-\paragraph{Les objets du jeu et l'inventaire}
-
-Des objets et de l'or sont disséminés sur la carte. Les ennemis vaincus donnent également de l'or et/ou des objets. Enfin les commerçants peuvent vendre des objets contre de l'or et inversement.\\
-Voici les différentes catégories d'objets du jeu~:
-
-\begin{itemize}
-   \item \textbf{Les objets défensifs/offensifs : }Parmi ces objets figurent des boucliers et des épées. Ces objets se caractérisent par le pourcentage de protection/attaque qu'ils procurent et permettent de réduire la perte d'énergie liée à un ennemi lors d'un combat. Par exemple, si le joueur s'est revêtu d'une armure de pourcentage 20\% avant de combattre un ennemi d'énergie 200, il ne perdra que 80\% (= 160) de l'énergie de l'ennemi. Ces objets ne sont valables que pour un seul combat.
-   \item \textbf{Les bottes : }Les bottes permettent de réduire le coût en énergie d'un déplacement d'une certaine quantité (variable selon les bottes) et pour un nombre fixé de déplacements (également variable). Il est impossible de les retirer une fois que le joueur s'en est équipé.
-   \item \textbf{La nourriture : }Ces objets permettent de regagner de l'énergie. Ils sont consommés en une seule fois. Selon le type de nourriture consommée, le joueur gagnera plus ou moins d'énergie~:
-   \begin{itemize}
-      \item Le bout de pain augmentera de 70 l'énergie~;
-      \item Le brocoli vapeur augmentera de 100 l'énergie~;
-      \item Le steack de dinde augmentera de 200 l'énergie~;
-      \item Le pavé d'émeu augmentera de 500 l'énergie.
-      \item Le poulet rôti augmentera de 800 l'énergie.
-   \end{itemize}
-\end{itemize}
-
-Le joueur dispose de trois emplacements d'équipements : pieds pour les bottes, main gauche pour le bouclier et main droite pour l'épée. \\
-Les différentes caractéristiques d'un objet (regain d'énergie, pourcentage de protection, nombre d'utilisations pour les bottes) lui confèrent une valeur. Plus l'objet a de valeur et plus il sera cher, difficile à trouver sur la carte et présent dans l'inventaire d'ennemis puissants.\\
-Le joueur dispose d'un inventaire limité à quinze objets, pour stocker des objets qu'il ne veut pas utiliser immédiatement. Les objets d'un ennemi vaincu se retrouvent directement dans l'inventaire du joueur sauf si ce dernier est plein, auquel cas le joueur devra choisir quels objets du monstre ou de son inventaire il souhaite jeter. Un objet jeté de l'inventaire est détruit. Si un joueur passe sur une case où se trouve un objet, il peut décider de le ramasser ou non (et également de jeter des objets de son inventaire si besoin).\\
-L'or ne prend pas de place dans l'inventaire. Par conséquent, l'or d'un ennemi vaincu ou ramassé s'ajoutera automatiquement à la cagnotte du joueur.
-
-\paragraph{La carte du jeu}
-
-Le monde dans lequel le joueur évolue est fini mais torique, évitant ainsi de limiter les déplacements aux bords de la carte. Le jeu est en deux dimensions et vu du dessus. La carte est divisée en cases carrées qui sont d'un certain type de terrains. Selon le type de terrains, un déplacement consommera plus ou moins d'énergie. Certains types de terrains sont infranchissables.\\
-Voici la liste des types de terrains~:
-
-\begin{itemize}
-   \item Eau : infranchissable~;
-   \item Plaine : coûte 10 d'énergie pour s'y déplacer~;
-   \item Forêt : coûte 20 d'énergie pour s'y déplacer~;
-   \item Désert : coûte 30 d'énergie pour s'y déplacer~;
-   \item Montagne : coûte 50 d'énergie pour s'y déplacer.
-\end{itemize}
-
-
+    \begin{description}
+        \item[Grille] : La grille est constituée d'un carré dont le coté est un multiple de 5 cases. Il y a ainsi cinq tailles de grilles différentes, 5x5, 10x10, 15x15, 20x20 et 25x25.
+        \item[Case] : Les cases peuvent être noircies, en cliquant dessus à l'aide de la souris. Il est possible de décocher la case en cliquant dessus à nouveau. Il est également possible de cliquer sur une case à l'aide de la souris pour indiquer que la case restera vide, qu'elle ne sera pas noircie.
+        \item[Indications extérieures] : Les indications extérieures sont des suites de chiffres sur les bords gauche et supérieur, indiquant le nombre de case à noircir, respectivement dans les lignes et dans les colonnes.
+        \item[Chronomètre] : le chronomètre indique le temps qui s'est
+    \end{description}
 
 \subsubsection{Principe de fonctionnement du jeu}
 
 \paragraph{But du jeu}
-
-Le but général pour le joueur est de se déplacer le plus longtemps possible dans cet environnement. Le jeu se termine quand le joueur meurt, c'est à dire quand il n'a plus d'énergie. Le but est d'obtenir le meilleur score possible.
+Le but du jeu est de noircir toutes les cases devant être noircies dans le plus court laps de temps possible.
 
 \paragraph{Début d'une partie}
 
-Au début d'une nouvelle partie, le personnage se trouve au centre de la carte. Il dispose d'une quantité d'énergie liée à la difficulté. Il n'a aucun objet et aucune pièce d'or.\\
-Le logiciel fournit au joueur une interface lui affichant les seules actions possibles sous forme de bouton à cliquer
-
+Au début d'une partie, la grille est vierge, et le chronomètre
 \paragraph{Le jeu au tour par tour}
 
 Le déroulement du jeu se fait tour par tour. Une action pour un tour correspond à un déplacement (dans les quatre directions nord, sud, est et ouest sauf cas de cases inaccessibles) plus une interaction dans la case où se trouve le joueur à la fin de ce déplacement : il n'est possible d’interagir qu'avec les éléments présents sur la même case que le personnage. Lors d'un tour, le joueur peut décider de rester sur place (ce qui compte pour un déplacement nul). Il pourra ensuite agir sur la case sur laquelle il est resté avant la fin du tour. Une fois le tour du joueur fini, le monde évolue (mouvement des ennemis, génération de nouveaux ennemis et/ou objets sur la carte).\\
