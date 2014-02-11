@@ -1,0 +1,12 @@
+
+
+
+
+
+Répartition des tâches du cahier des charges :
+-Anice -> Présentation
+-Erwan -> Contraintes
+-Colas -> Spécification du projet(Règles détaillés)
+-Rémi -> Spécification du projet(Besoins fonctionnels)
+-Kevin -> Spécification du projet(Interface avec l'utilisateur)
+
