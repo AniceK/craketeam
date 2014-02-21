@@ -18,6 +18,7 @@
 \contentsline {paragraph}{Le menu en cours de partie}{3}
 \contentsline {paragraph}{L'interface joueur}{3}
 \contentsline {subsection}{\numberline {3.2}Besoins fonctionnels}{3}
+\contentsline {subsection}{\numberline {3.3}Acteur}{4}
 \contentsline {section}{\numberline {4}D\IeC {\'e}roulement du projet}{5}
 \contentsline {subsection}{\numberline {4.1}Livrables}{5}
 \contentsline {subsection}{\numberline {4.2}Planning}{5}
