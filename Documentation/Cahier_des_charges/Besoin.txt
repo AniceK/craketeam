@@ -1,0 +1,22 @@
+Besoin fonctionnel:
+	- Lancer une nouvelle partie
+	- Sauvegarder une partie (à tout instant)
+	- Charger une partie sauvegardée
+	- Supprimer une partie saugardée
+	- Quitter le jeu
+	- Choisir la taille de la grille
+	- Pouvoir fournir une aide à aux joueur
+	- Creer des grilles de jeu
+	- Gerer ses partie
+	- Afficher le score
+	- Afficher les informations de la grille
+	- Afficher le menu de jeu
+
+
+Besoin non fonctionnel (optionnel):
+	- Choisir la langue
+	- Affichage de statistiques/classement (nom du joueur, nombre de
+partie jouees, victoire, temps, score)
+	- Mise en place d'un fond sonore
+	- choix d'un mode de jeu
+	- Création de grille via une image
