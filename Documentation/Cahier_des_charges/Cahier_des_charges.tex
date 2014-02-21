@@ -184,7 +184,6 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
    \item Les paramètres de l’application doivent être externalisés afin de pouvoir être modifiés par le joueur (taille
        de la grille),
    \item Le logiciel doit être développé en Programmation Orientée Objet (POO),
-   \item Le jeu doit supporter plusieurs langues,
    \item Le joueur doit pouvoir sauvegarder une partie pour la reprendre ultérieurement.
 \end{itemize}
 
@@ -294,52 +293,6 @@ Le joueur noircit des cases ou les rend de nouveau blanches en cliquant dessus �
 
 * M = Majeure / m = mineure
 
-
-
-\subsection{Interface avec l'utilisateur}
-
-\subsubsection{Interface Homme-Machine}
-
-Le jeu est une application pour ordinateur qui se lance dans une fenêtre. Le joueur regarde l'écran et interagit à la fois avec son clavier et sa souris.
-
-
-\subsubsection{Les menus}
-
-
-\paragraph{Le menu principal}
-
-Après le lancement de l'application, le joueur se trouve dans le menu principal où figure~:
-
-\begin{itemize}
-   \item \textbf{Lancement d'une nouvelle partie}~;
-   \item \textbf{Charger une partie : }Ce menu permet de retrouver une partie à l'endroit où on l'avait laissé. Il permet aussi la suppression d'une sauvegarde~;
-   \item \textbf{Le "Hall of Fame" : }On y trouve les meilleurs scores de tous les joueurs ayant utilisé cette application. Les 10 meilleurs scores et leurs statistiques associées sont visibles dans trois sous-menus différents pour chaque difficulté (novice, moyen, expert). Il y a trois statistiques représentant une partie~: le nombre d'ennemis tués, la distance parcourue, (une case = un mètre), l'or total accumulé et le temps de jeu. Le score associé à une partie est synthétisé à partir de l'ensemble de ces statistiques~;
-   \item \textbf{Langue : }Permet de changer la langue parmi celles disponibles~;
-   \item \textbf{Aide : }Donne accès à une base d'aide permettant à l’utilisateur de prendre facilement le jeu en main~;
-   \item \textbf{Quitter le jeu}.
-\end{itemize}
-
-
-\newpage %pas bien
-
-\subsubsection{Interface Graphique}
-
-Voici un schéma général de l'interface graphique dont diposera le jeu :
-
-%\begin{figure}[!h]
-%\centering
-%\includegraphics[width=12cm]{IHM.png}
-%\caption{Schéma de l'IHM envisagée}
-%\end{figure}
-
-%\vspace{1cm}
-
-%\begin{figure}[!h]
-%\centering
-%\includegraphics[width=12cm]{IHM2.png}
-%\caption{Zoom sur le panel de contrôle et les barres} 
-%\end{figure}
-
 %----------------------------------------------------------------------------------------
 %	Déroulement du projet
 %----------------------------------------------------------------------------------------
@@ -355,7 +308,7 @@ Les livrables prévus sont :
 
 \begin{itemize}
    \item Le présent cahier des charges validé par le client~;
-   \item Dossier d'analyse~;
+   \item Dossier de conception~;
    \item Manuel utilisateur~;
    \item Le jeu fonctionnel (livraison le jeudi 16 mai 2014).
 \end{itemize}
@@ -382,7 +335,8 @@ Voici les différents outils utilisés pour le projet :
 \begin{itemize}
    \item Le language de programmation Ruby~;
    \item GTK pour Ruby pour le développement des interfaces graphiques~;
-   \item YAML : outil qui permet la sérialisation de données, et qui sera donc utilisé pour la sauvegarde de données, telles que l'inventaire, la carte, la partie en cours.
+   \item YAML : outil qui permet la sérialisation de données, et qui sera donc utilisé pour la sauvegarde de données, telles que les grilles, les statistiques, la partie en cours~;
+   \item GitHub pour la gestion de projet.
 \end{itemize}
 
 
@@ -392,10 +346,11 @@ Voici les différents outils utilisés pour le projet :
 
 \section{Glossaire}
 
-\textbf{GTK : }Gimp ToolKit\\
-\textbf{POO : }Programmation Orientée Objet\\
-\textbf{YAML : }YAML ain't markup language (acronyme récursif)\\
-
+\begin{description}
+\item [GTK : ]Gimp ToolKit
+\item [POO : ]Programmation Orientée Objet
+\item [YAML : ]YAML ain't markup language (acronyme récursif)
+\end{description}
 
 \renewcommand{\thefootnote}{\*} %Ne pas numéroter la note de bas de page
 \footnotetext{Note : Les chiffres et pourcentages sont fournis à titre indicatif. Il pourront être modifiés pour une meilleure jouabilité.}
