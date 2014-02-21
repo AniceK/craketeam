@@ -261,33 +261,78 @@ Le joueur noircit des cases ou les rend de nouveau blanches en cliquant dessus �
 
 \subsection{Besoins fonctionnels}
 
-\textbf{Besoins fonctionnels}
+\vspace{0,5cm}
+\small
+\begin{tabular}{|p{10cm}|p{3cm}|}
+	\hline
+	\textbf{FONCTIONNALITE} & \textbf{REFERENCE}\\
+	\hline
+	\hline
+		Nouvelle partie 											& F100 \\	\cline{1-2}
+		Gerer ses parties											& F110 \\	\cline{1-2}	
+		Sauvegarder une partie 										& F111 \\	\cline{1-2}	
+		Charger une partie 											& F113 \\	\cline{1-2}	
+		Supprimer une partie sauvegardée							& F114 \\	\cline{1-2}	
+		Quitter le jeu												& F120 \\	\cline{1-2}	
+		Choisir la taille de la grille								& F130 \\	\cline{1-2}
+		Fournir une aide 											& F140 \\	\cline{1-2}
+		Creer des grilles de jeu									& F150 \\	\cline{1-2}
+		Afficher le score											& F160 \\	\cline{1-2}
+		Afficher les informations de la grille						& F170 \\	\cline{1-2}
+		Afficher le menu du jeu 									& F180 \\	\cline{1-2}
+	\hline
+	\end{tabular}
+\normalsize \\
+
 \begin{itemize}
-    \item Lancer une nouvelle partie
-    \item Sauvegarder une partie (à tout instant)
-    \item Charger une partie sauvegardée
-    \item Supprimer une partie saugardée
-    \item Quitter le jeu
-    \item Choisir la taille de la grille
-    \item Pouvoir fournir une aide à aux joueur
-    \item Creer des grilles de jeu
-    \item Gerer ses partie
-    \item Afficher le score
-    \item Afficher les informations de la grille
-    \item Afficher le menu de jeu
+	\item F100 : Lancer une nouvelle partie
+	\item F110 : Le jouer a la possibilité de gerer ses parties à l'aide des fonctionnalitées suivante
+	\item F111 : Sauvegarder une partie à n'importe qu'elle moment
+	\item F112 : Charger une partie à n'importe qu'elle moment
+	\item F114 : Pouvoir supprimer une partie sauvegardée précédement
+	\item F120 : Quitter le jeu de n'importe qu'elle endroit
+	\item F130 : Choisir la taille de la grille lors d'une nouvelle partie ou de la création de grille
+	\item F140 : Mise à disposition d'une aide pour le joueur, de différente degré
+	\item F150 : Possibilité de création de grille par le joueur
+	\item F160 : Afficher le score du joueur en cours de jeu ou sur le meu principale
+	\item F170 : Le joueur a la possibilité de consulter les informations de la grille qui sont disponibles
+	\item F180 : Afficher le menu de base du jeu
 \end{itemize}
 
-\vskip .5 cm
-\textbf{Besoins non fonctionnels (optionnels)}
+\subsection{Besoins non fonctionnels (optionnels)}
+
+\vspace{0,5cm}
+\small
+\begin{tabular}{|p{10cm}|p{3cm}|}
+	\hline
+	\textbf{FONCTIONNALITE} & \textbf{REFERENCE}\\
+	\hline
+	\hline
+		Choisir la langue		 									& F200 \\	\cline{1-2}	
+		Affichage de statistiques/classement 						& F210 \\	\cline{1-2}	
+		Mise en place d'un fond sonore 								& F220 \\	\cline{1-2}	
+		Choix d'un mode de jeu										& F230 \\	\cline{1-2}	
+		Création de grille via une image							& F240 \\	\cline{1-2}
+	\hline
+	\end{tabular}
+\normalsize \\
+
 \begin{itemize}
-    \item Choisir la langue
-    \item Affichage de statistiques/classement (nom du joueur, nombre de partie jouees, victoire, temps, score)
-    \item Mise en place d'un fond sonore
-    \item choix d'un mode de jeu
-    \item Création de grille via une image
+	\item F200 : Le joueur pourra avoir la possibilité de choisir la langue du jeu parmis 
+	\item F210 : On pourra consulter les statistiques et classement disponible pour les joueurs ou les grilles proposées
+	\item F220 : Mise en place d'un environnement sonore avec possibilité de le désactiver
+	\item F230 : Le joueur aura le choix d'un mode de jeu lui proposant un enchainement de partie ainsi qu'une gestion du score différents
+	\item F240 : Le joueur aura la possibilité de créer des grilles à partir d'image qu'il importera
 \end{itemize}
 
-
+\newpage
+\subsection{Acteur}
+	    La figure 1 représente le diagramme du cas d'utilisation avec les différentes fonctionnalitées listées ci-dessus.
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[]{UserCase.jpg}
+		\caption{Diagramme du cas d'utilisation}
+	\end{figure}
 %----------------------------------------------------------------------------------------
 %	Déroulement du projet
 %----------------------------------------------------------------------------------------
