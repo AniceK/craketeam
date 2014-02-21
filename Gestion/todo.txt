@@ -1,4 +1,6 @@
 *************Ce fichier a pour but de noter l'ensemble des objectifs à réaliser pour et pendant la prochaine séance********
+*************Les personnes décidant de s'occuper de l'une des tâches l'indique en mettant 'en cours' ou fait'********
 
 Objectifs pour la séance du 25/02/2014
     -Mettre les besoins sous forme de tableau en indiquant les références sous formes FP suivi d'un numéro
+
