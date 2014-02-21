@@ -226,7 +226,7 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
         \item[Grille] : La grille est constituée d'un carré dont le coté est un multiple de 5 cases. Il y a ainsi cinq tailles de grilles différentes, 5x5, 10x10, 15x15, 20x20 et 25x25.
         \item[Case] : Les cases peuvent être noircies, en cliquant dessus à l'aide de la souris. Il est possible de décocher la case en cliquant dessus à nouveau. Il est également possible de cliquer sur une case à l'aide de la souris pour indiquer que la case restera vide, qu'elle ne sera pas noircie.
         \item[Indications extérieures] : Les indications extérieures sont des suites de chiffres sur les bords gauche et supérieur, indiquant le nombre de case à noircir, respectivement dans les lignes et dans les colonnes.
-        \item[Chronomètre] : le chronomètre indique le temps qui s'est
+        \item[Chronomètre] : le chronomètre indique le temps qui s'est passé depuis que le joueur a noirci la première case.
     \end{description}
 
 \subsubsection{Principe de fonctionnement du jeu}
@@ -236,102 +236,25 @@ Le but du jeu est de noircir toutes les cases devant être noircies dans le plus
 
 \paragraph{Début d'une partie}
 
-Au début d'une partie, la grille est vierge, et le chronomètre
-\paragraph{Le jeu au tour par tour}
+Au début d'une partie, la grille est vierge, et le chronomètre est à 00:00.
+\paragraph{Deroulement du jeu.}
 
-Le déroulement du jeu se fait tour par tour. Une action pour un tour correspond à un déplacement (dans les quatre directions nord, sud, est et ouest sauf cas de cases inaccessibles) plus une interaction dans la case où se trouve le joueur à la fin de ce déplacement : il n'est possible d’interagir qu'avec les éléments présents sur la même case que le personnage. Lors d'un tour, le joueur peut décider de rester sur place (ce qui compte pour un déplacement nul). Il pourra ensuite agir sur la case sur laquelle il est resté avant la fin du tour. Une fois le tour du joueur fini, le monde évolue (mouvement des ennemis, génération de nouveaux ennemis et/ou objets sur la carte).\\
-Se reposer (utilisation d'un repos) permet au joueur de récupérer 10\% de la totalité de son énergie à chaque tour pendant 10 tours sauf si ce dernier est attaqué durant son someil, auquel cas le repos s'arrêtre et un combat s'engage.\\
-Lors d'une interaction avec un PNJ d'aide, chaque transaction compte pour un tour~: pour acheter trois objets, il faudra rester sur place trois fois de suite. Le joueur ne se déplaçant pas, il ne consomme (ni ne gagne) aucune énergie.\\
-Dans le cas où plusieurs éléments sont présents sur une même case, le joueur peut décider d’interagir avec, dans l'ordre qu'il souhaite, sachant que chaque action équivaut à un tour en restant sur place (ramassage de plusieurs objets, interaction avec un/des PNJ d'aide). Si des ennemis se trouvent parmi ces éléments, la règle est différente~: les ennemis doivent être traités en priorité et en un seul tour, ce qui signifie que l'énergie soustraite à celle du joueur correspond à la somme des énergies de tous les ennemis présents sur la même case et qu'il est impossible au joueur d'utiliser des équipements ou de la nourriture entre chacun des combats (seulement pour le premier). Si le joueur survit, il peut ensuite interagir avec les éléments non offensifs restants (s'il y en a) comme vu précédemment.
-
-\paragraph{Les niveaux}
-
-Lorsque le joueur remporte un combat il acquiert de l’expérience. Elle lui permet de devenir plus puissant afin de combattre des ennemis qui étaient auparavant hors de portée du joueur.
-Le joueur se voit attribuer un bonus de 1,2 fois son énergie, ainsi qu'un repos tout les cinq niveaux.\\
-À chaque passage de niveau, des ennemis et des objets supplémentaires apparaissent, leur nombre dépendant de la difficulté. Le niveau des ennemis ajoutés est calculé en fonction de celui du joueur.
-
-
-\paragraph{Lancement d'une partie}
-
-Au lancement d'une partie, on propose au joueur d'entrer son pseudonyme et de choisir une difficulté entre novice, moyen et expert. C'est la difficulté d'une partie qui détermine les proportions des différents éléments du jeu~:
-
-\begin{itemize}
- \item \textbf{Novice} :
-
-	\begin{itemize}
-		\item Quantités PNJ :
-		
-		\begin{itemize}
-			\item Ennemis : 50 au départ et 5 à chaque nouvelle génération~;
-			\item Aides : 50~;
-		\end{itemize}
-
-		\item Pourcentage Terrain : 80 \% de la dépense énergétique du terrain~;
-		\item Quantité d'objet : 100 répartis dans toute la carte~;
-		\item Dimensions carte : 500 cases * 500 cases~;
-		\item Energie initiale du joueur : 1000~;
-		\item Nombre de repos initial du joueur : 15~;
-		\item Nombre de tours entre chaque génération d'ennemis : 15.
-
-	\end{itemize}
-
- \item \textbf{Moyen} :
-
-		\begin{itemize}
-			\item Quantités de PNJ :
-			
-			\begin{itemize}
-				\item Ennemis : 100 au départ et 10 à chaque nouvelle génération~;
-				\item Aides : 25~;
-			\end{itemize}
-
-			\item Pourcentage Terrain : 100 \% de la dépense énergétique du terrain~;
-			\item Quantité d'objet : 75 répartis dans toute la carte~;
-			\item Dimensions carte : 1000 cases * 1000 cases~;
-			\item Energie initiale du joueur : 750~;
-			\item Nombre de repos initial du joueur : 10~;
-			\item Nombre de tours entre chaque génération d'ennemis : 10.
-
-		\end{itemize}
-                     \item \textbf{Expert} :
-		\begin{itemize}
-			\item Quantités de PNJ :
-			
-			\begin{itemize}
-				\item Ennemis : 200 au départ et 200 à chaque nouvelle génération~;
-				\item Aides : 25~;
-			\end{itemize}
-
-			\item Pourcentage Terrain : 120 \% de la dépense énergétique du terrain~;
-			\item Quantité d'objet : 50 répartis dans toute la carte~;
-			\item Dimensions carte : 2000 cases * 2000 cases~;
-			\item Energie initiale du joueur : 500~;
-			\item Nombre de repos initial du joueur : 5~;
-			\item Nombre de tours entre chaque génération d'ennemis : 5.
-
-		\end{itemize}
-\end{itemize}
-
-Ensuite une nouvelle partie commence.
-
+Le jeu commence lorsque le joueur noircie un case en cliquant dessus, ce qui enclenche le chronomètre. 
 
 \paragraph{Le menu en cours de partie}
 
 En cours de partie, le joueur peut accéder à un menu spécial où se trouvent~:
 
 
-\begin{itemize}
-   \item \textbf{Sauvegarde de la partie : }L'utilisateur peut sauvegarder sa partie en cours. Le joueur peut ensuite continuer à jouer ou quitter le jeu~;
-   \item \textbf{Son : }Active ou désactive le son~;
-   \item \textbf{Quitter la partie : }Renvoie le joueur au menu principal. Il devra avoir pris le soin de sauvegarder ou non sa partie.  
-\end{itemize}
+\begin{description}
+    \item [Sauvegarde de la partie : ]L'utilisateur peut sauvegarder sa partie en cours. Le joueur peut ensuite continuer à jouer ou quitter le jeu~;
+   \item [Quitter la partie : ]Renvoie le joueur au menu principal. Il devra avoir pris le soin de sauvegarder ou non sa partie.  
+\end{description}
 
 
 \paragraph{L'interface joueur}
 
-Le joueur peut exécuter toutes les actions via l'interface graphique, il pourra également utiliser le pavé directionnel du clavier pour se déplacer et la touche échap pour accéder au menu. Un bouton lui permet d’accéder à l'inventaire. Une console affiche les interactions effectués, objets trouvés et utilisés. Il voit également une barre représentant son expérience et une barre représentant son énergie, avec leur valeur affichée au dessus, ainsi que les objets dont il est équipé, les repos dont il dispose et l'or de sa cagnotte.
-D'autre part si le même méchant est présent plusieurs fois sur la même case, un nombre apparaît à côté de son image pour spécifier le nombre.
-
+Le joueur noircit des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
 
 
 
