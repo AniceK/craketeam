@@ -1,0 +1,14 @@
+# Text File
+# AUTHOR:   Remi
+# FILE:     /Volumes/Macintosh HD/Users/remitremblain/Desktop/craketeam/.gitignore
+# CREATED:  10:41:19 24/02/2014
+# MODIFIED: 10:44:08 24/02/2014
+
+#Ignorer tout les fichiers cachés Mac
+.DS_Store
+
+#Ignorer les fichiers LaTeX inutiles
+*.toc
+*.log
+*.aux
+*synctex.gz
