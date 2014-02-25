@@ -8,3 +8,13 @@ Objectifs pour la séance du 25/02/2014
     - Préparation du diagramme de Gantt
     - 
 =======
+
+Objectifs pour la séance du 
+    -Préciser dans le cahier des chagres :
+        -lancement d'une partie (étapes pas à pas)
+        -sauvegarde d'une partie (sauvegarde multiples, proposition de la dernière partie jouée)
+        -précision sur les modes de jeu
+        -précision à faire sur le profil
+        -Conservation des préférences (taille de la grille d'une partie à l'autre)
+
+    -Penser à ajouter dans le dossier de conception les différentes manières de noircir etc les cases
