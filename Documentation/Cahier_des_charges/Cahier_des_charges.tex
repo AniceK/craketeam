@@ -127,7 +127,8 @@
 \subsection{Contexte}
 
 Lors du second semestre de troisième année de licence SPI, il est demandé de réaliser un projet. Ce projet à thème imposé n'est autre que le développement d'un logiciel complexe demandant un travail en équipe.\\
-Notre équipe de cinq étudiants aura donc du 24 janvier au 16 Mai 2014 pour mettre en œuvre les préceptes de Génie Logiciel vus au premier semestre afin de présenter un logiciel potentiellement commercialisable au client, ici représenté par les enseignants.
+Notre équipe de cinq étudiants aura donc du 24 janvier au 16 Mai 2014 pour mettre en œuvre les préceptes de Génie
+Logiciel vus au premier semestre afin de présenter un logiciel potentiellement commercialisable par le client, ici représenté par les enseignants.
 
 \subsection{Objectifs}
 
@@ -137,18 +138,19 @@ Le joueur pourra commencer des puzzles de différentes tailles ; le but étant d
 
 \subsection{Utilisateur cible}
 
-Ce logiciel n'est destiné qu'à un seul joueur à la fois. Cependant, il permet à de nombreux joueurs d'apposer leur score à la table des scores.
+Ce logiciel n'est destiné qu'à un seul joueur à la fois. Cependant, il permet à de nombreux joueurs d'apposer leur
+scores à la table des scores.
 
 
 \subsection{État de l'art}
 
 Les jeux déjà disponibles permettent différentes fonctionnalités :
 \begin{itemize}
-   \item La création aléatoire et édition d'une grille de picross de diverses tailles,
+   \item La création aléatoire et l'édition de grilles de picross de tailles diverses,
    \item La création d'une grille à partir d'une image,
    \item La résolution du puzzle avec ou sans aide à la résolution,
    \item La sauvegarde et le chargement d'une partie,
-   \item L'enregistrement et consultation des scores,
+   \item L'enregistrement et la consultation des scores,
    \item Le partage de ses grilles déjà jouées,
    \item Cocher une case en cliquant dessus une fois, ce qui changera sa couleur,
    \item Marquer un case comme vide en cliquant dessus deux fois et en apposant une croix.
@@ -167,9 +169,9 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
 
 
 \begin{itemize}
-   \item Le jeu est un picross, le joueur doit noircir les cases en fonction des information donné par les chiffres en
+   \item Le jeu est un picross, le joueur doit noircir les cases en fonction des informations données par les chiffres en
        tête de ligne et de colonne,
-   \item Le jeu doit proposer plusieurs tailles de grille (5x5 10x10 15x15 25x25),
+   \item Le jeu doit proposer plusieurs tailles de grille (5x5 10x10 15x15 20x20),
    \item L'application doit proposer un éditeur de grille.
 \end{itemize}
 
@@ -180,10 +182,10 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
 
 
 \begin{itemize}
-   \item Le langage de programmation est Ruby/GTK,
+   \item Le langage de programmation est Ruby/GTK.
    \item Les paramètres de l’application doivent être externalisés afin de pouvoir être modifiés par le joueur (taille
-       de la grille),
-   \item Le logiciel doit être développé en Programmation Orientée Objet (POO),
+       de la grille).
+   \item Le logiciel doit être développé en Programmation Orientée Objet (POO).
    \item Le joueur doit pouvoir sauvegarder une partie pour la reprendre ultérieurement.
 \end{itemize}
 
@@ -205,7 +207,7 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
 
 
 \begin{itemize}
-    \item Le présent Cahier des Charges doit être remis au client le 16 mai 2014,
+    \item Le présent Cahier des Charges doit être remis au client le 16 mai 2014.
     \item Au terme de chaque réunion un compte rendu doit être remis au client.
 \end{itemize}
 
@@ -222,7 +224,8 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
 \subsubsection{Éléments constituant le jeu}
 
     \begin{description}
-        \item[Grille] : La grille est constituée d'un carré dont le coté est un multiple de 5 cases. Il y a ainsi cinq tailles de grilles différentes, 5x5, 10x10, 15x15, 20x20 et 25x25.
+        \item[Grille] : La grille est constituée d'un carré dont le coté est un multiple de 5 cases. Il y a ainsi cinq
+            tailles de grilles différentes, 5x5, 10x10, 15x15, et 20x20.
         \item[Case] : Les cases peuvent être noircies, en cliquant dessus à l'aide de la souris. Il est possible de décocher la case en cliquant dessus à nouveau. Il est également possible de cliquer sur une case à l'aide de la souris pour indiquer que la case restera vide, qu'elle ne sera pas noircie.
         \item[Indications extérieures] : Les indications extérieures sont des suites de chiffres sur les bords gauche et supérieur, indiquant le nombre de case à noircir, respectivement dans les lignes et dans les colonnes.
         \item[Chronomètre] : le chronomètre indique le temps qui s'est passé depuis que le joueur a noirci la première case.
@@ -238,7 +241,7 @@ Le but du jeu est de noircir toutes les cases devant être noircies dans le plus
 Au début d'une partie, la grille est vierge, et le chronomètre est à 00:00.
 \paragraph{Deroulement du jeu.}
 
-Le jeu commence lorsque le joueur noircie un case en cliquant dessus, ce qui enclenche le chronomètre. 
+Le jeu commence lorsque le joueur noirci un case en cliquant dessus, ce qui enclenche le chronomètre. 
 
 \paragraph{Le menu en cours de partie}
 
@@ -246,14 +249,16 @@ En cours de partie, le joueur peut accéder à un menu spécial où se trouvent~
 
 
 \begin{description}
-    \item [Sauvegarde de la partie : ]L'utilisateur peut sauvegarder sa partie en cours. Le joueur peut ensuite continuer à jouer ou quitter le jeu~;
-   \item [Quitter la partie : ]Renvoie le joueur au menu principal. Il devra avoir pris le soin de sauvegarder ou non sa partie.  
+    \item [Sauvegarde de la partie : ]L'utilisateur peut sauvegarder sa partie en cours. Le joueur peut ensuite
+        continuer à jouer ou quitter le jeu.~;
+   \item [Quitter la partie : ]Renvoie le joueur au menu principal. Il devra avoir pris le soin de sauvegarder ou non sa
+       partie.~;
 \end{description}
 
 
 \paragraph{L'interface joueur}
 
-Le joueur noircit des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
+Le joueur noirci des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
 
 
 
@@ -269,14 +274,14 @@ Le joueur noircit des cases ou les rend de nouveau blanches en cliquant dessus �
 	\hline
 	\hline
 		Nouvelle partie 											& F100 \\	\cline{1-2}
-		Gerer ses parties											& F110 \\	\cline{1-2}	
+		Gérer ses parties											& F110 \\	\cline{1-2}	
 		Sauvegarder une partie 										& F111 \\	\cline{1-2}	
 		Charger une partie 											& F113 \\	\cline{1-2}	
 		Supprimer une partie sauvegardée							& F114 \\	\cline{1-2}	
 		Quitter le jeu												& F120 \\	\cline{1-2}	
 		Choisir la taille de la grille								& F130 \\	\cline{1-2}
 		Fournir une aide 											& F140 \\	\cline{1-2}
-		Creer des grilles de jeu									& F150 \\	\cline{1-2}
+		Créer des grilles de jeu									& F150 \\	\cline{1-2}
 		Afficher le score											& F160 \\	\cline{1-2}
 		Afficher les informations de la grille						& F170 \\	\cline{1-2}
 		Afficher le menu du jeu 									& F180 \\	\cline{1-2}
