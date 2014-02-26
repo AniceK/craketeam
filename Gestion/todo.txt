@@ -10,7 +10,7 @@ Objectifs pour la séance du 25/02/2014
 =======
 
 Objectifs pour la séance du 
-    -Préciser dans le cahier des chagres :
+    -Préciser dans le cahier des charges :
         -lancement d'une partie (étapes pas à pas)
         -sauvegarde d'une partie (sauvegarde multiples, proposition de la dernière partie jouée)
         -précision sur les modes de jeu
