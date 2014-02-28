@@ -236,59 +236,84 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
 \subsubsection{Principe de fonctionnement du jeu}
 
 \paragraph{But du jeu}
+
 Le but du jeu est de noircir toutes les cases devant être noircies dans le plus court laps de temps possible.
 
-\paragraph{Lancement d'une session de jeu}
-Lorsque l'utilisateur démarre l'application il dispose de plusieurs choix : Choisir un Profil, Lancer une partie rapide,
-Quitter l'application.
+\paragraph{Lancement de l'application}
 
-\paragraph{Profil}
-L'onglet Profil permet à l'utilisateur de charger un profil éxistant ou d'en créer un nouveau (peut être également la
-suppression, mais c'est à vous de voir les gars). Une fois le profil chargé l'utilisateur est redirigé vers un écran
-offrant le choix entre lancer une partie ou utiliser l'éditeur.\\
-Un Profil est un simple nom permettant à l'application et à l'utilisateur de stocker les parties et les grilles créées
-en fonction de l'utilisateur. Ainsi il sera plus aisé pour le joueur de retrouver ses grilles déjà commencées ou celles
-qu'il aura créée. Les Profils n'étant pas associés à un password n'importe qui pourra lancer n'importe quel Profil, il
-s'agit juste d'un système de classement (un peu comme sur une born d'arcade pour les high scores).
+Lorsque l'utilisateur lance l'application, il dispose de plusieurs options :
+\begin{itemize}
+	\item Partie rapide,
+	\item Profil,
+	\item Options,
+	\item Crédits,
+	\item Quitter.
+\end{itemize}
 
 \paragraph{Partie Rapide}
-Lors du choix de partie rapide le joueur est basculé vers un lancement de partie classique, par contre les options de
-sauvegarde/chargement lui seront interdits.
+
+Lorsque "Partie rapide" est sélectionné, le profil par défaut est chargé et une partie est lancée. Si le joueur veut sauvegarder sa partie, il devra créer un profil.
+
+\paragraph{Profil}
+
+Un profil est un nom associé à des parties et des grilles créées par l'utilisateur en question. Une fois le profil, ne nécessitant pas de mot de passe, chargé, l'utilisateur à accès à toutes ses données.\\
+Le bouton "Profil" permet à l'utilisateur de charger un profil existant ou d'en créer un nouveau. Une fois ceci fait, un retour automatique au menu principal lui fera découvrir l'option supplémentaire "Édition".
+
+\paragraph{Modes de jeu}
+
+Le joueur a le choix parmi différents modes de jeu:
+\begin{itemize}
+	\item Mode Classique: Finir la partie en faisant le meilleur score possible.
+	\item Mode Aléatoire: La taille et la difficulté de la grille est choisie aléatoirement. 
+	\item Mode Contre-la-montre: Finir la partie dans un temps imparti.
+	\item Mode Aventure: Les parties s'enchaînent avec une difficulté croissante.
+\end{itemize}
 
 \paragraph{Lancement d'une partie}
-Pour lancer une partie il faut régler quelques paramètres. Premièrement la taille de la grille (5x5, 10x10, 15x15,
-20x20, 25x25). Et deuxièment si la grille doit être générée aléatoirement ou si elle doit être chargée dans la liste des
-grille déjà créées. Enfin le joueur doit choisir son mod de jeu.\\
-Au début d'une partie, la grille est vierge, et le chronomètre est à 00:00.
-Si le joueur avait déjà lancé des partie avant celle ci ses préférences seront automatiquement sélectionnées, ensuite
-libre à lui de valider ou de les modifier avant de lancer la partie.
 
-\paragraph{Deroulement du jeu.}
+Une fois la partie lancée, il faut choisir un mode de jeu parmis ceux cités précédemment.\\
+L'utilisateur se verra alors proposer de continuer sa dernière sauvegarde (si elle existe). S'il refuse, il pourra en charger une plus ancienne, jouer une de ses créations, ou simplement une partie classique.\\
+\\
+Pour une partie classique, plusieurs tailles de grille sont proposées (5x5, 10x10, 15x15 et
+20x20). Une fois ce choix fait, la grille apparait et le jeu pour réellement commencer.\\
+\\
+Si aucun profil n'est chargé, nous sommes dans le cas d'une partie rapide (voir "Partie rapide" ci-dessus) et donc d'une partie classique sans sélection de mode.\\
 
-Le jeu commence lorsque le joueur noirci un case en cliquant dessus, ce qui enclenche le chronomètre. Ensuite il lui
-suffit de se servir de ses neurones pour cocher les bonnes cases. Lorsqu'il pense avoir terminé il clique sur le bouton
-Vérifier pour que l'application coupe le chronomètre et vérifie que sa solution est juste.
+\paragraph{Deroulement du jeu}
+
+En mode Classique, un chronomètre se déclenche au premier clic du joueur.
+Il faudra alors résoudre le puzzle le plus rapidement possible.
+Le joueur sera prévenu si la grille est complète, mais s'il n'y arrive pas seul, une commande d'aide sera disponible. Elle lui indiquera dans quelle colonne ou ligne jouer efficacement.\\
+\\
+La partie terminée, deux choix s'afficheront:
+
+\begin{itemize}
+	\item Rejouer
+	\item Jouer une grille similaire
+	\item Menu principal
+\end{itemize}
+
+Il sera donc possible de refaire la même grille, d'en faire une autre avec les mêmes options ou de revenir au menu principal.
 
 \paragraph{Le menu en cours de partie}
 
-En cours de partie, le joueur peut accéder à un menu spécial où se trouvent plusieurs options.\\
-Il peut choisir de Sauvegarder sa partie pour la terminer plus tard. Il peut Quitter la partie sans plus de cérémonie.
-En outre l'ouverture de ce menu aura pour effet de stopper le chronomètre et de masquer la grille.
+% En cours de partie, le joueur peut accéder à un menu spécial où se trouvent plusieurs options.\\
+% Il peut choisir de Sauvegarder sa partie pour la terminer plus tard. Il peut Quitter la partie sans plus de cérémonie.
+% En outre l'ouverture de ce menu aura pour effet de stopper le chronomètre et de masquer la grille.
 
 \paragraph{Sauvegarder}
-Sauvegarder une partie est assez simple, lorsque le joueur choisi cette option il lui est demandé de choisir un nom de
-partie (ou de laisser celui par défaut) et de valider (ou d'annuler).
+
+% Sauvegarder une partie est assez simple, lorsque le joueur choisi cette option il lui est demandé de choisir un nom de partie (ou de laisser celui par défaut) et de valider (ou d'annuler).
 
 \paragraph{Charger}
-Charger une partie ouvre une fenêtre listant les partie en fonction de leur taille pour le profil sélectionné.
+
+% Charger une partie ouvre une fenêtre listant les partie en fonction de leur taille pour le profil sélectionné.
 
 \paragraph{L'interface joueur}
-Le joueur noirci des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Clique gauche pour
-noircir ou blanchir la case et clique droite pour la marquer comme n'étant pas à cocher (afin de s'aider dans ses
-réflexions avec un support plus visuel). Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
 
-\paragraph{Mods de jeu}
-Les mods de jeu sont au nombre de deux. Le premier étant le mod chronométré et le second le mod libre.
+% Le joueur noirci des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Clique gauche pour
+% noircir ou blanchir la case et clique droite pour la marquer comme n'étant pas à cocher (afin de s'aider dans ses
+% réflexions avec un support plus visuel). Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
 
 
 
@@ -356,15 +381,6 @@ Les mods de jeu sont au nombre de deux. Le premier étant le mod chronométré e
 	\item F220 : Mise en place d'un environnement sonore avec possibilité de le désactiver
 	\item F230 : Le joueur aura le choix d'un mode de jeu lui proposant un enchainement de partie ainsi qu'une gestion du score différents
 	\item F240 : Le joueur aura la possibilité de créer des grilles à partir d'image qu'il importera
-\end{itemize}
-
-\subsection{Explications additionnelles}
-Le joueur a le choix parmi différents modes de jeu.
-\begin{itemize}
-	\item Mode Normal: Finir la partie en faisant le meilleur score possible.
-	\item Mode Aléatoire: La taille et la difficulté de la grille est choisie aléatoirement. 
-	\item Mode Contre-la-montre: Finir la partie dans un temps imparti.
-	\item Mode Aventure: Les parties s'enchaînent avec une difficulté croissante.
 \end{itemize}
 
 \newpage
