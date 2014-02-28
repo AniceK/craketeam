@@ -238,31 +238,57 @@ Les jeux déjà disponibles permettent différentes fonctionnalités :
 \paragraph{But du jeu}
 Le but du jeu est de noircir toutes les cases devant être noircies dans le plus court laps de temps possible.
 
-\paragraph{Début d'une partie}
+\paragraph{Lancement d'une session de jeu}
+Lorsque l'utilisateur démarre l'application il dispose de plusieurs choix : Choisir un Profil, Lancer une partie rapide,
+Quitter l'application.
 
+\paragraph{Profil}
+L'onglet Profil permet à l'utilisateur de charger un profil éxistant ou d'en créer un nouveau (peut être également la
+suppression, mais c'est à vous de voir les gars). Une fois le profil chargé l'utilisateur est redirigé vers un écran
+offrant le choix entre lancer une partie ou utiliser l'éditeur.\\
+Un Profil est un simple nom permettant à l'application et à l'utilisateur de stocker les parties et les grilles créées
+en fonction de l'utilisateur. Ainsi il sera plus aisé pour le joueur de retrouver ses grilles déjà commencées ou celles
+qu'il aura créée. Les Profils n'étant pas associés à un password n'importe qui pourra lancer n'importe quel Profil, il
+s'agit juste d'un système de classement (un peu comme sur une born d'arcade pour les high scores).
+
+\paragraph{Partie Rapide}
+Lors du choix de partie rapide le joueur est basculé vers un lancement de partie classique, par contre les options de
+sauvegarde/chargement lui seront interdits.
+
+\paragraph{Lancement d'une partie}
+Pour lancer une partie il faut régler quelques paramètres. Premièrement la taille de la grille (5x5, 10x10, 15x15,
+20x20, 25x25). Et deuxièment si la grille doit être générée aléatoirement ou si elle doit être chargée dans la liste des
+grille déjà créées. Enfin le joueur doit choisir son mod de jeu.\\
 Au début d'une partie, la grille est vierge, et le chronomètre est à 00:00.
+Si le joueur avait déjà lancé des partie avant celle ci ses préférences seront automatiquement sélectionnées, ensuite
+libre à lui de valider ou de les modifier avant de lancer la partie.
+
 \paragraph{Deroulement du jeu.}
 
-Le jeu commence lorsque le joueur noirci un case en cliquant dessus, ce qui enclenche le chronomètre. 
+Le jeu commence lorsque le joueur noirci un case en cliquant dessus, ce qui enclenche le chronomètre. Ensuite il lui
+suffit de se servir de ses neurones pour cocher les bonnes cases. Lorsqu'il pense avoir terminé il clique sur le bouton
+Vérifier pour que l'application coupe le chronomètre et vérifie que sa solution est juste.
 
 \paragraph{Le menu en cours de partie}
 
-En cours de partie, le joueur peut accéder à un menu spécial où se trouvent~:
+En cours de partie, le joueur peut accéder à un menu spécial où se trouvent plusieurs options.\\
+Il peut choisir de Sauvegarder sa partie pour la terminer plus tard. Il peut Quitter la partie sans plus de cérémonie.
+En outre l'ouverture de ce menu aura pour effet de stopper le chronomètre et de masquer la grille.
 
+\paragraph{Sauvegarder}
+Sauvegarder une partie est assez simple, lorsque le joueur choisi cette option il lui est demandé de choisir un nom de
+partie (ou de laisser celui par défaut) et de valider (ou d'annuler).
 
-\begin{description}
-    \item [Sauvegarde de la partie : ]L'utilisateur peut sauvegarder sa partie en cours. Le joueur peut ensuite
-        continuer à jouer ou quitter le jeu.~;
-   \item [Quitter la partie : ]Renvoie le joueur au menu principal. Il devra avoir pris le soin de sauvegarder ou non sa
-       partie.~;
-\end{description}
-
+\paragraph{Charger}
+Charger une partie ouvre une fenêtre listant les partie en fonction de leur taille pour le profil sélectionné.
 
 \paragraph{L'interface joueur}
+Le joueur noirci des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Clique gauche pour
+noircir ou blanchir la case et clique droite pour la marquer comme n'étant pas à cocher (afin de s'aider dans ses
+réflexions avec un support plus visuel). Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
 
-Le joueur noirci des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
-
-
+\paragraph{Mods de jeu}
+Les mods de jeu sont au nombre de deux. Le premier étant le mod chronométré et le second le mod libre.
 
 
 
