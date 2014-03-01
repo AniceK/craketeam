@@ -256,7 +256,7 @@ Lorsque "Partie rapide" est sélectionné, le profil par défaut est chargé et 
 
 \paragraph{Profil}
 
-Un profil est un nom associé à des parties et des grilles créées par l'utilisateur en question. Une fois le profil, ne nécessitant pas de mot de passe, chargé, l'utilisateur à accès à toutes ses données.\\
+Un profil est un nom associé à des parties et des grilles créées par l'utilisateur en question. Une fois le profil, ne nécessitant pas de mot de passe, chargé, l'utilisateur a accès à toutes ses données.\\
 Le bouton "Profil" permet à l'utilisateur de charger un profil existant ou d'en créer un nouveau. Une fois ceci fait, un retour automatique au menu principal lui fera découvrir l'option supplémentaire "Édition".
 
 \paragraph{Modes de jeu}
@@ -285,7 +285,7 @@ En mode Classique, un chronomètre se déclenche au premier clic du joueur.
 Il faudra alors résoudre le puzzle le plus rapidement possible.
 Le joueur sera prévenu si la grille est complète, mais s'il n'y arrive pas seul, une commande d'aide sera disponible. Elle lui indiquera dans quelle colonne ou ligne jouer efficacement.\\
 \\
-La partie terminée, deux choix s'afficheront:
+La partie terminée, trois choix s'afficheront:
 
 \begin{itemize}
 	\item Rejouer
@@ -297,23 +297,29 @@ Il sera donc possible de refaire la même grille, d'en faire une autre avec les 
 
 \paragraph{Le menu en cours de partie}
 
-% En cours de partie, le joueur peut accéder à un menu spécial où se trouvent plusieurs options.\\
-% Il peut choisir de Sauvegarder sa partie pour la terminer plus tard. Il peut Quitter la partie sans plus de cérémonie.
-% En outre l'ouverture de ce menu aura pour effet de stopper le chronomètre et de masquer la grille.
+Si le joueur met la partie en pause, le chronomètre s'arrêtera et la grille sera cachée. Il pourra alors selectionner une des options du menu s'affichant:
+
+\begin{itemize}
+	\item Continuer
+	\item Sauvegarder
+	\item Menu principal
+\end{itemize}
+
+L'utilisateur pourra alors continuer la partie, revenir au menu principal, ou sauvegarder sa partie actuelle, ce qui l'enverra également au menu principal.
 
 \paragraph{Sauvegarder}
 
-% Sauvegarder une partie est assez simple, lorsque le joueur choisi cette option il lui est demandé de choisir un nom de partie (ou de laisser celui par défaut) et de valider (ou d'annuler).
+Lorsque le joueur veut sauvegarder sa partie, il lui suffit de donner un nom à cette sauvegarde pour la retrouver ultérieurement. Il pourra également utiliser le nom proposé par défaut.
 
 \paragraph{Charger}
 
-% Charger une partie ouvre une fenêtre listant les partie en fonction de leur taille pour le profil sélectionné.
+Lorsque l'utilisateur voudra charger une ancienne partie, il devra la sélectionner à l'aide du nom qu'il lui aura donné préalablement.
+Chaque profil dispose de ses propres sauvegardes.
 
 \paragraph{L'interface joueur}
 
-% Le joueur noirci des cases ou les rend de nouveau blanches en cliquant dessus à l'aide de la souris. Clique gauche pour
-% noircir ou blanchir la case et clique droite pour la marquer comme n'étant pas à cocher (afin de s'aider dans ses
-% réflexions avec un support plus visuel). Il peut également cliquer sur un bouton \textbf{Aide} ou sur le bouton \textbf{Menu}.
+Toutes les cases de la grille sont initialement vierges. Par un clic droit, l'utilisateur en grise une. Par un clic gauche, il la condamne. S'il "glisse" le curseur sur plusieurs cases, l'action sera effectuée sur toutes les cases survolées. En cliquant une deuxième fois sur une case grisée ou candamnée, l'utilisateur la rendra de nouveau vierge.\\
+Un bouton d'aide et un bouton de menu seront également disponibles (voir les explications ci-dessus).
 
 
 
