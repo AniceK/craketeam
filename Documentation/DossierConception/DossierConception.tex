@@ -1,0 +1,228 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+%\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+%\usepackage{multirow} %Ligne multiple pour les tableaux
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst} %Indentation début de paragraphe
+\usepackage{float}
+
+
+\usepackage{colortbl} %Clouleur tableau protoypes de fonctions
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ - \hmwkTitle} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ sur\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{10pt} % Removes all indentation from paragraphs
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{PROJET JEU} % Titre du document
+\newcommand{\hmwkDueDate}{Mercredi 5 mars 2014} % Date
+\newcommand{\hmwkClass}{DOSSIER DE CONCEPTION } % Type de document
+\newcommand{\hmwkClassInstructor}{ } % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Groupe A} % Your name
+\newcommand{\hmwkAuthorClasse}{L3 info SPI} % Classe
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\pagenumbering{roman} \setcounter{page}{0} %La page courante sera numérotée en roman et aura l'indice 0 => Pas de numéro car pas de 0 en roman
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{\hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+
+
+\date{\hmwkAuthorClasse} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\thispagestyle{empty}
+\maketitle
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty}
+\pagenumbering{arabic} \setcounter{page}{0} %Le reste du document est numéroté en arabic à partir de la page 1
+\renewcommand\contentsname{Sommaire}
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	Présentation général
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Présentation général}
+
+\subsection{Objectif du document}
+
+Partie d'Erwan
+
+\subsection{Objectif du projet}
+
+Partie d'Erwan
+
+\subsection{Documents de références}
+
+Partie d'Erwan
+
+
+
+%----------------------------------------------------------------------------------------
+%	Modélisation du projet
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+
+\section{Modélisation du projet}
+
+
+\subsection{Les cas d'utilisations}
+
+Partie de Kévin
+
+\subsection{Contraintes de conception}
+
+Partie de Kévin
+
+\subsection{Le scénario du système}
+
+Partie de Kévin
+
+\subsection{Schéma de navigation}
+
+Partie de Kévin
+
+
+%----------------------------------------------------------------------------------------
+%	Modélisation de la base de données
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Modélisation de la base de données}
+
+\subsection{Dictionnaire de données}
+
+Partie de Colas
+
+\subsection{Modélisation conceptuel de données (MCD)}
+
+Partie de Colas
+
+\subsection{Script de création des tables}
+
+
+%----------------------------------------------------------------------------------------
+%	IHM
+%----------------------------------------------------------------------------------------
+
+\newpage %pas bien
+
+\section{Interface Homme-Machine}
+
+Partie d'Anice
+
+%----------------------------------------------------------------------------------------
+%	Outlis, normes et standards de programmation
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Outils, normes et standards de programmation}
+
+\subsection{Languages utilisées}
+
+Partie de Rémi
+
+\subsection{Envrionnement et outils de développement}
+
+Partie de Rémi
+
+\subsection{Standards de programmation}
+
+Partie de Rémi
+
+
+%----------------------------------------------------------------------------------------
+%	Fin du document
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+qqch à mettre ici ?
+
+\end{document}
