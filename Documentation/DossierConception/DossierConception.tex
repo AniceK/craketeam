@@ -1,26 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Programming/Coding Assignment
-% LaTeX Template
+% Dossier de conception du projet Picross de l'équipe Craketeam
+% 
+% Version 2.01
 %
-% This template has been downloaded from:
-% http://www.latextemplates.com
+% Pensez à éditer le numéro de version (décimal pour les modifications mineures, entier pour les réunions de groupes) et à iniquer vos modifications en dessous.
 %
-% Original author:
-% Ted Pavlic (http://www.tedpavlic.com)
-%
-% Note:
-% The \lipsum[#] commands throughout this template generate dummy text
-% to fill the template out. These commands should all be removed when 
-% writing assignment content.
-%
-% This template uses a Perl script as an example snippet of code, most other
-% languages are also usable. Configure them in the "CODE INCLUSION 
-% CONFIGURATION" section.
-%
+%   Version 2.0(Colas) : Modification de l'entête, des commentaires (traduits ou supprimés), et des packages.
+%   Version 2.01(Colas) : Ajout du dictionnaire des données (non exhaustif ni terminé)
+%   Version 2.02(Colas : Modification des noms de mes parties, et complétion de ces dernières.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%	Packages et documention du document
 %----------------------------------------------------------------------------------------
 
 \documentclass[11pt]{article}
@@ -32,17 +23,13 @@
 \usepackage{graphicx} % Required to insert images
 \usepackage{listings} % Required for insertion of code
 \usepackage{courier} % Required for the courier font
-%\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
-%\usepackage{multirow} %Ligne multiple pour les tableaux
 \usepackage[utf8]{inputenc}
 \usepackage{indentfirst} %Indentation début de paragraphe
 \usepackage{float}
-
-
 \usepackage{colortbl} %Clouleur tableau protoypes de fonctions
 
 
-% Margins
+% Marges
 \topmargin=-0.45in
 \evensidemargin=0in
 \oddsidemargin=0in
@@ -52,7 +39,7 @@
 
 \linespread{1.1} % Line spacing
 
-% Set up the header and footer
+% Réglages des pieds de page et des en-têtes
 \pagestyle{fancy}
 \lhead{\hmwkAuthorName} % Top left header
 \chead{\hmwkClass\ - \hmwkTitle} % Top center head
@@ -66,12 +53,6 @@
 \setlength\parindent{10pt} % Removes all indentation from paragraphs
 
 
-
-
-%----------------------------------------------------------------------------------------
-%	NAME AND CLASS SECTION
-%----------------------------------------------------------------------------------------
-
 \newcommand{\hmwkTitle}{PROJET JEU} % Titre du document
 \newcommand{\hmwkDueDate}{Mercredi 5 mars 2014} % Date
 \newcommand{\hmwkClass}{DOSSIER DE CONCEPTION } % Type de document
@@ -81,7 +62,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%	TITLE PAGE
+%	Page de Titre
 %----------------------------------------------------------------------------------------
 
 \title{
@@ -108,7 +89,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%	TABLE OF CONTENTS
+%	Table de matières
 %----------------------------------------------------------------------------------------
 
 \thispagestyle{empty}
@@ -119,7 +100,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%	Présentation général
+%	Présentation générale
 %----------------------------------------------------------------------------------------
 
 \newpage
@@ -129,15 +110,15 @@
 \subsection{Objectif du document}
 
 Partie d'Erwan
-
+% À EDITER!!!
 \subsection{Objectif du projet}
 
 Partie d'Erwan
-
+% A ÉDITER!
 \subsection{Documents de références}
 
 Partie d'Erwan
-
+% À ÉDITER!!
 
 
 %----------------------------------------------------------------------------------------
@@ -153,19 +134,19 @@ Partie d'Erwan
 \subsection{Les cas d'utilisations}
 
 Partie de Kévin
-
+% À ÉDITER!!
 \subsection{Contraintes de conception}
 
 Partie de Kévin
-
+% À ÉDITER!!
 \subsection{Le scénario du système}
 
 Partie de Kévin
-
+% À ÉDITER
 \subsection{Schéma de navigation}
 
 Partie de Kévin
-
+% À ÉDITER!!
 
 %----------------------------------------------------------------------------------------
 %	Modélisation de la base de données
@@ -173,17 +154,31 @@ Partie de Kévin
 
 \newpage
 
-\section{Modélisation de la base de données}
+\section{Modélisation de la Sauvegarde des données}
 
 \subsection{Dictionnaire de données}
 
-Partie de Colas
 
-\subsection{Modélisation conceptuel de données (MCD)}
+\begin{tabular}{|c|c|c|l|}\hline
+    {\bf Nom de l'entité} & {\bf Type } & {\bf Code} & {\bf Commentaires}\\\hline
+    Grille & Class Ruby Grille & & une collection de case, jointe à un nom et des paramètres ("ALEA20", 20/11/2014, ----)\\\hline
+    Profil & Chaîne de caractère & & le profil joueur, constitué uniquement du nom du profil ("joueur1")\\\hline
+    Scores & Tableau & & un tableau à trois colonnes, comprenant le nom de la grille, le profil et le score\\\hline
+    Parties Sauvegardées & Class Ruby Partie & & Partie en cours, sauvegardée avec tous ses paramètres (profil = "", grille ="", temps=--:--, ....) \\\hline 
+\end{tabular}
 
-Partie de Colas
+\subsection{Description des données sauvegardées et de leur stockage}
+L'ensemble des données sauvegardées, présentées brièvement ci-dessus, est ici décrite plus en détail.
 
-\subsection{Script de création des tables}
+\begin{description}
+    \item [Grille] : les grilles sont les supports du jeu( cf Cahier des Charges 3.1.1). Pour permettre à plusieurs utilisateurs de jouer sur une même grille, il est nécessaire de sauvegarder ces objets. Les grilles sont constituées d'un collection de case, d'un nom, attribué à la création et de divers paramètres, stockés sous formes d'entiers. Elles sont stockés dans un même fichier, les unes après les autres, à leur création, qu'elle soit manuelle ou aléatoire. Ce fichier comporte trois grilles par défaut.
+        % Le stockage peut également se faire autrement, surtout si nous souhaitons proposer aux joueurs de jouer à leurs propres grilles de préférence. Cela peut donc se faire dans un tableau à deux colonnes, l'une indiquant le profil créateur, l'autre contenant la grille. Un tri permettrai de faire ressortir les grilles du profil pour les lui proposer, avec une option "voir toutes les grilles" qui proposerai toutes les grilles. Cependant, on peut envisager que la grille comprend dans ses paramètres le profil du créateur. Le stockage alors n'aurait pas à être modifier, uniquement le comportement lors du chargement du fichier, avec l'enregistrement en mémoire vive d'un tableau pour lequel on récupèrerai le profil du créateur.
+    \item [Profil] : Les profils sont les noms que choisissent les utilisateurs(cf Cahier des Charges 3.1.2, qui les définissent dans le jeu, et qui les lient aux grilles créées, aux parties jouées et aux scores. Un profil est constitué d'une simple chaîne de caractères, choisie par l'utilisateur à la création du profil. Cette chaîne est sérialisée à la création, dans un tableau contenant l'ensemble des profils créés, le tout stocké sur un même fichier spécifique aux profils. Ce fichier comporte un profil "par défaut".
+    \item [Scores] : les scores sont des entiers, dépendant du temps réalisé pour finir la Grille. La donnée à sauvegardée "Scores" est un tableau à trois colonne, comprenant le score lui même, le nom de la grille sur lequel il a été réalisé, et le nom du profil l'ayant réalisé. Ce tableau est stocké sur un fichier propre. Les scores sont stockés dès la fin de la partie.
+        % Peut-être faudra il prévoir plusieurs tableaux, en fonction des différents modes (une colonne indiquant le nombre grille d'affilée en Mode Aventure, etc).
+\end{description}
+
+\subsection{Méchanismes de Sauvegarde des Données}
 
 
 %----------------------------------------------------------------------------------------
@@ -195,7 +190,7 @@ Partie de Colas
 \section{Interface Homme-Machine}
 
 Partie d'Anice
-
+%À ÉDITER
 %----------------------------------------------------------------------------------------
 %	Outlis, normes et standards de programmation
 %----------------------------------------------------------------------------------------
