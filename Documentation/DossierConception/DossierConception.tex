@@ -1,11 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dossier de conception du projet Picross de l'équipe Craketeam
 % 
-% Version 2.0
+% Version 2.01
 %
 % Pensez à éditer le numéro de version (décimal pour les modifications mineures, entier pour les réunions de groupes) et à iniquer vos modifications en dessous.
 %
 %   Version 2.0(Colas) : Modification de l'entête, des commentaires (traduits ou supprimés), et des packages.
+%   Version 2.01(Colas) : Ajout du dictionnaire des données (non exhaustif ni terminé)
+%   Version 2.02(Colas : Modification des noms de mes parties, et complétion de ces dernières.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
@@ -152,15 +154,28 @@ Partie de Kévin
 
 \newpage
 
-\section{Modélisation de la base de données}
+\section{Modélisation de la Sauvegarde des données}
 
 \subsection{Dictionnaire de données}
 
-Partie de Colas
 
-\subsection{Modélisation conceptuel de données (MCD)}
+\begin{tabular}{|c|c|c|l|}\hline
+    {\bf Nom de l'entité} & {\bf Type } & {\bf Code} & {\bf Commentaires}\\\hline
+    Grille & Class Ruby Grille & & une collection de case, jointe à un nom et des paramètres ("ALEA20", 20/11/2014, ----)\\\hline
+    Profil & Chaîne de caractère & & le profil joueur, constitué uniquement du nom du profil ("joueur1")\\\hline
+    Scores & Tableau & & un tableau à trois colonnes, comprenant le nom de la grille, le profil et le score\\\hline
+    Parties Sauvegardées & Class Ruby Partie & & Partie en cours, sauvegardée avec tous ses paramètres (profil = "", grille ="", temps=--:--, ....) \\\hline 
+\end{tabular}
 
-Partie de Colas
+\subsection{Description des données sauvegardées et de leur stockage}
+L'ensemble des données sauvegardées, présentées brièvement ci-dessus, est ici décrite plus en détail.
+
+\begin{description}
+    \item [Grille] : les grilles sont les supports du jeu( cf Cahier des Charges 3.1.1). Pour permettre à plusieurs utilisateurs de jouer sur une même grille, il est nécessaire de sauvegarder ces objets. Les grilles sont constituées d'un collection de case, d'un nom, attribué à la création et de divers paramètres, stockés sous formes d'entiers. Elles sont stockés dans un même fichier, les unes après les autres, à leur création, qu'elle soit manuelle ou aléatoire. Ce fichier comporte trois grilles par défaut.
+        % Le stockage peut également se faire autrement, surtout si nous souhaitons proposer aux joueurs de jouer à leurs propres grilles de préférence. Cela peut donc se faire dans un tableau à deux colonnes, l'une indiquant le profil créateur, l'autre contenant la grille. Un tri permettrai de faire ressortir les grilles du profil pour les lui proposer, avec une option "voir toutes les grilles" qui proposerai toutes les grilles. Cependant, on peut envisager que la grille comprend dans ses paramètres le profil du créateur. Le stockage alors n'aurait pas à être modifier, uniquement le comportement lors du chargement du fichier, avec l'enregistrement en mémoire vive d'un tableau pour lequel on récupèrerai le profil du créateur.
+    \item [Profil] : Les profils sont les noms que choisissent les utilisateurs(cf Cahier des Charges 3.1.2, qui les définissent dans le jeu, et qui les lient aux grilles créées, aux parties jouées et aux scores. Un profil est constitué d'une simple chaîne de caractères, choisie par l'utilisateur à la création du profil. Cette chaîne est sérialisée à la création, dans un tableau contenant l'ensemble des profils créés, le tout stocké sur un même fichier. Ce fichier comporte un profil "par défaut".
+    \item [Scores] : les scores sont des entiers, dépendant du temps réalisé pour finir la 
+\end{description}
 
 \subsection{Script de création des tables}
 
