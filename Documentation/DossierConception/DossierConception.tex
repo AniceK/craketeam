@@ -1,13 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dossier de conception du projet Picross de l'équipe Craketeam
 % 
-% Version 2.01
+% Version 2.03
 %
 % Pensez à éditer le numéro de version (décimal pour les modifications mineures, entier pour les réunions de groupes) et à iniquer vos modifications en dessous.
 %
 %   Version 2.0(Colas) : Modification de l'entête, des commentaires (traduits ou supprimés), et des packages.
 %   Version 2.01(Colas) : Ajout du dictionnaire des données (non exhaustif ni terminé)
-%   Version 2.02(Colas : Modification des noms de mes parties, et complétion de ces dernières.
+%   Version 2.02(Colas) : Modification des noms de mes parties, et complétion de ces dernières.
+%   Version 2.03(Colas) : Ajout de la description des Parties Sauvegardée, et modification de la description des scores
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
@@ -109,16 +110,24 @@
 
 \subsection{Objectif du document}
 
-Partie d'Erwan
-% À EDITER!!!
+Ce document est rédigé dans le cadre du projet de troisième année de licence SPI option informatique de l'Université du
+Maine. Le Dossier de Conception vient en complément du Cahier des Charges. Il a pour objectif de monter la modélisation
+du système à partir des besoins et contraintes exprimés dans le Cahier des Charges. Il informe également sur les outils
+et les normes utilisés pour la conception du produit.
+
 \subsection{Objectif du projet}
 
-Partie d'Erwan
-% A ÉDITER!
+L'objectif de ce projet est de concevoir et de développer une application de Picross, ainsi que de rédiger les documents
+inhérant à la gestion et la finalisation d'un projet informatique. Les utilisateurs doivent pouvoir, bien évidemment,
+jouer, mais il doivent également pouvoir créer des grilles, modifier la taille des grilles, et charger les partie
+préalablement sauvegarder. Il doit également être possible de jouer sous son propre profil afin d'avoir accès aux
+options les plus poussées de l'application.
+
 \subsection{Documents de références}
 
-Partie d'Erwan
-% À ÉDITER!!
+Afin de réaliser le présent Dossier de Conception nous nous sommes appuyés sur le Cahier des Charges ainsi que sur les
+exemples que nous avons récupérer grâce à un ancien élève de DUT informatique.
+
 
 
 %----------------------------------------------------------------------------------------
@@ -174,8 +183,9 @@ L'ensemble des données sauvegardées, présentées brièvement ci-dessus, est i
     \item [Grille] : les grilles sont les supports du jeu( cf Cahier des Charges 3.1.1). Pour permettre à plusieurs utilisateurs de jouer sur une même grille, il est nécessaire de sauvegarder ces objets. Les grilles sont constituées d'un collection de case, d'un nom, attribué à la création et de divers paramètres, stockés sous formes d'entiers. Elles sont stockés dans un même fichier, les unes après les autres, à leur création, qu'elle soit manuelle ou aléatoire. Ce fichier comporte trois grilles par défaut.
         % Le stockage peut également se faire autrement, surtout si nous souhaitons proposer aux joueurs de jouer à leurs propres grilles de préférence. Cela peut donc se faire dans un tableau à deux colonnes, l'une indiquant le profil créateur, l'autre contenant la grille. Un tri permettrai de faire ressortir les grilles du profil pour les lui proposer, avec une option "voir toutes les grilles" qui proposerai toutes les grilles. Cependant, on peut envisager que la grille comprend dans ses paramètres le profil du créateur. Le stockage alors n'aurait pas à être modifier, uniquement le comportement lors du chargement du fichier, avec l'enregistrement en mémoire vive d'un tableau pour lequel on récupèrerai le profil du créateur.
     \item [Profil] : Les profils sont les noms que choisissent les utilisateurs(cf Cahier des Charges 3.1.2, qui les définissent dans le jeu, et qui les lient aux grilles créées, aux parties jouées et aux scores. Un profil est constitué d'une simple chaîne de caractères, choisie par l'utilisateur à la création du profil. Cette chaîne est sérialisée à la création, dans un tableau contenant l'ensemble des profils créés, le tout stocké sur un même fichier spécifique aux profils. Ce fichier comporte un profil "par défaut".
-    \item [Scores] : les scores sont des entiers, dépendant du temps réalisé pour finir la Grille. La donnée à sauvegardée "Scores" est un tableau à trois colonne, comprenant le score lui même, le nom de la grille sur lequel il a été réalisé, et le nom du profil l'ayant réalisé. Ce tableau est stocké sur un fichier propre. Les scores sont stockés dès la fin de la partie.
+    \item [Scores] : les scores sont des entiers, dépendant du temps réalisé pour finir la Grille. La donnée à sauvegardée "Scores" est un tableau à trois colonne, comprenant le score lui même, le nom de la grille sur lequel il a été réalisé, et le nom du profil l'ayant réalisé. Ce tableau est stocké sur un fichier propre.
         % Peut-être faudra il prévoir plusieurs tableaux, en fonction des différents modes (une colonne indiquant le nombre grille d'affilée en Mode Aventure, etc).
+    \item [Parties Sauvegardées] : elles correspondent à la sérialisation d'une instance de la classe Partie, contenant un certin nombre de paramètres et d'informations, comme la grille utilisée, l'utilisateur, le temps écoulé, etc. Ces paramètres sont conservés sur un fichier lors de la sérialisation. L'utilisateur peut ainsi quitter une partie, fermer le programme, et reprendre cette partie plus tard. Chaque Partie Sauvegardée est conservée sur un fichier propre.
 \end{description}
 
 \subsection{Méchanismes de Sauvegarde des Données}

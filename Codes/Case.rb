@@ -6,19 +6,23 @@
 
 class Case
 
-    #@attribut1
-    #@attribut2
+    @etat       #l etat indique si la case a ete cochée par le joueur ou laissee blanche.
+    @statut     #Le statut indique si la case doit être cochée ou non.
     
-    #def Case.ajouter()
-    #end    #marqueur de fin de constructeur
+    def Case.ajouter()
+    end    #marqueur de fin de constructeur
     
-    #def initialize()
-    #end    #marqueur de fin d initialize
+    def initialize()
+    end    #marqueur de fin d initialize
 
-    #def methode1()
-    #end    #marqueur de fin de methode
+#Cette methode modifie l etat de la case, en lui donnant la valeur passee en parametre (comprise entre 0 et 2)
+    def cocher(valeur)
 
-    #def methode2()
-    #end    #marqueur de fin de methode d instance
+    end    #marqueur de fin de methode
+
+#Cette methode modifie le statut de la case. Cette methode ne peut etre appeler qu a la creation de la grille
+    def modifier()
+
+    end    #marqueur de fin de methode d instance
 
 end     #marqueur de fin de class
