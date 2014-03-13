@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dossier de conception du projet Picross de l'équipe Craketeam
 % 
-% Version 2.03
+% Version 2.04
 %
 % Pensez à éditer le numéro de version (décimal pour les modifications mineures, entier pour les réunions de groupes) et à iniquer vos modifications en dessous.
 %
@@ -9,6 +9,7 @@
 %   Version 2.01(Colas) : Ajout du dictionnaire des données (non exhaustif ni terminé)
 %   Version 2.02(Colas) : Modification des noms de mes parties, et complétion de ces dernières.
 %   Version 2.03(Colas) : Ajout de la description des Parties Sauvegardée, et modification de la description des scores
+%   Version 2.04(Colas) : Ajout des mecanismes de sauvegarde, correction du tableau, et modification des descriptions des différentes données
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
@@ -168,12 +169,12 @@ Partie de Kévin
 \subsection{Dictionnaire de données}
 
 
-\begin{tabular}{|c|c|c|l|} \hline
-    {\bf Nom de l'entité} & {\bf Type } & {\bf Code} & {\bf Commentaires}\\ \hline
-    Grille & Class Ruby Grille & & une collection de case, jointe à un nom et des paramètres ("ALEA20", 20/11/2014, ----)\\ \hline
-    Profil & Chaîne de caractère & & le profil joueur, constitué uniquement du nom du profil ("joueur1")\\ \hline
-    Scores & Tableau & & un tableau à trois colonnes, comprenant le nom de la grille, le profil et le score\\ \hline
-    Parties Sauvegardées & Class Ruby Partie & & Partie en cours, sauvegardée avec tous ses paramètres (profil = "", grille ="", temps=--:--, ....) \\ \hline 
+\begin{tabular}{|c|c|l|} \hline
+    {\bf Nom de l'entité} & {\bf Type } & {\bf Commentaires}\\ \hline
+    Grille & Class Ruby Grille & une collection de case, jointe à un nom et des paramètres ("ALEA20", 20/11/2014, ----)\\ \hline
+    Profil & Chaîne de caractère & le profil joueur, constitué uniquement du nom du profil ("joueur1")\\ \hline
+    Scores & Tableau & un tableau à trois colonnes, comprenant le nom de la grille, le profil et le score\\ \hline
+    Parties Sauvegardées & Class Ruby Partie & Partie en cours, sauvegardée avec tous ses paramètres (profil = "", grille ="", temps=--:--, ....) \\ \hline 
 \end{tabular}
 
 \subsection{Description des données sauvegardées et de leur stockage}
@@ -183,12 +184,20 @@ L'ensemble des données sauvegardées, présentées brièvement ci-dessus, est i
     \item [Grille] : les grilles sont les supports du jeu( cf Cahier des Charges 3.1.1). Pour permettre à plusieurs utilisateurs de jouer sur une même grille, il est nécessaire de sauvegarder ces objets. Les grilles sont constituées d'un collection de case, d'un nom, attribué à la création et de divers paramètres, stockés sous formes d'entiers. Elles sont stockés dans un même fichier, les unes après les autres, à leur création, qu'elle soit manuelle ou aléatoire. Ce fichier comporte trois grilles par défaut.
         % Le stockage peut également se faire autrement, surtout si nous souhaitons proposer aux joueurs de jouer à leurs propres grilles de préférence. Cela peut donc se faire dans un tableau à deux colonnes, l'une indiquant le profil créateur, l'autre contenant la grille. Un tri permettrai de faire ressortir les grilles du profil pour les lui proposer, avec une option "voir toutes les grilles" qui proposerai toutes les grilles. Cependant, on peut envisager que la grille comprend dans ses paramètres le profil du créateur. Le stockage alors n'aurait pas à être modifier, uniquement le comportement lors du chargement du fichier, avec l'enregistrement en mémoire vive d'un tableau pour lequel on récupèrerai le profil du créateur.
     \item [Profil] : Les profils sont les noms que choisissent les utilisateurs(cf Cahier des Charges 3.1.2, qui les définissent dans le jeu, et qui les lient aux grilles créées, aux parties jouées et aux scores. Un profil est constitué d'une simple chaîne de caractères, choisie par l'utilisateur à la création du profil. Cette chaîne est sérialisée à la création, dans un tableau contenant l'ensemble des profils créés, le tout stocké sur un même fichier spécifique aux profils. Ce fichier comporte un profil "par défaut".
-    \item [Scores] : les scores sont des entiers, dépendant du temps réalisé pour finir la Grille. La donnée à sauvegardée "Scores" est un tableau à trois colonne, comprenant le score lui même, le nom de la grille sur lequel il a été réalisé, et le nom du profil l'ayant réalisé. Ce tableau est stocké sur un fichier propre.
+    \item [Scores] : les scores sont des entiers, dépendant du temps réalisé pour finir la Grille. La donnée à sauvegardée "Scores" est un tableau à trois colonnes, comprenant le score lui même, le nom de la grille sur lequel il a été réalisé, et le nom du profil l'ayant réalisé. Il est accessible depuis le menu principal. Ce tableau est stocké sur un fichier propre.
         % Peut-être faudra il prévoir plusieurs tableaux, en fonction des différents modes (une colonne indiquant le nombre grille d'affilée en Mode Aventure, etc).
-    \item [Parties Sauvegardées] : elles correspondent à la sérialisation d'une instance de la classe Partie, contenant un certin nombre de paramètres et d'informations, comme la grille utilisée, l'utilisateur, le temps écoulé, etc. Ces paramètres sont conservés sur un fichier lors de la sérialisation. L'utilisateur peut ainsi quitter une partie, fermer le programme, et reprendre cette partie plus tard. Chaque Partie Sauvegardée est conservée sur un fichier propre.
+    \item [Parties Sauvegardées] : elles correspondent à la sérialisation d'une collection d'objets de la classe Partie, contenant chacune un certin nombre de paramètres et d'informations, comme la grille utilisée, l'utilisateur, le temps écoulé, etc. L'utilisateur peut ainsi quitter une partie, fermer le programme, et reprendre cette partie plus tard. La collection de Parties est sauvegardée sur un fichier propre.
 \end{description}
 
 \subsection{Méchanismes de Sauvegarde des Données}
+Cette partie détaille l'ensemble des méchanismes de sauvegarde des données précédemment décrites, c'est à dire quand et comment ces données seront sauvegardées.
+
+\begin{itemize}
+    \item Les Grilles sont sauvegardées après leurs initialisation. Elles sont générées de deux manières : soit aléatoirement, sur demande d'un utilisateur, soit manuellement dans un éditeur. À chaque fois, après avoir été initialisées, elles sont ajoutées à une collection, qui permet différents tris (par taille, par créateur). Cette collection est sérialisée via le module YAML et sauvegardée dans un fichier propre, à chaque fois qu'une grille est ajoutée. Cette collection est chargée depuis le fichier au lancement du jeu via le module YAML.
+    \item Les Profils sont sauvegardés à leur création. À chaque fois qu'un utilisateur crée un nouveau profil, celui ci est ajouté à une collection de Profil. Cette collection est sérialisée et sauvegardée dans un fichier propre via le module YAML. Elle est chargée au lancement du jeu depuis ce fichier via le module YAML.
+    \item Les Scores sont sauvegardés à chaque fin de parties. Ils sont stockés dans un tableau, comme indiqué ci-dessus. À chauqe fois qu'un nouveau score est réalisé, il est ajouté au tableau, et le tableau est sérialisé et sauvegardé dans un fichier propre via le module YAML. Le tableau est chargé depuis ce fichier à chaque lancement du jeu via le module YAML.
+    \item Les Parties Sauvegardées sont sauvegardées sur demande de l'utilisateur en cours de parties. Elles sont ajoutées à une collection de Parties Sauvegardées, permettant de trier ces Parties, notemment en fonction du Profil joueur, pour proposer à ce dernier de continuer la(les) dernière(s) Partie(s) Sauvegardée(s). À chaque fois qu'une Partie Sauvegardée est ajoutée, la collection est sérialisée et sauvegardée sur un fichier propre via le module YAML. Cette collection est chargée depuis le fichier à chaque lancement du jeu.
+\end{itemize}
 
 
 %----------------------------------------------------------------------------------------
