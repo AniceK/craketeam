@@ -18,3 +18,9 @@ Objectifs pour la séance du
        √ -Conservation des préférences (taille de la grille d'une partie à l'autre)
 
     -Penser à ajouter dans le dossier de conception les différentes manières de noircir etc les cases
+
+========================
+
+Objectifs pour la seance du 21 Mars
+    -Mise au point avancée codage
+    -continuer le code
