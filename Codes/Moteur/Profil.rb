@@ -16,16 +16,4 @@ class Profil
     def initialize()
     end    #marqueur de fin d initialize
 
-
-	# Méthode permettant de charger les informations relatives au Profil
-	def charger()
-
-	end
-
-
-	# Méthode permettant de sauvegarder les informations relatives au Profil
-	def sauvegarder()
-
-	end
-
 end
