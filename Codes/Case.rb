@@ -22,8 +22,9 @@ class Case
         if(valeur < 0 || valeur > 2) then 
             
             raise "La valeur passee en parametre doit etre comprise entre 0 et 2\n"
+        else
+            @etat = valeur
         end if
-        @etat = valeur
 
     end    #marqueur de fin de methode
 
