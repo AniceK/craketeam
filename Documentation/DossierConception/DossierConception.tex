@@ -30,6 +30,7 @@
 \usepackage{indentfirst} %Indentation début de paragraphe
 \usepackage{float}
 \usepackage{colortbl} %Clouleur tableau protoypes de fonctions
+\usepackage{tabularx}
 
 
 % Marges
@@ -170,12 +171,12 @@ Partie de Kévin
 \subsection{Dictionnaire de données}
 
 
-\begin{tabular}{|c|c|l|} \hline
-    {\bf Nom de l'entité} & {\bf Type } & {\bf Commentaires}\\ \hline
-    Grille & Class Ruby Grille & une collection de case, jointe à un nom et des paramètres ("ALEA20", 20/11/2014, ----)\\ \hline
-    Profil & Chaîne de caractère & le profil joueur, constitué uniquement du nom du profil ("joueur1")\\ \hline
-    Scores & Tableau & un tableau à trois colonnes, comprenant le nom de la grille, le profil et le score\\ \hline
-    Parties Sauvegardées & Class Ruby Partie & Partie en cours, sauvegardée avec tous ses paramètres (profil = "", grille ="", temps=--:--, ....) \\ \hline 
+\begin{tabular}{|p{4cm}|p{3cm}|p{8cm}|} \hline 
+    {\bf Nom de l'entité} & {\bf Type } & {\bf Commentaires}\\ \hline \hline
+    Grille & Class Ruby Grille & Une collection de case, jointe à un nom et des paramètres ("ALEA20", 20/11/2014)\\ \hline
+    Profil & Chaîne de caractère & Le profil joueur, constitué uniquement du nom du profil ("joueur1")\\ \hline
+    Scores & Tableau & Un tableau à trois colonnes, comprenant le nom de la grille, le profil et le score\\ \hline
+    Parties Sauvegardées & Class Ruby Partie & Partie en cours, sauvegardée avec tous ses paramètres (profil = "", grille ="", temps= --:--, ....) \\ \hline 
 \end{tabular}
 
 \subsection{Description des données sauvegardées et de leur stockage}
