@@ -195,7 +195,7 @@ L'ensemble des données sauvegardées, présentées brièvement ci-dessus, est i
 Cette partie détaille l'ensemble des méchanismes de sauvegarde des données précédemment décrites, c'est à dire quand et comment ces données seront sauvegardées ou chargées.
 
 \begin{itemize}
-    \item Les Grilles sont sauvegardées après leurs initialisation. Elles sont générées de deux manières : soit aléatoirement, sur demande d'un utilisateur, soit manuellement dans un éditeur. À chaque fois, après avoir été initialisée, la grille est sérialisée via le module YAML et sauvegardée dans un fichier propre au format nom_createur.nom_grille. Les grilles sont stockées dans un même dossier, afin de permettre aux utilisateurs de jouer à toutes les grilles, et pas uniquement celles qu'ils sont crées. Lorsqu'un utilisateur souhaite charger une grille, il a le choix entre voir la liste des ses grilles et voir la liste de toutes les grilles(tous créateurs confondus). Une fois qu'il en a choisie une, elle est chargée dans la partie.
+    \item Les Grilles sont sauvegardées après leurs initialisation. Elles sont générées de deux manières : soit aléatoirement, sur demande d'un utilisateur, soit manuellement dans un éditeur. À chaque fois, après avoir été initialisée, la grille est sérialisée via le module YAML et sauvegardée dans un fichier propre au format nomCreateur.nomGrille. Les grilles sont stockées dans un même dossier, afin de permettre aux utilisateurs de jouer à toutes les grilles, et pas uniquement celles qu'ils sont crées. Lorsqu'un utilisateur souhaite charger une grille, il a le choix entre voir la liste des ses grilles et voir la liste de toutes les grilles(tous créateurs confondus). Une fois qu'il en a choisie une, elle est chargée dans la partie.
     \item Les Profils sont sauvegardés à leur création. À chaque fois qu'un utilisateur crée un nouveau profil, celui ci est sérialisé et sauvegardé sur un fichier propre via le module YAML. Il est de nouveau sauvegardé à chaque modification. Les utilisateurs entrent leur nom de profil au lancement du jeu, et une recherche dans les dossiers correspondant à chaque profil permet de determiner si le profil en question existe déjà. Une fois le profil trouvé, il est chargé.
     \item Les Scores sont sauvegardés à chaque fin de parties. Ils sont stockés dans un tableau, comme indiqué ci-dessus. À chaque fois qu'un nouveau score est réalisé, il est ajouté au tableau, et le tableau est sérialisé et sauvegardé dans un fichier propre via le module YAML. Le tableau est chargé depuis ce fichier à chaque lancement du jeu via le module YAML.
     \item Les Parties Sauvegardées sont sauvegardées sur demande de l'utilisateur en cours de parties. Elles sont ajoutées à une collection de Parties Sauvegardées, permettant de trier ces Parties, notemment en fonction du Profil joueur, pour proposer à ce dernier de continuer la(les) dernière(s) Partie(s) Sauvegardée(s). À chaque fois qu'une Partie Sauvegardée est ajoutée, la collection est sérialisée et sauvegardée sur un fichier propre via le module YAML. Cette collection est chargée depuis le fichier à chaque lancement du jeu.
@@ -226,7 +226,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/accueil.png}
+			\includegraphics{./IHM/accueil.png}
 			\caption{Accueil principal}
 		\end{figure}
 		
@@ -235,7 +235,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/credits.png}
+			\includegraphics{./IHM/credits.png}
 			\caption{Crédit}
 		\end{figure}
 		
@@ -243,7 +243,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/options.png}
+			\includegraphics{./IHM/options.png}
 			\caption{Options}
 		\end{figure}
 	
@@ -251,7 +251,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/profil.png}
+			\includegraphics{./IHM/profil.png}
 			\caption{profil}
 		\end{figure}
 		
@@ -259,7 +259,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/editeur.png}
+			\includegraphics{./IHM/editeur.png}
 			\caption{Édition}
 		\end{figure}
 		
@@ -267,7 +267,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/choix_partie.png}
+			\includegraphics{./IHM/choix_partie.png}
 			\caption{Choix d'ancienne ou nouvelle partie}
 		\end{figure}
 		
@@ -275,7 +275,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/charger_supprimer.png}
+			\includegraphics{./IHM/charger_supprimer.png}
 			\caption{Charger une partie sauvegardée}
 		\end{figure}
 	
@@ -283,7 +283,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/taille.png}
+			\includegraphics{./IHM/taille.png}
 			\caption{Choix de la taille}
 		\end{figure}
 		
@@ -291,7 +291,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/jeu.png}
+			\includegraphics{./IHM/jeu.png}
 			\caption{Interface de jeu}
 		\end{figure}
 	
@@ -299,7 +299,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/pause.png}
+			\includegraphics{./IHM/pause.png}
 			\caption{Menu de pause}
 		\end{figure}
 		
@@ -307,7 +307,7 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/fin_partie.png}
+			\includegraphics{./IHM/fin_partie.png}
 			\caption{Édition}
 		\end{figure}
 %
