@@ -23,11 +23,7 @@ class Partie
 	def lancer()
 	end
 
-	# Méthode permettant de sauvegarder la Partie en court
-	def sauvegarder()
-	end
-
-	# Méthode permettant de charger une Partie déjà créée
+	# Méthode permettant de charger une Grille déjà créée
 	def charger()
 	end
 
@@ -35,8 +31,6 @@ class Partie
 	def supprimer()
 	end
 
-	# Méthode permettant d'initialiser une Partie
-	def initialiser()
-	end
+
 
 end
