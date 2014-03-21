@@ -7,8 +7,9 @@
 class Rangee
 
     @cases
+    @valeurs
 
-    attr_reader :Cases
+    attr_reader :cases, :valeurs
     
     def Rangee.ajouter(nbreCase)
         
@@ -17,12 +18,17 @@ class Rangee
     
     def initialize(nbre)
 
+        @cases = Array.new(nbre, Case.creer())
+        @valeurs = Array.new(nbre/2 + 1)
+
     end    #marqueur de fin d initialize
 
-    #def methode1()
-    #end    #marqueur de fin de methode
+    def verifier()
+    end     #marqueur de fin de verifier
 
-    #def methode2()
-    #end    #marqueur de fin de methode d instance
+    def noircir(numero, type)
+
+        @cases[numero].noircir(type)
+    end     #marqueur de fin de noircir
 
 end     #marqueur de fin de class
