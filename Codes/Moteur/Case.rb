@@ -9,23 +9,49 @@ class Case
     @etat       #l'état est un entier qui indique si la case a été noircie, cochée par le joueur ou laissée blanche.
 
     attr_reader :etat
-    
+
     def Case.creer()
-    end    #marqueur de fin de constructeur
-    
+
+		new()
+
+    end
+
     def initialize()
-    end    #marqueur de fin d'initialize
 
-#Cette méthode modifie l'état de la case, en lui donnant la valeur passée en paramètre (soit 0 pour retour a l'état de base, soit 1 pour noircir ou 2 pour bloquer)
-    def noircir(valeur)
+		@etat = 0
 
-        if(valeur < 0 || valeur > 2) then 
-            
-            raise "La valeur passee en parametre doit etre comprise entre 0 et 2\n"
-        else
-            @etat = valeur
-        end if
+    end
 
-    end    #marqueur de fin de methode
+# Les deux méthodes suivantes sont là pour changer l'état de la case : on bascule dans l'état correspondant à la méthode
+	# sauf si la case était déjà dans cet état, dans cette situation on rebascule à l'état initial.
+	#
+	# Les état possible sont les suivants :
+	#  - Vierge avec la valeur 0
+	#  - Noirci avec la valeur 1
+	#  - Marqué avec la valeur 2
 
-end     #marqueur de fin de class
+    def noircir()
+
+		if (@etat != 1)
+
+			@etat = 1
+
+		else
+
+			@etat = 0
+
+    end
+
+	def marquer()
+
+		if (@etat != 2)
+
+			@etat = 2
+
+		else
+
+			@etat =0
+
+	end
+
+end
