@@ -31,6 +31,7 @@
 \usepackage{float}
 \usepackage{colortbl} %Clouleur tableau protoypes de fonctions
 \usepackage{tabularx}
+\usepackage{placeins}
 
 
 % Marges
@@ -195,7 +196,7 @@ L'ensemble des données sauvegardées, présentées brièvement ci-dessus, est i
 Cette partie détaille l'ensemble des méchanismes de sauvegarde des données précédemment décrites, c'est à dire quand et comment ces données seront sauvegardées ou chargées.
 
 \begin{itemize}
-    \item Les Grilles sont sauvegardées après leurs initialisation. Elles sont générées de deux manières : soit aléatoirement, sur demande d'un utilisateur, soit manuellement dans un éditeur. À chaque fois, après avoir été initialisée, la grille est sérialisée via le module YAML et sauvegardée dans un fichier propre au format nom_createur.nom_grille. Les grilles sont stockées dans un même dossier, afin de permettre aux utilisateurs de jouer à toutes les grilles, et pas uniquement celles qu'ils sont crées. Lorsqu'un utilisateur souhaite charger une grille, il a le choix entre voir la liste des ses grilles et voir la liste de toutes les grilles(tous créateurs confondus). Une fois qu'il en a choisie une, elle est chargée dans la partie.
+    \item Les Grilles sont sauvegardées après leurs initialisation. Elles sont générées de deux manières : soit aléatoirement, sur demande d'un utilisateur, soit manuellement dans un éditeur. À chaque fois, après avoir été initialisée, la grille est sérialisée via le module YAML et sauvegardée dans un fichier propre au format nom\_createur.nom\_grille. Les grilles sont stockées dans un même dossier, afin de permettre aux utilisateurs de jouer à toutes les grilles, et pas uniquement celles qu'ils sont crées. Lorsqu'un utilisateur souhaite charger une grille, il a le choix entre voir la liste des ses grilles et voir la liste de toutes les grilles(tous créateurs confondus). Une fois qu'il en a choisie une, elle est chargée dans la partie. % Le "_" est un caractère interdit. Il faut le faire précéder par un "\" pour ne pas obtenir d'erreur.
     \item Les Profils sont sauvegardés à leur création. À chaque fois qu'un utilisateur crée un nouveau profil, celui ci est sérialisé et sauvegardé sur un fichier propre via le module YAML. Il est de nouveau sauvegardé à chaque modification. Les utilisateurs entrent leur nom de profil au lancement du jeu, et une recherche dans les dossiers correspondant à chaque profil permet de determiner si le profil en question existe déjà. Une fois le profil trouvé, il est chargé.
     \item Les Scores sont sauvegardés à chaque fin de parties. Ils sont stockés dans un tableau, comme indiqué ci-dessus. À chaque fois qu'un nouveau score est réalisé, il est ajouté au tableau, et le tableau est sérialisé et sauvegardé dans un fichier propre via le module YAML. Le tableau est chargé depuis ce fichier à chaque lancement du jeu via le module YAML.
     \item Les Parties Sauvegardées sont sauvegardées sur demande de l'utilisateur en cours de parties. Elles sont ajoutées à une collection de Parties Sauvegardées, permettant de trier ces Parties, notemment en fonction du Profil joueur, pour proposer à ce dernier de continuer la(les) dernière(s) Partie(s) Sauvegardée(s). À chaque fois qu'une Partie Sauvegardée est ajoutée, la collection est sérialisée et sauvegardée sur un fichier propre via le module YAML. Cette collection est chargée depuis le fichier à chaque lancement du jeu.
@@ -213,28 +214,128 @@ Cette partie détaille l'ensemble des méchanismes de sauvegarde des données pr
 	Nous allons réaliser l'interface homme-machine concrète correspondant au schéma de navigation ci-dessus. Les principales maquettes à représenter seront donc:
 	\begin{itemize}
 		\item Accueil
-		\item Profil
-		\item Accueil profil
 		\item Crédits
 		\item Options
-		\item Jouer
-		\item Choix de partie
-		\item Choix de la taille
-		\item Charger une partie
-		\item Menu de pause
+		\item Profil
 		\item Édition
+		\item Jouer
+		\item Menu de pause
 	\end{itemize}
-		
+	
+	\subsection{Représentations}
+	La première interface apparaissant au lancement de l'application est l'acceil.
+	
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[]{./IHM/accueil.png}
+			\includegraphics{./IHM/accueil.png}
 			\caption{Accueil principal}
 		\end{figure}
-
-
+		
+	\FloatBarrier
+		
+	On peut alors voir les différents choix disponibles.
+	Nous allons commencer par les Crédits dans lesquels on peut consulter la liste des développeurs.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/credits.png}
+			\caption{Crédit}
+		\end{figure}
+		
+	\FloatBarrier
+		
+	Nous pouvons ensuite accéder aux options dans lesquels on peut changer la langue par exemple.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/options.png}
+			\caption{Options}
+		\end{figure}
+		
+	\FloatBarrier
+	
+	On peut alors charger ou créer un profil en saisissant son nom.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/profil.png}
+			\caption{profil}
+		\end{figure}
+	
+	\FloatBarrier
+		
+	Le menu principal change alors pour accueillir la nouvelle option "Édition".
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/editeur.png}
+			\caption{Édition}
+		\end{figure}
+		
+	\FloatBarrier
+		
+	La principale option reste tout de même le jeu. On doit premièrement choisir entre charger une ancienne partie ou en commencer une nouvelle.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/choix_partie.png}
+			\caption{Choix d'ancienne ou nouvelle partie}
+		\end{figure}
+		
+	\FloatBarrier
+		
+	Si on désire charger une ancienne partie, on pourra le faire grâce au menu de sélection de sauvegardes.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/charger_supprimer.png}
+			\caption{Charger une partie sauvegardée}
+		\end{figure}
+	
+	\FloatBarrier
+	
+	En commençant une nouvelle partie, on accède au choix de la taille de grille.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/taille.png}
+			\caption{Choix de la taille}
+		\end{figure}
+		
+	\FloatBarrier
+	
+	Une fois la taille sélectionnée, on pourra se lancer dans la partie.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/jeu.png}
+			\caption{Interface de jeu}
+		\end{figure}
+		
+	\FloatBarrier
+	
+	Un menu de pause est disponible lors de la partie. Le chronomètre s'arrête et quelque options apparaissent.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/pause.png}
+			\caption{Menu de pause}
+		\end{figure}
+		
+	\FloatBarrier
+		
+	La partie terminée, un menu apparaîtra afin de renouveler l'expérience ou revenir au menu principal.
+	
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics{./IHM/fin_partie.png}
+			\caption{Édition}
+		\end{figure}
+		
+	\FloatBarrier
 %
 %----------------------------------------------------------------------------------------
-%	Outlis, normes et standards de programmation
+%	Outils, normes et standards de programmation
 %----------------------------------------------------------------------------------------
 
 \newpage
