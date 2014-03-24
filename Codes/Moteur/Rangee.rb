@@ -10,12 +10,14 @@ class Rangee
     @valeurs
 
     attr_reader :cases, :valeurs
-    
+
+#constructeur de la classe Rangee. Récupère en argument le nombre de cases de la rangée
     def Rangee.ajouter(nbreCase)
         
         new(nbreCases)
     end    #marqueur de fin de constructeur
-    
+
+#Initialisateur de la classe Rangee. Récupère en paramètre le nombre de case de la rangee, et initialise un tableau de case de cette taille, ainsi qu'un second tableau, moitié plus petit.    
     def initialize(nbre)
 
         @cases = Array.new(nbre, Case.creer())
@@ -23,9 +25,17 @@ class Rangee
 
     end    #marqueur de fin d initialize
 
+#methode d'instance remplissant le tableau de valeurs à partir d'un tableau passé en paramètre
+    def remplir(tab)
+
+        @valeurs = tab
+    end     #marqueur de fin de remplir
+
+#Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.    
     def verifier()
     end     #marqueur de fin de verifier
 
+#methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre) avec le paramètre TYPE.
     def noircir(numero, type)
 
         @cases[numero].noircir(type)
