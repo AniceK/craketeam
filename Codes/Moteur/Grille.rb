@@ -19,4 +19,7 @@ class Grille
     def verifierGrille()
     end
 
+	def modifierCase(coordX, coordY)
+	end
+
 end
