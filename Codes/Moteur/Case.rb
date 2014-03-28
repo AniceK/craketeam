@@ -41,7 +41,7 @@ class Case
         @etat = 0
 
       end
-    
+
     end
 
 	def marquer()
@@ -53,7 +53,7 @@ class Case
 		else
 
 			@etat =0
-			
+
 		end
 
 	end
