@@ -6,7 +6,12 @@
 
 class Grille
 
-
+    @collumns
+    @rows
+    
+    attr :columns, true
+    attr :rows, true
+  
     def Grille.ajouter()
     end
 
@@ -14,12 +19,33 @@ class Grille
     end
 
     def verifierCoup(coordX, coordY)
+      @collumns[coordX].verifier()
+      @rows[coordY].verifier()
     end
 
-    def verifierGrille()
+    def termine?()
+      res = true
+      @collumns.each { |X|
+          if X.valide() == false then
+              res = false
+          end
+      }
+      @rows.each { |X|
+          if X.valide() == false then
+              res = false
+          end
+      }
+      return res
     end
 
-	def modifierCase(coordX, coordY)
-	end
+	  def noircirCase(coordX, coordY)
+	      @collumns[coordX].noircir(coordY)
+	      @rows[coordY].noircir(coordX)
+	  end
+	  
+	  def marquerCase(coordX, coordY)
+	      @collumn[coordX].marquer(coordY)
+	      @rows[coordY].marquer(coordY)
+    end
 
 end
