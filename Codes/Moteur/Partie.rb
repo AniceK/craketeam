@@ -8,6 +8,7 @@ class Partie
 
     @grille
     @creation    #heure et date de la creation de la partie
+    @type        #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
     
     
     attr_reader :grille, :time
@@ -31,6 +32,7 @@ class Partie
 
 	# Méthode lançant la partie
 	def lancer()
+	  
 	end
 
 	# Méthode permettant de charger une Grille déjà créée
