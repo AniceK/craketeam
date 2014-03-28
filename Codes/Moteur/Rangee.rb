@@ -54,12 +54,13 @@ class Rangee
         i = 0   #Compteur pour le tableau de valeurs
         j = 0   #Compteur pour le tableau de cases
         
-        while (j < @cases.size && i < @valeurs.size)
+        while (j < @cases.size && i < @valeurs.size) then
              
-          while (@cases[j].etat !=1 && j < @cases.size)
+          while (@cases[j].etat !=1 && j < @cases.size)then
           
             j+=1
           end
+        end
              
              nbreCaseNoircie = 0
              
@@ -84,10 +85,16 @@ class Rangee
         end
     end     #marqueur de fin de verifier
 
-#methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre) avec le paramètre TYPE.
-    def noircir(numero, type)
+#methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
+    def noircir(numero)
 
-        @cases[numero].noircir(type)
+        @cases[numero].norcir
     end     #marqueur de fin de noircir
+    
+#methode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
 
+    def marquer(numero)
+      
+        @cases[numero].marquer
+    end
 end     #marqueur de fin de class
