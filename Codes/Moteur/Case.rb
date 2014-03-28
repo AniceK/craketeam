@@ -25,7 +25,7 @@ class Case
 # Les deux méthodes suivantes sont là pour changer l'état de la case : on bascule dans l'état correspondant à la méthode
 	# sauf si la case était déjà dans cet état, dans cette situation on rebascule à l'état initial.
 	#
-	# Les état possible sont les suivants :
+	# Les états possible sont les suivants :
 	#  - Vierge avec la valeur 0
 	#  - Noirci avec la valeur 1
 	#  - Marqué avec la valeur 2
