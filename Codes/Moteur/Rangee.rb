@@ -6,10 +6,11 @@
 
 class Rangee
 
-    @cases
-    @valeurs
+    @cases      #tableau de cases
+    @valeurs    #tableau des "conditions", indiquant comment remplir la grille
+    @valide     #booleen indiquant l'etat de la grille
 
-    attr_reader :cases, :valeurs
+    attr_reader :cases, :valeurs, :valide
 
 #constructeur de la classe Rangee. Récupère en argument le nombre de cases de la rangée
     def Rangee.ajouter(nbreCase)
@@ -22,6 +23,7 @@ class Rangee
 
         @cases = Array.new(nbre, Case.creer())
         @valeurs = Array.new(nbre/2 + 1)
+        @valide = false
 
     end    #marqueur de fin d initialize
 
@@ -35,11 +37,51 @@ class Rangee
     def verifier()
 
         nbreCaseNoircie = 0
+        nbreCaseANoircir = 0
         @cases.each{ |x|
-            if x.etat = 1 then nbreCaseNoircie ++
+            if x.etat == 1 then nbreCaseNoircie ++
             end if
         }
-        @valeur.each{
+        @valeur.each{ |x|
+            nbreCaseANoircir ++
+        }
+        if nbreCasNoircie != nbreCaseANoircir then
+            
+            @valide = false
+            return false
+        end
+        
+        i = 0   #Compteur pour le tableau de valeurs
+        j = 0   #Compteur pour le tableau de cases
+        
+        while (j < @cases.size && i < @valeurs.size)
+             
+          while (@cases[j].etat !=1 && j < @cases.size)
+          
+            j+=1
+          end
+             
+             nbreCaseNoircie = 0
+             
+             while (j < @cases.size && nbreCaseNoircie < @valeurs[i] && @cases.etat == 1)
+                
+                j+=1
+                nbreCaseNoircie +=1
+             end
+             
+             if (@cases[j].etat == 1 && nbreCaseNoircie >= @valeurs[i] || nbreCaseNoircie < @valeurs[i])
+                
+                @valide = false
+                return false
+             end
+             
+             i +=1
+        end
+        
+        @valide = true
+        return true     
+             
+        end
     end     #marqueur de fin de verifier
 
 #methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre) avec le paramètre TYPE.
