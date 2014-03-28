@@ -6,19 +6,17 @@
 
 class Grille
 
-    #@attribut1
-    #@attribut2
-    
-    #def Grille.ajouter()
-    #end    #marqueur de fin de constructeur
-    
-    #def initialize()
-    #end    #marqueur de fin d initialize
 
-    #def methode1()
-    #end    #marqueur de fin de methode
+    def Grille.ajouter()
+    end
 
-    #def methode2()
-    #end    #marqueur de fin de methode d instance
+    def initialize()
+    end
 
-end     #marqueur de fin de class
+    def verifierCoup(coordX, coordY)
+    end
+
+    def verifierGrille()
+    end
+
+end
