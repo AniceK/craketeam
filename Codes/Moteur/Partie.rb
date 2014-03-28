@@ -1,22 +1,32 @@
 #13/03/2014
 #Projet Picross équipe CrakeTeam
 #
-#Ce fichier contient la classe Partie, qui est constituée d'une Grille
+#Ce fichier contient la classe Partie, qui est constituée d'une Grille et de diverses paramètres
 #ici une description de la classe Partie.
 
 class Partie
 
     @grille
+    @creation    #heure et date de la creation de la partie
+    
+    
+    attr_reader :grille, :time
 
 	# Constructeur de la classe Partie
     def Partie.creer()
+      
     end    #marqueur de fin de constructeur
 
     def initialize()
+      
+      @time = now
+      
     end    #marqueur de fin d initialize
 
 	# Méthode de test de fin de partie
 	def termine?()
+	  
+	  return @grille.termine?()
 	end
 
 	# Méthode lançant la partie
