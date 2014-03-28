@@ -33,6 +33,13 @@ class Rangee
 
 #Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.    
     def verifier()
+
+        nbreCaseNoircie = 0
+        @cases.each{ |x|
+            if x.etat = 1 then nbreCaseNoircie ++
+            end if
+        }
+        @valeur.each{
     end     #marqueur de fin de verifier
 
 #methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre) avec le paramètre TYPE.
