@@ -4,7 +4,7 @@
 #Ce fichier contient la classe Jeu, qui est constituée d'un Profil et d'une Partie
 #ici une description de la classe Jeu.
 
-class Profil
+class Jeu
 
     @profil
 	@partie
@@ -18,14 +18,20 @@ class Profil
 
 
 	# Méthode permettant de charger le Profil du joueur
-	def chargerProfil()
+	def chargerProfil(unNom)
 
+	end
+
+	def ajouterProfil(unNom)
 	end
 
 
 	# Méthode permettant de récupérer une partie
 	def chargerPartie()
 
+	end
+
+	def ajouterPartie()
 	end
 
 end

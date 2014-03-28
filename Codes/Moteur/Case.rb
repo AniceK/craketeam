@@ -32,13 +32,15 @@ class Case
 
     def noircir()
 
-		if (@etat != 1)
+      if (@etat != 1)
 
-			@etat = 1
+        @etat = 1
 
-		else
+      else
 
-			@etat = 0
+        @etat = 0
+
+      end
 
     end
 
@@ -51,6 +53,8 @@ class Case
 		else
 
 			@etat =0
+
+		end
 
 	end
 
