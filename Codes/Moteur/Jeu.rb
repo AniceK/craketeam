@@ -19,7 +19,7 @@ class Jeu
 
 	# Méthode permettant de charger le Profil du joueur
 	def chargerProfil(unNom)
-
+	  @profil.charger(unNom)
 	end
 
 	def ajouterProfil(unNom)

@@ -34,4 +34,9 @@ class Profil
         @nbGrilles ++
     end    #marqueur de fin de methode d'instance
 
+    def charger(unNom)
+      FileUtils.cd('..')
+      FileUtils.pwd()
+      FileUtils.cd(unNom)
+    end
 end
