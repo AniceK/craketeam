@@ -13,16 +13,16 @@ class Profil
 
 	# Constructeur de la classe Profil
     def Profil.creer(nom)
-      @nom = nom
-      FileUtils.cd('..')
-      FileUtils.pwd()
-      
-      FileUtils.mkdir(@nom)
-      FileUtils.cd(@nom)
+      new(nom)
     end    #marqueur de fin de constructeur
 
     def initialize(nom)
-      creer(nom)
+      @nom = nom
+      FileUtils.cd('..')
+           FileUtils.pwd()
+           
+           FileUtils.mkdir(@nom)
+           FileUtils.cd(@nom)
     end    #marqueur de fin d initialize
 
 end
