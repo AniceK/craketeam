@@ -24,6 +24,7 @@ class Profil
 
     def ajouterUneGrille()
 
+        @nbGrilles ++
     end    #marqueur de fin de methode d'instance
 
 end
