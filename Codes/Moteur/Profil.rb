@@ -15,13 +15,16 @@ class Profil
 
 	# Constructeur de la classe Profil
     def Profil.creer(nom)
+
         new(nom)
     end    #marqueur de fin de constructeur
 
     def initialize(nom)
+
       # Vérifier Arbo sinon création dossier avec @nom dans picross/profil/
       # création dossier Parties et info.txt dans picross/profil/@nom/
       # Création d'un dossier avec @nom dans picross/Grilles/
+
       @nom = nom
       FileUtils.cd('..')
       FileUtils.pwd()

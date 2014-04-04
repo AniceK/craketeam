@@ -58,4 +58,20 @@ class Grille
 	    @rows[coordY].marquer(coordY)
     end
 
+	# Méthode permettant la sauvegarde de la Grille dans son état actuel
+
+	def sauvegarderGrille()
+
+
+
+	end
+
+	# Méthode permettant de charger une Grille préalablement sauvegarder à partir de son nom
+
+	def chargerGrille(unNom)
+
+
+
+	end
+
 end
