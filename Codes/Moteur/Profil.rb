@@ -11,9 +11,11 @@ class Profil
     @nom
 	@nbGrilles
 
+    attr_reader :nom, :nbGrilles
+
 	# Constructeur de la classe Profil
     def Profil.creer(nom)
-      new(nom)
+        new(nom)
     end    #marqueur de fin de constructeur
 
     def initialize(nom)
@@ -24,5 +26,9 @@ class Profil
       FileUtils.mkdir(@nom)
       FileUtils.cd(@nom)
     end    #marqueur de fin d initialize
+
+    def ajouterUneGrille()
+        @nbGrilles ++
+    end    #marqueur de fin de methode d'instance
 
 end
