@@ -15,10 +15,12 @@ class Profil
 
 	# Constructeur de la classe Profil
     def Profil.creer(nom)
+
         new(nom)
     end    #marqueur de fin de constructeur
 
     def initialize(nom)
+
       @nom = nom
       FileUtils.cd('..')
       FileUtils.pwd()
