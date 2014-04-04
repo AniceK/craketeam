@@ -6,8 +6,8 @@
 
 class Jeu
 
-    @profil
-	@partie
+  @profil
+  @partie
 
 	# Constructeur de la classe Jeu
     def Jeu.creer()
