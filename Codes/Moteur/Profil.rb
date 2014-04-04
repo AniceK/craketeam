@@ -19,10 +19,10 @@ class Profil
     def initialize(nom)
       @nom = nom
       FileUtils.cd('..')
-           FileUtils.pwd()
+      FileUtils.pwd()
            
-           FileUtils.mkdir(@nom)
-           FileUtils.cd(@nom)
+      FileUtils.mkdir(@nom)
+      FileUtils.cd(@nom)
     end    #marqueur de fin d initialize
 
 end

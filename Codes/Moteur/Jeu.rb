@@ -23,6 +23,7 @@ class Jeu
 	end
 
 	def ajouterProfil(unNom)
+	  @profil.creer(unNom)
 	end
 
 
