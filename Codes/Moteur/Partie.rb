@@ -9,30 +9,33 @@ class Partie
     @grille
     @creation   #heure et date de la creation de la partie
     @type        #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
-    
-    
+
+
     attr_reader :grille, :time
 
 	# Constructeur de la classe Partie
-    def Partie.creer()
-      
-    end    #marqueur de fin de constructeur
+    def Partie.creer(typeCreation)
+
+		new(typeCreation)
+
+    end
 
     def initialize()
-      
-      @creation = Time.now
-      
+
+		@grille = Grille.ajouter(typeCreation)
+		@creation = now
+
     end    #marqueur de fin d initialize
 
 	# Méthode de test de fin de partie
 	def termine?()
-	  
+
 	  return @grille.termine?()
 	end
 
 	# Méthode lançant la partie
 	def lancer()
-	  
+
 	end
 
 	# Méthode permettant de charger une Grille déjà créée
