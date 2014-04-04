@@ -4,6 +4,8 @@
 #Ce fichier contient la classe Profil, qui est constituée d'un nom et d'un nombre de Grilles
 #ici une description de la classe Profil.
 
+require 'fileutils'
+
 class Profil
 
     @nom
@@ -17,9 +19,15 @@ class Profil
         new(nom)
     end    #marqueur de fin de constructeur
 
-    def initialize()
+    def initialize(nom)
 
         @nom = nom
+        FileUtils.cd('..')
+        FileUtils.pwd()
+      
+        FileUtils.mkdir(@nom)
+        FileUtils.cd(@nom)
+
     end    #marqueur de fin d initialize
 
     def ajouterUneGrille()
