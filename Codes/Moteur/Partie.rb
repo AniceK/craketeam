@@ -7,7 +7,7 @@
 class Partie
 
     @grille
-    @creation    #heure et date de la creation de la partie
+    @creation   #heure et date de la creation de la partie
     @type        #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
     
     
@@ -20,7 +20,7 @@ class Partie
 
     def initialize()
       
-      @time = now
+      @creation = Time.now
       
     end    #marqueur de fin d initialize
 
@@ -38,6 +38,8 @@ class Partie
 	# Méthode permettant de charger une Grille déjà créée
 	def charger()
 	end
+
+    # Méthode pour créer une grille aléatoirement
 
 	# Méthode permettant de supprimer une Partie
 	def supprimer()
