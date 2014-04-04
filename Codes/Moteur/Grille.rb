@@ -6,26 +6,32 @@
 
 class Grille
 
-    @collumns
+    @columns
     @rows
-    
+
     attr :columns, true
     attr :rows, true
-  
+
+	# Constructeur de la classe Grille
+
     def Grille.ajouter()
     end
 
     def initialize()
     end
 
+	# Méthode vérifiant la validité du coup joué
+
     def verifierCoup(coordX, coordY)
-      @collumns[coordX].verifier()
+      @columns[coordX].verifier()
       @rows[coordY].verifier()
     end
 
+	# Méthode vérifiant si la partie est terminée, en passant en revue la validité de chacune des Rangées
+
     def termine?()
       res = true
-      @collumns.each { |X|
+      @columns.each { |X|
           if X.valide() == false then
               res = false
           end
@@ -38,14 +44,18 @@ class Grille
       return res
     end
 
-	  def noircirCase(coordX, coordY)
-	      @collumns[coordX].noircir(coordY)
-	      @rows[coordY].noircir(coordX)
-	  end
-	  
-	  def marquerCase(coordX, coordY)
-	      @collumn[coordX].marquer(coordY)
-	      @rows[coordY].marquer(coordY)
+	# Méthode permettant de noircir une Case à partir de ses coordonnées
+
+	def noircirCase(coordX, coordY)
+	    @columns[coordX].noircir(coordY)
+	    @rows[coordY].noircir(coordX)
+	end
+
+	# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
+
+	def marquerCase(coordX, coordY)
+	    @column[coordX].marquer(coordY)
+	    @rows[coordY].marquer(coordY)
     end
 
 end
