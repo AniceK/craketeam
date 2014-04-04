@@ -11,6 +11,7 @@ class Profil
 
 	# Constructeur de la classe Profil
     def Profil.creer()
+      
     end    #marqueur de fin de constructeur
 
     def initialize()

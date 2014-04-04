@@ -6,9 +6,9 @@
 
 class Rangee
 
-    @cases      #tableau de cases
-    @valeurs    #tableau des "conditions", indiquant comment remplir la grille
-    @valide     #booleen indiquant l'etat de la grille
+    @cases #tableau de cases
+    @valeurs #tableau des "conditions", indiquant comment remplir la grille
+    @valide #booleen indiquant l'etat de la grille
 
     attr_reader :cases, :valeurs, :valide
 
@@ -16,31 +16,31 @@ class Rangee
     def Rangee.ajouter(nbreCase)
         
         new(nbreCases)
-    end    #marqueur de fin de constructeur
+    end #marqueur de fin de constructeur
 
-#Initialisateur de la classe Rangee. Récupère en paramètre le nombre de case de la rangee, et initialise un tableau de case de cette taille, ainsi qu'un second tableau, moitié plus petit.    
+#Initialisateur de la classe Rangee. Récupère en paramètre le nombre de case de la rangee, et initialise un tableau de case de cette taille, ainsi qu'un second tableau, moitié plus petit.
     def initialize(nbre)
 
         @cases = Array.new(nbre, Case.creer())
         @valeurs = Array.new(nbre/2 + 1)
         @valide = false
 
-    end    #marqueur de fin d initialize
+    end #marqueur de fin d initialize
 
 #methode d'instance remplissant le tableau de valeurs à partir d'un tableau passé en paramètre
     def remplir(tab)
 
         @valeurs = tab
-    end     #marqueur de fin de remplir
+    end #marqueur de fin de remplir
 
-#Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.    
+#Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.
     def verifier()
 
         nbreCaseNoircie = 0
         nbreCaseANoircir = 0
         @cases.each{ |x|
             if x.etat == 1 then nbreCaseNoircie ++
-            end if
+            end
         }
         @valeur.each{ |x|
             nbreCaseANoircir ++
@@ -51,8 +51,8 @@ class Rangee
             return false
         end
         
-        i = 0   #Compteur pour le tableau de valeurs
-        j = 0   #Compteur pour le tableau de cases
+        i = 0 #Compteur pour le tableau de valeurs
+        j = 0 #Compteur pour le tableau de cases
         
         while (j < @cases.size && i < @valeurs.size)
              
@@ -79,15 +79,15 @@ class Rangee
         end
         
         @valide = true
-        return true     
+        return true
              
         end
-    end     #marqueur de fin de verifier
+    end #marqueur de fin de verifier
 
 #methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre) avec le paramètre TYPE.
     def noircir(numero, type)
 
         @cases[numero].noircir(type)
-    end     #marqueur de fin de noircir
+    end #marqueur de fin de noircir
 
-end     #marqueur de fin de class
+end #marqueur de fin de class
