@@ -23,23 +23,16 @@ class Profil
 
       # Vérifier Arbo sinon création dossier avec @nom dans picross/profil/
       # création dossier Parties et info.txt dans picross/profil/@nom/
-      # Création d'un dossier avec @nom dans picross/Grilles/
+      # Création d'un dossier avec @nom dans picross/Grilles
 
       @nom = nom
-      FileUtils.cd('..')
-      FileUtils.pwd()
-           
-      FileUtils.mkdir(@nom)
-      FileUtils.cd(@nom)
+      @nbGrilles = 0
+
     end    #marqueur de fin d initialize
 
     def ajouterUneGrille()
-        @nbGrilles ++
+        @nbGrilles = @nbGrilles + 1
     end    #marqueur de fin de methode d'instance
 
-    def charger(unNom)
-      FileUtils.cd('..')
-      FileUtils.pwd()
-      FileUtils.cd(unNom)
-    end
+
 end

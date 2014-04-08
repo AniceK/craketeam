@@ -4,6 +4,8 @@
 #Ce fichier contient la classe Grille, qui est constituee de Case
 #ici une description de la classe Grille.
 
+require 'Rangee'
+
 class Grille
 
     @colonne
