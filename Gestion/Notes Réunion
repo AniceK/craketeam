@@ -1,4 +1,3 @@
-
 - Générateur de grilles aléatoire
 - Chronomètre (rafraichissement par thread)
 - Gérer les arbos (Rémi) 
@@ -7,15 +6,15 @@
 		      |               |
 		      |               '- Nom2
 		      |
-		      |-------- Grilles ------ Nom1	-- 5x5
+		      |-------- Grilles ------ Nom1 -- 5x5
 		      |                    |	      |
-		      | 	                 |	      |- 10x10
-		      | 	                 |	      |
-		      |		                 |	      |- 15x15
-		      |		                 |	      |
-		      |		                 |	      '- 25x25
-		      |		                 |
-		      |		                 '-- Nom2 …
+		      | 	           |	      |- 10x10
+		      | 	           |	      |
+		      |		           |	      |- 15x15
+		      |		           |	      |
+		      |		           |	      '- 25x25
+		      |		           |
+		      |		           '-- Nom2 …
 		      |
 		      '--Scores.yml
 		
