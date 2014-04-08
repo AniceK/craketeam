@@ -1,0 +1,21 @@
+- Générateur de grilles aléatoire
+- Chronomètre (rafraichissement par thread)
+- Gérer les arbos (Rémi) 
+
+	picross --------------- Profil ------- Nom1
+		      | 		  |
+		      |          	  '--- Nom2
+		      |
+		      |-------- Grilles ------- Nom1 -- 5x5
+		      |                      |	     |
+		      | 	             |	     |- 10x10
+		      | 	             |	     |
+		      |		             |	     |- 15x15
+		      |		             |	     |
+		      |		             |	     '- 25x25
+		      |		             |
+		      |		             '-- Nom2 …
+		      |
+		      '-------- Scores.yml
+
+- Modifier Editeur (implémenter)
