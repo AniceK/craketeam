@@ -5,6 +5,7 @@
 #ici une description de la classe Jeu.
 
 require 'FileUtils'
+require 'yaml'
 
 class Jeu
 
@@ -82,11 +83,34 @@ class Jeu
 	# Méthode permettant de charger le Profil du joueur
 	def chargerProfil(unNom)
 
+        aName = unNom.downcase()
+        FileUtils.cd('Profil')
+        resultat = true
+
+        begin
+
+            Dir.chdir aName
+          
+        rescue Errno::ENOENT => e
+
+            puts "Le profil #{aName} n'existe pas!"
+            resultat = false
+            FileUtils.cd('..')
+
+        else
+
+            puts "Le profil #{aName} existe!"
+            #afficher une fenetre avec bienvenue truc
+            #@profil = YAML::load( File.open('profil.yaml')
+
+        ensure
+
+            return resultat
 
 	  
 	end
 
-	def ajouterProfil(unNom)
+	def creerProfil(unNom)
         
         aName = unNom.downcase()
         FileUtils.cd('Profil')
@@ -109,7 +133,7 @@ class Jeu
             FileUtils.mkdir('20x20')
             FileUtils.mkdir('25x25')
             FileUtils.cd('../..')
-	        @profil = Profil.cree(aName)
+	        @profil = Profil.creer(aName)
 
           
           else
