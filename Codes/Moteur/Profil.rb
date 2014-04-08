@@ -22,12 +22,14 @@ class Profil
     def initialize(nom)
 
       # Vérifier Arbo sinon création dossier avec @nom dans picross/profil/
-      # création dossier Parties et info.txt dans picross/profil/@nom/
       # Création d'un dossier avec @nom dans picross/Grilles
 
       @nom = nom
       @nbGrilles = 0
-
+      FileUtils.cd('Profil')
+      FileUtils.cd(@nom)
+      File.open('profil.yml', "w"){ |out| out.puts self.to_yaml}
+      FileUtils.cd('../..')
     end    #marqueur de fin d initialize
 
     def ajouterUneGrille()
