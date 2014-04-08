@@ -8,11 +8,13 @@ require 'Rangee'
 
 class Grille
 
-    @columns
-    @rows
+    @colonne
+    @ligne
+    @grille
 
-    attr :columns, true
-    attr :rows, true
+    attr :colonne, true
+    attr :ligne, true
+    attr :grille, true
 
 	# Constructeur de la classe Grille
 
@@ -25,21 +27,21 @@ class Grille
 	# Méthode vérifiant la validité du coup joué
 
     def verifierCoup(coordX, coordY)
-      @columns[coordX].verifier()
-      @rows[coordY].verifier()
+      @colonne[coordX].verifier()
+      @ligne[coordY].verifier()
     end
 
 	# Méthode vérifiant si la partie est terminée, en passant en revue la validité de chacune des Rangées
 
     def termine?()
       res = true
-      @columns.each { |X|
-          if X.valide() == false then
+      @colonne.each { |x|
+          if x.valide() == false then
               res = false
           end
       }
-      @rows.each { |X|
-          if X.valide() == false then
+      @ligne.each { |x|
+          if x.valide() == false then
               res = false
           end
       }
@@ -49,15 +51,15 @@ class Grille
 	# Méthode permettant de noircir une Case à partir de ses coordonnées
 
 	def noircirCase(coordX, coordY)
-	    @columns[coordX].noircir(coordY)
-	    @rows[coordY].noircir(coordX)
+	    @colonne[coordX].noircir(coordY)
+	    @ligne[coordY].noircir(coordX)
 	end
 
 	# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
 
 	def marquerCase(coordX, coordY)
-	    @column[coordX].marquer(coordY)
-	    @rows[coordY].marquer(coordY)
+	    @colonne[coordX].marquer(coordY)
+	    @ligne[coordY].marquer(coordY)
     end
 
 	# Méthode permettant la sauvegarde de la Grille dans son état actuel
@@ -75,5 +77,18 @@ class Grille
 
 
 	end
+  
+  def genererAleatoire(unCoef)
+    for i in (0..@ligne.lenght()-1)
+      for j in (0..@colonne.lenght()-1)
+        if (rand(100)) > unCoef then
+          @grille.noircirCase(i, j)
+        end
+      end
+    end
+    
+    #Récuperer ligne et colonne
+    
+  end
 
 end
