@@ -23,14 +23,15 @@ class Profil
 
       # Vérifier Arbo sinon création dossier avec @nom dans picross/profil/
       # création dossier Parties et info.txt dans picross/profil/@nom/
-      # Création d'un dossier avec @nom dans picross/Grilles/
+      # Création d'un dossier avec @nom dans picross/Grilles
 
       @nom = nom
+      @nbGrilles = 0
 
     end    #marqueur de fin d initialize
 
     def ajouterUneGrille()
-        @nbGrilles =+ 1
+        @nbGrilles = @nbGrilles + 1
     end    #marqueur de fin de methode d'instance
 
 
