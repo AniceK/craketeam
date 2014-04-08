@@ -5,6 +5,12 @@
 #
 require 'fileutils'
 
+#===========================================#
+#               Arborescence                #
+#===========================================#
+
+=begin
+
 begin
   Dir.chdir "Picross"
 rescue Errno::ENOENT => e
@@ -41,4 +47,76 @@ else
 ensure
   puts "Initialisation du répertoire fini !"     
   
+end
+
+=end
+
+#===========================================#
+#               Timer                       #
+#===========================================#
+
+=begin
+
+user_input = Thread.new do
+  print "Enter something: "
+  Thread.current[:value] = gets.chomp
+end
+
+timer = Thread.new { sleep 3; user_input.kill; puts }
+
+user_input.join
+if user_input[:value]
+  puts "User entered #{user_input[:value]}"
+else
+  puts "Timer expired"
+end
+
+=end
+
+#===========================================#
+#               Random avec coef            #
+#===========================================#
+
+=begin
+
+coef = 80
+cpt = 0
+
+for i in (0..100) do
+  bool = (rand(100))
+  
+  if bool > coef then
+    etat = 1
+    cpt = cpt + 1
+  else
+    etat = 0
+  end
+  
+  printf("%i ", etat)
+end
+
+printf("\nPourcentage de 1 : %i", cpt)
+
+
+=end
+
+#===========================================#
+#              Chronometre                  #
+#===========================================#
+
+def timer(seconds)
+  last_tick = Time.now
+  loop do
+    sleep 0.1
+    if Time.now - last_tick >= seconds
+      yield
+      last_tick = Time.now
+    end
+  end
+end
+
+t = Time.now
+
+timer(1) do
+  p Time.now - t 
 end
