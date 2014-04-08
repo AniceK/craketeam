@@ -2,11 +2,11 @@
 - Chronomètre (rafraichissement par thread)
 - Gérer les arbos (Rémi) 
 
-	picross --- Profil ------- Nom1
-		      |          |
-		      |          '- Nom2
+	picross --------------- Profil ------- Nom1
+		      | 		  |
+		      |          	  '--- Nom2
 		      |
-		      |-------- Grilles ------ Nom1 -- 5x5
+		      |-------- Grilles ------- Nom1 -- 5x5
 		      |                      |	     |
 		      | 	             |	     |- 10x10
 		      | 	             |	     |
