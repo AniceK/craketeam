@@ -10,9 +10,8 @@ profil.ajouterUneGrille()
 
 puts profil.to_yaml
 
-#stokage = YAML::Store.new("profil1.yml")
-#stokage.transaction do
-#    profil.to_yaml
-#end
+File.open('save.yml', "w"){ |out| out.puts profil.to_yaml}
 
-#stockage2 = YAML::Store.new("profil1.yml")
+truc = YAML.load_file('save.yml')
+
+puts truc.to_yaml
