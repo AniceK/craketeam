@@ -12,6 +12,8 @@ puts profil.to_yaml
 
 File.open('save.yml', "w"){ |out| out.puts profil.to_yaml}
 
-truc = YAML.load_file('save.yml')
+#truc = YAML.load_file('save.yml')
 
-puts truc.to_yaml
+truc = YAML::load(File.open('save.yml'))
+
+puts truc.nom
