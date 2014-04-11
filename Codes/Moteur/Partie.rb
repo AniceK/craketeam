@@ -31,6 +31,7 @@ class Partie
 	def termine?()
 
 	  return @grille.termine?()
+
 	end
 
 	# Méthode lançant la partie
@@ -47,7 +48,5 @@ class Partie
 	# Méthode permettant de supprimer une Partie
 	def supprimer()
 	end
-
-
 
 end
