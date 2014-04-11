@@ -13,5 +13,8 @@
 *.aux
 *synctex.gz
 
-#Ignorer les fichiers de sauvegarde temporaire
+#Ignorer les fichiers de sérialisation
 *.yml
+
+#Ignorer les fichiers de sauvegardes temporaire
+.*.swp
