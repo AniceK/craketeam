@@ -19,8 +19,7 @@ tab.push(profil2)
 tab.push(profil3)
 
 #puts profil.to_yaml
-
-File.open('parties.yml', "w"){ |out| out.puts tab.to_yaml} 
+File.open('parties.yml', "w"){|out| out.puts tab.to_yaml}
 
 truc = Array.new(YAML::load(File.open('parties.yml')))
 
