@@ -41,7 +41,7 @@ class Rangee
 		cpt = 0
 		i = 0
 
-		tab.each { |x|
+		tab.each do |x|
 
 			if x.etat() == 1 then
 				cpt += 1
@@ -49,11 +49,11 @@ class Rangee
 				if cpt != 0 then
 					@conditions[i] = cpt
 					i += 1
-					cpt = 0
-				end if
-			end if
+			cpt = 0
+				end 
+			end 
 
-		}
+	end
 
 	end
 
@@ -71,8 +71,9 @@ class Rangee
         nbreCaseNoircie = 0
         nbreCaseANoircir = 0
         @cases.each{ |x|
-            if x.etat == 1 then nbreCaseNoircie ++
-            end if
+            if x.etat == 1 then 
+              nbreCaseNoircie ++
+            end
         }
 
         @conditions.each{ |x|
