@@ -28,27 +28,27 @@ class Jeu
           FileUtils.mkdir('Grille')
           #FileUtils.cp('../GrillesDefauts' '/Grilles')
 
-        else 
+        else
 
           puts "Dossier Picross trouvé, vérification de son contenu..."
-          
+
           begin
 
             Dir.chdir "Profil"
-          
+
           rescue Errno::ENOENT => e
-            
+
             puts "Pas de dossier profil.."
             FileUtils.mkdir('Profil')
             puts "Dossier Profil créé !"
-          
+
           else
 
             puts "Dossier Profil présent"
             FileUtils.cd('..')
 
           end
-          
+
           begin
 
             Dir.chdir "Grille"
@@ -61,15 +61,15 @@ class Jeu
 
           else
 
-            puts "Dossier Grille présent" 
+            puts "Dossier Grille présent"
             FileUtils.cd('..')
 
           end
 
         ensure
 
-          puts "Initialisation du répertoire fini !"     
-          
+          puts "Initialisation du répertoire fini !"
+
         end
 
     end    #marqueur de fin de constructeur
@@ -90,7 +90,7 @@ class Jeu
         begin
 
             Dir.chdir aName
-          
+
         rescue Errno::ENOENT => e
 
             puts "Le profil #{aName} n'existe pas!"
@@ -113,7 +113,7 @@ class Jeu
 
 #Methode d'instance qui initialise la variable d'instance @profil en creant l arborescence correpondante. On retourne un boolen indiquant si le profil existait ou pas (true pour nouveau, false sinon)
 	def creerProfil(unNom)
-        
+
         aName = unNom.downcase()
         FileUtils.cd('Profil')
         resultat = true
@@ -125,7 +125,7 @@ class Jeu
 
 #Si cela provoque une erreur, c'est que le dossier, et donc le profil, n'existait pas. On cree donc l'arborescence.
         rescue Errno::ENOENT => e
-            
+
             puts "Le profil #{aName} n'existe pas !"
 
 #Appel au constructeur de profil
@@ -149,7 +149,7 @@ class Jeu
             puts "Le profil #{aName} existe déjà"
             resultat = false
             FileUtils.cd('..')
-          
+
           ensure
 
               return resultat
