@@ -35,7 +35,7 @@ class Rangee
 
 	# Méthode permettant de déterminer les conditions à partir d'un tableau
 
-	def conditionsDetermine(tab)
+	def conditionsDeterminer(tab)
 
 		cpt = 0
 		i = 0
@@ -54,6 +54,14 @@ class Rangee
 
 		}
 
+	end
+
+	#Méthode réinitialisant l'état des cases de la Rangée
+
+	def razCases()
+		@cases.each { |x|
+			x.raz()
+		}
 	end
 
 #Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.    
