@@ -121,6 +121,7 @@ class Rangee
     def noircir(numero)
 
         @cases[numero].noircir
+
     end     #marqueur de fin de noircir
 
 #methode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
@@ -128,5 +129,6 @@ class Rangee
     def marquer(numero)
 
         @cases[numero].marquer
+
     end
 end     #marqueur de fin de class
