@@ -11,10 +11,13 @@
 *.toc
 *.log
 *.aux
-*synctex.gz
+*.synctex.gz
 
 #Ignorer les fichiers de sérialisation
 *.yml
 
 #Ignorer les fichiers de sauvegardes temporaire
 .*.swp
+
+#Ignore les fichiers d'Eclipse
+.metadata/*
