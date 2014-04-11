@@ -38,16 +38,19 @@ class Partie
 
 	end
 
-	# Méthode permettant de charger une Grille déjà créée
-	def charger()
+	# Méthode permettant de renvoyer la Liste des grilles deja existante
+	def chargerGrillesExistantes(taille, profil, toutes)
+
+        FileUtils.cd('Grilles')
+        
+        if toutes then
+        end
+
+
+
+
 	end
 
     # Méthode pour créer une grille aléatoirement
-
-	# Méthode permettant de supprimer une Partie
-	def supprimer()
-	end
-
-
 
 end
