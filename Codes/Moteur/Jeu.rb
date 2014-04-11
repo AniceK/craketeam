@@ -132,17 +132,6 @@ class Jeu
             @profil = Profil.creer(aName)
 
 
-#creation du dossier pour stocker les grilles crees par le joueur
-            FileUtils.cd('Grille')
-            FileUtils.mkdir(aName)
-            FileUtils.cd(aName)
-            FileUtils.mkdir('5x5')
-            FileUtils.mkdir('10x10')
-            FileUtils.mkdir('15x15')
-            FileUtils.mkdir('20x20')
-            FileUtils.mkdir('25x25')
-            FileUtils.cd('../..')
-
 #Si le Dossier au nom du profil cree existe deja, alors on le signale
           else
 
@@ -184,7 +173,7 @@ class Jeu
         FileUtils.cd(@profil.nom)
         FileUtils.cd('Parties')
         liste = YAML::load(File.open('parties.yml'))
-        liste.pop(p)
+        liste.delete(p)
         File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
         FileUtils.cd('../../..')
  
