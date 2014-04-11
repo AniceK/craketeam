@@ -113,7 +113,6 @@ class Rangee
         @valide = true
         return true     
              
-        end
     end     #marqueur de fin de verifier
 
 #methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
