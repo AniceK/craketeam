@@ -101,7 +101,8 @@ class Jeu
 
             puts "Le profil #{aName} existe!"
             #afficher une fenetre avec bienvenue truc
-            @profil = YAML::load( File.open('profil.yaml')
+            nom = aName + ".yml"
+            @profil = YAML::load( File.open(nom)
 
         ensure
 
@@ -110,32 +111,39 @@ class Jeu
         end
 	end
 
+#Methode d'instance qui initialise la variable d'instance @profil en creant l arborescence correpondante. On retourne un boolen indiquant si le profil existait ou pas (true pour nouveau, false sinon)
 	def creerProfil(unNom)
         
         aName = unNom.downcase()
         FileUtils.cd('Profil')
         resultat = true
 
+#On tente de se placer dans le Dossier du profil a creer
         begin
 
             Dir.chdir aName
-          
+
+#Si cela provoque une erreur, c'est que le dossier, et donc le profil, n'existait pas. On cree donc l'arborescence.
         rescue Errno::ENOENT => e
             
             puts "Le profil #{aName} n'existe pas !"
-            FileUtils.mkdir(aName)
-            FileUtils.cd('..')
+
+#Appel au constructeur de profil
+            @profil = Profil.creer(aName)
+
+
+#creation du dossier pour stocker les grilles crees par le joueur
             FileUtils.cd('Grille')
             FileUtils.mkdir(aName)
+            FileUtils.cd(aName)
             FileUtils.mkdir('5x5')
             FileUtils.mkdir('10x10')
             FileUtils.mkdir('15x15')
             FileUtils.mkdir('20x20')
             FileUtils.mkdir('25x25')
             FileUtils.cd('../..')
-	        @profil = Profil.creer(aName)
 
-          
+#Si le Dossier au nom du profil cree existe deja, alors on le signale
           else
 
             puts "Le profil #{aName} existe déjà"
@@ -150,13 +158,20 @@ class Jeu
 
 	end
 
+    def chargerListePartiesSauvegardees()
 
-	# Méthode permettant de récupérer une partie
+        liste = Array.new()
+        FileUtils.cd(@profil.nom)
+        FileUtils.cd('Parties')
+
+    end
+
+# Méthode recuperant une partie passée en paramètre, et fait de cette partie la partie en cours.
 	def chargerPartie()
 
 	end
 
-	def ajouterPartie()
+	def SauvegarderPartie()
 	end
 
 end
