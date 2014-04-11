@@ -107,7 +107,7 @@ class Jeu
 
             return resultat
 
-	  
+        end
 	end
 
 	def creerProfil(unNom)
