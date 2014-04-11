@@ -109,6 +109,7 @@ class Jeu
             return resultat
 
         end
+
 	end
 
 #Methode d'instance qui initialise la variable d'instance @profil en creant l arborescence correpondante. On retourne un boolen indiquant si le profil existait ou pas (true pour nouveau, false sinon)
