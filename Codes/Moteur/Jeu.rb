@@ -101,7 +101,7 @@ class Jeu
 
             puts "Le profil #{aName} existe!"
             #afficher une fenetre avec bienvenue truc
-            #@profil = YAML::load( File.open('profil.yaml')
+            @profil = YAML::load( File.open('profil.yaml')
 
         ensure
 

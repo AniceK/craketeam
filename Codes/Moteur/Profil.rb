@@ -30,6 +30,8 @@ class Profil
       FileUtils.cd(@nom)
       File.open('profil.yml', "w"){ |out| out.puts self.to_yaml}
       FileUtils.cd('../..')
+      #ajouter serialisation automatique a la creation
+
     end    #marqueur de fin d initialize
 
     def ajouterUneGrille()
