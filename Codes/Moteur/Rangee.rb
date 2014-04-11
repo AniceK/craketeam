@@ -73,9 +73,11 @@ class Rangee
             if x.etat == 1 then nbreCaseNoircie ++
             end if
         }
-        @valeur.each{ |x|
-            nbreCaseANoircir ++
+
+        @conditions.each{ |x|
+            nbreCaseANoircir += x
         }
+        
         if nbreCasNoircie != nbreCaseANoircir then
             
             @valide = false
@@ -85,29 +87,28 @@ class Rangee
         i = 0   #Compteur pour le tableau de valeurs
         j = 0   #Compteur pour le tableau de cases
         
-        while (j < @cases.size && i < @valeurs.size) then
+        while (j < @cases.size && i < @conditions.size) then
              
           while (@cases[j].etat !=1 && j < @cases.size)then
           
             j+=1
           end
-        end
              
-             nbreCaseNoircie = 0
-             
-             while (j < @cases.size && nbreCaseNoircie < @valeurs[i] && @cases.etat == 1)
-                
-                j+=1
-                nbreCaseNoircie +=1
-             end
-             
-             if (@cases[j].etat == 1 && nbreCaseNoircie >= @valeurs[i] || nbreCaseNoircie < @valeurs[i])
-                
-                @valide = false
-                return false
-             end
-             
-             i +=1
+          nbreCaseNoircie = 0
+         
+          while (j < @cases.size && nbreCaseNoircie < @conditions[i] && @cases.etat == 1)
+            
+            j+=1
+            nbreCaseNoircie +=1
+          end
+         
+          if (@cases[j].etat == 1 && nbreCaseNoircie >= @conditions[i] || nbreCaseNoircie < @conditions[i])
+            
+            @valide = false
+            return false
+          end
+         
+          i +=1
         end
         
         @valide = true
