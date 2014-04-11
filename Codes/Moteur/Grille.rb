@@ -87,6 +87,15 @@ class Grille
       end
     end
     
+	@olonne.each { |x|
+		x.conditionsDeterminer()
+		x.razCases()
+	}
+
+	@ligne.each { |x|
+		x.conditionsDeterminer()
+		x.razCases()
+	}
     #Récuperer ligne et colonne
     
   end
