@@ -7,7 +7,7 @@
 class Rangee
 
     @cases      #tableau de cases
-    @valeurs    #tableau des "conditions", indiquant comment remplir la grille
+    @conditions   #tableau des "conditions", indiquant comment remplir la grille
     @valide     #booleen indiquant l'etat de la grille
 
     attr_reader :cases, :valeurs, :valide
@@ -22,15 +22,15 @@ class Rangee
     def initialize(nbre)
 
         @cases = Array.new(nbre, Case.creer())
-        @valeurs = Array.new(nbre/2 + 1)
+        @conditions = Array.new(nbre/2 + 1)
         @valide = false
 
     end    #marqueur de fin d initialize
 
-#methode d'instance remplissant le tableau de valeurs à partir d'un tableau passé en paramètre
+#methode d'instance remplissant le tableau de cases à partir d'un tableau passé en paramètre
     def remplir(tab)
 
-        @valeurs = tab
+        @case = tab
     end     #marqueur de fin de remplir
 
 #Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.    
