@@ -7,7 +7,7 @@
 class Rangee
 
     @cases      #tableau de cases
-    @valeurs    #tableau des "conditions", indiquant comment remplir la grille
+    @conditions   #tableau des "conditions", indiquant comment remplir la grille
     @valide     #booleen indiquant l'etat de la grille
 
     attr_reader :cases, :valeurs, :valide
@@ -22,16 +22,47 @@ class Rangee
     def initialize(nbre)
 
         @cases = Array.new(nbre, Case.creer())
-        @valeurs = Array.new(nbre/2 + 1)
+        @conditions = Array.new(nbre/2 + 1)
         @valide = false
 
     end    #marqueur de fin d initialize
 
-#methode d'instance remplissant le tableau de valeurs à partir d'un tableau passé en paramètre
+#methode d'instance remplissant le tableau de cases à partir d'un tableau passé en paramètre
     def remplir(tab)
 
-        @valeurs = tab
+        @case = tab
     end     #marqueur de fin de remplir
+
+	# Méthode permettant de déterminer les conditions à partir d'un tableau
+
+	def conditionsDeterminer(tab)
+
+		cpt = 0
+		i = 0
+
+		tab.each { |x|
+
+			if x.etat() == 1 then
+				cpt += 1
+			else if x.etat() == 0 then
+				if cpt != 0 then
+					@conditions[i] = cpt
+					i += 1
+					cpt = 0
+				end if
+			end if
+
+		}
+
+	end
+
+	#Méthode réinitialisant l'état des cases de la Rangée
+
+	def razCases()
+		@cases.each { |x|
+			x.raz()
+		}
+	end
 
 #Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.    
     def verifier()
@@ -82,13 +113,12 @@ class Rangee
         @valide = true
         return true     
              
-        end
     end     #marqueur de fin de verifier
 
 #methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
     def noircir(numero)
 
-        @cases[numero].norcir
+        @cases[numero].noircir
     end     #marqueur de fin de noircir
     
 #methode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
