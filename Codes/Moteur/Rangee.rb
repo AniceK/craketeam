@@ -33,6 +33,29 @@ class Rangee
         @case = tab
     end     #marqueur de fin de remplir
 
+	# Méthode permettant de déterminer les conditions à partir d'un tableau
+
+	def conditionsDetermine(tab)
+
+		cpt = 0
+		i = 0
+
+		tab.each { |x|
+
+			if x.etat() == 1 then
+				cpt += 1
+			else if x.etat() == 0 then
+				if cpt != 0 then
+					@conditions[i] = cpt
+					i += 1
+					cpt = 0
+				end if
+			end if
+
+		}
+
+	end
+
 #Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.    
     def verifier()
 
@@ -88,7 +111,7 @@ class Rangee
 #methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
     def noircir(numero)
 
-        @cases[numero].norcir
+        @cases[numero].noircir
     end     #marqueur de fin de noircir
     
 #methode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
