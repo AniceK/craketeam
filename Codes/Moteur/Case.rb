@@ -58,4 +58,12 @@ class Case
 
 	end
 
+# La méthode suivante permet de réinitialiser l'état de la case à 0
+
+	def raz()
+
+		@etat = 0
+
+	end
+
 end
