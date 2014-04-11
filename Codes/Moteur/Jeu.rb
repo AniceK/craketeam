@@ -158,20 +158,49 @@ class Jeu
 
 	end
 
+#methode d instance renvoyant la liste des parties sauvegardees du profil en cours
     def chargerListePartiesSauvegardees()
 
         liste = Array.new()
+        FileUtils.cd('Profil')
         FileUtils.cd(@profil.nom)
         FileUtils.cd('Parties')
+        liste = YAML::load(File.open('parties.yml'))
+        FileUtils.cd('../../..')
+        return liste
 
     end
 
 # Méthode recuperant une partie passée en paramètre, et fait de cette partie la partie en cours.
-	def chargerPartie()
+	def chargerPartie(p)
 
+        @partie = p
 	end
+    
+    def supprimmerPartie(p)
 
-	def SauvegarderPartie()
-	end
+        liste = Array.new()
+        FileUtils.cd('Profil')
+        FileUtils.cd(@profil.nom)
+        FileUtils.cd('Parties')
+        liste = YAML::load(File.open('parties.yml'))
+        liste.pop(p)
+        File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+        FileUtils.cd('../../..')
+ 
+    end
+
+	def sauvegarderPartie()
+
+        liste = Array.new()
+        FileUtils.cd('Profil')
+        FileUtils.cd(@profil.nom)
+        FileUtils.cd('Parties')
+        liste = YAML::load(File.open('parties.yml'))
+        liste.push(@partie)
+        File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+        FileUtils.cd('../../..')
+
+    end
 
 end
