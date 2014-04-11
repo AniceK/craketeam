@@ -17,6 +17,7 @@ class Profil
     def Profil.creer(nom)
 
         new(nom)
+
     end    #marqueur de fin de constructeur
 
     def initialize(nom)
@@ -32,7 +33,9 @@ class Profil
     end    #marqueur de fin d initialize
 
     def ajouterUneGrille()
+
         @nbGrilles = @nbGrilles + 1
+
     end    #marqueur de fin de methode d'instance
 
 

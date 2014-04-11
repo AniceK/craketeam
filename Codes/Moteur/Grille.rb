@@ -19,21 +19,30 @@ class Grille
 	# Constructeur de la classe Grille
 
     def Grille.ajouter()
+
+
+
     end
 
     def initialize()
+
+
+
     end
 
 	# Méthode vérifiant la validité du coup joué
 
     def verifierCoup(coordX, coordY)
+
       @colonne[coordX].verifier()
       @ligne[coordY].verifier()
+
     end
 
 	# Méthode vérifiant si la partie est terminée, en passant en revue la validité de chacune des Rangées
 
     def termine?()
+
       res = true
       @colonne.each { |x|
           if x.valide() == false then
@@ -46,20 +55,25 @@ class Grille
           end
       }
       return res
+
     end
 
 	# Méthode permettant de noircir une Case à partir de ses coordonnées
 
 	def noircirCase(coordX, coordY)
+
 	    @colonne[coordX].noircir(coordY)
 	    @ligne[coordY].noircir(coordX)
+
 	end
 
 	# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
 
 	def marquerCase(coordX, coordY)
+
 	    @colonne[coordX].marquer(coordY)
 	    @ligne[coordY].marquer(coordY)
+
     end
 
 	# Méthode permettant la sauvegarde de la Grille dans son état actuel
@@ -77,8 +91,9 @@ class Grille
 
 
 	end
-  
+
   def genererAleatoire(unCoef)
+
     for i in (0..@ligne.lenght()-1)
       for j in (0..@colonne.lenght()-1)
         if (rand(100)) > unCoef then
@@ -86,7 +101,7 @@ class Grille
         end
       end
     end
-    
+
 	@olonne.each { |x|
 		x.conditionsDeterminer()
 		x.razCases()
@@ -96,8 +111,7 @@ class Grille
 		x.conditionsDeterminer()
 		x.razCases()
 	}
-    #Récuperer ligne et colonne
-    
+
   end
 
 end

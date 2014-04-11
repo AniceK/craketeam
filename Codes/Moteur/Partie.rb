@@ -31,6 +31,7 @@ class Partie
 	def termine?()
 
 	  return @grille.termine?()
+
 	end
 
 	# Méthode lançant la partie
@@ -45,10 +46,6 @@ class Partie
         
         if toutes then
         end
-
-
-
-
 	end
 
     # Méthode pour créer une grille aléatoirement
