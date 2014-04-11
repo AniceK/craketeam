@@ -12,3 +12,6 @@
 *.log
 *.aux
 *synctex.gz
+
+#Ignorer les fichiers de sauvegarde temporaire
+*.yml
