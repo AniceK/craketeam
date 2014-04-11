@@ -4,19 +4,26 @@ require 'yaml'
 require 'fileutils'
 load 'Profil.rb'
 
+FileUtils.cd('test')
+
 profil = Profil.creer("Mrtest")
-profil.ajouterUneGrille()
-profil.ajouterUneGrille()
-profil.ajouterUneGrille()
+profil1 = Profil.creer("Test1")
+profil2 = Profil.creer("Test2")
+profil3 = Profil.creer("Test3")
 
-puts profil.to_yaml
+tab = Array.new()
 
-File.mkdir(profil.nom)
-File.cd()
-File.open('save.yml', "w"){ |out| out.puts profil.to_yaml}
+tab.push(profil)
+tab.push(profil1)
+tab.push(profil2)
+tab.push(profil3)
 
-#truc = YAML.load_file('save.yml')
+#puts profil.to_yaml
 
-truc = YAML::load(File.open('save.yml'))
+File.open('parties.yml', "w"){ |out| out.puts tab.to_yaml} 
 
-puts truc.nom
+truc = Array.new(YAML::load(File.open('parties.yml')))
+
+truc.each{|x|
+    puts x.nom
+}
