@@ -77,7 +77,7 @@ class Grille
 
 
 	end
-  
+
   def genererAleatoire(unCoef)
     for i in (0..@ligne.lenght()-1)
       for j in (0..@colonne.lenght()-1)
@@ -86,7 +86,7 @@ class Grille
         end
       end
     end
-    
+
 	@olonne.each { |x|
 		x.conditionsDeterminer()
 		x.razCases()
@@ -97,7 +97,7 @@ class Grille
 		x.razCases()
 	}
     #Récuperer ligne et colonne
-    
+
   end
 
 end
