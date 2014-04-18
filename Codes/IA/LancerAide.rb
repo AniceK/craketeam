@@ -5,7 +5,7 @@
 load "GrillePicross.rb"
 
 class LancerAide
-  maGrille = GrillePicross.Creer(5, 5)
+  maGrille = GrillePicross.Creer(5)
   maGrille.VoirGrille
   
   
