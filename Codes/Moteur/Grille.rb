@@ -12,6 +12,7 @@ class Grille
     @ligne
     @grille
     @createur
+    @taille
 
     attr_reader :colonne, :ligne, :grille, :createur
 
@@ -25,6 +26,7 @@ class Grille
 
     def initialize(nom, taille)
 
+        @taille = taille
         @colonne = Array.new(taille, Rangee.ajouter(taille))
         @ligne = Array.new(taille, Rangee.ajouter(taille))
         @grille = Array.new(taille, Array.new(taille, Case.creer()))
@@ -95,23 +97,34 @@ class Grille
 
   def genererAleatoire(unCoef)
 
-    for i in (0..@ligne.length()-1)
-      for j in (0..@colonne.length()-1)
-        if (rand(100)) > unCoef then
-          @grille.noircirCase(i, j)
+    @ligne.each { |x|
+        x.razCases()
+    }
+    @colonne.each {
+        |x| x.razCases()
+    }
+
+    for i in (0..@taille-1)
+      for j in (0..@taille-1)
+          alea = 0 + Random.rand(100)
+          printf("alea : %i; i : %i ; j : %i\n", alea, i, j)
+          if (alea > unCoef) then
+              
+              @colonne[i].noircir(j)
+              @ligne[j].noircir(i)
         end
       end
     end
 
-    
+
 	@colonne.each { |x|
 		x.conditionsDeterminer()
-		x.razCases()
+		#x.razCases()
 	}
 
 	@ligne.each { |x|
 		x.conditionsDeterminer()
-		x.razCases()
+		#x.razCases()
 	}
 
   end
