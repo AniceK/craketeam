@@ -66,4 +66,9 @@ class Case
 
 	end
 
+#Methode d'affichage en terminal pour les tests
+    def afficher()
+        puts @etat
+    end
+
 end
