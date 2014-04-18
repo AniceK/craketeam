@@ -40,5 +40,5 @@ ra.afficher()
 
 puts "Test de la Grille"
 g1 = Grille.ajouter("toto", 5)
-g1.genererAleatoire(50)
+g1.genererAleatoire(90)
 g1.afficher()

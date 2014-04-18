@@ -103,7 +103,7 @@ printf("\nPourcentage de 1 : %i", cpt)
 #===========================================#
 #              Chronometre                  #
 #===========================================#
-
+=begin
 def timer(seconds)
   last_tick = Time.now
   loop do
@@ -120,3 +120,6 @@ t = Time.now
 timer(1) do
   p Time.now - t 
 end
+
+=end
+
