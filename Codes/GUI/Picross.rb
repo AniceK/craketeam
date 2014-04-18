@@ -54,6 +54,11 @@ class Builder < Gtk::Builder
     # => La pause devient celle du profil
     if @src == "Pause" then @src = "PauseProfil" end
     if @dst == "Pause" then @dst = "PauseProfil" end
+      
+    # => Le retour de la selection de taille vers le choix de partie
+    if @src == "SelectionTaille" then
+      if @dst == "AccueilProfil" then @dst = "ChoixPartie" end
+    end
   end
   
   ### Déplacement d'une fenêtre à l'autre ###
@@ -75,6 +80,19 @@ class Builder < Gtk::Builder
     @@pseudo = @entreePseudo.text
     print "Pseudo: " + @@pseudo + "\n"
     self['AccueilProfil'].set_title('Accueil - ' + @@pseudo)
+  end
+  
+  ## Création d'une grille de taille fournie en paramètre
+  def creationGrille(size)
+    @grilleJeu.n_rows = size;
+    @grilleJeu.n_columns = size;
+    @conditionsH.n_rows = size;
+    @conditionsH.n_columns = size;
+    @conditionsH.n_rows = size;
+    @conditionsH.n_columns = size;
+    
+    @grilleJeu.attach_defaults(Gtk::Button.new(''), 0,1,0,1)
+    @grilleJeu.attach_defaults(Gtk::Button.new(''), 0,1,1,2)
   end
   
   ##################################################################
@@ -131,7 +149,7 @@ class Builder < Gtk::Builder
   
   ### Envoi vers sélection de taille ###
   def on_nouvellePartie_clicked
-    mouvement("ChoixPartie", "ModeDeJeu")
+    mouvement("ChoixPartie", "SelectionTaille")
   end
   
   def on_chargerPartie_clicked
@@ -163,7 +181,41 @@ class Builder < Gtk::Builder
   end
   
   def on_size5x5_clicked
-    mouvement("SelectionTaille", "Jeu")
+    creationGrille(5)
+    mouvement("SelectionTaille", "ChoixGrille")
+  end
+  
+  def on_size10x10_clicked
+    creationGrille(10)
+    mouvement("SelectionTaille", "ChoixGrille")
+  end
+  
+  ##################################################################
+  #                         Choix de Grille                        #
+  ##################################################################
+  
+  def on_choixGrilleBack_clicked         
+    mouvement("ChoixGrille", "SelectionTaille")
+  end
+  
+  def on_grilleExistante_clicked
+    mouvement("ChoixGrille", "ChoixGrilleExistante")
+  end
+  
+  def on_grilleAleatoire_clicked
+    mouvement("ChoixGrille", "Jeu")
+  end
+  
+  ##################################################################
+  #                    Choix de Grille Existante                   #
+  ##################################################################
+  
+  def on_choixGrilleExistanteBack_clicked         
+    mouvement("ChoixGrilleExistante", "ChoixGrille")
+  end
+  
+  def on_validerChoixGrilleExistante_clicked         
+    mouvement("ChoixGrilleExistante", "Jeu")
   end
   
   ##################################################################
@@ -186,6 +238,10 @@ class Builder < Gtk::Builder
     mouvement("Jeu", "Pause")
   end
   
+  def on_aideJeu_clicked
+    mouvement("Jeu", "JeuFin")
+  end
+  
   ##################################################################
   #                             Pause                              #
   ##################################################################
@@ -202,6 +258,14 @@ class Builder < Gtk::Builder
   
   def on_pauseToAccueil_clicked
     mouvement("Pause", "Accueil")
+  end
+  
+  ##################################################################
+  #                          Jeu terminé                           #
+  ##################################################################
+  
+  def on_recommencePartie_clicked
+    mouvement("JeuFin", "SelectionTaille")
   end
   
   ##################################################################
