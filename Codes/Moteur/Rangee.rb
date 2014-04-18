@@ -30,6 +30,11 @@ class Rangee
 
     end    #marqueur de fin d initialize
 
+    #methode recuperant un numero de cas et un etat et mettant la case numero a cet etat
+    def setCase(numero, etat)
+        
+        @cases[numero].etat = etat
+    end
 #methode d'instance remplissant le tableau de cases à partir d'un tableau passé en paramètre
     def remplir(tab)
 
@@ -46,14 +51,15 @@ class Rangee
 
 			if x.etat == 1 then
                 cpt += 1
-			elsif x.etat != 1 or x == @cases.last() then
+			elsif x.etat != 1 then
                 if cpt != 0 then
                     @conditions.push(cpt)
 			        cpt = 0
 				end
-			end
+            end
             if x == @cases.last() and cpt != 0 then
                 @conditions.push(cpt)
+                cpt = 0
             end
         end
 	end
@@ -123,7 +129,8 @@ class Rangee
 #methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
     def noircir(numero)
 
-        @cases[numero].noircir
+        @cases[numero].noircir()
+        puts "case noircie"
 
     end     #marqueur de fin de noircir
 
