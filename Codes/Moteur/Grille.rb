@@ -4,30 +4,31 @@
 #Ce fichier contient la classe Grille, qui est constituee de Case
 #ici une description de la classe Grille.
 
-require 'Rangee'
+load "Rangee.rb"
 
 class Grille
 
     @colonne
     @ligne
     @grille
+    @createur
 
-    attr :colonne, true
-    attr :ligne, true
-    attr :grille, true
+    attr_reader :colonne, :ligne, :grille, :createur
 
 	# Constructeur de la classe Grille
 
-    def Grille.ajouter()
-
-
+    def Grille.ajouter(nom, taille)
+    
+        new(nom, taille)
 
     end
 
-    def initialize()
+    def initialize(nom, taille)
 
-
-
+        @colonne = Array.new(taille, Rangee.ajouter(taille))
+        @ligne = Array.new(taille, Rangee.ajouter(taille))
+        @grille = Array.new(taille, Array.new(taille, Case.creer()))
+        @createur = nom
     end
 
 	# Méthode vérifiant la validité du coup joué
@@ -94,15 +95,16 @@ class Grille
 
   def genererAleatoire(unCoef)
 
-    for i in (0..@ligne.lenght()-1)
-      for j in (0..@colonne.lenght()-1)
+    for i in (0..@ligne.length()-1)
+      for j in (0..@colonne.length()-1)
         if (rand(100)) > unCoef then
           @grille.noircirCase(i, j)
         end
       end
     end
 
-	@olonne.each { |x|
+    
+	@colonne.each { |x|
 		x.conditionsDeterminer()
 		x.razCases()
 	}
@@ -112,6 +114,14 @@ class Grille
 		x.razCases()
 	}
 
+  end
+
+  #methode d'affichage reservee aux tests, affichage uniquement des colonnes
+  def afficher()
+
+      @colonne.each { |x|
+          x.afficher()
+      }
   end
 
 end
