@@ -4,6 +4,8 @@
 #Ce fichier contient la classe Rangee, qui est constituee de Case
 #ici une description de la classe Rangee.
 
+load "Case.rb"
+
 class Rangee
 
     @cases      #tableau de cases
@@ -15,7 +17,7 @@ class Rangee
 #constructeur de la classe Rangee. Récupère en argument le nombre de cases de la rangée
     def Rangee.ajouter(nbreCase)
 
-        new(nbreCases)
+        new(nbreCase)
 
     end    #marqueur de fin de constructeur
 
@@ -23,7 +25,7 @@ class Rangee
     def initialize(nbre)
 
         @cases = Array.new(nbre, Case.creer())
-        @conditions = Array.new(nbre/2 + 1)
+        @conditions = Array.new()
         @valide = false
 
     end    #marqueur de fin d initialize
@@ -31,30 +33,29 @@ class Rangee
 #methode d'instance remplissant le tableau de cases à partir d'un tableau passé en paramètre
     def remplir(tab)
 
-        @case = tab
+        @cases = tab
     end     #marqueur de fin de remplir
 
 	# Méthode permettant de déterminer les conditions à partir d'un tableau
 
-	def conditionsDeterminer(tab)
+	def conditionsDeterminer()
 
 		cpt = 0
-		i = 0
 
-		tab.each do |x|
+		@cases.each do |x|
 
-			if x.etat() == 1 then
-				cpt += 1
-			else if x.etat() == 0 then
-				if cpt != 0 then
-					@conditions[i] = cpt
-					i += 1
-			cpt = 0
-				end 
-			end 
-
-	end
-
+			if x.etat == 1 then
+                cpt += 1
+			elsif x.etat != 1 or x == @cases.last() then
+                if cpt != 0 then
+                    @conditions.push(cpt)
+			        cpt = 0
+				end
+			end
+            if x == @cases.last() and cpt != 0 then
+                @conditions.push(cpt)
+            end
+        end
 	end
 
 	#Méthode réinitialisant l'état des cases de la Rangée
@@ -70,9 +71,11 @@ class Rangee
 
         nbreCaseNoircie = 0
         nbreCaseANoircir = 0
+        
         @cases.each{ |x|
             if x.etat == 1 then 
-              nbreCaseNoircie ++
+              
+                nbreCaseNoircie+=1
             end
         }
 
@@ -80,32 +83,31 @@ class Rangee
             nbreCaseANoircir += x
         }
 
-        if nbreCasNoircie != nbreCaseANoircir then
+        if nbreCaseNoircie != nbreCaseANoircir then
 
             @valide = false
             return false
         end
 
-        i = 0   #Compteur pour le tableau de valeurs
+        i = 0   #Compteur pour le tableau de conditions
         j = 0   #Compteur pour le tableau de cases
 
-        while (j < @cases.size && i < @conditions.size) then
+        while (j < @cases.size()-1 and i < @conditions.size()-1)
 
-          while (@cases[j].etat !=1 && j < @cases.size)then
+          while (@cases[j].etat !=1 and j < @cases.size()-1)
 
             j+=1
           end
 
           nbreCaseNoircie = 0
 
-          while (j < @cases.size && nbreCaseNoircie < @conditions[i] && @cases.etat == 1)
+          while (j < @cases.size()-1 and nbreCaseNoircie < @conditions[i] and @cases[j].etat == 1)
 
             j+=1
             nbreCaseNoircie +=1
           end
 
-          if (@cases[j].etat == 1 && nbreCaseNoircie >= @conditions[i] || nbreCaseNoircie < @conditions[i])
-
+          if (@cases[j].etat == 1 and nbreCaseNoircie >= @conditions[i] or nbreCaseNoircie < @conditions[i]) then
             @valide = false
             return false
           end
@@ -132,4 +134,15 @@ class Rangee
         @cases[numero].marquer
 
     end
+
+#methode d'affichage dans un terminal pour les tests
+    def afficher()
+        
+        puts @conditions.to_s()
+        @cases.each { |x|
+            x.afficher()
+        }
+        #puts @valide.to_s()
+    end
+
 end     #marqueur de fin de class
