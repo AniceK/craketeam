@@ -31,30 +31,27 @@ class Case
 
     def noircir()
 
-      if (@etat != 1)
+        if @etat == 1 then
+            
+            @etat = 0
+        
+        elsif @etat == 0 then
 
-        @etat = 1
-
-      else
-
-        @etat = 0
-
-      end
+            @etat = 1
+        end
 
     end
 
 	def marquer()
 
-		if (@etat != 2)
+			if @etat == 2 then
 
-			@etat = 2
+                @etat = 0
+            
+            elsif @etat == 0 then
 
-		else
-
-			@etat =0
-
-		end
-
+                @etat = 2
+            end
 	end
 
 # La méthode suivante permet de réinitialiser l'état de la case à 0

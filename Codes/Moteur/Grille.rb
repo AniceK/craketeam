@@ -27,10 +27,17 @@ class Grille
     def initialize(nom, taille)
 
         @taille = taille
-        @colonne = Array.new(taille, Rangee.ajouter(taille))
-        @ligne = Array.new(taille, Rangee.ajouter(taille))
+        @colonne = Array.new(taille)
+        @ligne = Array.new(taille)
         @grille = Array.new(taille, Array.new(taille, Case.creer()))
         @createur = nom
+
+        for i in (0 .. taille-1)
+
+            @colonne[i] = Rangee.ajouter(taille)
+            @ligne[i] = Rangee.ajouter(taille)
+        end
+
     end
 
 	# Méthode vérifiant la validité du coup joué
@@ -105,13 +112,14 @@ class Grille
     }
 
     for i in (0..@taille-1)
-      for j in (0..@taille-1)
+      
+        for j in (0..@taille-1)
+          
           alea = 0 + Random.rand(100)
-          printf("alea : %i; i : %i ; j : %i\n", alea, i, j)
+          
           if (alea > unCoef) then
               
-              @colonne[i].noircir(j)
-              @ligne[j].noircir(i)
+              self.noircirCase(i, j)
         end
       end
     end
@@ -119,12 +127,10 @@ class Grille
 
 	@colonne.each { |x|
 		x.conditionsDeterminer()
-		#x.razCases()
 	}
 
 	@ligne.each { |x|
 		x.conditionsDeterminer()
-		#x.razCases()
 	}
 
   end
