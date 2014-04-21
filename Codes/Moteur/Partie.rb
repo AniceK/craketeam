@@ -52,14 +52,17 @@ class Partie
         if toutes then
             return tab
         else
-            return tab.
-
-
+            return tab.find_all{ |x|
+                x.createur() == profil.nom()
+            }
+        end
 
 	end
 
     #Methode pour charger une grille passe en parametre
     def chargerGrille(grille)
+
+        @grille = grille
     end
 
     # Méthode pour créer une grille aléatoirement
@@ -70,6 +73,7 @@ class Partie
     end
 
 
+    #methode pour actualiser l'aide
     def chercherAide()
 
         @aide.chercherAide(@grille.colonne, @grille.ligne)
