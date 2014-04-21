@@ -3,6 +3,7 @@
 #
 
 load "Grille.rb"
+load "Aide.rb"
 =begin
 my_case = Case.creer()
 my_case.noircir()
@@ -40,6 +41,7 @@ ra.afficher()
 
 puts "Test de la Grille"
 g1 = Grille.ajouter("toto", 5)
+aide = Aide.creer(2)
 g1.genererAleatoire(50)
 #g1.noircirCase(4, 4)
 g1.afficher()
@@ -50,5 +52,9 @@ for i in (0 .. 4)
         g1.verifierCoup(i, j)
     end
 end
+
+puts"\n"
+aide.chercherAide(g1.colonne, g1.ligne)
+puts "\n"
 
 puts g1.termine?().to_s()
