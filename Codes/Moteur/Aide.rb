@@ -38,46 +38,68 @@ class Aide
       tabCondLig.push(x.conditions)
     }
     
-    cpt = 0
+    pos = 1
 
     puts "\nCondition des colonnes\n"
-    tabCondCol.each{ |x|
-      tot = 0
+    for tabTabCol in tabCondCol
+      totalCol = 0
       
-      x.each{ |y| tot += y}
-      
-      puts "Total de la colonne #{cpt} : #{tot}"
-      
-      if tot == tabTaille then
-        puts "La colonne #{cpt} est pleine"
-      
-      elsif tot == 0
-        puts "La colonne #{cpt} est vide"
-      
+      for valCol in tabTabCol 
+        totalCol += valCol
       end
       
-      cpt += 1
-    }
-    
-    cpt = 0
-    
-    puts "\nCondition des lignes\n"
-    tabCondLig.each{ |x|
-      tot = 0
+      #puts "Total de la colonne #{pos} : #{totalCol}"
       
-      x.each{ |y| tot += y}
+      if totalCol == tabTaille then
+        puts "Colonne #{pos} : pleine\n"
       
-      puts "Total de la ligne #{cpt} : #{tot}"
-      
-      if tot == tabTaille then
-        puts "La ligne #{cpt} est pleine"
+      elsif totalCol == 0
+        puts "Colonne #{pos} : vide\n"
         
-      elsif tot == 0 
-        puts "La ligne #{cpt} est vide"
+      elsif tabTabCol.count > tabTaille/2 && tabTaille%2 == 1
+        puts "Colonne #{pos} : une case sur deux en partant du bord\n"
+        
+      elsif tabTabCol.count == 1 && totalCol > tabTaille/2
+        printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"");
+         
+      else
+        puts "Colonne #{pos}: aucune aide disponible"
       end
       
-      cpt += 1
-    }
+      pos += 1
+    end
+    
+    pos = 1
+    
+    puts "\n\nCondition des lignes\n"
+    for tabTabLig in tabCondLig
+      totalLig = 0
+      
+      for valLig in tabTabLig 
+        totalLig += valLig
+      end
+      
+      #puts "Total de la ligne #{pos} : #{totalLig}"
+      
+      if totalLig == tabTaille then
+        puts "Ligne #{pos} : pleine"
+        
+      elsif totalLig == 0 
+        puts "Ligne #{pos} : vide"
+        
+      elsif tabTabLig.count > tabTaille/2 && tabTaille%2 == 1
+        puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
+        
+      elsif tabTabLig.count == 1 && totalLig > tabTaille/2
+        printf("Ligne %i : %i case%s à colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"");
+      
+      else
+        puts "Ligne #{pos} : aucune aide disponible"
+      
+      end
+      
+      pos += 1
+    end
     
   end
 end #marqueur de fin de classe
