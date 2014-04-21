@@ -53,6 +53,7 @@ for i in (0 .. 4)
     end
 end
 
+
 puts"\n"
 aide.chercherAide(g1.colonne, g1.ligne)
 puts "\n"
