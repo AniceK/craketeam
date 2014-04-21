@@ -12,7 +12,7 @@ class Rangee
     @conditions   #tableau des "conditions", indiquant comment remplir la grille
     @valide     #booleen indiquant l'etat de la grille
 
-    attr_reader :cases, :valeurs, :valide
+    attr_reader :cases, :conditions, :valide
 
 #constructeur de la classe Rangee. Récupère en argument le nombre de cases de la rangée
     def Rangee.ajouter(nbreCase)

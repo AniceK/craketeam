@@ -17,17 +17,17 @@ class Partie
     attr_reader :grille, :type, :aide, :creation
 
 	# Constructeur de la classe Partie
-    def Partie.creer(taille)
+    def Partie.creer(taille, difficulte)
 
-		new(taille)
+		new(taille, difficulte)
 
     end
 
-    def initialize()
+    def initialize(taille)
 
 		@grille = Grille.ajouter(taille)
 		@creation = now
-        @aide = 
+        @aide = Aide.creer(difficulte)
 
     end    #marqueur de fin d initialize
 
@@ -45,10 +45,17 @@ class Partie
 
 	# Méthode permettant de renvoyer la Liste des grilles deja existante
 	def chargerGrillesExistantes(taille, profil, toutes)
-
+        
         FileUtils.cd('Grilles')
-        
-        
+        tab = Array.new(YAML::load(File.open('grilles.yml')))
+
+        if toutes then
+            return tab
+        else
+            return tab.
+
+
+
 	end
 
     #Methode pour charger une grille passe en parametre
