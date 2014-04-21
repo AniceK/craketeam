@@ -5,7 +5,8 @@
 
 class Aide
   
-  
+  def chercherAide(tabTab)
+    
   
   
   
