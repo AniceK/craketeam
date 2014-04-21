@@ -3,8 +3,6 @@
 #
 #Ce fichier contient la classe Aide
 
-load "Rangee.rb"
-
 class Aide
   
   @difficulte
@@ -30,25 +28,55 @@ class Aide
   
   def chercherAide(tabCol, tabLig)
     
-    taille = tabCol.size()
+    tabTaille = tabCol.size()
+    
     tabCol.each{ |x|
       tabCondCol.push(x.conditions)
     }
     
-    tabCol.each{ |x|
+    tabLig.each{ |x|
       tabCondLig.push(x.conditions)
     }
+    
+    cpt = 0
 
-    puts "Condition des colonnes"
-    tabCondCol.each{ |y|
-      puts y
-      puts "\n"
+    puts "\nCondition des colonnes\n"
+    tabCondCol.each{ |x|
+      tot = 0
+      
+      x.each{ |y| tot += y}
+      
+      puts "Total de la colonne #{cpt} : #{tot}"
+      
+      if tot == tabTaille then
+        puts "La colonne #{cpt} est pleine"
+      
+      elsif tot == 0
+        puts "La colonne #{cpt} est vide"
+      
+      end
+      
+      cpt += 1
     }
     
-    puts "Condition des lignes"
-    tabCondLig.each{ |y|
-      puts y
-      puts "\n"
+    cpt = 0
+    
+    puts "\nCondition des lignes\n"
+    tabCondLig.each{ |x|
+      tot = 0
+      
+      x.each{ |y| tot += y}
+      
+      puts "Total de la ligne #{cpt} : #{tot}"
+      
+      if tot == tabTaille then
+        puts "La ligne #{cpt} est pleine"
+        
+      elsif tot == 0 
+        puts "La ligne #{cpt} est vide"
+      end
+      
+      cpt += 1
     }
     
   end
