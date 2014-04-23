@@ -86,22 +86,6 @@ class Grille
 
     end
 
-	# Méthode permettant la sauvegarde de la Grille dans son état actuel
-
-	def sauvegarderGrille()
-
-
-
-	end
-
-	# Méthode permettant de charger une Grille préalablement sauvegarder à partir de son nom
-
-	def chargerGrille(unNom)
-
-
-
-	end
-
   def genererAleatoire(unCoef)
 
     @ligne.each { |x|
@@ -126,15 +110,41 @@ class Grille
 
 
 	@colonne.each { |x|
-		x.conditionsDeterminer()
+		
+	  x.conditionsDeterminer()
+		x.razCases()
 	}
 
 	@ligne.each { |x|
-		x.conditionsDeterminer()
+		
+	  x.conditionsDeterminer()
+    x.razCases()
 	}
 
   end
-
+  
+  #methode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
+  def raz()
+    @colonne.each { |x|
+      
+      x.razCases()
+    }
+    
+    @ligne.each { |x|
+    
+      x.razCases()
+    }
+    
+    @grille.each { |x|
+    
+      x.each { |y|
+      
+        y.raz()
+      }
+    }
+      }
+  end
+  
   #methode d'affichage reservee aux tests, affichage uniquement des colonnes
   def afficher()
 
