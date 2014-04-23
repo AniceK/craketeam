@@ -18,7 +18,7 @@ class Grille
 
 	# Constructeur de la classe Grille
 
-    def Grille.ajouter(nom, taille)
+    def Grille.creer(nom, taille)
     
         new(nom, taille)
 
@@ -34,8 +34,8 @@ class Grille
 
         for i in (0 .. taille-1)
 
-            @colonne[i] = Rangee.ajouter(taille)
-            @ligne[i] = Rangee.ajouter(taille)
+            @colonne[i] = Rangee.creer(taille)
+            @ligne[i] = Rangee.creer(taille)
         end
 
     end
@@ -112,19 +112,20 @@ class Grille
 	@colonne.each { |x|
 		
 	  x.conditionsDeterminer()
-		x.razCases()
+      x.razCases()
 	}
 
 	@ligne.each { |x|
 		
 	  x.conditionsDeterminer()
-    x.razCases()
+      x.razCases()
 	}
 
   end
   
   #methode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
   def raz()
+    
     @colonne.each { |x|
       
       x.razCases()
@@ -142,7 +143,6 @@ class Grille
         y.raz()
       }
     }
-      }
   end
   
   #methode d'affichage reservee aux tests, affichage uniquement des colonnes

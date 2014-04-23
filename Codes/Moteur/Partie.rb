@@ -25,7 +25,7 @@ class Partie
 
     def initialize(taille)
 
-		@grille = Grille.ajouter(taille)
+		@grille = Grille.creer(taille)
 		@creation = now
         @aide = Aide.creer(difficulte)
 
@@ -43,9 +43,12 @@ class Partie
         tab = Array.new(YAML::load(File.open('grilles.yml')))
 
         if toutes then
+
             return tab
         else
+
             return tab.find_all{ |x|
+
                 x.createur() == profil.nom()
             }
         end
@@ -69,7 +72,8 @@ class Partie
     
     #methode pour sauvegarder la grille vierge
     def sauvegarder()
-      @grille.raz
+
+      @grille.raz()
     end
 
 #=================================================
