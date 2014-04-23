@@ -31,13 +31,6 @@ class Partie
 
     end    #marqueur de fin d initialize
 
-	# Méthode de test de fin de partie
-	def termine?()
-
-	  return @grille.termine?()
-
-	end
-
 	# Méthode lançant la partie
 	def lancer()
 
@@ -57,6 +50,8 @@ class Partie
             }
         end
 
+        FileUtils.cd('..')
+
 	end
 
     #Methode pour charger une grille passe en parametre
@@ -65,18 +60,52 @@ class Partie
         @grille = grille
     end
 
-    # Méthode pour créer une grille aléatoirement
-
-    def genererAleatoirementGrille()
-
-        @grille.genererAleatoire()
-    end
-
 
     #methode pour actualiser l'aide
     def chercherAide()
 
         @aide.chercherAide(@grille.colonne, @grille.ligne)
     end
+    
+    #methode pour sauvegarder la grille vierge
+    def sauvegarder()
+      @grille.raz
+    end
 
+#=================================================
+    #ici commencent les méthodes de retransmission
+#=================================================
+    
+# Méthode pour créer une grille aléatoirement
+    def genererAleatoirementGrille()
+
+        @grille.genererAleatoire()
+    end
+
+   
+# Méthode de test de fin de partie
+	def termine?()
+
+	  return @grille.termine?()
+
+	end
+
+#methode de noircissage d'une case(X, Y)
+    def noircir(x, y)
+
+        @grille.noircir(x, y)
+    end
+
+#methode de marquage d'une case (X, Y)
+    def marquer(x, y)
+
+        @grille.marquer(x, y)
+    end
+
+#methode de verification d'un cou joué
+  def verifierCoup(coordX, coordY)
+    
+        @grille.verifierCoup(coordX, coordY)
+  end
+  
 end
