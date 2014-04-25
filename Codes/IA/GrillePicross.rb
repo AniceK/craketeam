@@ -222,11 +222,13 @@ class GrillePicross
         somme += @TabLignes[o][p] 
           if(somme == @Taille)
             print "Ligne " + (o+1).to_s() + ": vous pouvez colorier toutes les cases !\n"
-          elsif(somme == @Taille - 1)
-            print "Ligne " + (o+1).to_s() + " A voir\n"
           elsif(@TabLignes[o][p] > @Taille / 2)
             print "Ligne " + (o+1).to_s() + ": la case du milieu est forcement coloriée\n"
           end
+          if(somme == @Taille - 1)
+            print "Ligne " + (o+1).to_s() + ": Une seul case blanche\n"
+          end
+          
       }
        if(somme == 0) 
          print "Ligne " + (o+1).to_s() + " rien à faire !\n"
@@ -244,22 +246,25 @@ class GrillePicross
         somme += @TabColonnes[p][o] 
           if(somme == @Taille)
             print "Colonne " + (o+1).to_s() + ": vous pouvez colorier toutes les cases !\n"
-          elsif(somme == @Taille - 1)
-            print "Colonne " + (o+1).to_s() + " A voir\n"
           elsif(@TabColonnes[p][o] > @Taille / 2)
             print "Colonne " + (o+1).to_s() + ": la case du milieu est forcement coloriée\n"
           end
+          if(somme == @Taille - 1)
+            print "Colonne " + (o+1).to_s() + ": Une seul case blanche\n"
+          end
+         
       }
        if(somme == 0) 
          print "Colonne " + (o+1).to_s() + " rien à faire !\n"
        end
     }
   end
-  
 end
 
+
+
 class LancerAide
-  maGrille = GrillePicross.Creer(5)
+  maGrille = GrillePicross.Creer(10)
   maGrille.VoirGrille
   
   

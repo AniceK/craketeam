@@ -48,7 +48,6 @@ class Partie
         else
 
             return tab.find_all{ |x|
-
                 x.createur() == profil.nom()
             }
         end
