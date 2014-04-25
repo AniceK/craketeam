@@ -3,6 +3,8 @@
 #
 #Ce fichier contient la classe Aide
 
+#Encoding: UTF-8
+
 class Aide
   
   @difficulte
@@ -60,7 +62,7 @@ class Aide
         puts "Colonne #{pos} : une case sur deux en partant du bord\n"
         
       elsif tabTabCol.count == 1 && totalCol > tabTaille/2
-        printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"");
+        printf("Colonne %i : %i case%s a colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"");
          
       else
         puts "Colonne #{pos}: aucune aide disponible"
@@ -91,7 +93,7 @@ class Aide
         puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
         
       elsif tabTabLig.count == 1 && totalLig > tabTaille/2
-        printf("Ligne %i : %i case%s à colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"");
+        printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"");
       
       else
         puts "Ligne #{pos} : aucune aide disponible"
