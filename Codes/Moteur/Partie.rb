@@ -53,7 +53,7 @@ class Partie
             return tab
         else
             return tab.
-
+        end
 
 
 	end
