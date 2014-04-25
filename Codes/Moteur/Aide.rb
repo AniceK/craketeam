@@ -95,12 +95,12 @@ class Aide
         puts "Colonne #{pos} : une case sur deux en partant du bord\n"
         
       elsif tabTabCol.count == 1 && totalCol > tabTaille/2
-        printf("Colonne %i : %i case%s a colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"");
-         
-      elsif tabCol.colonne(pos-1).noircie?(tabTaille-1)
+        printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"");
+      
+      elsif tabCol[pos-1].noircie?(tabTaille-1)
         printf("Colonne %i : %i case%s à colorier en partant du bord du bas\n", pos, tabTabCol.last(), tabTabCol.last()>1 ? "s":"");
       
-      elsif tabCol.colonne(pos-1).noircie?(0)
+      elsif tabCol[pos-1].noircie?(0)
         printf("Colonne %i : %i case%s à colorier en partant du bord du haut\n", pos, tabTabCol.first(), tabTabCol.first()>1 ? "s":"");
                     
       elsif checkNoircieBord(tabCol, pos, tabTabCol, tabTaille, 1, 0)
@@ -140,10 +140,10 @@ class Aide
       elsif tabTabLig.count == 1 && totalLig > tabTaille/2
         printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"");
       
-      elsif tabLig.ligne(pos-1).noircie?(tabTaille-1)
+      elsif tabLig[pos-1].noircie?(tabTaille-1)
         printf("Ligne %i : %i case%s à colorier en partant du bord du droit\n", pos, tabTabLig.last(), tabTabLig.last()>1 ? "s":"");
         
-      elsif tabLig.ligne(pos-1).noircie?(0)
+      elsif tabLig[pos-1].noircie?(0)
         printf("Ligne %i : %i case%s à colorier en partant du bord du gauche\n", pos, tabTabLig.first(), tabTabLig.first()>1 ? "s":"");
            
       elsif checkNoircieBord(tabLig, pos, tabTabLig, tabTaille, 1, 1)

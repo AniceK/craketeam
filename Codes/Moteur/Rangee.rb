@@ -15,7 +15,7 @@ class Rangee
     attr_reader :cases, :conditions, :valide
 
 #constructeur de la classe Rangee. Récupère en argument le nombre de cases de la rangée
-    def Rangee.ajouter(nbreCase)
+    def Rangee.creer(nbreCase)
 
         new(nbreCase)
 
@@ -160,12 +160,11 @@ class Rangee
 
     end
     
+    #methode vérifiant si la case numero est noircie
     def noircie?(numero)
-        if(@cases[numero].etat == 1) 
-            return 1
-        else
-            return 0
-        end
+        
+        return(@cases[numero].etat == 1) 
+        
     end
 
 #methode d'affichage dans un terminal pour les tests

@@ -25,18 +25,11 @@ class Partie
 
     def initialize(taille)
 
-		@grille = Grille.ajouter(taille)
+		@grille = Grille.creer(taille)
 		@creation = now
         @aide = Aide.creer(difficulte)
 
     end    #marqueur de fin d initialize
-
-	# Méthode de test de fin de partie
-	def termine?()
-
-	  return @grille.termine?()
-
-	end
 
 	# Méthode lançant la partie
 	def lancer()
@@ -50,29 +43,66 @@ class Partie
         tab = Array.new(YAML::load(File.open('grilles.yml')))
 
         if toutes then
+
             return tab
         else
-            return tab.
+
+            return tab.find_all{ |x|
+                x.createur() == profil.nom()
+            }
         end
 
+        FileUtils.cd('..')
 
 	end
 
     #Methode pour charger une grille passe en parametre
     def chargerGrille(grille)
+
+        @grille = grille
     end
 
-    # Méthode pour créer une grille aléatoirement
 
+    #methode pour actualiser l'aide
+    def chercherAide()
+
+        @aide.chercherAide(@grille.colonne, @grille.ligne)
+    end
+    
+    #methode pour sauvegarder la grille vierge
+    def sauvegarder()
+
+      @grille.raz()
+    end
+
+    #methode pour noircir une case et verifier si la colonne et la grille correspondante sont validées
+    def noircir(coordX, coordY)
+        @grille.noircir(coordX, coordY)
+        @grille.verifierCoup(coordX, coordY)
+    end
+
+#=================================================
+    #ici commencent les méthodes de retransmission
+#=================================================
+    
+# Méthode pour créer une grille aléatoirement
     def genererAleatoirementGrille()
 
         @grille.genererAleatoire()
     end
 
+   
+# Méthode de test de fin de partie
+	def termine?()
 
-    def chercherAide()
+	  return @grille.termine?()
 
-        @aide.chercherAide(@grille.colonne, @grille.ligne)
+	end
+
+#methode de marquage d'une case (X, Y)
+    def marquer(x, y)
+
+        @grille.marquer(x, y)
     end
-
+  
 end
