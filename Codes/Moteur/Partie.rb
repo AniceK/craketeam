@@ -75,6 +75,12 @@ class Partie
       @grille.raz()
     end
 
+    #methode pour noircir une case et verifier si la colonne et la grille correspondante sont validées
+    def noircir(coordX, coordY)
+        @grille.noircir(coordX, coordY)
+        @grille.verifierCoup(coordX, coordY)
+    end
+
 #=================================================
     #ici commencent les méthodes de retransmission
 #=================================================
@@ -93,22 +99,10 @@ class Partie
 
 	end
 
-#methode de noircissage d'une case(X, Y)
-    def noircir(x, y)
-
-        @grille.noircir(x, y)
-    end
-
 #methode de marquage d'une case (X, Y)
     def marquer(x, y)
 
         @grille.marquer(x, y)
     end
-
-#methode de verification d'un cou joué
-  def verifierCoup(coordX, coordY)
-    
-        @grille.verifierCoup(coordX, coordY)
-  end
   
 end
