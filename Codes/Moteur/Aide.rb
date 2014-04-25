@@ -141,7 +141,6 @@ class Aide
         printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"")
       
       elsif tabLig[pos-1].noircie?(tabTaille-1)
-        printf("Ligne %i : noircie?(%i) --> %i\n", pos, tabTaille-1, tabLig[pos-1].noircie?(tabTaille-1) );
         printf("Ligne %i : %i case%s à colorier en partant du bord du droit\n", pos, tabTabLig.last(), tabTabLig.last()>1 ? "s":"")
         
       elsif tabLig[pos-1].noircie?(0)
