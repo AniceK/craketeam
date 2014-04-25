@@ -162,9 +162,7 @@ class Rangee
     
     #methode vérifiant si la case numero est noircie
     def noircie?(numero)
-        
-        return(@cases[numero].etat == 1) 
-        
+        return @cases[numero].etat == 1
     end
 
 #methode d'affichage dans un terminal pour les tests
