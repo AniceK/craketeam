@@ -5,6 +5,7 @@
 #ici une description de la classe Grille.
 
 load "Rangee.rb"
+require 'fileutils'
 
 class Grille
 
@@ -77,6 +78,29 @@ class Grille
 
 	end
 
+  #methode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
+  def raz()
+    
+    @colonne.each { |x|
+      
+      x.razCases()
+    }
+    
+    @ligne.each { |x|
+    
+      x.razCases()
+    }
+    
+    @grille.each { |x|
+    
+      x.each { |y|
+      
+        y.raz()
+      }
+    }
+  end
+
+
 	# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
 
 	def marquerCase(coordX, coordY)
@@ -112,38 +136,32 @@ class Grille
 	@colonne.each { |x|
 		
 	  x.conditionsDeterminer()
-      x.razCases()
 	}
 
 	@ligne.each { |x|
 		
 	  x.conditionsDeterminer()
-      x.razCases()
 	}
+
+    self.raz()
+
+  end
+
+  #methode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
+  def sauvegarder()
+
+      self.raz()
+
+      FileUtils.cd('Grille')
+      FileUtils.cd(@taille.to_s())
+      tab = Array.new()
+      tab = Array.new(YAML::load(File.open('grilles.yml')))
+      tab.push(self)
+      File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
+ 
 
   end
   
-  #methode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
-  def raz()
-    
-    @colonne.each { |x|
-      
-      x.razCases()
-    }
-    
-    @ligne.each { |x|
-    
-      x.razCases()
-    }
-    
-    @grille.each { |x|
-    
-      x.each { |y|
-      
-        y.raz()
-      }
-    }
-  end
   
   #methode d'affichage reservee aux tests, affichage uniquement des colonnes
   def afficher()
