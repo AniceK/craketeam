@@ -40,4 +40,8 @@ Classe Rangée
         -remplir(tableau)   [M.I] : remplit @cases avec le tableau passé en paramètre
         -determinerConditions() [M.I] : détermine avec quelles valeurs remplir @conditions à partir de @cases.
         -razCases() [M.I] : appelle la méthode raz() de toutes les Case de @cases
-        -verifier() [M.I] :
+        -verifier() [M.I] : vérifie si @cases respecte @conditions, renvoie un booleen, et met @valide à true.
+        -noircir(numero)    [M.I] : appelle la méthode noircir() de @cases[numero]
+        -marquer(numero)    [M.I] : appelle la méthode marquer() de @cases[numero]
+        -noircie?(numero)   [M.I] : verifie si @cases[numero] est noircie
+        -afficher() [M.I] : affiche la Rangee, avec @conditions et l@etat de chaque element de @cases
