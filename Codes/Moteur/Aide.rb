@@ -3,6 +3,8 @@
 #
 #Ce fichier contient la classe Aide
 
+#Encoding: UTF-8
+
 class Aide
   
   @difficulte
@@ -107,7 +109,6 @@ class Aide
       elsif checkNoircieBord(tabCol, pos, tabTabCol, tabTaille, 0, 0)
         printf("Colonne %i : %ième case est forcément marquer\n", pos, tabTabCol.first() + 1 );
                  
-        
       else
         puts "Colonne #{pos}: aucune aide disponible"
       end
@@ -137,7 +138,7 @@ class Aide
         puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
         
       elsif tabTabLig.count == 1 && totalLig > tabTaille/2
-        printf("Ligne %i : %i case%s à colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"");
+        printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"");
       
       elsif tabLig[pos-1].noircie?(tabTaille-1)
         printf("Ligne %i : %i case%s à colorier en partant du bord du droit\n", pos, tabTabLig.last(), tabTabLig.last()>1 ? "s":"");

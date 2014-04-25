@@ -25,7 +25,7 @@ tab.push(c1)
 tab.push(c2)
 
 
-ra = Rangee.ajouter(2)
+ra = Rangee.creer(2)
 ra.remplir(tab)
 #ra.afficher()
 ra.noircir(0)
@@ -40,7 +40,7 @@ ra.afficher()
 =end
 
 puts "Test de la Grille"
-g1 = Grille.ajouter("toto", 5)
+g1 = Grille.creer("toto", 5)
 aide = Aide.creer(2)
 g1.genererAleatoire(50)
 #g1.noircirCase(4, 4)
@@ -52,6 +52,7 @@ for i in (0 .. 4)
         g1.verifierCoup(i, j)
     end
 end
+
 
 puts"\n"
 aide.chercherAide(g1.colonne, g1.ligne)

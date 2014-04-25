@@ -8,7 +8,7 @@ class Case
 
     @etat       #l'état est un entier qui indique si la case a été noircie, cochée par le joueur ou laissée blanche.
 
-    attr :etat, true
+    attr :etat, false
     def Case.creer()
 
 		new()
