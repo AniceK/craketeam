@@ -5,6 +5,7 @@
 #ici une description de la classe Partie.
 
 load "Grille.rb", "Aide.rb"
+require 'fileutils'
 
 class Partie
 
@@ -40,6 +41,7 @@ class Partie
 	def chargerGrillesExistantes(taille, profil, toutes)
         
         FileUtils.cd('Grilles')
+        FileUtils.cd(taille.to_s())
         tab = Array.new(YAML::load(File.open('grilles.yml')))
 
         if toutes then
@@ -52,7 +54,7 @@ class Partie
             }
         end
 
-        FileUtils.cd('..')
+        FileUtils.cd('../..')
 
 	end
 
@@ -68,15 +70,10 @@ class Partie
 
         @aide.chercherAide(@grille.colonne, @grille.ligne)
     end
-    
-    #methode pour sauvegarder la grille vierge
-    def sauvegarder()
-
-      @grille.raz()
-    end
 
     #methode pour noircir une case et verifier si la colonne et la grille correspondante sont validées
     def noircir(coordX, coordY)
+
         @grille.noircir(coordX, coordY)
         @grille.verifierCoup(coordX, coordY)
     end
@@ -84,11 +81,12 @@ class Partie
 #=================================================
     #ici commencent les méthodes de retransmission
 #=================================================
-    
+ 
 # Méthode pour créer une grille aléatoirement
     def genererAleatoirementGrille()
 
         @grille.genererAleatoire()
+        @grille.sauvegarder()
     end
 
    
