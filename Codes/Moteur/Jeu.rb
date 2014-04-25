@@ -193,4 +193,18 @@ class Jeu
 
     end
 
+	def lancerPartie()
+
+		while(!termine()) {
+
+			coup(x,y)
+			verifie(x,y)
+			if @aide then
+
+			end
+
+		}
+
+	end
+
 end
