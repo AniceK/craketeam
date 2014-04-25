@@ -15,20 +15,31 @@ class Jeu
   # Constructeur de la classe Jeu
     def Jeu.creer()
 
+    #Test de la présence d'un dossier Picross, contenant les sauvegardes du jeu (profils, parties, grilles)
         begin
 
           Dir.chdir "Picross"
 
         rescue Errno::ENOENT => e
 
+        #Creation de l'arborescence
+
           puts "Le Dossier n'existe pas.. Création de l'arborescence"
           FileUtils.mkdir('Picross')
           FileUtils.cd('Picross')
           FileUtils.mkdir('Profil')
           FileUtils.mkdir('Grille')
-          #FileUtils.cp('../GrillesDefauts' '/Grilles')
+          FileUtils.cd('Grille')
+          FileUtils.mkdir('5')
+          FileUtils.mkdir('10')
+          FileUtils.mkdir('15')
+          FileUtils.mkdir('20')
+          FileUtils.mkdir('25')
+          FileUtils.cd('..')
 
         else
+        
+        #Si le dossier existe, on vérifie toutefois son contenu
 
           puts "Dossier Picross trouvé, vérification de son contenu..."
 
@@ -57,11 +68,110 @@ class Jeu
 
             puts "Pas de dossier grille.."
             FileUtils.mkdir('Grille')
+            FileUtils.cd('Grille')
+            FileUtils.mkdir('5')
+            FileUtils.mkdir('10')
+            FileUtils.mkdir('15')
+            FileUtils.mkdir('20')
+            FileUtils.mkdir('25')
             puts "Dossier Grille crée !"
+            FileUtils.cd('..')
 
           else
 
             puts "Dossier Grille présent"
+            
+            #test de l'existence des cinq dossiers correspondant aux tailles
+            #test de l'existence du dossier 5
+            begin
+
+                Dir.chdir "5"
+
+            rescue Errno::ENOENT => e
+
+                puts "Pas de dossier 5.."
+                FileUtils.mkdir('5')
+                puts "Dossier 5 créé !"
+
+            else
+
+                puts "Dossier 5 présent"
+                FileUtils.cd('..')
+
+            end
+
+            begin
+
+                Dir.chdir "10"
+
+            rescue Errno::ENOENT => e
+
+                puts "Pas de dossier 10.."
+                FileUtils.mkdir('5')
+                puts "Dossier 10 créé !"
+
+            else
+
+                puts "Dossier 10 présent"
+                FileUtils.cd('..')
+
+            end
+
+            #Test de la présence du dossier 15
+            begin
+
+                Dir.chdir "15"
+
+            rescue Errno::ENOENT => e
+
+                puts "Pas de dossier 15.."
+                FileUtils.mkdir('15')
+                puts "Dossier 15 créé !"
+
+            else
+
+                puts "Dossier 15 présent"
+                FileUtils.cd('..')
+
+            end
+
+            #Test de la présence du dossier 20
+            begin
+
+                Dir.chdir "20"
+
+            rescue Errno::ENOENT => e
+
+                puts "Pas de dossier 20.."
+                FileUtils.mkdir('20')
+                puts "Dossier 20 créé !"
+
+            else
+
+                puts "Dossier 20 présent"
+                FileUtils.cd('..')
+
+            end
+
+            #Test de la présence du dossier 25
+            begin
+
+                Dir.chdir "25"
+
+            rescue Errno::ENOENT => e
+
+                puts "Pas de dossier 25.."
+                FileUtils.mkdir('25')
+                puts "Dossier 25 créé !"
+
+            else
+
+                puts "Dossier 25 présent"
+                FileUtils.cd('..')
+
+            end
+
+
             FileUtils.cd('..')
 
           end
