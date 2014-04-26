@@ -132,16 +132,7 @@ class Grille
       end
     end
 
-
-	@colonne.each { |x|
-		
-	  x.conditionsDeterminer()
-	}
-
-	@ligne.each { |x|
-		
-	  x.conditionsDeterminer()
-	}
+	conditionsDeterminer()
 
     self.raz()
 
@@ -170,6 +161,23 @@ class Grille
           x.afficher()
       }
   end
-  
+
+
+  # Méthode permettant de déterminer les conditions de remplissage de la grille à partir des cases noircies
+	def conditionsDeterminer()
+
+		@colonne.each { |x|
+
+			x.conditionsDeterminer()
+
+		}
+
+		@ligne.each { |x|
+
+			x.conditionsDeterminer()
+
+		}
+
+	end
 
 end
