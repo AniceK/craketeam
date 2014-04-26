@@ -24,3 +24,10 @@ Objectifs pour la séance du
 Objectifs pour la seance du 21 Mars
     -Mise au point avancée codage
     -continuer le code
+
+
+=========================
+=========================
+
+A première vue il manque une méthode de sauvegarde dans Grille.rb et il faudrait implémenter la sauvegarde et le
+chargement dans Editeur.rb
