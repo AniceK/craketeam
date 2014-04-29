@@ -61,7 +61,7 @@ class Aide
     return check
   end
     
-  def chercherAide(tabCol, tabLig)
+  def chercherAide(tabCol, tabLig, diffculte)
     
     tabTaille = tabCol.size()
     
@@ -72,6 +72,16 @@ class Aide
     tabLig.each{ |x|
       tabCondLig.push(x.conditions)
     }
+    
+    case difficulte
+      
+      when 1
+        puts "Difficulté 1"
+        
+      when 2
+        puts "Difficulté 2"
+        
+    end
     
     pos = 1
 
@@ -95,10 +105,10 @@ class Aide
         puts "Colonne #{pos} : une case sur deux en partant du bord\n"
         
       elsif tabTabCol.count == 1 && totalCol > tabTaille/2 
-        if tabtaille%2 == 1
-          printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2 + 1, (totalCol%tabTaille/2)>1 ? "s":"")
+        if tabTaille%2 == 1
+          printf("Colonne %i : %i case%s à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
         else
-          printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"")
+          printf("Colonne %i : %i cases à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
         end
 =begin       
       elsif tabCol[pos-1].noircie?(tabTaille-1)
@@ -143,10 +153,9 @@ class Aide
         
       elsif tabTabLig.count == 1 && totalLig > tabTaille/2
         if tabTaille%2 == 1
-          printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2 +1, (totalLig%tabTaille/2)>1 ? "s":"")
-          
+          printf("Ligne %i : %i case%s a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
         else
-          printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"")
+          printf("Ligne %i : %i cases a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
         end
         
 =begin       
