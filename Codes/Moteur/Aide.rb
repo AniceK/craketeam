@@ -94,8 +94,12 @@ class Aide
       elsif tabTabCol.count > tabTaille/2 && tabTaille%2 == 1
         puts "Colonne #{pos} : une case sur deux en partant du bord\n"
         
-      elsif tabTabCol.count == 1 && totalCol > tabTaille/2
-        printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"")
+      elsif tabTabCol.count == 1 && totalCol > tabTaille/2 
+        if tabtaille%2 == 1
+          printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2 + 1, (totalCol%tabTaille/2)>1 ? "s":"")
+        else
+          printf("Colonne %i : %i case%s à colorier au centre\n", pos, totalCol%tabTaille/2, (totalCol%tabTaille/2)>1 ? "s":"")
+        end
 =begin       
       elsif tabCol[pos-1].noircie?(tabTaille-1)
         printf("Colonne %i : %i case%s à colorier en partant du bord du bas\n", pos, tabTabCol.last(), tabTabCol.last()>1 ? "s":"")
@@ -138,7 +142,13 @@ class Aide
         puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
         
       elsif tabTabLig.count == 1 && totalLig > tabTaille/2
-        printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"")
+        if tabTaille%2 == 1
+          printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2 +1, (totalLig%tabTaille/2)>1 ? "s":"")
+          
+        else
+          printf("Ligne %i : %i case%s a colorier au centre\n", pos, totalLig%tabTaille/2, (totalLig%tabTaille/2)>1 ? "s":"")
+        end
+        
 =begin       
       elsif tabLig[pos-1].noircie?(tabTaille-1)
         printf("Ligne %i : %i case%s à colorier en partant du bord du droit\n", pos, tabTabLig.last(), tabTabLig.last()>1 ? "s":"")
