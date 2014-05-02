@@ -100,69 +100,6 @@ class Grille
     }
   end
 
-
-	# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
-
-	def marquerCase(coordX, coordY)
-
-	    @colonne[coordX].marquer(coordY)
-	    @ligne[coordY].marquer(coordX)
-
-    end
-
-  def genererAleatoire(unCoef)
-
-    @ligne.each { |x|
-        x.razCases()
-    }
-    @colonne.each {
-        |x| x.razCases()
-    }
-
-    for i in (0..@taille-1)
-      
-        for j in (0..@taille-1)
-          
-          alea = 0 + Random.rand(100)
-          
-          if (alea > unCoef) then
-              
-              self.noircirCase(i, j)
-        end
-      end
-    end
-
-	conditionsDeterminer()
-
-    self.raz()
-
-  end
-
-  #methode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
-  def sauvegarder()
-
-      self.raz()
-
-      FileUtils.cd('Grille')
-      FileUtils.cd(@taille.to_s())
-      tab = Array.new()
-      tab = Array.new(YAML::load(File.open('grilles.yml')))
-      tab.push(self)
-      File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
- 
-
-  end
-  
-  
-  #methode d'affichage reservee aux tests, affichage uniquement des colonnes
-  def afficher()
-
-      @colonne.each { |x|
-          x.afficher()
-      }
-  end
-
-
   # Méthode permettant de déterminer les conditions de remplissage de la grille à partir des cases noircies
 	def conditionsDeterminer()
 
@@ -180,4 +117,70 @@ class Grille
 
 	end
 
+	# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
+
+	def marquerCase(coordX, coordY)
+
+	    @colonne[coordX].marquer(coordY)
+	    @ligne[coordY].marquer(coordX)
+
+    end
+    
+#méthode de génération aléatoire d'une grille, noircissant au hasard des cases, déterminant les conditions et remettant la grille à 0   
+    def genererAleatoire(unCoef)
+
+        #remise à zéro des rangées
+        @ligne.each { |x|
+            
+            x.razCases()
+        }
+        
+        @colonne.each {
+            |x| x.razCases()
+        }
+
+        #on noircit des cases au hasard
+        for i in (0..@taille-1)
+      
+            for j in (0..@taille-1)
+          
+                alea = 0 + Random.rand(100)
+          
+                if (alea > unCoef) then
+              
+                    self.noircirCase(i, j)
+                end
+            end
+        end
+
+        #la grille remplit les conditions de chaque ligne et colonne.
+	    self.conditionsDeterminer()
+
+        #on remet la grille à zéro (les cases uniquement, pas les conditions)
+        self.raz()
+
+    end
+    
+    #methode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
+    def sauvegarder()
+
+        self.raz()
+
+        FileUtils.cd('Grille')
+        FileUtils.cd(@taille.to_s())
+        tab = Array.new()
+        tab = Array.new(YAML::load(File.open('grilles.yml')))
+        tab.push(self)
+        File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
+    end
+  
+  
+    #methode d'affichage reservee aux tests, affichage uniquement des colonnes
+    def afficher()
+
+        @colonne.each { |x|
+            
+            x.afficher()
+        }
+    end
 end

@@ -10,15 +10,15 @@ class Editeur
 
 
 	# Constructeur
-	def Editeur.creer(taille)
+	def Editeur.creer(nom, taille)
 
-		new(taille)
+		new(nom, taille)
 
 	end
 
 	def initialize(taille)
 
-		@grille = Grille.creer(taille)
+		@grille = Grille.creer(nom, taille)
 
 	end
 
