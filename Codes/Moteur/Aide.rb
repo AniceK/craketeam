@@ -76,10 +76,10 @@ class Aide
     case difficulte
       
       when 1
-        puts "Difficulté 1"
+        puts "Difficulté de niveau 1\n"
         
       when 2
-        puts "Difficulté 2"
+        puts "Difficulté de niveau 2\nIndication des lignes à potentiel"
         
     end
     
@@ -96,19 +96,39 @@ class Aide
       #puts "Total de la colonne #{pos} : #{totalCol}"
       
       if totalCol == tabTaille then
-        puts "Colonne #{pos} : pleine\n"
-      
+        if difficulte == 1
+          puts "Colonne #{pos} : pleine\n"
+        else
+          puts "Colonne #{pos}"
+        end
+        
       elsif totalCol == 0
-        puts "Colonne #{pos} : vide\n"
+        if difficulte == 1
+          puts "Colonne #{pos} : vide\n"
+        else
+          puts "Colonne #{pos}"
+        end
         
       elsif tabTabCol.count > tabTaille/2 && tabTaille%2 == 1
-        puts "Colonne #{pos} : une case sur deux en partant du bord\n"
+        if difficulte == 1
+          puts "Colonne #{pos} : une case sur deux en partant du bord\n"
+        else
+          puts "Colonne #{pos}"
+        end
         
       elsif tabTabCol.count == 1 && totalCol > tabTaille/2 
         if tabTaille%2 == 1
-          printf("Colonne %i : %i case%s à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+          if difficulte == 1
+            printf("Colonne %i : %i case%s à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+          else
+            puts "Colonne #{pos}"
+          end
         else
-          printf("Colonne %i : %i cases à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+          if difficulte == 1
+            printf("Colonne %i : %i cases à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+          else
+            puts "Colonne #{pos}"
+          end
         end
 =begin       
       elsif tabCol[pos-1].noircie?(tabTaille-1)
@@ -124,7 +144,9 @@ class Aide
         printf("Colonne %i : %ième case est forcément marqué\n", pos, tabTabCol.first() + 1 )
 =end    
       else
-        puts "Colonne #{pos}: aucune aide disponible"
+        if difficulte == 1
+          puts "Colonne #{pos}: aucune aide disponible"
+        end
       end
       
       pos += 1
@@ -143,19 +165,38 @@ class Aide
       #puts "Total de la ligne #{pos} : #{totalLig}"
       
       if totalLig == tabTaille then
-        puts "Ligne #{pos} : pleine"
+        if difficulte == 1
+          puts "Ligne #{pos} : pleine"
+        
+        else
+          puts "Ligne #{pos}"
+        end
         
       elsif totalLig == 0 
         puts "Ligne #{pos} : vide"
         
       elsif tabTabLig.count > tabTaille/2 && tabTaille%2 == 1
-        puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
+        if difficulte == 1
+          puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
+          
+        else
+          puts "Ligne #{pos}"
+        end
         
       elsif tabTabLig.count == 1 && totalLig > tabTaille/2
         if tabTaille%2 == 1
-          printf("Ligne %i : %i case%s a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+          if difficulte == 1
+            printf("Ligne %i : %i case%s a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+          else
+            puts "Ligne #{pos}"
+          end
+        
         else
-          printf("Ligne %i : %i cases a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+          if difficulte == 1
+            printf("Ligne %i : %i cases a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+          else
+            puts "Ligne #{pos}"
+          end
         end
         
 =begin       
@@ -172,12 +213,12 @@ class Aide
         printf("Ligne %i : %ième case est forcément marqué\n", pos, tabTabLig.first() + 1 )
 =end                      
       else
-        puts "Ligne #{pos} : aucune aide disponible"
-      
+        if difficulte == 1
+          puts "Ligne #{pos} : aucune aide disponible"
+        end
       end
       
       pos += 1
-    end
-    
+    end 
   end
 end #marqueur de fin de classe
