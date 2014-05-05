@@ -29,6 +29,7 @@ class Jeu
           FileUtils.cd('Picross')
           FileUtils.mkdir('Profil')
           FileUtils.mkdir('Grille')
+          File.new("scores.yml", "w")
           FileUtils.cd('Grille')
           FileUtils.mkdir('5')
           FileUtils.mkdir('10')
@@ -59,6 +60,8 @@ class Jeu
             FileUtils.cd('..')
 
           end
+
+          File.open("scores.yml", "w")
 
           begin
 
@@ -184,13 +187,14 @@ class Jeu
 
     end    #marqueur de fin de constructeur
 
+#méthode de classe d'initialisation
     def initialize()
 
 
     end    #marqueur de fin d initialize
 
 
-	# Méthode permettant de charger le Profil du joueur
+# Méthode permettant de charger le Profil du joueur
 	def chargerProfil(unNom)
 
         aName = unNom.downcase()
@@ -258,7 +262,7 @@ class Jeu
 
 	end
 
-#methode d instance renvoyant la liste des parties sauvegardees du profil en cours
+# Méthode d instance renvoyant la liste des parties sauvegardees du profil en cours
     def chargerListePartiesSauvegardees()
 
         liste = Array.new()
@@ -277,6 +281,7 @@ class Jeu
         @partie = p
 	end
     
+# Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
     def supprimmerPartie(p)
 
         liste = Array.new()
@@ -290,31 +295,135 @@ class Jeu
  
     end
 
-	def sauvegarderPartie()
+# Méthode creeant une partie a partir des paramètres
+	def creerPartie(taille, difficulte)
 
-        liste = Array.new()
-        FileUtils.cd('Profil')
-        FileUtils.cd(@profil.nom)
-        FileUtils.cd('Parties')
-        liste = YAML::load(File.open('parties.yml'))
-        liste.push(@partie)
-        File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-        FileUtils.cd('../../..')
+        if @profil != nil then
 
+            @partie = Partie.creer(taille, difficulte, @profil.nom())
+        else
+            @partie = Partie.creer(taille, difficulte, "Visiteur")
+        end
     end
 
-	def lancerPartie()
 
-		while(!termine()) {
+#==============================================
+    #Gestion de la Partie en Cours
+#==============================================
 
-			coup(x,y)
-			verifie(x,y)
-			if @aide then
+# Méthode sauvegardant la partie en cours
+	def sauvegarderPartie()
 
-			end
+        if @partie != nil then
+            
+            liste = Array.new()
+            FileUtils.cd('Profil')
+            FileUtils.cd(@profil.nom)
+            FileUtils.cd('Parties')
+            liste = YAML::load(File.open('parties.yml'))
+            liste.push(@partie)
+            File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+            FileUtils.cd('../../..')
 
-		}
+        else
+            
+            raise "Aucune partie n'est en cours!", caller
+        end
+    end
 
-	end
+# Méthode activant/lançant la partie
+    def lancerPartie()
 
+        if @partie != nil then
+
+            @partie.lancer()
+        else
+
+            raise "Aucune partie n'est en cours!", caller
+        end
+    end
+
+# Méthode mettant la partie en pause
+    def partieEnPause()
+
+        if @partie != nil then 
+
+            @partie.pause()
+        else
+            
+            raise "Aucune partie n'est en cours!", caller
+        end
+    end
+
+# Méthode pour noircir une case dans la partie en cours
+    def noircir(x, y)
+
+        if @partie != nil then
+            
+            @partie.noircir(x, y)
+        else
+
+            raise "Aucune partie n'est en cours!", caller
+        end
+    end
+
+# Méthode pour marquer une case dans la partie en cours
+    def marquer(x, y)
+
+        if @partie != nil then
+
+            @partie.marquer(x, y)
+        else
+
+            raise "Aucune partie n'est en cours!", caller
+        end
+    end
+
+# Méthode pour générer aléatoirement une grille dans la partie en cours
+    def genererAleatoirementGrille()
+
+        if @partie != nil then
+
+            @partie.genererAleatoirementGrille()
+        else
+
+            raise "Aucune partie n'est en cours!", caller
+        end
+    end
+
+# Méthode pour activer l'aide
+    def chercherAide()
+
+        if @partie != nil then
+
+            @partie.chercherAide()
+        else
+            raise "Aucune partie n'est en cours!", caller
+        end
+    end
+
+# Méthode pour verifier si la partie en cours est termine
+    def termine?()
+
+        if @partie != nil then
+
+            return @partie.termine()
+        else
+
+            raise "Aucune partie en cours!", caller
+            return 0;
+        end
+    end
+
+# Méthode pour charger la liste des grilles existantes
+    def chargerGrillesExistantes(taille, toutes)
+
+        if @partie != nil then
+
+            return @partie.chargerGrillesExistantes(taille, toutes)
+        else
+            raise "Aucune partie en cours!", caller
+            return nil
+        end
+    end
 end
