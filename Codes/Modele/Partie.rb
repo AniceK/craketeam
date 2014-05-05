@@ -19,15 +19,16 @@ class Partie
     @active         #booleen définissant si la partie est active (lancée, en cours) ou non
 
 
-    attr_reader :grille, :type, :aide, :creation
+    attr_reader :grille, :type, :aide, :creation, :joueur, :temps, :chronometre, :active
 
-	# Constructeur de la classe Partie
+# Constructeur de la classe Partie
     def Partie.creer(taille, difficulte, nom)
 
 		new(taille, difficulte, nom)
 
     end
 
+#méthode de classe d'initialisation prenant en paramètre la taille de la grille, le niveau de difficulté de l'aide et le nom du joueur
     def initialize(taille, difficulte, nom)
 
 		@grille = Grille.creer(taille)
@@ -35,7 +36,7 @@ class Partie
         @joueur = nom
         @aide = Aide.creer(difficulte)
         @temps = 0
-        @actve = false
+        @active = false
         @chronometre = Thread.new {
             
             time = Time.now
@@ -57,21 +58,33 @@ class Partie
 
     end    #marqueur de fin d initialize
 
-	# Méthode lançant la partie, en activant le chronomètre
+# Méthode lançant la partie, en activant le chronomètre
 	def lancer()
 
-        @active = true
-        @chronometre.run()
+        if !@active then
+            
+            @active = true
+            @chronometre.run()
+        else
+
+            raise "Partie déjà en cours!"
+        end
 	end
 
-    #méthode chargée de mettre le chronomètre et la partie en pause
+#méthode chargée de mettre le chronomètre et la partie en pause
     def pause()
 
+        if @active then
+        
         #à la prochaine boucle que fait le chronomètre, il verra que @active est désactivée, et il se mettra en pause
-        @active = false
+            @active = false
+        else
+
+            raise "La partie n'était pas active"
+        end
     end
 
-	# Méthode permettant de renvoyer la Liste des grilles deja existante
+# Méthode permettant de renvoyer la Liste des grilles deja existante
 	def chargerGrillesExistantes(taille, toutes)
         
         FileUtils.cd('Grilles')
@@ -92,20 +105,20 @@ class Partie
 
 	end
 
-    #Methode pour charger une grille passe en parametre
+# Methode pour charger une grille passe en parametre
     def chargerGrille(grille)
 
         @grille = grille
     end
 
 
-    #methode pour actualiser l'aide
+# Methode pour actualiser l'aide
     def chercherAide()
 
         @aide.chercherAide(@grille.colonne, @grille.ligne)
     end
 
-    #methode pour noircir une case et verifier si la colonne et la grille correspondante sont validées
+# Methode pour noircir une case et verifier si la colonne et la grille correspondante sont validées
     def noircir(coordX, coordY)
 
         @grille.noircir(coordX, coordY)
@@ -114,13 +127,20 @@ class Partie
 
 # Méthode testant la fin de partie et l'arretant le cas echeant
 	def termine()
-
-	  if @grille.termine?() then
+        
+        if @grille.termine?() then
 
           self.pause()
-          
+          scores = Array.new()
+          scores = YAML::load( File.open("scores.yml"))
+          scores.push([@joueur, temps * 10, @grille.taille()])
+          File.open('scores.yml',"w"){|out| out.puts scores.to_yaml()}
+          return temps
 
-	end
+      else
+          return nil
+	  end
+    end
 
 #=================================================
     #ici commencent les méthodes de retransmission
@@ -133,7 +153,7 @@ class Partie
         @grille.sauvegarder()
     end
 
-#methode de marquage d'une case (X, Y)
+# Methode de marquage d'une case (X, Y)
     def marquer(x, y)
 
         @grille.marquer(x, y)
