@@ -24,7 +24,7 @@ class Partie
 
     end
 
-    def initialize(taille)
+    def initialize(taille, difficulte)
 
 		@grille = Grille.creer(taille)
 		@creation = now
