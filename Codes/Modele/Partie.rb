@@ -21,22 +21,22 @@ class Partie
 
     attr_reader :grille, :type, :aide, :creation
 
-	# Constructeur de la classe Partie
+	  # Constructeur de la classe Partie
     def Partie.creer(taille, difficulte, nom)
 
-		new(taille, difficulte, nom)
+		  new(taille, difficulte, nom)
 
     end
 
     def initialize(taille, difficulte, nom)
 
-		@grille = Grille.creer(taille)
-		@creation = Time.now
-        @joueur = nom
-        @aide = Aide.creer(difficulte)
-        @temps = 0
-        @actve = false
-        @chronometre = Thread.new {
+		  @grille = Grille.creer(taille)
+		  @creation = Time.now
+      @joueur = nom
+      @aide = Aide.creer(difficulte)
+      @temps = 0
+      @actve = false
+      @chronometre = Thread.new {
             
             time = Time.now
             loop do

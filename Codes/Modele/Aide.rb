@@ -27,41 +27,8 @@ class Aide
       @tabCondLig = Array.new()
 
     end    #marqueur de fin d initialize
-  
-  def checkNoircieBord(tabRang, pos, tabCond, tabTaille, isFin, isLig)
     
-    check = true
-    
-    if isFin
-      depart = tabTaille
-      nbCaseNoir = tabCond.last()
-      
-    else
-      depart = 0
-      nbCaseNoir = tabCond.first()
-    end 
-    
-    for x in depart...nbCaseNoir
-      if isLig
-        
-        if (!tabRang[pos-1].noircie?(x) )
-          check = false
-        end
-        
-      else
-        
-        if (!tabRang[pos-1].noircie?(x) )
-          check = false
-        end
-        
-      end
-      
-    end
-    
-    return check
-  end
-    
-  def chercherAide(tabCol, tabLig, diffculte)
+  def chercherAide(tabCol, tabLig)
     
     tabTaille = tabCol.size()
     
@@ -76,129 +43,154 @@ class Aide
     case difficulte
       
       when 1
-        puts "Difficulté de niveau 1\n"
+        puts "Difficulté de niveau 1\nLa total\n"
         
       when 2
-        puts "Difficulté de niveau 2\nIndication des lignes à potentiel"
+        puts "Difficulté de niveau 2\nIndication des lignes à potentiel\nVérification des lignes"
+        
+      when 3
+        puts "Difficulté de niveau 3\nVérification des lignes"
         
     end
     
-    #====      Colonne     ====#
+    if difficulte == 1 || difficulte == 2 then
     
-    pos = 1
+      #====      Colonne     ====#
+    
+      pos = 1
 
-    puts "\nCondition des colonnes\n"
-    for tabTabCol in tabCondCol
-      totalCol = 0
+      puts "\nCondition des colonnes\n"
+      for tabTabCol in tabCondCol
+        totalCol = 0
       
-      for valCol in tabTabCol 
-        totalCol += valCol
-      end
+        for valCol in tabTabCol 
+          totalCol += valCol
+        end
       
-      #puts "Total de la colonne #{pos} : #{totalCol}"
+        #puts "Total de la colonne #{pos} : #{totalCol}"
       
-      if totalCol == tabTaille then
-        if difficulte == 1
-          puts "Colonne #{pos} : pleine\n"
-        else
-          puts "Colonne #{pos}"
-        end
-        
-      elsif totalCol == 0
-        if difficulte == 1
-          puts "Colonne #{pos} : vide\n"
-        else
-          puts "Colonne #{pos}"
-        end
-        
-      elsif tabTabCol.count > tabTaille/2 && tabTaille%2 == 1
-        if difficulte == 1
-          puts "Colonne #{pos} : une case sur deux en partant du bord\n"
-        else
-          puts "Colonne #{pos}"
-        end
-        
-      elsif tabTabCol.count == 1 && totalCol > tabTaille/2 
-        if tabTaille%2 == 1
+        if totalCol == tabTaille then
           if difficulte == 1
-            printf("Colonne %i : %i case%s à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+            puts "Colonne #{pos} : pleine\n"
           else
             puts "Colonne #{pos}"
           end
-        else
+        
+        elsif totalCol == 0
           if difficulte == 1
-            printf("Colonne %i : %i cases à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+            puts "Colonne #{pos} : vide\n"
           else
             puts "Colonne #{pos}"
           end
-        end
+        
+        elsif tabTabCol.count > tabTaille/2 && tabTaille%2 == 1
+          if difficulte == 1
+            puts "Colonne #{pos} : une case sur deux en partant du bord\n"
+          else
+            puts "Colonne #{pos}"
+          end
+        
+        elsif tabTabCol.count == 1 && totalCol > tabTaille/2 
+          if tabTaille%2 == 1
+            if difficulte == 1
+              printf("Colonne %i : %i case%s à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+            else
+              puts "Colonne #{pos}"
+            end
+          else
+            if difficulte == 1
+              printf("Colonne %i : %i cases à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+            else
+              puts "Colonne #{pos}"
+            end
+          end
             
-      else
-        if difficulte == 1
-          puts "Colonne #{pos}: aucune aide disponible"
-        end
-      end
-      
-      pos += 1
-    end
-    
-    #====      Ligne     ====#
-    
-    
-    pos = 1
-    
-    puts "\n\nCondition des lignes\n"
-    for tabTabLig in tabCondLig
-      totalLig = 0
-      
-      for valLig in tabTabLig 
-        totalLig += valLig
-      end
-      
-      #puts "Total de la ligne #{pos} : #{totalLig}"
-      
-      if totalLig == tabTaille then
-        if difficulte == 1
-          puts "Ligne #{pos} : pleine"
-        
         else
-          puts "Ligne #{pos}"
+          if difficulte == 1
+            puts "Colonne #{pos}: aucune aide disponible"
+          end
         end
+      
+        pos += 1
+      end
+    
+      #====      Ligne     ====#
+    
+    
+      pos = 1
+    
+      puts "\n\nCondition des lignes\n"
+      for tabTabLig in tabCondLig
+        totalLig = 0
+      
+        for valLig in tabTabLig 
+          totalLig += valLig
+        end
+      
+        #puts "Total de la ligne #{pos} : #{totalLig}"
+      
+        if totalLig == tabTaille then
+          if difficulte == 1
+            puts "Ligne #{pos} : pleine"
         
-      elsif totalLig == 0 
-        puts "Ligne #{pos} : vide"
+          else
+            puts "Ligne #{pos}"
+          end
         
-      elsif tabTabLig.count > tabTaille/2 && tabTaille%2 == 1
-        if difficulte == 1
-          puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
+        elsif totalLig == 0 
+          puts "Ligne #{pos} : vide"
+        
+        elsif tabTabLig.count > tabTaille/2 && tabTaille%2 == 1
+          if difficulte == 1
+            puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
+          
+          else
+            puts "Ligne #{pos}"
+          end
+        
+        elsif tabTabLig.count == 1 && totalLig > tabTaille/2
+          if tabTaille%2 == 1
+            if difficulte == 1
+              printf("Ligne %i : %i case%s a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+            else
+              puts "Ligne #{pos}"
+            end
+        
+          else
+            if difficulte == 1
+              printf("Ligne %i : %i cases a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+            else
+              puts "Ligne #{pos}"
+            end
+          end
           
         else
-          puts "Ligne #{pos}"
-        end
-        
-      elsif tabTabLig.count == 1 && totalLig > tabTaille/2
-        if tabTaille%2 == 1
           if difficulte == 1
-            printf("Ligne %i : %i case%s a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
-          else
-            puts "Ligne #{pos}"
-          end
-        
-        else
-          if difficulte == 1
-            printf("Ligne %i : %i cases a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
-          else
-            puts "Ligne #{pos}"
+            puts "Ligne #{pos} : aucune aide disponible"
           end
         end
-      g    
-      else
-        if difficulte == 1
-          puts "Ligne #{pos} : aucune aide disponible"
+      
+        pos += 1
+      end
+    end
+    
+    puts "\nVérification des lignes\n"
+      
+    #Vérification des lignes et des colonnes
+    tmp = false
+    pos = 0
+
+    for x in tabLig
+      if x.valide() == true then
+        for y in tabCol
+          if y.valide() == false then
+            tmp = false
+          end
         end
       end
-      
-      pos += 1
-    end 
+  
+      printf("Ligne %i %s.\n", pos+=1, tmp==true ? "bonne":"erronnée") 
+  
+    end
   end
 end #marqueur de fin de classe

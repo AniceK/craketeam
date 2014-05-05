@@ -91,7 +91,7 @@ class Rangee
 		}
 	end
 
-#Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes.
+#Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes).
     def verifier()
 
         nbreCaseNoircie = 0
