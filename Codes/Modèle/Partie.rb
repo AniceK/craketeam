@@ -10,35 +10,69 @@ require 'fileutils'
 class Partie
 
     @grille
-    @creation   #heure et date de la creation de la partie
-    @type       #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
-    @aide       #contient l'IA d'aide
+    @creation       #heure et date de la creation de la partie
+    @joueur         #nom du joueur qui joue (différent du créateur de la grille)
+    @type           #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
+    @aide           #contient l'IA d'aide
+    @temps          #compteur de temps pour la partie, utilisé pour évaluer le score
+    @chronometre    #Processus fils comptant les secondes
+    @active         #booleen définissant si la partie est active (lancée, en cours) ou non
 
 
     attr_reader :grille, :type, :aide, :creation
 
 	# Constructeur de la classe Partie
-    def Partie.creer(taille, difficulte)
+    def Partie.creer(taille, difficulte, nom)
 
-		new(taille, difficulte)
+		new(taille, difficulte, nom)
 
     end
 
-    def initialize(taille, difficulte)
+    def initialize(taille, difficulte, nom)
 
 		@grille = Grille.creer(taille)
-		@creation = now
+		@creation = Time.now
+        @joueur = nom
         @aide = Aide.creer(difficulte)
+        @temps = 0
+        @actve = false
+        @chronometre = Thread.new {
+            
+            time = Time.now
+            loop do
+                
+                sleep 0.1
+                
+                if Time.now() - time >= 1.0 then
+
+                    @temps += 1
+                    time = Time.now()
+                end
+                if !@active then
+                    Thread.stop()
+                end
+            end
+        }
+
 
     end    #marqueur de fin d initialize
 
-	# Méthode lançant la partie
+	# Méthode lançant la partie, en activant le chronomètre
 	def lancer()
 
+        @active = true
+        @chronometre.run()
 	end
 
+    #méthode chargée de mettre le chronomètre et la partie en pause
+    def pause()
+
+        #à la prochaine boucle que fait le chronomètre, il verra que @active est désactivée, et il se mettra en pause
+        @active = false
+    end
+
 	# Méthode permettant de renvoyer la Liste des grilles deja existante
-	def chargerGrillesExistantes(taille, profil, toutes)
+	def chargerGrillesExistantes(taille, toutes)
         
         FileUtils.cd('Grilles')
         FileUtils.cd(taille.to_s())
@@ -50,7 +84,7 @@ class Partie
         else
 
             return tab.find_all{ |x|
-                x.createur() == profil.nom()
+                x.createur() == @joueur
             }
         end
 
@@ -78,6 +112,16 @@ class Partie
         @grille.verifierCoup(coordX, coordY)
     end
 
+# Méthode testant la fin de partie et l'arretant le cas echeant
+	def termine()
+
+	  if @grille.termine?() then
+
+          self.pause()
+          
+
+	end
+
 #=================================================
     #ici commencent les méthodes de retransmission
 #=================================================
@@ -88,14 +132,6 @@ class Partie
         @grille.genererAleatoire()
         @grille.sauvegarder()
     end
-
-   
-# Méthode de test de fin de partie
-	def termine?()
-
-	  return @grille.termine?()
-
-	end
 
 #methode de marquage d'une case (X, Y)
     def marquer(x, y)
