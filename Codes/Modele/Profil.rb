@@ -9,11 +9,11 @@ require 'fileutils'
 class Profil
 
     @nom
-	@nbGrilles
+	  @nbGrilles
 
     attr_reader :nom, :nbGrilles
 
-	# Constructeur de la classe Profil
+	  # Constructeur de la classe Profil
     def Profil.creer(nom)
 
         new(nom)

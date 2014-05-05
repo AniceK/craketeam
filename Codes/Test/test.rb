@@ -4,8 +4,6 @@
 # Contenu : Test de déplacement dans les dossiers et test de nom
 #
 require 'fileutils'
-require 'rubygems'
-require 'eventmachine'
 
 #===========================================#
 #               Arborescence                #

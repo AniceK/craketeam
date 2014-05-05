@@ -17,7 +17,7 @@ class Case
 
     def initialize()
 
-		@etat = 0
+		  @etat = 0
 
     end
 

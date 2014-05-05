@@ -24,7 +24,7 @@ class Partie
 # Constructeur de la classe Partie
     def Partie.creer(taille, difficulte, nom)
 
-		new(taille, difficulte, nom)
+		  new(taille, difficulte, nom)
 
     end
 
