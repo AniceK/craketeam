@@ -142,7 +142,7 @@ class Aide
       pos += 1
     end
     
-    #===      Ligne     ====#
+    #====      Ligne     ====#
     
     
     pos = 1
@@ -191,20 +191,7 @@ class Aide
             puts "Ligne #{pos}"
           end
         end
-        
-=begin       
-      elsif tabLig[pos-1].noircie?(tabTaille-1)
-        printf("Ligne %i : %i case%s à colorier en partant du bord du droit\n", pos, tabTabLig.last(), tabTabLig.last()>1 ? "s":"")
-        
-      elsif tabLig[pos-1].noircie?(0)
-        printf("Ligne %i : %i case%s à colorier en partant du bord du gauche\n", pos, tabTabLig.first(), tabTabLig.first()>1 ? "s":"")
-      
-      elsif checkNoircieBord(tabLig, pos, tabTabLig, tabTaille, 1, 1)
-        printf("Ligne %i : %ième case est forcément marqué\n", pos, tabTaille - tabTabLig.last())
-                
-      elsif checkNoircieBord(tabLig, pos, tabTabLig, tabTaille, 0, 1)
-        printf("Ligne %i : %ième case est forcément marqué\n", pos, tabTabLig.first() + 1 )
-=end                      
+          
       else
         if difficulte == 1
           puts "Ligne #{pos} : aucune aide disponible"

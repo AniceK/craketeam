@@ -15,7 +15,7 @@ require './Controleur/EventsAccueil.rb'
   ##################################################################
 
   # Classe permettant de lancer le jeu en créant le premier ensemble d'évènements liés à la fenêtre d'accueil
-class Jeu
+class NouveauJeu
     
   # Contient l'ensemble d'évènements à attendre de l'interface graphique actuelle
   @evenements
@@ -44,13 +44,13 @@ class Jeu
   end
   
   ### Permet d'obtenir une instance du jeu sans appeler directement la méthode new qui est privée ###
-  def Jeu.lancer()
+  def NouveauJeu.lancer()
     
     # Appel de la méthode new autorisé
     new
   end
   
   # Lance une instance de jeu
-  jeu = Jeu.lancer()
+  nouveauJeu = NouveauJeu.lancer()
   
 end
