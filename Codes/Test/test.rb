@@ -4,6 +4,8 @@
 # Contenu : Test de déplacement dans les dossiers et test de nom
 #
 require 'fileutils'
+require 'rubygems'
+require 'eventmachine'
 
 #===========================================#
 #               Arborescence                #
@@ -103,6 +105,7 @@ printf("\nPourcentage de 1 : %i", cpt)
 #===========================================#
 #              Chronometre                  #
 #===========================================#
+=begin
 def timer(seconds)
   last_tick = Time.now
   loop do
@@ -119,5 +122,5 @@ t = Time.now
 timer(1) do
   p Time.now - t 
 end
-
+=end
 
