@@ -103,6 +103,7 @@ printf("\nPourcentage de 1 : %i", cpt)
 #===========================================#
 #              Chronometre                  #
 #===========================================#
+=begin
 def timer(seconds)
   last_tick = Time.now
   loop do
@@ -119,3 +120,38 @@ t = Time.now
 timer(1) do
   p Time.now - t 
 end
+=end
+
+temps = 0
+pause = false
+puts temps
+chronometre = Thread.new {
+    
+    time = Time.now
+    loop do
+        sleep 0.1
+    
+        if Time.now - time >= 1.0 then
+
+            temps += 1
+            puts temps
+            time = Time.now
+        end
+        if pause then
+            Thread.stop
+        end
+    end
+}
+chronometre.run
+while temps < 6
+    sleep 0.1
+end
+pause = true
+puts "en pause"
+sleep 5
+pause = false
+chronometre.run
+while temps < 16
+    sleep 0.1
+end
+pause = true
