@@ -1,0 +1,10 @@
+Indentatation :
+    -On fixe la tabulation à quatre espaces.
+    -On laisse une ligne après le nom de la méthode.
+    -Une ligne avant et une ligne après les déclarations de méthodes
+    -parenthèses (même si absence d'argument) après le nom de la méthode
+    -idem pour les appels aux méthodes
+
+
+Arborescence : 
+-Penser à revenir au Répertoire Picross après toute modification.
