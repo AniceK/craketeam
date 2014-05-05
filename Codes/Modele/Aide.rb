@@ -83,7 +83,7 @@ class Aide
         
     end
     
-    #===      Colonne     ====#
+    #====      Colonne     ====#
     
     pos = 1
 
@@ -191,7 +191,7 @@ class Aide
             puts "Ligne #{pos}"
           end
         end
-          
+      g    
       else
         if difficulte == 1
           puts "Ligne #{pos} : aucune aide disponible"
