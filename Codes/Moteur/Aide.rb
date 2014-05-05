@@ -83,6 +83,8 @@ class Aide
         
     end
     
+    #===      Colonne     ====#
+    
     pos = 1
 
     puts "\nCondition des colonnes\n"
@@ -130,19 +132,7 @@ class Aide
             puts "Colonne #{pos}"
           end
         end
-=begin       
-      elsif tabCol[pos-1].noircie?(tabTaille-1)
-        printf("Colonne %i : %i case%s à colorier en partant du bord du bas\n", pos, tabTabCol.last(), tabTabCol.last()>1 ? "s":"")
-      
-      elsif tabCol[pos-1].noircie?(0)
-        printf("Colonne %i : %i case%s à colorier en partant du bord du haut\n", pos, tabTabCol.first(), tabTabCol.first()>1 ? "s":"")
-              
-      elsif checkNoircieBord(tabCol, pos, tabTabCol, tabTaille, 1, 0)
-        printf("Colonne %i : %ième case est forcément marqué\n", pos, tabTaille - tabTabCol.last())
-        
-      elsif checkNoircieBord(tabCol, pos, tabTabCol, tabTaille, 0, 0)
-        printf("Colonne %i : %ième case est forcément marqué\n", pos, tabTabCol.first() + 1 )
-=end    
+            
       else
         if difficulte == 1
           puts "Colonne #{pos}: aucune aide disponible"
@@ -151,6 +141,9 @@ class Aide
       
       pos += 1
     end
+    
+    #===      Ligne     ====#
+    
     
     pos = 1
     
