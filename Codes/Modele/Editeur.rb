@@ -16,7 +16,7 @@ class Editeur
 
 	end
 
-	def initialize(taille)
+	def initialize(nom, taille)
 
 		@grille = Grille.creer(nom, taille)
 
@@ -40,16 +40,14 @@ class Editeur
 
 
 	# Méthode permettant de sauvegarder la grille
-	def sauvegarder() {
+	def sauvegarder()
 
-
-
-	}
+        @grille.sauvegarder()
+    end
 
 
 	# Méthode permettant de charger une grille préalamblement amorcée
 	def charger(grille)
+    end
 
-
-
-	end
+end
