@@ -187,9 +187,11 @@ class Jeu
 
     end    #marqueur de fin de constructeur
 
-#méthode de classe d'initialisation
+#méthode de classe d'initialisation, ou on initialise les valeurs à nil
     def initialize()
 
+        @profil = nil
+        @partie = nil
 
     end    #marqueur de fin d initialize
 
@@ -265,13 +267,24 @@ class Jeu
 # Méthode d instance renvoyant la liste des parties sauvegardees du profil en cours
     def chargerListePartiesSauvegardees()
 
-        liste = Array.new()
-        FileUtils.cd('Profil')
-        FileUtils.cd(@profil.nom)
-        FileUtils.cd('Parties')
-        liste = YAML::load(File.open('parties.yml'))
-        FileUtils.cd('../../..')
-        return liste
+        if @profil == nil then
+            
+            raise "Aucun profil n'est chargé : impossible de charger la liste des Partie Sauvegardées!", caller
+        else
+            
+            liste = Array.new()
+            FileUtils.cd('Profil')
+            FileUtils.cd(@profil.nom)
+            FileUtils.cd('Parties')
+            liste = YAML::load(File.open('parties.yml'))
+            FileUtils.cd('../../..')
+            if liste.empty? then
+                
+                return nil
+            else
+                return liste
+            end
+        end
 
     end
 
@@ -284,14 +297,26 @@ class Jeu
 # Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
     def supprimmerPartie(p)
 
-        liste = Array.new()
-        FileUtils.cd('Profil')
-        FileUtils.cd(@profil.nom)
-        FileUtils.cd('Parties')
-        liste = YAML::load(File.open('parties.yml'))
-        liste.delete(p)
-        File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-        FileUtils.cd('../../..')
+        if @profil != nil then
+            
+            liste = Array.new()
+            FileUtils.cd('Profil')
+            FileUtils.cd(@profil.nom)
+            FileUtils.cd('Parties')
+            liste = YAML::load(File.open('parties.yml'))
+            
+            if liste.empty? then
+
+                return nil
+            else
+                sup = liste.delete(p)
+                File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+                FileUtils.cd('../../..')
+                return (sup == p)
+            end
+        else
+            raise "Aucun profil n'est chargé : impossible de supprimer une partie!", caller
+        end
  
     end
 
@@ -305,6 +330,31 @@ class Jeu
             @partie = Partie.creer(taille, difficulte, "Visiteur")
         end
     end
+# Méthode créant un éditeur de grille à partir des paramètres
+    def creerEditeur(taille)
+
+        @partie = Editeur.creer(@profil.nom(), taille)
+    end
+
+# Méthode pour afficher les scores, avec le choix entre tous les scores, ou juste ceux du profil en cours
+    def afficherScores(tous)
+
+        liste = Array.new()
+        liste = YAML::load(File.open('scores.yml'))        
+
+        if @profil == nil or tous then
+            
+            if liste.empty? then
+            
+                return nil
+            else
+                return liste
+            end
+        else
+
+            return liste.find_all {|i| i[0] == @profil.nom}
+        end
+    end
 
 
 #==============================================
@@ -315,15 +365,20 @@ class Jeu
 	def sauvegarderPartie()
 
         if @partie != nil then
+
+            if @partie.class == Partie then
             
-            liste = Array.new()
-            FileUtils.cd('Profil')
-            FileUtils.cd(@profil.nom)
-            FileUtils.cd('Parties')
-            liste = YAML::load(File.open('parties.yml'))
-            liste.push(@partie)
-            File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-            FileUtils.cd('../../..')
+                liste = Array.new()
+                FileUtils.cd('Profil')
+                FileUtils.cd(@profil.nom)
+                FileUtils.cd('Parties')
+                liste = YAML::load(File.open('parties.yml'))
+                liste.push(@partie)
+                File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+                FileUtils.cd('../../..')
+            else
+                raise "Impossible d'appeler sauvergarderPartie() pour autre chose qu'une Partie!", caller
+            end
 
         else
             
@@ -336,7 +391,13 @@ class Jeu
 
         if @partie != nil then
 
-            @partie.lancer()
+            if @partie.class() == Partie then
+            
+                @partie.lancer()
+            else
+                raise "Impossible d'appeler lancerPartie() pour autre chose qu'une partie!", caller
+            end
+
         else
 
             raise "Aucune partie n'est en cours!", caller
@@ -348,7 +409,12 @@ class Jeu
 
         if @partie != nil then 
 
-            @partie.pause()
+            if @partie.class() == Partie then
+            
+                @partie.pause()
+            else
+                raise "Impossible d'appeler partieEnPause() pour autre chose qu'une partie!", caller
+            end
         else
             
             raise "Aucune partie n'est en cours!", caller
