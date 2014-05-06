@@ -174,23 +174,30 @@ class Aide
       end
     end
     
+     #Vérification des lignes et des colonnes
+    
     puts "\nVérification des lignes\n"
-      
-    #Vérification des lignes et des colonnes
-    tmp = false
-    pos = 0
-
+    posLig = 0
     for x in tabLig
-      if x.valide() == true then
-        for y in tabCol
-          if y.valide() == false then
-            tmp = false
-          end
-        end
+      tmp = true
+      if x.valide() == false then #Change to false pour les tests
+        tmp = false
       end
   
-      printf("Ligne %i %s.\n", pos+=1, tmp==true ? "bonne":"erronnée") 
+      printf("Ligne %i %s.\n", posLig+=1, tmp ? "bonne":"erronnée") 
   
+    end
+    
+    puts "\nVérification des colonnes\n"
+    posCol = 0
+    for y in tabCol
+      tmp = true
+      if y.valide() == false then
+        tmp = false
+      end
+      
+      printf("Colonne %i %s.\n", posCol+=1, tmp ? "bonne":"erronnée")
+      
     end
   end
 end #marqueur de fin de classe

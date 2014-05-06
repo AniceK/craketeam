@@ -40,15 +40,17 @@ ra.afficher()
 
 =end
 
+taille = 5
+   
 puts "Test de la Grille"
-g1 = Grille.creer("toto", 5)
-aide = Aide.creer(3)
+g1 = Grille.creer("toto", taille)
+aide = Aide.creer(2)
 g1.genererAleatoire(20)
-#g1.noircirCase(4, 4)
+g1.noircirCase(4, 4)
 g1.afficher()
 
-for i in (0 .. 4)
-    for j in (0 .. 4)
+for i in (0 ... taille)
+    for j in (0 ... taille)
 
         g1.verifierCoup(i, j)
     end
