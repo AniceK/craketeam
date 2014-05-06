@@ -56,11 +56,13 @@ class Grille
 
       res = true
       @colonne.each { |x|
+          
           if x.valide() == false then
               res = false
           end
       }
       @ligne.each { |x|
+          
           if x.valide() == false then
               res = false
           end
@@ -69,8 +71,7 @@ class Grille
 
     end
 
-	# Méthode permettant de noircir une Case à partir de ses coordonnées
-
+# Méthode permettant de noircir une Case à partir de ses coordonnées
 	def noircirCase(coordX, coordY)
 
 	    @colonne[coordX].noircir(coordY)
@@ -78,7 +79,7 @@ class Grille
 
 	end
 
-  #methode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
+# Méthode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
   def raz()
     
     @colonne.each { |x|
@@ -100,7 +101,7 @@ class Grille
     }
   end
 
-  # Méthode permettant de déterminer les conditions de remplissage de la grille à partir des cases noircies
+# Méthode permettant de déterminer les conditions de remplissage de la grille à partir des cases noircies
 	def conditionsDeterminer()
 
 		@colonne.each { |x|
@@ -117,7 +118,7 @@ class Grille
 
 	end
 
-	# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
+# Méthode permettant de marquer une Case comme n'étant pas à cocher à partir de ses coordonnées
 
 	def marquerCase(coordX, coordY)
 
@@ -126,7 +127,7 @@ class Grille
 
     end
     
-#méthode de génération aléatoire d'une grille, noircissant au hasard des cases, déterminant les conditions et remettant la grille à 0   
+# Méthode de génération aléatoire d'une grille, noircissant au hasard des cases, déterminant les conditions et remettant la grille à 0   
     def genererAleatoire(unCoef)
 
         #remise à zéro des rangées
@@ -135,8 +136,9 @@ class Grille
             x.razCases()
         }
         
-        @colonne.each {
-            |x| x.razCases()
+        @colonne.each { |x| 
+            
+            x.razCases()
         }
 
         #on noircit des cases au hasard
@@ -161,7 +163,7 @@ class Grille
 
     end
     
-    #methode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
+# Méthode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
     def sauvegarder()
 
         self.raz()
@@ -175,7 +177,7 @@ class Grille
     end
   
   
-    #methode d'affichage reservee aux tests, affichage uniquement des colonnes
+# Méthode d'affichage reservee aux tests, affichage uniquement des colonnes
     def afficher()
 
         @colonne.each { |x|
