@@ -6,7 +6,10 @@
 #
 # Test du traitement d'image  
 
+require "RMagick"
+include Magick
 
+=begin
 class RGBColour
   def to_grayscale
     luminosity = Integer(0.2126*@red + 0.7152*@green + 0.0722*@blue)
@@ -25,3 +28,37 @@ class Pixmap
     gray
   end
 end
+=end
+
+class TraitementImage #Voir test4 pour test
+  
+  @image
+  @grille
+  
+  attr_reader :image, :grille
+  
+  def traitementImage.lire(entree)
+    new(entree)
+  end
+  
+  def initialize(entree)
+    @image = ImageList.new(entree)
+  end
+  
+  def traitementMonochrome()
+    return @image = @image.quantize(2, GRAYColorspace)
+  end
+  
+  def traitementPixel(taille)
+    return @image.rezise_to_fit!(taille)
+  end
+  
+  def traitementToPricross(taille)
+  
+  end
+end
+
+
+    
+  
+  
