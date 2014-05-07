@@ -356,6 +356,16 @@ class Jeu
         end
     end
 
+# Méthode pour créer un éditeur de grille
+    def creerEditeur(taille)
+
+        if @profil == nil then
+
+            raise "Impossible d'utiliser l'editeur sans avoir chargé un profil!", caller
+        else
+            @partie = Editeur.creer(@profil.nom, taille)
+        end
+    end
 
 #==============================================
     #Gestion de la Partie en Cours
@@ -438,7 +448,12 @@ class Jeu
 
         if @partie != nil then
 
-            @partie.marquer(x, y)
+            if @partie.class() == Partie then
+            
+                @partie.marquer(x, y)
+            else
+                raise "Impossible d'appeler marquer(x, y) pour autre chose qu'une partie!", caller
+            end
         else
 
             raise "Aucune partie n'est en cours!", caller
@@ -462,7 +477,12 @@ class Jeu
 
         if @partie != nil then
 
-            @partie.chercherAide()
+            if @partie.class() == Partie then 
+                
+                @partie.chercherAide()
+            else
+                raise "Impossible de chercher de l'aide en dehors d'une partie!", caller
+            end
         else
             raise "Aucune partie n'est en cours!", caller
         end
@@ -473,7 +493,13 @@ class Jeu
 
         if @partie != nil then
 
-            return @partie.termine()
+            if @partie.classe() == Partie then
+                
+                return @partie.termine()
+            else
+                @profil.ajouterUneGrille()
+                return @partie.terminer()
+            end
         else
 
             raise "Aucune partie en cours!", caller
@@ -486,7 +512,12 @@ class Jeu
 
         if @partie != nil then
 
-            return @partie.chargerGrillesExistantes(taille, toutes)
+            if @partie.class() == Partie then
+
+                return @partie.chargerGrillesExistantes(taille, toutes)
+            else
+                raise "impossible de charger les grilles existantes pour autre chose qu'une partie!", caller
+            end
         else
             raise "Aucune partie en cours!", caller
             return nil
