@@ -9,7 +9,7 @@ require 'fileutils'
 class Profil
 
     @nom
-	  @nbGrilles
+	@nbGrilles
 
     attr_reader :nom, :nbGrilles
 
