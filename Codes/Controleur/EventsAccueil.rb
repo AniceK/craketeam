@@ -7,13 +7,13 @@
 
 require 'gtk2'
 
-require './Controleur/Events.rb'
-require './Controleur/EventsCredits.rb'
-require './Controleur/EventsOptions.rb'
-require './Controleur/EventsProfil.rb'
-require './Controleur/EventsChoixTaille.rb'
-require './Vue/Fenetres/FenetreAccueil.rb'
-require './Vue/Dialogues/DialogueQuitter.rb'
+require_relative 'Events'
+require_relative 'EventsCredits'
+require_relative 'EventsOptions'
+require_relative 'EventsProfil'
+require_relative 'EventsPreparation'
+require './Vue/Fenetres/FenetreAccueil'
+require './Vue/Dialogues/DialogueQuitter'
 
 class EventsAccueil < Events
   
@@ -30,7 +30,7 @@ class EventsAccueil < Events
     @fenetre.boutonPartieRapide.signal_connect('clicked'){
       puts "> Choix Taille"
       
-      mouvement(EventsChoixTaille.new(jeu))
+      mouvement(EventsPreparation.new(jeu))
     }
     
     @fenetre.boutonProfil.signal_connect('clicked'){

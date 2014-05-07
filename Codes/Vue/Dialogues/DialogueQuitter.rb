@@ -7,7 +7,7 @@
 
 require 'gtk2'
 
-require './Vue/Dialogues/Dialogue.rb'
+require_relative 'Dialogue'
 
 class DialogueQuitter < Dialogue
   

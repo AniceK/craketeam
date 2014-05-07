@@ -5,7 +5,7 @@
 # Version 0.1 : Date : Mon Mar 17 09:42 2013
 #
 
-require './Vue/Fenetres/Fenetre.rb'
+require_relative 'Fenetre'
 
 class FenetreChoixGrille < Fenetre
   
@@ -41,9 +41,9 @@ class FenetreChoixGrille < Fenetre
     hBoxBoutons.pack_start(@boutonGrilleCreee, false, false, 0)
     hBoxBoutons.pack_start(@boutonGrilleAleatoire, false, false, 0)
     
-    vBox.pack_start(@texteChoixGrille, false, false, 10)
-    vBox.pack_start(hBoxBoutons, false, false, 10)
-    vBox.pack_start(@boutonPrecedent, false, false, 10)
+    vBox.pack_start(@texteChoixGrille, false, false, 30)
+    vBox.pack_start(hBoxBoutons, false, false, 20)
+    vBox.pack_start(@boutonPrecedent, false, false, 20)
     
     @fenetre.add(vBox)
   end

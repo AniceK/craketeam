@@ -5,7 +5,7 @@
 # Version 0.1 : Date : Mon Mar 17 09:42 2013
 #
 
-require './Vue/Fenetres/Fenetre.rb'
+require_relative 'Fenetre'
 
 class FenetreCredits < Fenetre
   
@@ -34,8 +34,8 @@ class FenetreCredits < Fenetre
     vBox = Gtk::VBox.new(false, 0)
     vBox.set_border_width(5)
     
-    vBox.pack_start(@texteCredits, false, false, 40)
-    vBox.pack_start(@boutonPrecedent, true, true, 0)
+    vBox.pack_start(@texteCredits, true, true, 30)
+    vBox.pack_start(@boutonPrecedent, false, true, 0)
     
     @fenetre.add(vBox)
   end

@@ -5,7 +5,7 @@
 # Version 0.1 : Date : Mon Mar 17 09:42 2013
 #
 
-require './Vue/Fenetres/Fenetre.rb'
+require_relative 'Fenetre'
 
 class FenetreProfil < Fenetre
   
@@ -50,9 +50,9 @@ class FenetreProfil < Fenetre
     hBoxBoutons.pack_start(@boutonCreerProfil, false, false, 0)
     hBoxBoutons.pack_start(@boutonChargerProfil, false, false, 0)
     
-    vBox.pack_start(hBoxNom, false, false, 20)
-    vBox.pack_start(hBoxBoutons, false, false, 10)
-    vBox.pack_start(@boutonPrecedent, false, false, 20)
+    vBox.pack_start(hBoxNom, true, true, 20)
+    vBox.pack_start(hBoxBoutons, false, true, 20)
+    vBox.pack_start(@boutonPrecedent, false, true, 0)
     
     @fenetre.add(vBox)
   end

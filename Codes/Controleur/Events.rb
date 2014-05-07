@@ -5,13 +5,15 @@
 # Version 0.1 : Date : Mon Mar 17 09:42 2013
 #
 
-require './Moteur/Profil.rb'
+require './Modele/Profil.rb'
 
 class Events
   
   @jeu
   @fenetre
   @eventsCourants
+  
+  attr_reader :jeu, :fenetre, :eventsCourants
   
   private_class_method :new
   

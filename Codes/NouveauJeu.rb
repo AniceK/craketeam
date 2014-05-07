@@ -19,6 +19,8 @@ class NouveauJeu
     
   # Contient l'ensemble d'évènements à attendre de l'interface graphique actuelle
   @evenements
+  # Contient la position de la première fenêtre à afficher qui sera donc en centre de l'écran
+  @positionFenetreDemarrage
 
   # Accessible et modifiable par d'autres classes
   attr_accessor :evenements

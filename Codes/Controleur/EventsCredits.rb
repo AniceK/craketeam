@@ -7,8 +7,8 @@
 
 require 'gtk2'
 
-require './Controleur/Events.rb'
-require './Vue/Fenetres/FenetreCredits.rb'
+require_relative 'Events'
+require './Vue/Fenetres/FenetreCredits'
 
 class EventsCredits < Events
   

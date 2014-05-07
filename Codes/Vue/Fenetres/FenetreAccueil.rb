@@ -5,7 +5,7 @@
 # Version 0.1 : Date : Mon Mar 17 09:42 2013
 #
 
-require './Vue/Fenetres/Fenetre.rb'
+require_relative 'Fenetre'
 
 class FenetreAccueil < Fenetre
   
@@ -35,12 +35,12 @@ class FenetreAccueil < Fenetre
     vBox = Gtk::VBox.new(false, 0)
     vBox.set_border_width(5)
     
-    vBox.pack_start(@imageBanniere, false, false, 5)
-    vBox.pack_start(@boutonPartieRapide, true, false, 0)
-    vBox.pack_start(@boutonProfil, true, false, 0)
-    vBox.pack_start(@boutonOptions, true, false, 0)
-    vBox.pack_start(@boutonCredits, true, false, 0)
-    vBox.pack_start(@boutonQuitter, true, false, 0)
+    vBox.pack_start(@imageBanniere, true, true, 5)
+    vBox.pack_start(@boutonPartieRapide, true, true, 0)
+    vBox.pack_start(@boutonProfil, true, true, 0)
+    vBox.pack_start(@boutonOptions, true, true, 0)
+    vBox.pack_start(@boutonCredits, true, true, 0)
+    vBox.pack_start(@boutonQuitter, true, true, 0)
     
     @fenetre.add(vBox)
   end

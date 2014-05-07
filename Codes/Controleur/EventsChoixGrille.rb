@@ -7,15 +7,16 @@
 
 require 'gtk2'
 
-require './Controleur/Events.rb'
-require './Controleur/EventsChoixTaille.rb'
-require './Vue/Fenetres/FenetreChoixGrille.rb'
+require_relative 'Events'
+require_relative 'EventsPreparation'
+require_relative 'EventsJeu'
+require './Vue/Fenetres/FenetreChoixGrille'
 
 class EventsChoixGrille < Events
   
   public_class_method :new
   
-  def initialize(jeu)
+  def initialize(jeu, tailleGrille)
     
     super(jeu)
     
@@ -26,19 +27,19 @@ class EventsChoixGrille < Events
     @fenetre.boutonGrilleCreee.signal_connect('clicked'){
       puts "> Grille créée"
       
-      #mouvement(EventsAccueil.new(jeu))
+      #mouvement(EventsChoixGrilleCreee.new(jeu))
     }
     
     @fenetre.boutonGrilleAleatoire.signal_connect('clicked'){
       puts "> Grille aleatoire"
       
-      #mouvement(EventsAccueil.new(jeu))
+      mouvement(EventsJeu.new(jeu, tailleGrille))
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       puts "> Accueil"
       
-      mouvement(EventsChoixTaille.new(jeu))
+      mouvement(EventsPreparation.new(jeu))
     }
   end
   

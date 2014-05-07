@@ -5,7 +5,7 @@
 # Version 0.1 : Date : Mon Mar 17 09:42 2013
 #
 
-require './Vue/Fenetres/Fenetre.rb'
+require_relative 'Fenetre'
 
 class FenetreOptions < Fenetre
   
@@ -34,11 +34,11 @@ class FenetreOptions < Fenetre
     hBox.set_border_width(5)
     vBox.set_border_width(5)
     
-    hBox.pack_start(@texteLangue, false, false, 0)
+    hBox.pack_start(@texteLangue, true, true, 0)
     hBox.pack_start(@comboBoxLangues, false, false, 0)
     
-    vBox.pack_start(hBox, false, false, 65)
-    vBox.pack_start(@boutonPrecedent, false, false, 0)
+    vBox.pack_start(hBox, true, false, 65)
+    vBox.pack_start(@boutonPrecedent, false, true, 0)
     
     @fenetre.add(vBox)
   end
