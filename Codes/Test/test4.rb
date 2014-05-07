@@ -6,6 +6,8 @@
 #
 # Test du traitement d'image  
 
+load "TraitementImage.rb"
+
 taille = 10
 image = TraitementImage.lire("toto.jpg")
 

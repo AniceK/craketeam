@@ -6,8 +6,8 @@
 #
 # Test du traitement d'image  
 
-require "RMagick"
-include Magick
+#require "RMagick"
+#include Magick
 
 =begin
 class RGBColour
@@ -29,7 +29,7 @@ class Pixmap
   end
 end
 =end
-
+=begin
 class TraitementImage #Voir test4 pour test
   
   @image
@@ -57,6 +57,21 @@ class TraitementImage #Voir test4 pour test
   
   end
 end
+=end
+require ”imlib2”
+
+img = load(”chat.jpg”)
+result = new(img.width, img.height)
+
+for col in (0...img.width) do 
+  for row in (0...img.height) do
+    gris = 0.3 * img.pixel(col , row).red + 0.59 * img.pixel(col , row).blue + 0.11 * img.pixel(col, row).green
+
+    result.draw pixel( col, row, new( gris , gris , gris ,255) )
+  end 
+end
+
+result.save(”chat gris.jpg”)
 
 
     
