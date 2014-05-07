@@ -45,9 +45,21 @@ class Editeur
         @grille.sauvegarder()
     end
 
+# Méthode pour terminer la grille, en calculer les conditions, et la sauvegarder
+    def terminer()
+
+        self.conditionsDeterminer()
+        self.sauvegarder()
+        return 1
+    end
 
 	# Méthode permettant de charger une grille préalamblement amorcée
 	def charger(grille)
     end
 
+# Méthode pour générer aléatoirement un grille, pour permettre à l'utilisateur de se faciliter la création de la grille
+    def genenerAleatoirementGrille()
+
+        @grille.genererAleatoire()
+    end
 end
