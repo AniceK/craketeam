@@ -6,8 +6,8 @@
 #
 # Test du traitement d'image  
 
-#require "RMagick"
-#include Magick
+require "RMagick"
+include Magick
 
 =begin
 class RGBColour
@@ -29,7 +29,7 @@ class Pixmap
   end
 end
 =end
-=begin
+
 class TraitementImage #Voir test4 pour test
   
   @image
@@ -37,7 +37,7 @@ class TraitementImage #Voir test4 pour test
   
   attr_reader :image, :grille
   
-  def traitementImage.lire(entree)
+  def TraitementImage.lire(entree)
     new(entree)
   end
   
@@ -45,33 +45,44 @@ class TraitementImage #Voir test4 pour test
     @image = ImageList.new(entree)
   end
   
+  def enregistrer(sortie)
+    @image.write(sortie)
+  end
+  
   def traitementMonochrome()
     return @image = @image.quantize(2, GRAYColorspace)
   end
   
   def traitementPixel(taille)
-    return @image.rezise_to_fit!(taille)
+    return @image.resize_to_fit!(taille)
   end
   
-  def traitementToPricross(taille)
-  
+  def imageToPicross(taille)
+  		@grille = Array.new(taille) { Array.new(taille) }
+
+  		0.upto(taille - 1){|y|
+  			0.upto(taille - 1){|x|
+  				@grille[x][y] = (@image.pixel_color(x,y).red == 0 ? 1:0)
+  			}
+  		}
+  		return grille
   end
+  
+  def afficherGrille
+  		texte = ""
+  		0.upto(@grille.size-1){ |y|
+  			0.upto(@grille.size-1){ |x|
+  				texte += @grille[x][y].to_s
+  			}
+  			texte += "\n"
+  		}
+  		puts texte
+  	end
+    
 end
-=end
-require ”imlib2”
 
-img = load(”chat.jpg”)
-result = new(img.width, img.height)
 
-for col in (0...img.width) do 
-  for row in (0...img.height) do
-    gris = 0.3 * img.pixel(col , row).red + 0.59 * img.pixel(col , row).blue + 0.11 * img.pixel(col, row).green
 
-    result.draw pixel( col, row, new( gris , gris , gris ,255) )
-  end 
-end
-
-result.save(”chat gris.jpg”)
 
 
     

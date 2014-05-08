@@ -6,12 +6,17 @@
 #
 # Test du traitement d'image  
 
-load "TraitementImage.rb"
+load "../Modele/TraitementImage.rb"
 
-taille = 10
+taille = 20
 image = TraitementImage.lire("toto.jpg")
 
 image.traitementMonochrome()
 image.display
 image.traitementPixel(taille)
 image.display
+image.traitementMonochrome()
+image.enregistrer("toto_tmp.jpg")
+
+tmp = image.imageToPicross(taille)
+tmp.afficherGrille
