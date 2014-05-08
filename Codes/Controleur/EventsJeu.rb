@@ -10,6 +10,7 @@ require 'gtk2'
 require_relative 'Events'
 require_relative 'EventsPreparation'  # DEBUG
 require './Vue/Fenetres/FenetreJeu'
+require './Vue/Dialogues/DialogueMenuPrincipal'
 
 class EventsJeu < Events
   
@@ -25,6 +26,14 @@ class EventsJeu < Events
   def initialize(jeu, tailleGrille)
     
     super(jeu)
+    
+    
+    ################################################################
+    #                                                              #
+    #                             Jeu                              #
+    #                                                              #
+    ################################################################
+    
     
     @estEnPause = false
     @tailleGrille = tailleGrille
@@ -52,7 +61,7 @@ class EventsJeu < Events
     end
     
     
-    @fenetre.tempsEcoule = 0
+    #@fenetre.tempsEcoule = 0
     
     # Affichage
     
@@ -79,6 +88,26 @@ class EventsJeu < Events
         puts "Erreur du booléen \"@estEnPause\" déterminant la pause ou la lecture"
       end
     }
+    
+    
+    ################################################################
+    #                                                              #
+    #                          Menu Pause                          #
+    #                                                              #
+    ################################################################
+    
+    
+    @fenetre.boutonMenuPrincipal.signal_connect('clicked'){
+      puts "> Dialogue Menu Principal"
+      
+      dialogue = DialogueMenuPrincipal.new()
+      
+      if dialogue.doitArreterPartie() then
+        
+        mouvement(EventsAccueil.new(jeu))
+      end
+    }
+    
   end
   
   

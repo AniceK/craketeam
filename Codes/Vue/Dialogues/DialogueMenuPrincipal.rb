@@ -9,18 +9,20 @@ require 'gtk2'
 
 require_relative 'Dialogue'
 
-class DialogueQuitter < Dialogue
+class DialogueMenuPrincipal < Dialogue
   
-  @doitQuitter
+  @doitArreterPartie
   
-  attr_reader :doitQuitter
+  attr_reader :doitArreterPartie
   
   public_class_method :new
   
   def initialize()
     
-    super("Quitter ?",
-          "Êtes-vous sûr de vouloir quitter ?")
+    super("Arrêter partie ?",
+    
+          "Êtes-vous sûr de vouloir quitter la partie en cours ?\n
+          Tout partie non sauvegardée sera perdue.")
     
     @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
     
@@ -29,19 +31,19 @@ class DialogueQuitter < Dialogue
     @popup.run do |response|
       case response
         when Gtk::Dialog::RESPONSE_ACCEPT
-          puts "> Quitter"
-          @doitQuitter = true
-        else                                      
           puts "> Accueil"
-          @doitQuitter = false
+          @doitArreterPartie = true
+        else                                      
+          puts "> Jeu"
+          @doitArreterPartie = false
       end
       
       @popup.destroy
     end
   end
   
-  def doitQuitter()
-    return @doitQuitter
+  def doitArreterPartie()
+    return @doitArreterPartie
   end
 
 end

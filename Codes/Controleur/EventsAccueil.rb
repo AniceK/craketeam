@@ -52,7 +52,7 @@ class EventsAccueil < Events
     }
     
     @fenetre.boutonQuitter.signal_connect('clicked'){
-      puts "> Quitter"
+      puts "> Dialogue Quitter"
       
       
       dialogue = DialogueQuitter.new()

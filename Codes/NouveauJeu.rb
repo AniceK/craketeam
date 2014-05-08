@@ -25,7 +25,7 @@ class NouveauJeu
   # Accessible et modifiable par d'autres classes
   attr_accessor :evenements
   
-  # Ne peut pas être instancié plusieurs fois
+  # Ne peut pas être instancié
   private_class_method :new
 
   ### Initialisation des évènements et donc du moteur et de l'interface gtk ###

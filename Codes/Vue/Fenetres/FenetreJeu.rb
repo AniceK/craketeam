@@ -11,6 +11,7 @@ class FenetreJeu < Fenetre
   
   @texteTemps
   @tempsEcoule
+  @afficheTemps
   @tableauGeneral
   @tableauConditionsV
   @tableauConditionsH
@@ -20,21 +21,75 @@ class FenetreJeu < Fenetre
   @imagePause
   @imageLecture
   
-  attr_reader :texteTemps, :boutonAide, :boutonPause, :imagePause, :imageLecture
-  attr_accessor :tableauConditionsV, :tableauConditionsH, :tableauJeu, :tempsEcoule
+  @boutonMenuPrincipal
+  @entreeSauvegarde
+  @boutonSauvegarder
+  @vBoxPause
+  
+  
+  attr_reader :texteTemps,
+              :boutonAide,
+              :boutonPause,
+              :imagePause,
+              :imageLecture,
+              :afficheTemps,
+              
+              :boutonMenuPrincipal,
+              :entreeSauvegarde,
+              :boutonSauvegarder,
+              :vBoxPause
+              
+  attr_accessor :tableauConditionsV,
+                :tableauConditionsH,
+                :tableauJeu,
+                :tempsEcoule
   
   public_class_method :new
   
   def initialize()
     super()
     
+    
+    ################################################################
+    #                                                              #
+    #                          Menu Pause                          #
+    #                                                              #
+    ################################################################
+    
+    
+    @boutonMenuPrincipal = Gtk::Button.new("Menu Principal")
+    texteSauvegarde = Gtk::Label.new("Nom de la sauvegarde :")
+    @entreeSauvegarde = Gtk::Entry.new()
+    @boutonSauvegarder = Gtk::Button.new("Sauvegarder")
+    @vBoxSauvegarde = Gtk::VBox.new(true, 0)
+    @vBoxPause = Gtk::VBox.new(true, 0)
+    
+    @boutonMenuPrincipal.set_size_request(-1, 50)
+    @entreeSauvegarde.set_max_length(30)
+    @entreeSauvegarde.set_text("save_")
+    @boutonSauvegarder.set_size_request(-1, 50)
+    
+    @vBoxSauvegarde.pack_start(texteSauvegarde, false, false, 0)
+    @vBoxSauvegarde.pack_start(@entreeSauvegarde, false, false, 0)
+    @vBoxSauvegarde.pack_start(@boutonSauvegarder, false, false, 0)
+    @vBoxPause.pack_start(@vBoxSauvegarde, false, false, 0)
+    @vBoxPause.pack_start(@boutonMenuPrincipal, false, false, 0)
+    
+    
+    
+    
+    ################################################################
+    #                                                              #
+    #                             Jeu                              #
+    #                                                              #
+    ################################################################
+    
+    
     @fenetre.set_title("Jouez !")
     
-    #@menuPause = MenuPause.new()
-    @menuPause = Gtk::Label.new("Menu de Pause")
-    
     @texteTemps = Gtk::Label.new("Temps écoulé :")
-    @tempsEcoule = Gtk::Label.new("0")
+    @tempsEcoule = 1
+    @afficheTemps =  Gtk::Label.new(@tempsEcoule.to_s + " sec")
     @boutonAide = Gtk::Button.new('Aide')
     @boutonPause = Gtk::Button.new()
     @tableauGeneral = Gtk::Table.new(0, 0, false)
@@ -71,7 +126,7 @@ class FenetreJeu < Fenetre
     @tableauGeneral.attach_defaults(@aligneConditionsH, 0, 1, 1, 2)
     @tableauGeneral.attach_defaults(@tableauJeu, 1, 2, 1, 2)
     
-    hBoxTemps = Gtk::HBox.new(false, 0)
+    hBoxTemps = Gtk::HBox.new(true, 0)
     vBoxDroite = Gtk::VBox.new(true, 0)
     @hBoxPrincipale = Gtk::HBox.new(false, 5)
     
@@ -80,13 +135,13 @@ class FenetreJeu < Fenetre
     @hBoxPrincipale.set_border_width(5)
     
     hBoxTemps.pack_start(@texteTemps, false, false, 0)
-    hBoxTemps.pack_start(@tempsEcoule, false, false, 20)
+    hBoxTemps.pack_start(@afficheTemps, false, false, 20)
     
     vBoxDroite.pack_start(hBoxTemps, false, false, 30)
     vBoxDroite.pack_start(@alignePause, false, false, 30)
     vBoxDroite.pack_end(@boutonAide, false, false, 30)
     
-    @hBoxPrincipale.pack_start(@menuPause, true, true, 0)  # DEBUG
+    @hBoxPrincipale.pack_start(@vBoxPause, true, false, 40)  # DEBUG
     @hBoxPrincipale.pack_start(@tableauGeneral, true, true, 0)
     @hBoxPrincipale.pack_end(vBoxDroite, false, false, 10)
     @hBoxPrincipale.pack_end(Gtk::VSeparator.new(), false, false, 0)
@@ -109,24 +164,32 @@ class FenetreJeu < Fenetre
     @aligneConditionsH.set_padding(5, 0, 0, 0)
     @tableauConditionsH.set_row_spacings(9.3)
   end
-
-  
   
   def affichagePause()
     
     puts "> Pause"
+    @fenetre.set_title("Pause...")
     @boutonPause.set_image(imageLecture)
+    @texteTemps.set_text("Temps écoulé :\n(Pause)")
+    
+    @tempsEcoule+=10
+    @afficheTemps.set_text(@tempsEcoule.to_s + " sec")
     
     @tableauGeneral.hide_all()   
-    @menuPause.show_all()
+    @vBoxPause.show_all()
   end
   
   def affichageJeu()
     
     puts "> Lecture"
+    @fenetre.set_title("Jouez !")
     @boutonPause.set_image(imagePause)
+    @texteTemps.set_text("Temps écoulé :")
     
-    @menuPause.hide_all()
+    @tempsEcoule+=10
+    @afficheTemps.set_text(@tempsEcoule.to_s + " sec")
+    
+    @vBoxPause.hide_all()
     @tableauGeneral.show_all()
   end
   

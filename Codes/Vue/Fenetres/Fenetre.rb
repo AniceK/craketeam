@@ -56,8 +56,6 @@ class Fenetre
                                 @fenetreHints,
                                 Gdk::Window::HINT_MIN_SIZE |
                                 Gdk::Window::HINT_MAX_SIZE)
-                                
-    puts "Fenêtre redimensionnée en " + x.to_s + "x" + y.to_s
   end
   
   ### Fin de l'exécution ###
