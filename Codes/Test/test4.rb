@@ -8,7 +8,7 @@
 
 load "../Modele/TraitementImage.rb"
 
-#Meilleur résultat sur de grande taille
+#Meilleur résultat sur de grande taille 
 taille = 20
 image = TraitementImage.lire("test.jpg")
 
@@ -16,4 +16,5 @@ image.routine(taille)
 image.enregistrer("test_tmp.jpg")
 
 tmp = image.afficherGrille()
+#Traitement à venir : On envoie la grille dans l'édition ?
 puts tmp
