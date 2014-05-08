@@ -12,9 +12,9 @@ load "../Modele/TraitementImage.rb"
 taille = 20
 image = TraitementImage.lire("test.jpg")
 
-image.routine(taille)
+image.traitementTotal(taille)
 image.enregistrer("test_tmp.jpg")
 
-tmp = image.afficherGrille()
+tmp = image.traitementAffichage()
 #Traitement à venir : On envoie la grille dans l'édition ?
 puts tmp

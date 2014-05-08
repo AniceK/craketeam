@@ -28,7 +28,7 @@ class TraitementImage #Voir test4 pour test
     @image.write(sortie)
   end
   
-  #On transforme l'image en en soit Blanc ou noir
+  #On transforme l'image Blanc ou noir
   def traitementMonochrome()
     return @image = @image.quantize(2, GRAYColorspace)
   end
@@ -41,7 +41,7 @@ class TraitementImage #Voir test4 pour test
   #Transforme l'image noir et blanc en picross Noir et blanc
   #On compare la couleur au vert
   #Si c'est une couleur, alors c'est noir, sinon c'est blanc
-  def imageToPicross(taille)
+  def traitementPicross(taille)
   		@grille = Array.new(taille) { Array.new(taille) }
 
   		0.upto(taille - 1){|y|
@@ -54,23 +54,23 @@ class TraitementImage #Voir test4 pour test
   
   #Pour une image en noir et blanc, on pixelise, et monochrome
   #On retourne ensuite la grille
-  def routine(taille)
+  def traitementTotal(taille)
     self.traitementPixel(taille)
     self.traitementMonochrome()
     
-    return @grille = self.imageToPicross(taille)
+    return @grille = self.traitementPicross(taille)
   end
   
   #Affichage de test
-  def afficherGrille
-    texte = ""
+  def traitementAffichage
+    tmp = ""
     		0.upto(@grille.size-1){ |y|
     			0.upto(@grille.size-1){ |x|
-    				texte += @grille[x][y].to_s
+    				tmp += @grille[x][y].to_s
     			}
-    			texte += "\n"
+    			tmp += "\n"
     		}
-    		return texte
+    		return tmp
   end
     
 end
