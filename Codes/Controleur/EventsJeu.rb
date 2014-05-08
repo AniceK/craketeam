@@ -96,8 +96,14 @@ class EventsJeu < Events
     #                                                              #
     ################################################################
     
+    @fenetre.boutonSauvegarder.signal_connect('clicked'){
+      
+      puts "> Accueil (nom de sauvegarde: " + @fenetre.entreeSauvegarde.text() + ")"
+      mouvement(EventsAccueil.new(jeu))
+    }
     
     @fenetre.boutonMenuPrincipal.signal_connect('clicked'){
+      
       puts "> Dialogue Menu Principal"
       
       dialogue = DialogueMenuPrincipal.new()
