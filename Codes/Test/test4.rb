@@ -8,15 +8,12 @@
 
 load "../Modele/TraitementImage.rb"
 
+#Meilleur résultat sur de grande taille
 taille = 20
-image = TraitementImage.lire("toto.jpg")
+image = TraitementImage.lire("test.jpg")
 
-image.traitementMonochrome()
-image.display
-image.traitementPixel(taille)
-image.display
-image.traitementMonochrome()
-image.enregistrer("toto_tmp.jpg")
+image.routine(taille)
+image.enregistrer("test_tmp.jpg")
 
-tmp = image.imageToPicross(taille)
-tmp.afficherGrille
+tmp = image.afficherGrille()
+puts tmp

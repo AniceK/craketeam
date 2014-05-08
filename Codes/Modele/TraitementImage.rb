@@ -9,27 +9,6 @@
 require "RMagick"
 include Magick
 
-=begin
-class RGBColour
-  def to_grayscale
-    luminosity = Integer(0.2126*@red + 0.7152*@green + 0.0722*@blue)
-    self.class.new(luminosity, luminosity, luminosity)
-  end
-end
- 
-class Pixmap
-  def to_grayscale
-    gray = self.class.new(@width, @height)
-    @width.times do |x|
-      @height.times do |y|
-        gray[x,y] = self[x,y].to_grayscale
-      end
-    end
-    gray
-  end
-end
-=end
-
 class TraitementImage #Voir test4 pour test
   
   @image
@@ -49,35 +28,50 @@ class TraitementImage #Voir test4 pour test
     @image.write(sortie)
   end
   
+  #On transforme l'image en en soit Blanc ou noir
   def traitementMonochrome()
     return @image = @image.quantize(2, GRAYColorspace)
   end
   
+  #Pixelise l'image dans la taille souhaité
   def traitementPixel(taille)
     return @image.resize_to_fit!(taille)
   end
   
+  #Transforme l'image noir et blanc en picross Noir et blanc
+  #On compare la couleur au vert
+  #Si c'est une couleur, alors c'est noir, sinon c'est blanc
   def imageToPicross(taille)
   		@grille = Array.new(taille) { Array.new(taille) }
 
   		0.upto(taille - 1){|y|
   			0.upto(taille - 1){|x|
-  				@grille[x][y] = (@image.pixel_color(x,y).red == 0 ? 1:0)
+  				@grille[x][y] = (@image.pixel_color(x,y).green == 0 ? 1:0)
   			}
   		}
   		return grille
   end
   
+  #Pour une image en noir et blanc, on pixelise, et monochrome
+  #On retourne ensuite la grille
+  def routine(taille)
+    self.traitementPixel(taille)
+    self.traitementMonochrome()
+    
+    return @grille = self.imageToPicross(taille)
+  end
+  
+  #Affichage de test
   def afficherGrille
-  		texte = ""
-  		0.upto(@grille.size-1){ |y|
-  			0.upto(@grille.size-1){ |x|
-  				texte += @grille[x][y].to_s
-  			}
-  			texte += "\n"
-  		}
-  		puts texte
-  	end
+    texte = ""
+    		0.upto(@grille.size-1){ |y|
+    			0.upto(@grille.size-1){ |x|
+    				texte += @grille[x][y].to_s
+    			}
+    			texte += "\n"
+    		}
+    		return texte
+  end
     
 end
 
