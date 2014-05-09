@@ -5,7 +5,10 @@
 require "../Modele/Grille.rb"
 require "../Modele/Aide.rb"
 require "../Modele/Rangee.rb"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 12b55e41cff052d0cac78a723dfe78fb2766cb18
 =begin
 my_case = Case.creer()
 my_case.noircir()

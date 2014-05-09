@@ -4,7 +4,7 @@
 #Ce fichier contient la classe Rangee, qui est constituee de Case
 #ici une description de la classe Rangee.
 
-load "Case.rb"
+require_relative "Case.rb"
 
 class Rangee
 
