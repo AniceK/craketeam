@@ -159,5 +159,11 @@ class Partie
 
         @grille.marquer(x, y)
     end
+
+# Méthode pour retourner la taille de la grille
+    def tailleGrille()
+
+        return @grille.taille
+    end
   
 end

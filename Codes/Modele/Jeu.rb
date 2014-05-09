@@ -444,6 +444,18 @@ class Jeu
         end
     end
 
+# Méthode pour retourner la taille de la grille de la partie
+    def tailleGrille()
+
+        if @partie != nil then
+
+            return @partie.tailleGrille()
+        else
+            raise "Aucune partie n'est chargée!", caller
+        end
+    end
+
+
 # Méthode activant/lançant la partie
     def lancerPartie()
 
