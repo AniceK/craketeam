@@ -397,8 +397,19 @@ class Jeu
 # Méthode pour déconnecter un profil
     def deconnecter()
 
-        @profil.sauvegarder()
-        @profil = nil
+        if @profil != nil then
+            
+            @profil.sauvegarder()
+            @profil = nil
+        else
+            raise "Erreur : pas de profil "
+        end
+    end
+
+# Méthode pour verifier si un profil est connecté
+    def profilConnecte?()
+
+        return @profil != nil
     end
 
 #==============================================
