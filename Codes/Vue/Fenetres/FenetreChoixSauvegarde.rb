@@ -7,24 +7,24 @@
 
 require_relative 'Fenetre'
 
-class FenetreCredits < Fenetre
+class FenetreChoixSauvegarde < Fenetre
   
   @boutonPrecedent
-  @texteCredits
+  @texteChoixSauvegarde
   
-  attr_reader :boutonPrecedent, :texteCredits
+  attr_reader :boutonPrecedent, :texteChoixSauvegarde
   
   public_class_method :new
   
   def initialize()
     super()
     
-    @fenetre.set_title("Credits")
+    @fenetre.set_title("ChoixSauvegarde")
     
     @boutonPrecedent = Gtk::Button.new('Précédent')
     @boutonPrecedent.set_size_request(-1, 50)
     
-    @texteCredits = Gtk::Label.new("Remerciements:\n
+    @texteChoixSauvegarde = Gtk::Label.new("Remerciements:\n
                      Chef de projet - Tremblain Rémi
                      Documentaliste - Picard Colas
                      Documentaliste - Crouillère Kévin
@@ -34,7 +34,7 @@ class FenetreCredits < Fenetre
     vBox = Gtk::VBox.new(false, 0)
     vBox.set_border_width(5)
     
-    vBox.pack_start(@texteCredits, true, true, 30)
+    vBox.pack_start(@texteChoixSauvegarde, true, true, 30)
     vBox.pack_end(@boutonPrecedent, false, true, 0)
     
     @fenetre.add(vBox)

@@ -12,6 +12,8 @@ require_relative 'EventsCredits'
 require_relative 'EventsOptions'
 require_relative 'EventsProfil'
 require_relative 'EventsPreparation'
+require_relative 'EventsChoixPartie'
+#require_relative 'EventsEditeur'
 require './Vue/Fenetres/FenetreAccueil'
 require './Vue/Dialogues/DialogueQuitter'
 
@@ -26,6 +28,12 @@ class EventsAccueil < Events
     @fenetre = FenetreAccueil.new()
     @fenetre.afficher()
     
+    # Si aucun profil connecté
+    #@fenetre.affichageSansProfil()
+    
+    # Si profil connecté
+    @fenetre.affichageAvecProfil()
+    
     
     @fenetre.boutonPartieRapide.signal_connect('clicked'){
       puts "> Choix Taille"
@@ -33,10 +41,22 @@ class EventsAccueil < Events
       mouvement(EventsPreparation.new(jeu))
     }
     
+    @fenetre.boutonJouer.signal_connect('clicked'){
+      puts "> Choix Partie"
+      
+      mouvement(EventsChoixPartie.new(jeu))
+    }
+    
     @fenetre.boutonProfil.signal_connect('clicked'){
       puts "> Profil"
       
       mouvement(EventsProfil.new(jeu))
+    }
+    
+    @fenetre.boutonEditeur.signal_connect('clicked'){
+      puts "> Éditeur"
+      
+      #mouvement(EventsEditeur.new(jeu))
     }
     
     @fenetre.boutonOptions.signal_connect('clicked'){
@@ -60,6 +80,14 @@ class EventsAccueil < Events
       if dialogue.doitQuitter() then
         @fenetre.quitter()
       end
+    }
+    
+    @fenetre.boutonDeconnexion.signal_connect('clicked'){
+      puts "> Accueil (Déconnexion)"
+      
+      # Déconnecter le profil ici
+      
+      @fenetre.affichageSansProfil()
     }
   end
   
