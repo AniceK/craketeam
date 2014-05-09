@@ -227,6 +227,7 @@ class Jeu
             #afficher une fenetre avec bienvenue truc
             nom = aName + ".yml"
             @profil = YAML::load( File.open(nom))
+            FileUtils.cd('../..')
             resultat = true
 
         ensure

@@ -38,7 +38,7 @@ class Profil
 # Méthode pour sauvegarder le profil
     def sauvegarder()
 
-        FileUtils.cd("Profil")
+        FileUtils.cd('Profil')
         sauvegarde = @nom + ".yml"
         FileUtils.cd(@nom)
         File.open(sauvegarde, "w"){ |out| out.puts self.to_yaml}
