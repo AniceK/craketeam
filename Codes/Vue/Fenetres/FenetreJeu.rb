@@ -97,9 +97,9 @@ class FenetreJeu < Fenetre
     @tableauConditionsH = Gtk::Table.new(0, 0, true)
     @tableauJeu = Gtk::Table.new(0, 0, true)
     tableauDefile = Gtk::ScrolledWindow.new
-    pixPause = Gdk::Pixbuf.new('./Vue/Images/pause.gif')
+    pixPause = Gdk::Pixbuf.new('../Vue/Images/pause.gif')
     @imagePause = Gtk::Image.new(pixPause)
-    pixLecture = Gdk::Pixbuf.new('./Vue/Images/lecture.gif')
+    pixLecture = Gdk::Pixbuf.new('../Vue/Images/lecture.gif')
     @imageLecture = Gtk::Image.new(pixLecture)
     
     @boutonAide.set_size_request(80, 30)
