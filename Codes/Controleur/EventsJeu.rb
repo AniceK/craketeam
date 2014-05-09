@@ -23,7 +23,7 @@ class EventsJeu < Events
   
   public_class_method :new
   
-  def initialize(jeu, tailleGrille)
+  def initialize(jeu)
     
     super(jeu)
     
@@ -36,7 +36,7 @@ class EventsJeu < Events
     
     
     @estEnPause = false
-    @tailleGrille = tailleGrille
+    @tailleGrille = @jeu.tailleGrille()
     @tailleCase = 30
     @nbConditionsRangee = (@tailleGrille/2.0).round()
     puts "@nbConditionsRangee = " + @nbConditionsRangee.to_s

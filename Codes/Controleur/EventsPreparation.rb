@@ -13,11 +13,6 @@ require './Vue/Fenetres/FenetrePreparation'
 
 class EventsPreparation < Events
   
-  @tailleGrille
-  @difficulte
-  
-  attr_reader :tailleGrille, :difficulte
-  
   public_class_method :new
   
   def initialize(jeu)
@@ -40,15 +35,17 @@ class EventsPreparation < Events
     
     @fenetre.boutonSuivant.signal_connect('clicked'){
       
+      tailleGrille = @fenetre.choixTaille()
+      difficulte = @fenetre.choixDifficulte()
+      
       puts "> Suivant"
       
-      @tailleGrille = @fenetre.choixTaille()
       puts "Taille de la grille = " + @tailleGrille.to_s
-      
-      @difficulte = @fenetre.choixDifficulte()
       puts "Niveau de difficulté de l'aide: " + @difficulte.to_s
       
-      mouvement(EventsChoixGrille.new(jeu, @tailleGrille))
+      @jeu.creerPartie(tailleGrille, difficulte)
+      
+      mouvement(EventsChoixGrille.new(jeu))
     }
   end
   

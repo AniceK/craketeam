@@ -16,7 +16,7 @@ class EventsChoixGrille < Events
   
   public_class_method :new
   
-  def initialize(jeu, tailleGrille)
+  def initialize(jeu)
     
     super(jeu)
     
@@ -33,7 +33,7 @@ class EventsChoixGrille < Events
     @fenetre.boutonGrilleAleatoire.signal_connect('clicked'){
       puts "> Grille aleatoire"
       
-      mouvement(EventsJeu.new(jeu, tailleGrille))
+      mouvement(EventsJeu.new(jeu))
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){

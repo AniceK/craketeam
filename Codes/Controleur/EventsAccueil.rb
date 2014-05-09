@@ -28,12 +28,17 @@ class EventsAccueil < Events
     @fenetre = FenetreAccueil.new()
     @fenetre.afficher()
     
-    # Si aucun profil connecté
-    #@fenetre.affichageSansProfil()
-    
-    # Si profil connecté
-    @fenetre.affichageAvecProfil()
-    
+    if @jeu.profilConnecte?() then
+      
+      @fenetre.affichageAvecProfil()
+      
+    elsif !@jeu.profilConnecte?() then
+      
+      @fenetre.affichageSansProfil()
+      
+    else
+      puts "Erreur test si profil connecté"
+    end
     
     @fenetre.boutonPartieRapide.signal_connect('clicked'){
       puts "> Choix Taille"
@@ -85,7 +90,7 @@ class EventsAccueil < Events
     @fenetre.boutonDeconnexion.signal_connect('clicked'){
       puts "> Accueil (Déconnexion)"
       
-      # Déconnecter le profil ici
+      @jeu.deconnecter()
       
       @fenetre.affichageSansProfil()
     }
