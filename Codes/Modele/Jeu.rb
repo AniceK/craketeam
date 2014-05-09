@@ -320,6 +320,7 @@ class Jeu
 
     end
 
+
 # Méthode recuperant une partie passée en paramètre, et fait de cette partie la partie en cours.
 	def chargerPartie(p)
 
@@ -585,4 +586,47 @@ class Jeu
             return nil
         end
     end
+
+# Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
+    def nbConditionsV(x)
+
+        if @partie.class == Partie then
+
+            return @partie.nbConditionsV(x)
+        else
+            raise "Erreur, une Partie doit être commencée", caller
+        end
+    end
+# Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
+    def nbConditionsH(x)
+
+        if @partie.class == Partie then
+
+            return @partie.nbConditionsH(x)
+        else
+            raise "Erreur, une Partie doit être commencée", caller
+        end
+    end
+# Méthode pour retourner la condition y dans la colonne x passe en parametre
+    def conditionV(x, y)
+
+        if @partie.class == Partie then
+
+            return @partie.conditionV(x, y)
+        else
+            raise "Erreur, une Partie doit être commencée", caller
+        end
+    end
+# Méthode pour retourner la condition y dans la ligne y passe en parametre
+    def conditionV(x, y)
+
+        if @partie.class == Partie then
+
+            return @partie.conditionV(x, y)
+        else
+            raise "Erreur, une Partie doit être commencée", caller
+        end
+    end
+
+
 end

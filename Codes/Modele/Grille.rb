@@ -208,4 +208,29 @@ class Grille
             x.afficher()
         }
     end
+
+# Méthode pour retourner le nombre de conditions dans la colonne x passe en parametre
+    def nbConditionsV(x)
+
+            return @colonne[x].size()
+    end
+
+# Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
+    def nbConditionsH(x)
+
+            return @ligne[x].size()
+    end
+
+# Méthode pour retourner la condition y dans la colonne x passe en parametre
+    def conditionV(x, y)
+
+            return @colonne[x].condition(y)
+    end
+
+# Méthode pour retourner la condition y dans la ligne x passe en parametre
+    def conditionH(x, y)
+
+            return @ligne[x].condition(y)
+    end
+
 end
