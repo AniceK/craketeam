@@ -5,10 +5,7 @@
 require "../Modele/Grille.rb"
 require "../Modele/Aide.rb"
 require "../Modele/Rangee.rb"
-<<<<<<< HEAD
 
-=======
->>>>>>> 12b55e41cff052d0cac78a723dfe78fb2766cb18
 =begin
 my_case = Case.creer()
 my_case.noircir()
@@ -48,7 +45,7 @@ taille = 5
    
 puts "Test de la Grille"
 g1 = Grille.creer("toto", taille)
-aide = Aide.creer(2)
+aide = Aide.creer(1)
 g1.genererAleatoire(20)
 g1.noircirCase(4, 4)
 g1.afficher()
@@ -62,7 +59,9 @@ end
 
 
 puts"\n"
-aide.chercherAide(g1.colonne, g1.ligne)
+tmp = aide.chercherAide(g1.colonne, g1.ligne)
 puts "\n"
+
+puts tmp
 
 puts g1.termine?().to_s()
