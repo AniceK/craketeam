@@ -1,3 +1,6 @@
+# encoding: utf-8
+#! /usr/bin/env ruby
+##
 # Classe Editeur,
 # il s'agit d'un module complémentaire à ajouter au Picross
 # afin de pouvoir créer ses propre Grille en noircissant une à une les cases qui nous intéresse.

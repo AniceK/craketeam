@@ -10,6 +10,8 @@
 require 'FileUtils'
 require 'yaml'
 
+require_relative './Partie'
+
 class Jeu
 
   @profil
