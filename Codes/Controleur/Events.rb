@@ -5,7 +5,8 @@
 # Version 0.1 : Date : Mon Mar 17 09:42 2013
 #
 
-require './Modele/Profil.rb'
+require './Modele/Profil'
+require './Modele/Jeu'
 
 class Events
   
@@ -24,6 +25,6 @@ class Events
   def mouvement(events)
     
     @fenetre.cacher()
-    @jeu.evenements = events
+    @jeu.ajouterEvenement(events)
   end
 end

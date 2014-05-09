@@ -22,7 +22,7 @@ class EventsProfil < Events
     @fenetre.afficher()
     
     @fenetre.boutonCreerProfil.signal_connect('clicked'){
-      @jeu.nomProfil(@fenetre.entreeNomProfil.text)
+      @jeu.creerProfil(@fenetre.entreeNomProfil.text)
       
       puts "> Accueil (pseudo: " + @jeu.nomProfil() + ")"
       
@@ -32,13 +32,12 @@ class EventsProfil < Events
     @fenetre.boutonChargerProfil.signal_connect('clicked'){
       puts "> Accueil (pseudo: " + @fenetre.entreeNomProfil.text + ")"
       
-      # Si profil entré n'existe pas
-        # Fenêtre erreur profil inconnu
-      
-      # Sinon
-      @jeu.nomProfil(@fenetre.entreeNomProfil.text)
-      
-      mouvement(EventsAccueil.new(jeu))
+      if @jeu.chargerProfil(@fenetre.entreeNomProfil.text) then
+        mouvement(EventsAccueil.new(jeu))
+      else
+        puts "> Profil inconnu"
+        # Popup erreur
+      end
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
