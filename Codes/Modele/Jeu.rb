@@ -273,6 +273,7 @@ class Jeu
 
     #Appel au constructeur de profil
             @profil = Profil.creer(aName)
+            FileUtils.cd('..')
 
 
     #Si le Dossier au nom du profil cree existe deja, alors on le signale
@@ -280,7 +281,7 @@ class Jeu
 
             puts "Le profil #{aName} existe déjà"
             resultat = false
-            FileUtils.cd('..')
+            FileUtils.cd('../..')
 
           ensure
 
