@@ -165,9 +165,9 @@ class FenetreJeu < Fenetre
     @tableauConditionsH.set_row_spacings(9.3)
   end
   
-  def affichagePause()
+  def affichagePauseProfil()
     
-    puts "> Pause"
+    puts "> Pause Profil"
     @fenetre.set_title("Pause...")
     @boutonPause.set_image(imageLecture)
     @texteTemps.set_text("Temps écoulé :\n(Pause)")
@@ -177,6 +177,21 @@ class FenetreJeu < Fenetre
     
     @tableauGeneral.hide_all()   
     @vBoxPause.show_all()
+  end
+  
+  def affichagePauseSimple()
+    
+    puts "> Pause Simple"
+    @fenetre.set_title("Pause...")
+    @boutonPause.set_image(imageLecture)
+    @texteTemps.set_text("Temps écoulé :\n(Pause)")
+    
+    @tempsEcoule+=10
+    @afficheTemps.set_text(@tempsEcoule.to_s + " sec")
+    
+    @tableauGeneral.hide_all()   
+    @vBoxPause.show_all()
+    @vBoxSauvegarde.hide_all()
   end
   
   def affichageJeu()

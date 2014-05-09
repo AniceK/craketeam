@@ -31,6 +31,10 @@ class EventsPreparation < Events
       
       puts "> Accueil"
       
+      # Si profil connecté
+      #mouvement(EventsChoixPartie.new(jeu))
+      
+      # Si pas de profil connecté
       mouvement(EventsAccueil.new(jeu))
     }
     

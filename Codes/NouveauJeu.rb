@@ -6,7 +6,8 @@
 #
 
 require 'gtk2'
-require './Controleur/EventsAccueil.rb'
+require './Modele/Jeu'
+require './Controleur/EventsAccueil'
 
 
 
@@ -32,12 +33,14 @@ class NouveauJeu
   def initialize()
     
     puts "Lancement du programme"
+    
+    jeu = Jeu.creer()
 
     # Préparation de l'interface Gtk
     Gtk.init
   
     # Création du premier ensemble d'évènements et de la première fenêtre
-    @evenements = EventsAccueil.new(self)
+    @evenements = EventsAccueil.new(jeu)
 
     # Lancement du programme lié aux évènements
     Gtk.main

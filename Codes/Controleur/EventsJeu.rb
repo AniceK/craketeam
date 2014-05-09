@@ -80,8 +80,10 @@ class EventsJeu < Events
       # Inversion du booléen
       @estEnPause = @estEnPause.!
 
-      if @estEnPause then
-        @fenetre.affichagePause()
+      if @estEnPause  then  # && profilConnecte
+        @fenetre.affichagePauseProfil()
+      elsif @estEnPause then  # && !profilConnecte
+        @fenetre.affichagePauseSimple()
       elsif !@estEnPause then
         @fenetre.affichageJeu()
       else
