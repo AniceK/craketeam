@@ -17,8 +17,10 @@ class Grille
     @grille
     @createur
     @taille
+    @nom
+    @date
 
-    attr_reader :colonne, :ligne, :grille, :createur, :taille
+    attr_reader :colonne, :ligne, :grille, :createur, :taille, :nom, :date
 
 	# Constructeur de la classe Grille
 
@@ -42,6 +44,18 @@ class Grille
             @ligne[i] = Rangee.creer(taille)
         end
 
+    end
+
+# Méthode pour attribuer un nom a la grille
+    def nommer(unNom)
+
+        @nom = unNom
+    end
+
+#Méthode pour dater la grille
+    def dater(uneDate)
+
+        @date = uneDate
     end
 
 # Méthode renvoyant la taille de la grille

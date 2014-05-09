@@ -94,25 +94,32 @@ class Partie
         FileUtils.cd('Grilles')
         FileUtils.cd(taille.to_s())
         tab = Array.new(YAML::load(File.open('grilles.yml')))
+        unTab = Array.new()
 
-        if toutes then
+        if !toutes then
 
-            return tab
-        else
-
-            return tab.find_all{ |x|
-                x.createur() == @joueur
+            tab.delete_if{ |x|
+                x.nom != @joueur
             }
         end
+        
+        tab.each { |x|
+            unTab.push([x.nom, x.date, tab.index(x)])
+        }
 
+        return unTab
         FileUtils.cd('../..')
 
 	end
 
-# Methode pour charger une grille passe en parametre
-    def chargerGrille(grille)
+# Methode pour charger une grille dont l index est passe en parametre
+    def chargerGrille(taille,index)
 
-        @grille = grille
+        FileUtils.cd('Grilles')
+        FileUtils.cd(taille.to_s())
+        tab = Array.new(YAML::load(File.open('grilles.yml')))
+        @grille = tab.at(index)
+        FileUtils.cd('../..')
     end
 
 

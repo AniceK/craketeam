@@ -25,8 +25,19 @@ class Editeur
 
 	end
 
+# Méthode pour attribuer un nom a la grille
+    def nommerGrille(nom)
 
-	# Méthode permettant de noircir une case de la grille (ou de la blanchir si elle était déjà noircie)
+        @grille.nommer(nom)
+    end
+
+# Méthode pour dater une Grille
+    def daterGrille()
+
+        @grille.dater(Time.now)
+    end
+
+# Méthode permettant de noircir une case de la grille (ou de la blanchir si elle était déjà noircie)
 	def noircir(coordX, coordY)
 
 		@grille.noircir(coordxX, coordY)
@@ -34,15 +45,14 @@ class Editeur
 	end
 
 
-	# Méthode permettant de calculer les conditions de remplissage à partir des cases noircies
+# Méthode permettant de calculer les conditions de remplissage à partir des cases noircies
 	def conditionsDeterminer()
 
 		@grille.conditionsDeterminer()
 
 	end
 
-
-	# Méthode permettant de sauvegarder la grille
+# Méthode permettant de sauvegarder la grille
 	def sauvegarder()
 
         @grille.sauvegarder()
