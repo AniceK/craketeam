@@ -38,5 +38,16 @@ class Profil
 
     end    #marqueur de fin de methode d'instance
 
+# Méthode pour sauvegarder le profil
+    def sauvegarder()
+
+        FileUtils.cd("Profil")
+        sauvegarde = @nom + ".yml"
+        FileUtils.cd(@nom)
+        File.open(sauvegarde, "w"){ |out| out.puts self.to_yaml}
+        FileUtils.cd('../..')
+
+    end
+
 
 end
