@@ -397,7 +397,7 @@ class Jeu
 # Méthode pour déconnecter un profil
     def deconnecter()
 
-        @profil.sauvergarder()
+        @profil.sauvegarder()
         @profil = nil
     end
 
