@@ -181,11 +181,11 @@ class Rangee
 # Méthode pour retourner la condition x
     def condition(x)
 
-        if x < @conditions.size() then
+        #if x < @conditions.size() then
             return @conditions[x]
-        else
-            raise "erreur : la valeur envoyée est supérieur a la taille du tableau de condition!", caller
-        end
+        #else
+       #     raise "erreur : la valeur envoyée est supérieur a la taille du tableau de condition!", caller
+       # end
     end
 
 # Méthode pour retourner la taille du tableau de condition

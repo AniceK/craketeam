@@ -618,11 +618,11 @@ class Jeu
         end
     end
 # Méthode pour retourner la condition y dans la ligne y passe en parametre
-    def conditionV(x, y)
+    def conditionH(x, y)
 
         if @partie.class == Partie then
 
-            return @partie.conditionV(x, y)
+            return @partie.conditionH(x, y)
         else
             raise "Erreur, une Partie doit être commencée", caller
         end

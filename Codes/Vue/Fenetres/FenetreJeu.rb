@@ -10,7 +10,7 @@ require_relative 'Fenetre'
 class FenetreJeu < Fenetre
   
   @texteTemps
-  @tempsEcoule
+  @secondes
   @afficheTemps
   @tableauGeneral
   @tableauConditionsV
@@ -20,6 +20,7 @@ class FenetreJeu < Fenetre
   @boutonPause
   @imagePause
   @imageLecture
+  @chronometre
   
   @boutonMenuPrincipal
   @entreeSauvegarde
@@ -33,6 +34,7 @@ class FenetreJeu < Fenetre
               :imagePause,
               :imageLecture,
               :afficheTemps,
+              :chronometre,
               
               :boutonMenuPrincipal,
               :entreeSauvegarde,
@@ -42,7 +44,7 @@ class FenetreJeu < Fenetre
   attr_accessor :tableauConditionsV,
                 :tableauConditionsH,
                 :tableauJeu,
-                :tempsEcoule
+                :secondes
   
   public_class_method :new
   
@@ -77,6 +79,35 @@ class FenetreJeu < Fenetre
     
     
     
+    ################################################################
+    #                                                              #
+    #                          Chronomètre                          #
+    #                                                              #
+    ################################################################
+    
+    @texteTemps = Gtk::Label.new("Temps écoulé :")
+    @secondes = 0
+    @minutes = 0
+    
+    @chronometre = Thread.new {
+      
+      puts "Entrée dans le thread Chrono"
+      
+      while(true)
+        
+        temps = jeu.tempsactuel()
+        @minutes = (temps / 60).round()
+        @secondes = temps % 60
+        @afficheTemps =  Gtk::Label.new(@minutes.to_s + ":" + @secondes.to_s)
+        
+        puts @afficheTemps.text()
+        
+        sleep 1.0
+      end
+    }
+    
+    @chronometre.run()
+    
     
     ################################################################
     #                                                              #
@@ -87,9 +118,7 @@ class FenetreJeu < Fenetre
     
     @fenetre.set_title("Jouez !")
     
-    @texteTemps = Gtk::Label.new("Temps écoulé :")
-    @tempsEcoule = 1
-    @afficheTemps =  Gtk::Label.new(@tempsEcoule.to_s + " sec")
+    @afficheTemps =  Gtk::Label.new(@minutes.to_s + ":" + @secondes.to_s)
     @boutonAide = Gtk::Button.new('Aide')
     @boutonPause = Gtk::Button.new()
     @tableauGeneral = Gtk::Table.new(0, 0, false)
@@ -172,9 +201,6 @@ class FenetreJeu < Fenetre
     @boutonPause.set_image(imageLecture)
     @texteTemps.set_text("Temps écoulé :\n(Pause)")
     
-    @tempsEcoule+=10
-    @afficheTemps.set_text(@tempsEcoule.to_s + " sec")
-    
     @tableauGeneral.hide_all()   
     @vBoxPause.show_all()
   end
@@ -185,9 +211,6 @@ class FenetreJeu < Fenetre
     @fenetre.set_title("Pause...")
     @boutonPause.set_image(imageLecture)
     @texteTemps.set_text("Temps écoulé :\n(Pause)")
-    
-    @tempsEcoule+=10
-    @afficheTemps.set_text(@tempsEcoule.to_s + " sec")
     
     @tableauGeneral.hide_all()   
     @vBoxPause.show_all()
@@ -201,11 +224,18 @@ class FenetreJeu < Fenetre
     @boutonPause.set_image(imagePause)
     @texteTemps.set_text("Temps écoulé :")
     
-    @tempsEcoule+=10
-    @afficheTemps.set_text(@tempsEcoule.to_s + " sec")
-    
     @vBoxPause.hide_all()
     @tableauGeneral.show_all()
+  end
+  
+  def lancerChrono()
+    
+    #@chronometre.run()
+  end
+  
+  def arreterChrono()
+    
+    @chronometre.exit()
   end
   
 end

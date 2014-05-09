@@ -194,8 +194,8 @@ class Partie
     end
 
 # Méthode pour retourner la condition y dans la ligne x passe en parametre
-    def conditionV(x, y)
+    def conditionH(x, y)
 
-            return @grille.nbConditionsV(x, y)
+            return @grille.conditionH(x, y)
     end
 end

@@ -52,9 +52,6 @@ class EventsJeu < Events
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
     
     
-    
-    # Mise en place de la grille et de ses conditions
-    
     @fenetre = FenetreJeu.new()
     
     case @tailleGrille
@@ -79,6 +76,8 @@ class EventsJeu < Events
     
     @fenetre.afficher()
     @fenetre.affichageJeu()
+    @jeu.lancerPartie()
+    @fenetre.lancerChrono()
     
     @fenetre.boutonAide.signal_connect('clicked'){
       puts "> Aide"
@@ -92,12 +91,25 @@ class EventsJeu < Events
       # Inversion du booléen
       @estEnPause = @estEnPause.!
 
-      if @estEnPause && jeu.profilConnecte?() then
-        @fenetre.affichagePauseProfil()
-      elsif @estEnPause && !jeu.profilConnecte?() then
-        @fenetre.affichagePauseSimple()
+      if @estEnPause
+        
+        @jeu.partieEnPause()
+        
+        if jeu.profilConnecte?() then
+        
+          @fenetre.affichagePauseSimple()
+          
+        elsif !jeu.profilConnecte?() then
+          
+          @fenetre.affichagePauseProfil()
+          
+        end
+        
       elsif !@estEnPause then
+        
         @fenetre.affichageJeu()
+        @jeu.lancerPartie()
+        
       else
         puts "Erreur du booléen \"@estEnPause\" déterminant la pause ou la lecture"
       end
@@ -198,14 +210,23 @@ class EventsJeu < Events
     
     #@fenetre.tableauConditionsV.resize(@tailleGrille, 3)
     
-    0.upto(@tailleGrille) do |y|
+    0.upto(@tailleGrille - 1) do |y|
       
       @nbConditionsRangee = @jeu.nbConditionsV(y)
       
-      0.upto(@nbConditionsRangee) do |x|
-        
-        @fenetre.tableauConditionsV.attach(@jeu.conditionV(y, x), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
-      end
+        0.upto(@nbConditionsRangee) do |x|
+          
+          condition = Gtk::Label.new("")
+          
+          if @nbConditionsRangee != 0 then
+            
+            condition.set_text(@jeu.conditionV(y, x).to_s)
+          end
+            
+            condition = Gtk::Label.new(@jeu.conditionV(y, x).to_s)
+            
+            @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
+        end
     end
   end
   
@@ -213,13 +234,20 @@ class EventsJeu < Events
     
     #@fenetre.tableauConditionsH.resize(3, @tailleGrille)
     
-    0.upto(@nbConditionsRangee) do |x|
+    0.upto(@tailleGrille - 1) do |x|
       
       @nbConditionsRangee = @jeu.nbConditionsH(x)
       
-      0.upto(@tailleGrille) do |y|
+      0.upto(@nbConditionsRangee) do |y|
         
-        @fenetre.tableauConditionsH.attach(@jeu.conditionH(y, x), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
+        condition = Gtk::Label.new("")
+        
+        if @nbConditionsRangee != 0 then
+          
+          condition.set_text(@jeu.conditionV(x, y).to_s)
+        end
+        
+        @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
       end
     end
   end
