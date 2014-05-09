@@ -236,6 +236,18 @@ class Jeu
         end
 
 	end
+
+# Méthode pour récupérer le nom du profil actif
+    def nomProfil()
+
+        if @profil != nil then
+
+            return @profil.nom
+        else
+            raise "Aucun profil n'est chargé!", caller
+        end
+    end
+
 # Méthode qui récupère un evenement et initialize evenement
     def ajouterEvenement(event)
 
@@ -249,21 +261,21 @@ class Jeu
         FileUtils.cd('Profil')
         resultat = true
 
-#On tente de se placer dans le Dossier du profil a creer
+    #On tente de se placer dans le Dossier du profil a creer
         begin
 
             Dir.chdir aName
 
-#Si cela provoque une erreur, c'est que le dossier, et donc le profil, n'existait pas. On cree donc l'arborescence.
+    #Si cela provoque une erreur, c'est que le dossier, et donc le profil, n'existait pas. On cree donc l'arborescence.
         rescue Errno::ENOENT => e
 
             puts "Le profil #{aName} n'existe pas !"
 
-#Appel au constructeur de profil
+    #Appel au constructeur de profil
             @profil = Profil.creer(aName)
 
 
-#Si le Dossier au nom du profil cree existe deja, alors on le signale
+    #Si le Dossier au nom du profil cree existe deja, alors on le signale
           else
 
             puts "Le profil #{aName} existe déjà"
