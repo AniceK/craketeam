@@ -15,6 +15,15 @@ class Jeu
   # Constructeur de la classe Jeu
     def Jeu.creer()
 
+
+
+        new()
+
+    end    #marqueur de fin de constructeur
+
+#méthode de classe d'initialisation, ou on initialise les valeurs à nil
+    def initialize()
+
     #Test de la présence d'un dossier Picross, contenant les sauvegardes du jeu (profils, parties, grilles)
         begin
 
@@ -184,11 +193,6 @@ class Jeu
           puts "Initialisation du répertoire fini !"
 
         end
-
-    end    #marqueur de fin de constructeur
-
-#méthode de classe d'initialisation, ou on initialise les valeurs à nil
-    def initialize()
 
         @profil = nil
         @partie = nil
