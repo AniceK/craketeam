@@ -166,7 +166,7 @@ class Partie
 # Méthode pour retourner la taille de la grille
     def tailleGrille()
 
-        return @grille.taille
+        return @grille.getTaille()
     end
   
 end

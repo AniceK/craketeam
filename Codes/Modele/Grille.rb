@@ -18,7 +18,7 @@ class Grille
     @createur
     @taille
 
-    attr_reader :colonne, :ligne, :grille, :createur
+    attr_reader :colonne, :ligne, :grille, :createur, :taille
 
 	# Constructeur de la classe Grille
 
@@ -42,6 +42,12 @@ class Grille
             @ligne[i] = Rangee.creer(taille)
         end
 
+    end
+
+# Méthode renvoyant la taille de la grille
+    def getTaille()
+
+        return @taille
     end
 
 	# Méthode vérifiant la validité du coup joué
