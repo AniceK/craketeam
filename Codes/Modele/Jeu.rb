@@ -247,7 +247,7 @@ class Jeu
 
             return @profil.nom
         else
-            raise "Aucun profil n'est chargé!", caller
+            raise "Aucun profil n'est chargé!"
         end
     end
 
@@ -301,7 +301,7 @@ class Jeu
 
         if @profil == nil then
             
-            raise "Aucun profil n'est chargé : impossible de charger la liste des Partie Sauvegardées!", caller
+            raise "Aucun profil n'est chargé : impossible de charger la liste des Partie Sauvegardées!"
         else
             
             liste = Array.new()
@@ -348,7 +348,7 @@ class Jeu
                 return (sup == p)
             end
         else
-            raise "Aucun profil n'est chargé : impossible de supprimer une partie!", caller
+            raise "Aucun profil n'est chargé : impossible de supprimer une partie!"
         end
  
     end
@@ -394,7 +394,7 @@ class Jeu
 
         if @profil == nil then
 
-            raise "Impossible d'utiliser l'editeur sans avoir chargé un profil!", caller
+            raise "Impossible d'utiliser l'editeur sans avoir chargé un profil!"
         else
             @partie = Editeur.creer(@profil.nom, taille)
         end
@@ -438,12 +438,12 @@ class Jeu
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../../..')
             else
-                raise "Impossible d'appeler sauvergarderPartie() pour autre chose qu'une Partie!", caller
+                raise "Impossible d'appeler sauvergarderPartie() pour autre chose qu'une Partie!"
             end
 
         else
             
-            raise "Aucune partie n'est en cours!", caller
+            raise "Aucune partie n'est en cours!"
         end
     end
 
@@ -454,7 +454,7 @@ class Jeu
 
             return @partie.tailleGrille()
         else
-            raise "Aucune partie n'est chargée!", caller
+            raise "Aucune partie n'est chargée!"
         end
     end
 
@@ -468,12 +468,12 @@ class Jeu
             
                 @partie.lancer()
             else
-                raise "Impossible d'appeler lancerPartie() pour autre chose qu'une partie!", caller
+                raise "Impossible d'appeler lancerPartie() pour autre chose qu'une partie!"
             end
 
         else
 
-            raise "Aucune partie n'est en cours!", caller
+            raise "Aucune partie n'est en cours!"
         end
     end
 
@@ -486,11 +486,11 @@ class Jeu
             
                 @partie.pause()
             else
-                raise "Impossible d'appeler partieEnPause() pour autre chose qu'une partie!", caller
+                raise "Impossible d'appeler partieEnPause() pour autre chose qu'une partie!"
             end
         else
             
-            raise "Aucune partie n'est en cours!", caller
+            raise "Aucune partie n'est en cours!"
         end
     end
 
@@ -502,7 +502,7 @@ class Jeu
             @partie.noircir(x, y)
         else
 
-            raise "Aucune partie n'est en cours!", caller
+            raise "Aucune partie n'est en cours!"
         end
     end
 
@@ -515,11 +515,11 @@ class Jeu
             
                 @partie.marquer(x, y)
             else
-                raise "Impossible d'appeler marquer(x, y) pour autre chose qu'une partie!", caller
+                raise "Impossible d'appeler marquer(x, y) pour autre chose qu'une partie!"
             end
         else
 
-            raise "Aucune partie n'est en cours!", caller
+            raise "Aucune partie n'est en cours!"
         end
     end
 
@@ -531,7 +531,7 @@ class Jeu
             @partie.genererAleatoirementGrille()
         else
 
-            raise "Aucune partie n'est en cours!", caller
+            raise "Aucune partie n'est en cours!"
         end
     end
 
@@ -544,10 +544,10 @@ class Jeu
                 
                 @partie.chercherAide()
             else
-                raise "Impossible de chercher de l'aide en dehors d'une partie!", caller
+                raise "Impossible de chercher de l'aide en dehors d'une partie!"
             end
         else
-            raise "Aucune partie n'est en cours!", caller
+            raise "Aucune partie n'est en cours!"
         end
     end
 
@@ -565,7 +565,7 @@ class Jeu
             end
         else
 
-            raise "Aucune partie en cours!", caller
+            raise "Aucune partie en cours!"
             return 0;
         end
     end
@@ -579,10 +579,10 @@ class Jeu
 
                 return @partie.chargerGrillesExistantes(taille, toutes)
             else
-                raise "impossible de charger les grilles existantes pour autre chose qu'une partie!", caller
+                raise "impossible de charger les grilles existantes pour autre chose qu'une partie!"
             end
         else
-            raise "Aucune partie en cours!", caller
+            raise "Aucune partie en cours!"
             return nil
         end
     end
@@ -594,7 +594,7 @@ class Jeu
 
             return @partie.nbConditionsV(x)
         else
-            raise "Erreur, une Partie doit être commencée", caller
+            raise "Erreur, une Partie doit être commencée"
         end
     end
 # Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
@@ -604,7 +604,7 @@ class Jeu
 
             return @partie.nbConditionsH(x)
         else
-            raise "Erreur, une Partie doit être commencée", caller
+            raise "Erreur, une Partie doit être commencée"
         end
     end
 # Méthode pour retourner la condition y dans la colonne x passe en parametre
@@ -614,7 +614,7 @@ class Jeu
 
             return @partie.conditionV(x, y)
         else
-            raise "Erreur, une Partie doit être commencée", caller
+            raise "Erreur, une Partie doit être commencée"
         end
     end
 # Méthode pour retourner la condition y dans la ligne y passe en parametre
@@ -624,7 +624,7 @@ class Jeu
 
             return @partie.conditionV(x, y)
         else
-            raise "Erreur, une Partie doit être commencée", caller
+            raise "Erreur, une Partie doit être commencée"
         end
     end
 
