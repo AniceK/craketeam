@@ -4,7 +4,7 @@
 #Ce fichier contient la classe Grille, qui est constituee de Case
 #ici une description de la classe Grille.
 
-load "Rangee.rb"
+require "Rangee.rb"
 require 'fileutils'
 
 class Grille
