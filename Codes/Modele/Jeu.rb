@@ -273,8 +273,9 @@ class Jeu
 
     #Appel au constructeur de profil
             FileUtils.mkdir(aName)
+            FileUtils.cd(aName)
             @profil = Profil.creer(aName)
-            FileUtils.cd('..')
+            FileUtils.cd('../..')
 
 
     #Si le Dossier au nom du profil cree existe deja, alors on le signale
