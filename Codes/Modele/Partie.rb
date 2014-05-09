@@ -4,7 +4,8 @@
 #Ce fichier contient la classe Partie, qui est constituée d'une Grille et de diverses paramètres
 #ici une description de la classe Partie.
 
-load "Grille.rb", "Aide.rb"
+require_relative 'Grille'
+require_relative 'Aide'
 require 'fileutils'
 
 class Partie
