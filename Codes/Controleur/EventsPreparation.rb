@@ -40,8 +40,8 @@ class EventsPreparation < Events
       
       puts "> Suivant"
       
-      puts "Taille de la grille = " + @tailleGrille.to_s
-      puts "Niveau de difficulté de l'aide: " + @difficulte.to_s
+      puts "Taille de la grille = " + tailleGrille.to_s
+      puts "Niveau de difficulté de l'aide: " + difficulte.to_s
       
       @jeu.creerPartie(tailleGrille, difficulte)
       
