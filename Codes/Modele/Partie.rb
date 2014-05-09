@@ -35,7 +35,7 @@ class Partie
 #méthode de classe d'initialisation prenant en paramètre la taille de la grille, le niveau de difficulté de l'aide et le nom du joueur
     def initialize(taille, difficulte, nom)
 
-		@grille = Grille.creer(taille, nom)
+		@grille = Grille.creer(nom, taille)
 		@creation = Time.now
         @joueur = nom
         @aide = Aide.creer(difficulte)
