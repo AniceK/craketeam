@@ -1,3 +1,6 @@
+# encoding: utf-8
+#! /usr/bin/env ruby
+##
 #13/03/2014
 #Projet Picross équipe CrakeTeam
 #
