@@ -1,6 +1,3 @@
-# encoding: utf-8
-#! /usr/bin/env ruby
-##
 #13/03/2014
 #Projet Picross équipe CrakeTeam
 #
@@ -15,6 +12,8 @@ class Jeu
   @profil
   @partie
   @evenements
+
+  attr_reader :profil, :partie, :evenements
 
   # Constructeur de la classe Jeu
     def Jeu.creer()
@@ -234,6 +233,11 @@ class Jeu
         end
 
 	end
+# Méthode qui récupère un evenement et initialize evenement
+    def ajouterEvenement(event)
+
+        @evenements = event
+    end
 
 #Methode d'instance qui initialise la variable d'instance @profil en creant l arborescence correpondante. On retourne un boolen indiquant si le profil existait ou pas (true pour nouveau, false sinon)
 	def creerProfil(unNom)
