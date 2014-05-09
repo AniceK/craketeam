@@ -60,11 +60,11 @@ class EventsJeu < Events
     when 10
       initialiserGrille(700, 550)
     when 15
-      initialiserGrille(700, 550)
+      initialiserGrille(750, 550)
     when 20
-      initialiserGrille(850, 700)
+      initialiserGrille(900, 700)
     when 25
-      initialiserGrille(1000, 800)
+      initialiserGrille(1100, 800)
     else
       puts "Erreur: La taille n'est pas valide"
     end
@@ -76,8 +76,8 @@ class EventsJeu < Events
     
     @fenetre.afficher()
     @fenetre.affichageJeu()
-    @jeu.lancerPartie()
     @fenetre.lancerChrono()
+    @jeu.lancerPartie()
     
     @fenetre.boutonAide.signal_connect('clicked'){
       puts "> Aide"
@@ -240,14 +240,15 @@ class EventsJeu < Events
       
       0.upto(@nbConditionsRangee) do |y|
         
-        condition = Gtk::Label.new("")
+        
         
         if @nbConditionsRangee != 0 then
           
+          condition = Gtk::Label.new("")
           condition.set_text(@jeu.conditionV(x, y).to_s)
+          @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
         end
         
-        @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
       end
     end
   end

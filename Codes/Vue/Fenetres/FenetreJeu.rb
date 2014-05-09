@@ -95,7 +95,8 @@ class FenetreJeu < Fenetre
       
       while(true)
         
-        temps = jeu.tempsactuel()
+        temps = jeu.tempsActuel()
+        puts "temps = " + temps.to_s
         @minutes = (temps / 60).round()
         @secondes = temps % 60
         @afficheTemps =  Gtk::Label.new(@minutes.to_s + ":" + @secondes.to_s)
@@ -181,16 +182,19 @@ class FenetreJeu < Fenetre
   
   def grandesConditions
     
+    @aligneConditionsV.set_padding(0, 0, 40, 0)
     @tableauConditionsV.set_column_spacings(25)
+    
+    @aligneConditionsH.set_padding(40, 0, 0, 0)
     @tableauConditionsH.set_row_spacings(19)
   end
   
   def petitesConditions
     
-    @aligneConditionsH.set_padding(0, 0, 0, 0)
+    @aligneConditionsV.set_padding(0, 0, 27, 0)
     @tableauConditionsV.set_column_spacings(15)
     
-    @aligneConditionsH.set_padding(5, 0, 0, 0)
+    @aligneConditionsH.set_padding(25, 0, 0, 0)
     @tableauConditionsH.set_row_spacings(9.3)
   end
   
