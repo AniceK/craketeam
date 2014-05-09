@@ -272,6 +272,7 @@ class Jeu
             puts "Le profil #{aName} n'existe pas !"
 
     #Appel au constructeur de profil
+            FileUtils.mkdir(aName)
             @profil = Profil.creer(aName)
             FileUtils.cd('..')
 
