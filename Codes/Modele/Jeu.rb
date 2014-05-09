@@ -11,14 +11,12 @@ class Jeu
 
   @profil
   @partie
+  @evenements
 
   # Constructeur de la classe Jeu
     def Jeu.creer()
 
-
-
         new()
-
     end    #marqueur de fin de constructeur
 
 #méthode de classe d'initialisation, ou on initialise les valeurs à nil
@@ -196,6 +194,7 @@ class Jeu
 
         @profil = nil
         @partie = nil
+        @evenements = nil
 
     end    #marqueur de fin d initialize
 
@@ -205,7 +204,7 @@ class Jeu
 
         aName = unNom.downcase()
         FileUtils.cd('Profil')
-        resultat = true
+        resultat = false
 
         begin
 
@@ -223,6 +222,7 @@ class Jeu
             #afficher une fenetre avec bienvenue truc
             nom = aName + ".yml"
             @profil = YAML::load( File.open(nom))
+            resultat = true
 
         ensure
 
@@ -369,6 +369,13 @@ class Jeu
         else
             @partie = Editeur.creer(@profil.nom, taille)
         end
+    end
+
+# Méthode pour déconnecter un profil
+    def deconnecter()
+
+        @profil.sauvergarder()
+        @profil = nil
     end
 
 #==============================================
