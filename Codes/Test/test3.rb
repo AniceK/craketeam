@@ -2,9 +2,9 @@
 ##Test des cases
 #
 
-load "Grille.rb"
-load "Aide.rb"
-load "Rangee.rb"
+load "../Modele/Grille.rb"
+load "../Modele/Aide.rb"
+#load "Rangee.rb"
 =begin
 my_case = Case.creer()
 my_case.noircir()
