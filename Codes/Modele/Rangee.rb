@@ -188,4 +188,10 @@ class Rangee
         end
     end
 
+# Méthode pour retourner la taille du tableau de condition
+    def nbConditions
+
+        return @conditions.size()
+    end
+
 end     #marqueur de fin de class
