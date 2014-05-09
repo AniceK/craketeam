@@ -143,7 +143,7 @@ class EventsJeu < Events
   # Retourne une case vide cliquable
   def caseVide()
     
-    pixCaseVide = Gdk::Pixbuf.new('./Vue/Images/vide.gif', @tailleCase, @tailleCase)
+    pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
     imageCaseVide = Gtk::Image.new(pixCaseVide)
     eventCaseVide = Gtk::EventBox.new.add(imageCaseVide)
     
@@ -157,7 +157,7 @@ class EventsJeu < Events
   # Retourne une case noircie cliquable
   def caseNoircie()
     
-    pixCaseNoircie = Gdk::Pixbuf.new('./Vue/Images/noircie.gif', @tailleCase, @tailleCase)
+    pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
     imageCaseNoircie = Gtk::Image.new(pixCaseNoircie)
     eventCaseNoircie = Gtk::EventBox.new.add(imageCaseNoircie)
     
@@ -171,7 +171,7 @@ class EventsJeu < Events
   # Retourne une case marquée cliquable
   def caseMarquee()
     
-    pixCaseMarquee = Gdk::Pixbuf.new('./Vue/Images/marquee.gif', @tailleCase, @tailleCase)
+    pixCaseMarquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
     imageCaseMarquee = Gtk::Image.new(pixCaseMarquee)
     eventCaseMarquee = Gtk::EventBox.new.add(imageCaseMarquee)
     
