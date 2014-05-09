@@ -24,11 +24,8 @@ class Fenetre
     
     redimensionner(500, 250)
     
-    
+    #@fenetre.set_decorated(false)
     @fenetre.set_window_position(Gtk::Window::POS_CENTER)
-    #@fenetre.set_default_size(500, 230)
-    #@fenetre.set_size_request(500, 230)
-    #@fenetre.set_resizable(false)
     @fenetre.signal_connect('destroy') {fermeture}
   end
   

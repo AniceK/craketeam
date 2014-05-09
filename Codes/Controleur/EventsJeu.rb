@@ -38,7 +38,7 @@ class EventsJeu < Events
     @estEnPause = false
     @tailleGrille = tailleGrille
     @tailleCase = 30
-    @nbConditionsRangee = (@tailleGrille/2).round()
+    @nbConditionsRangee = (@tailleGrille/2.0).round()
     puts "@nbConditionsRangee = " + @nbConditionsRangee.to_s
     
     # Mise en place de la grille et de ses conditions

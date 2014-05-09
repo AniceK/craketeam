@@ -22,7 +22,7 @@ class DialogueMenuPrincipal < Dialogue
     super("Arrêter partie ?",
     
           "Êtes-vous sûr de vouloir quitter la partie en cours ?\n
-          Tout partie non sauvegardée sera perdue.")
+          Toute progression non sauvegardée sera perdue.")
     
     @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
     

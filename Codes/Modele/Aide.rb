@@ -10,6 +10,7 @@ class Aide
   @difficulte
   @tabCondCol
   @tabCondLig
+  @tabMessage
   
    attr_reader :difficulte, :tabCondCol, :tabCondLig
   
@@ -25,6 +26,7 @@ class Aide
 		  @difficulte = uneDifficulte
       @tabCondCol = Array.new()
       @tabCondLig = Array.new()
+      @tabMessage = Array.new()
 
     end    #marqueur de fin d initialize
     
@@ -43,13 +45,13 @@ class Aide
     case difficulte
       
       when 1
-        puts "Difficulté de niveau 1\nLa total\n"
+        @tabMessage.push("Difficulté de niveau 1\nLa total\n")
         
       when 2
-        puts "Difficulté de niveau 2\nIndication des lignes à potentiel\nVérification des lignes"
+        @tabMessage.push("Difficulté de niveau 2\nIndication des lignes à potentiel\nVérification des lignes")
         
       when 3
-        puts "Difficulté de niveau 3\nVérification des lignes"
+        @tabMessage.push("Difficulté de niveau 3\nVérification des lignes")
         
     end
     
@@ -59,7 +61,7 @@ class Aide
     
       pos = 1
 
-      puts "\nCondition des colonnes\n"
+      @tabMessage.push("\nCondition des colonnes\n")
       for tabTabCol in tabCondCol
         totalCol = 0
       
@@ -71,43 +73,43 @@ class Aide
       
         if totalCol == tabTaille then
           if difficulte == 1
-            puts "Colonne #{pos} : pleine\n"
+            @tabMessage.push("Colonne #{pos} : pleine")
           else
-            puts "Colonne #{pos}"
+            @tabMessage.push("Colonne #{pos}")
           end
         
         elsif totalCol == 0
           if difficulte == 1
-            puts "Colonne #{pos} : vide\n"
+             @tabMessage.push("Colonne #{pos} : vide")
           else
-            puts "Colonne #{pos}"
+             @tabMessage.push("Colonne #{pos}")
           end
         
         elsif tabTabCol.count > tabTaille/2 && tabTaille%2 == 1
           if difficulte == 1
-            puts "Colonne #{pos} : une case sur deux en partant du bord\n"
+            @tabMessage.push("Colonne #{pos} : une case sur deux en partant du bord")
           else
-            puts "Colonne #{pos}"
+            @tabMessage.push("Colonne #{pos}")
           end
         
         elsif tabTabCol.count == 1 && totalCol > tabTaille/2 
           if tabTaille%2 == 1
             if difficulte == 1
-              printf("Colonne %i : %i case%s à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+              @tabMessage.push("Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} case#{ (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} à colorier au centre")
             else
-              puts "Colonne #{pos}"
+               @tabMessage.push("Colonne #{pos}")
             end
           else
             if difficulte == 1
-              printf("Colonne %i : %i cases à colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+              @tabMessage.push("Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} cases à colorier au centre")
             else
-              puts "Colonne #{pos}"
+              @tabMessage.push("Colonne #{pos}")
             end
           end
             
         else
           if difficulte == 1
-            puts "Colonne #{pos}: aucune aide disponible"
+              @tabMessage.push("Colonne #{pos}: aucune aide disponible")
           end
         end
       
@@ -119,7 +121,7 @@ class Aide
     
       pos = 1
     
-      puts "\n\nCondition des lignes\n"
+      @tabMessage.push("\nCondition des lignes\n")
       for tabTabLig in tabCondLig
         totalLig = 0
       
@@ -131,42 +133,42 @@ class Aide
       
         if totalLig == tabTaille then
           if difficulte == 1
-            puts "Ligne #{pos} : pleine"
+            @tabMessage.push("Ligne #{pos} : pleine")
         
           else
-            puts "Ligne #{pos}"
+            @tabMessage.push("Ligne #{pos}")
           end
         
         elsif totalLig == 0 
-          puts "Ligne #{pos} : vide"
+          @tabMessage.push("Ligne #{pos} : vide")
         
         elsif tabTabLig.count > tabTaille/2 && tabTaille%2 == 1
           if difficulte == 1
-            puts "Ligne #{pos} : une case sur deux est noir en partant du bord"
+            @tabMessage.push("Ligne #{pos} : une case sur deux est noir en partant du bord")
           
           else
-            puts "Ligne #{pos}"
+            @tabMessage.push("Ligne #{pos}")
           end
         
         elsif tabTabLig.count == 1 && totalLig > tabTaille/2
           if tabTaille%2 == 1
             if difficulte == 1
-              printf("Ligne %i : %i case%s a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2, (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":"")
+              @tabMessage.push("Ligne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} case#{(tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} a colorier au centre")
             else
-              puts "Ligne #{pos}"
+              @tabMessage.push("Ligne #{pos}")
             end
         
           else
             if difficulte == 1
-              printf("Ligne %i : %i cases a colorier au centre\n", pos, tabTaille-(tabTaille-totalCol)*2)
+             @tabMessage.push("Ligne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} cases a colorier au centre")
             else
-              puts "Ligne #{pos}"
+              @tabMessage.push("Ligne #{pos}")
             end
           end
           
         else
           if difficulte == 1
-            puts "Ligne #{pos} : aucune aide disponible"
+            @tabMessage.push("Ligne #{pos} : aucune aide disponible")
           end
         end
       
@@ -174,9 +176,9 @@ class Aide
       end
     end
     
-     #Vérification des lignes et des colonnes
+    @tabMessage.push("\nVérification des lignes et des colonnes")
     
-    puts "\nVérification des lignes\n"
+    #puts "\nVérification des lignes\n"
     posLig = 0
     for x in tabLig
       tmp = true
@@ -184,11 +186,11 @@ class Aide
         tmp = false
       end
   
-      printf("Ligne %i %s.\n", posLig+=1, tmp ? "bonne":"erronnée") 
+      @tabMessage.push("Ligne #{posLig+=1} #{tmp ? "bonne":"erronnée"}")
   
     end
     
-    puts "\nVérification des colonnes\n"
+    #puts "\nVérification des colonnes\n"
     posCol = 0
     for y in tabCol
       tmp = true
@@ -196,8 +198,12 @@ class Aide
         tmp = false
       end
       
-      printf("Colonne %i %s.\n", posCol+=1, tmp ? "bonne":"erronnée")
+      @tabMessage.push("Colonne #{posCol+=1} #{tmp ? "bonne":"erronnée"}")
       
     end
+  
+    return @tabMessage
+  
   end
+  
 end #marqueur de fin de classe
