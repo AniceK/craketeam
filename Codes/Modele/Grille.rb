@@ -212,13 +212,13 @@ class Grille
 # Méthode pour retourner le nombre de conditions dans la colonne x passe en parametre
     def nbConditionsV(x)
 
-            return @colonne[x].size()
+            return @colonne[x].length()
     end
 
 # Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
     def nbConditionsH(x)
 
-            return @ligne[x].size()
+            return @ligne[x].length()
     end
 
 # Méthode pour retourner la condition y dans la colonne x passe en parametre

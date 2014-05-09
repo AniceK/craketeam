@@ -160,8 +160,7 @@ class Partie
 # Méthode pour créer une grille aléatoirement
     def genererAleatoirementGrille()
 
-        @grille.genererAleatoire()
-        @grille.sauvegarder()
+        @grille.genererAleatoire(50)
     end
 
 # Methode de marquage d'une case (X, Y)
@@ -195,7 +194,7 @@ class Partie
     end
 
 # Méthode pour retourner la condition y dans la ligne x passe en parametre
-    def nbConditionsV(x, y)
+    def conditionV(x, y)
 
             return @grille.nbConditionsV(x, y)
     end

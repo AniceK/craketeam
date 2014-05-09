@@ -37,7 +37,7 @@ class FenetreAccueil < Fenetre
     
     @fenetre.set_title("Accueil")
     
-    @imageBanniere = Gtk::Image.new('./Vue/Images/banniere.jpg')
+    @imageBanniere = Gtk::Image.new('../Vue/Images/banniere.jpg')
     
     @boutonPartieRapide = Gtk::Button.new('Partie Rapide')
     @boutonJouer = Gtk::Button.new('Jouer') # Avec profil

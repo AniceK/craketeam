@@ -12,6 +12,15 @@ require_relative 'EventsPreparation'
 require_relative 'EventsJeu'
 require './Vue/Fenetres/FenetreChoixGrille'
 
+
+#===============================================================================#
+#                                                                               #
+#        La classe EventsChoixGrille créé une fenêtre de choix de grille.       #
+#   Elle permet au joueur de choisir une grille déjà créée par un utilisateur,  #
+#              ou de commencer une toute nouvelle grille aléatoire.             #
+#                                                                               #
+#===============================================================================#
+
 class EventsChoixGrille < Events
   
   public_class_method :new
@@ -33,6 +42,7 @@ class EventsChoixGrille < Events
     @fenetre.boutonGrilleAleatoire.signal_connect('clicked'){
       puts "> Grille aleatoire"
       
+      jeu.genererAleatoirementGrille()
       mouvement(EventsJeu.new(jeu))
     }
     

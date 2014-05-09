@@ -11,6 +11,14 @@ require_relative 'Events'
 require_relative 'EventsChoixGrille'
 require './Vue/Fenetres/FenetrePreparation'
 
+#===============================================================================#
+#                                                                               #
+#          La classe EventsPreparation créé une fenêtre de préparation.         #
+#      Elle permet au joueur de choisir une taille de grille pour sa partie.    #
+#           Il choisit également la difficulté de l'aide apportée               #
+#                                                                               #
+#===============================================================================#
+
 class EventsPreparation < Events
   
   public_class_method :new

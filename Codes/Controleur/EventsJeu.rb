@@ -12,14 +12,25 @@ require_relative 'EventsPreparation'  # DEBUG
 require './Vue/Fenetres/FenetreJeu'
 require './Vue/Dialogues/DialogueMenuPrincipal'
 
+
+#===============================================================================#
+#                                                                               #
+#               La classe EventsJeu créé une fenêtre de jeu.                    #
+#      Elle permet au joueur de jouer une partie sur une grille de picross.     #
+#   Elle met également en place le menu de pause qui est intégré à la fenêtre.  #
+#                                                                               #
+#===============================================================================#
+
+
 class EventsJeu < Events
   
   @tailleGrille
   @tailleCase
   @nbConditionsRangee
   @estEnPause
+  @optionsTableau
   
-  attr_reader :tailleGrille, :tailleCase, :nbConditionsRangee, :estEnPause
+  attr_reader :tailleGrille, :tailleCase, :nbConditionsRangee, :estEnPause, :optionsTableau
   
   public_class_method :new
   
@@ -34,12 +45,13 @@ class EventsJeu < Events
     #                                                              #
     ################################################################
     
-    
     @estEnPause = false
     @tailleGrille = @jeu.tailleGrille()
     @tailleCase = 30
-    @nbConditionsRangee = (@tailleGrille/2.0).round()
-    puts "@nbConditionsRangee = " + @nbConditionsRangee.to_s
+    @nbConditionsRangee = 0
+    @optionsTableau = Gtk::FILL | Gtk::SHRINK
+    
+    
     
     # Mise en place de la grille et de ses conditions
     
@@ -80,9 +92,9 @@ class EventsJeu < Events
       # Inversion du booléen
       @estEnPause = @estEnPause.!
 
-      if @estEnPause  then  # && profilConnecte
+      if @estEnPause && jeu.profilConnecte?() then
         @fenetre.affichagePauseProfil()
-      elsif @estEnPause then  # && !profilConnecte
+      elsif @estEnPause && !jeu.profilConnecte?() then
         @fenetre.affichagePauseSimple()
       elsif !@estEnPause then
         @fenetre.affichageJeu()
@@ -186,9 +198,13 @@ class EventsJeu < Events
     
     #@fenetre.tableauConditionsV.resize(@tailleGrille, 3)
     
-    1.upto(@tailleGrille) do |x|
-      1.upto(@nbConditionsRangee) do |y|
-        @fenetre.tableauConditionsV.attach(Gtk::Label.new("0"), x, x+1, y, y+1, Gtk::FILL | Gtk::SHRINK, Gtk::FILL | Gtk::SHRINK)
+    0.upto(@tailleGrille) do |y|
+      
+      @nbConditionsRangee = @jeu.nbConditionsV(y)
+      
+      0.upto(@nbConditionsRangee) do |x|
+        
+        @fenetre.tableauConditionsV.attach(@jeu.conditionV(y, x), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end
@@ -197,9 +213,13 @@ class EventsJeu < Events
     
     #@fenetre.tableauConditionsH.resize(3, @tailleGrille)
     
-    1.upto(@nbConditionsRangee) do |x|
-      1.upto(@tailleGrille) do |y|
-        @fenetre.tableauConditionsH.attach(Gtk::Label.new("0"), x, x+1, y, y+1, Gtk::FILL | Gtk::SHRINK, Gtk::FILL | Gtk::SHRINK)
+    0.upto(@nbConditionsRangee) do |x|
+      
+      @nbConditionsRangee = @jeu.nbConditionsH(x)
+      
+      0.upto(@tailleGrille) do |y|
+        
+        @fenetre.tableauConditionsH.attach(@jeu.conditionH(y, x), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end
@@ -220,7 +240,7 @@ class EventsJeu < Events
         
         caseTableau = caseVide()
         
-        @fenetre.tableauJeu.attach(caseTableau, x, x+1, y, y+1, Gtk::FILL | Gtk::SHRINK, Gtk::FILL | Gtk::SHRINK)
+        @fenetre.tableauJeu.attach(caseTableau, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end

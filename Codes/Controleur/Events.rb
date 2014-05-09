@@ -8,6 +8,14 @@
 require './Modele/Profil'
 require './Modele/Jeu'
 
+
+#===============================================================================#
+#                                                                               #
+#               La classe Events n'est pas instantiable.                        #
+#  Elle permet de créer des évènements qui controleront l'interface graphique   #
+#                                                                               #
+#===============================================================================#
+
 class Events
   
   @jeu
@@ -18,10 +26,13 @@ class Events
   
   private_class_method :new
   
+# On transmet les données du jeu entre les évènements
   def initialize(jeu)
+    
     @jeu = jeu
   end
-  
+
+# On change l'évènement à prendre en compte dans le jeu lors d'un changement de fenêtre
   def mouvement(events)
     
     @fenetre.cacher()
