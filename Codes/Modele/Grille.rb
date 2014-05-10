@@ -193,6 +193,7 @@ class Grille
 
         FileUtils.cd('Grille')
         FileUtils.cd(@taille.to_s())
+        puts FileUtils.pwd()
         tab = Array.new()
         if File.size('grilles.yml') != 0 then
         

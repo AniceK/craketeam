@@ -94,23 +94,23 @@ class Jeu
             FileUtils.cd('Grille')
             FileUtils.mkdir('5')
             FileUtils.cd('5')
-            File.open('grilles.yml', "w")
+            File.open("grilles.yml", "w")
             FileUtils.cd('..')
             FileUtils.mkdir('10')
             FileUtils.cd('10')
-            File.open('grilles.yml', "w")
+            File.open("grilles.yml", "w")
             FileUtils.cd('..')
             FileUtils.mkdir('15')
             FileUtils.cd('15')
-            File.open('grilles.yml', "w")
+            File.open("grilles.yml", "w")
             FileUtils.cd('..')
             FileUtils.mkdir('20')
             FileUtils.cd('20')
-            File.open('grilles.yml', "w")
+            File.open("grilles.yml", "w")
             FileUtils.cd('..')
             FileUtils.mkdir('25')
             FileUtils.cd('25')
-            File.open('grilles.yml', "w")
+            File.open("grilles.yml", "w")
             FileUtils.cd('..')
 
             if @verbose then puts "Dossier Grille crée !" end
@@ -130,6 +130,10 @@ class Jeu
 
                 if @verbose then puts "Pas de dossier 5.." end
                 FileUtils.mkdir('5')
+                FileUtils.cd('5')
+                File.open("grilles.yml", "w")
+                FileUtils.cd('..')
+
                 if @verbose then puts "Dossier 5 créé !" end
 
             else
@@ -146,7 +150,10 @@ class Jeu
             rescue Errno::ENOENT => e
 
                 if @verbose then puts "Pas de dossier 10.."end
-                FileUtils.mkdir('5')
+                FileUtils.mkdir('10')
+                FileUtils.cd('10')
+                File.open("grilles.yml", "w")
+                FileUtils.cd('..')
                 if @verbose then puts "Dossier 10 créé !" end
 
             else
@@ -165,6 +172,9 @@ class Jeu
 
                 if @verbose then puts "Pas de dossier 15.." end
                 FileUtils.mkdir('15')
+                FileUtils.cd('15')
+                File.open("grilles.yml", "w")
+                FileUtils.cd('..')
                 if @verbose then puts "Dossier 15 créé !" end
 
             else
@@ -183,6 +193,9 @@ class Jeu
 
                 if @verbose then puts "Pas de dossier 20.." end
                 FileUtils.mkdir('20')
+                FileUtils.cd('20')
+                File.open("grilles.yml", "w")
+                FileUtils.cd('..')
                 if @verbose then puts "Dossier 20 créé !" end
 
             else
@@ -201,6 +214,10 @@ class Jeu
 
                 if @verbose then puts "Pas de dossier 25.." end
                 FileUtils.mkdir('25')
+                FileUtils.cd('25')
+                File.open("grilles.yml", "w")
+                FileUtils.cd('..')
+
                 if @verbose then puts "Dossier 25 créé !" end
 
             else
