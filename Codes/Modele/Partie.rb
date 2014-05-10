@@ -143,7 +143,11 @@ class Partie
 
           self.pause()
           scores = Array.new()
-          scores = YAML::load( File.open("scores.yml"))
+          if File.size("scores.yml") > 0 then
+          
+              scores = YAML::load( File.open("scores.yml"))
+          end
+
           scores.push([@joueur, temps * 10, @grille.taille()])
           File.open('scores.yml',"w"){|out| out.puts scores.to_yaml()}
           return temps

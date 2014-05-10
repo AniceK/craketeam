@@ -58,29 +58,4 @@ class Editeur
 
         return @grille.getTaille()
     end
-
-# Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
-    def nbConditionsV(x)
-
-            return @grille.nbConditionsV(x)
-    end
-
-# Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
-    def nbConditionsH(x)
-
-            return @grille.nbConditionsH(x)
-    end
-
-# Méthode pour retourner la condition y dans la colonne x passe en parametre
-    def conditionV(x, y)
-
-            return @grille.conditionV(x, y)
-    end
-
-# Méthode pour retourner la condition y dans la ligne x passe en parametre
-    def conditionH(x, y)
-
-            return @grille.conditionH(x, y)
-    end
-
 end

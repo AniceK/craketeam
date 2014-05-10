@@ -33,30 +33,24 @@ class Grille
     def initialize(nom, taille)
 
         @taille = taille
+        @date = Time.now()
         @colonne = Array.new(taille)
         @ligne = Array.new(taille)
-        @grille = Array.new(taille, Array.new(taille, Case.creer()))
+        @grille = Array.new(taille)
         @createur = nom
 
         for i in (0 .. taille-1)
 
             @colonne[i] = Rangee.creer(taille)
             @ligne[i] = Rangee.creer(taille)
+            @grille[i] = Array.new(taille)
+            @grille[i].each { |x|
+                x = Case.creer()
+            }
         end
 
     end
 
-# Méthode pour attribuer un nom a la grille
-    def nommer(unNom)
-
-        @nom = unNom
-    end
-
-#Méthode pour dater la grille
-    def dater(uneDate)
-
-        @date = uneDate
-    end
 
 # Méthode renvoyant la taille de la grille
     def getTaille()
@@ -99,6 +93,7 @@ class Grille
 
 	    @colonne[coordX].noircir(coordY)
 	    @ligne[coordY].noircir(coordX)
+        @grille[coordY][coordX].noircir()
 
 	end
 
@@ -147,6 +142,7 @@ class Grille
 
 	    @colonne[coordX].marquer(coordY)
 	    @ligne[coordY].marquer(coordX)
+        @grille[coordY][coordX].marquer()
 
     end
     
@@ -187,9 +183,10 @@ class Grille
     end
     
 # Méthode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
-    def sauvegarder(nom)
+    def sauvegarder(unNom)
 
         self.raz()
+        @nom = unNom
 
         FileUtils.cd('Grille')
         FileUtils.cd(@taille.to_s())
@@ -198,7 +195,7 @@ class Grille
         
             tab = Array.new(YAML::load(File.open('grilles.yml')))
         end
-        tab.push([nom,self])
+        tab.push([@nom, @date,self])
         File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
     end
   
