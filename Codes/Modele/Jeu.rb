@@ -88,14 +88,31 @@ class Jeu
 
           rescue Errno::ENOENT => f
 
-              if @verbose then puts "Pas de dossier grille.." end
+            if @verbose then puts "Pas de dossier grille.. Creation de l'arborescence correspondante" end
+            
             FileUtils.mkdir('Grille')
             FileUtils.cd('Grille')
             FileUtils.mkdir('5')
+            FileUtils.cd('5')
+            File.new('grilles.yml')
+            FileUtils.cd('..')
             FileUtils.mkdir('10')
+            FileUtils.cd('10')
+            File.new('grilles.yml')
+            FileUtils.cd('..')
             FileUtils.mkdir('15')
+            FileUtils.cd('15')
+            File.new('grilles.yml')
+            FileUtils.cd('..')
             FileUtils.mkdir('20')
+            FileUtils.cd('20')
+            File.new('grilles.yml')
+            FileUtils.cd('..')
             FileUtils.mkdir('25')
+            FileUtils.cd('25')
+            File.new('grilles.yml')
+            FileUtils.cd('..')
+
             if @verbose then puts "Dossier Grille crée !" end
             FileUtils.cd('..')
 
@@ -134,7 +151,7 @@ class Jeu
 
             else
 
-                puts "Dossier 10 présent"
+                if @verbose then puts "Dossier 10 présent" end
                 FileUtils.cd('..')
 
             end
@@ -457,7 +474,7 @@ class Jeu
             else
 
                 @profil.ajouterUneGrille()
-                @partie.sauvegarder()
+                @partie.sauvegarder(nomSauvegarde)
             end
 
         else
