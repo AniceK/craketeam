@@ -44,9 +44,11 @@ class Grille
             @colonne[i] = Rangee.creer(taille)
             @ligne[i] = Rangee.creer(taille)
             @grille[i] = Array.new(taille)
-            @grille[i].each { |x|
-                x = Case.creer()
-            }
+            
+            for j in (0 .. taille-1)
+
+                @grille[i][j] = Case.creer()
+            end
         end
 
     end
