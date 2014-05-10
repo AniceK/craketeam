@@ -93,7 +93,7 @@ class Grille
 
 	    @colonne[coordX].noircir(coordY)
 	    @ligne[coordY].noircir(coordX)
-        @grille[coordY][coordX].noircir()
+        @grille[coordY].at(coordX).noircir()
 
 	end
 
