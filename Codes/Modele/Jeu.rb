@@ -503,7 +503,7 @@ class Jeu
             @partie.noircir(x, y)
             
             if @partie.class == Partie then
-              return terminer?()
+              return termine?()
             end
         else
 
