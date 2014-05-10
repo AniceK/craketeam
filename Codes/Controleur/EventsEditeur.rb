@@ -27,11 +27,15 @@ class EventsEditeur < Events
   @tailleCase
   @nbConditionsRangee
   @optionsTableau
+  @pixCaseVide
+  @pixCaseNoircie
   
   attr_reader :tailleGrille,
               :tailleCase,
               :nbConditionsRangee,
-              :optionsTableau
+              :optionsTableau,
+              :pixCaseVide
+              :pixCaseNoircie
   
   public_class_method :new
   
@@ -51,6 +55,8 @@ class EventsEditeur < Events
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
     
+    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
+    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
     
     @fenetre = FenetreEditeur.new()
     
@@ -112,47 +118,64 @@ class EventsEditeur < Events
   end
   
   
+  def caseCliquee(widget, evenement)
+    
+    x = (widget.allocation.x / 32) - 1
+    y = (widget.allocation.y / 32) - 1
+    
+    if evenement.button() == 1 then
+      
+      if widget.child.pixbuf() == @pixCaseVide then
+        
+        @jeu.noircir(x, y)
+        widget.child.set_pixbuf(@pixCaseNoircie)
+        
+      elsif widget.child.pixbuf() == @pixCaseNoircie then
+        
+        @jeu.noircir(x, y)
+        widget.child.set_pixbuf(@pixCaseVide)
+        
+      end
+      
+    end
+     
+      # Gestion du marquage
+      
+    #elsif evenement.button() == 3 then
+    #  
+    #  if widget.child.pixbuf() == @pixCaseMarquee then
+    #    
+    #    widget.child.set_pixbuf(@pixCaseVide)
+    #    
+    #  elsif widget.child.pixbuf() == @pixCaseVide then
+    #    
+    #    widget.child.set_pixbuf(@pixCaseMarquee)
+    #    
+    #  end
+    #  
+    #else
+    #  
+    #  puts "Mauvaise gestion caseCliquée"
+    #end
+      
+  end
   
   # Retourne une case vide cliquable
-  def caseVide()
+  def caseDefault()
     
-    pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
-    imageCaseVide = Gtk::Image.new(pixCaseVide)
-    eventCaseVide = Gtk::EventBox.new.add(imageCaseVide)
+    imageCaseVide = Gtk::Image.new(@pixCaseVide)
     
-    eventCaseVide.signal_connect("button_press_event") do
-      puts "Case vide cliquée"
-    end
+    evenementCase = Gtk::EventBox.new()
+    evenementCase.events = Gdk::Event::BUTTON_PRESS_MASK
+    evenementCase.add(imageCaseVide)
     
-    return eventCaseVide
-  end
-  
-  # Retourne une case noircie cliquable
-  def caseNoircie()
+    evenementCase.signal_connect('button_press_event') { |widget, evenement|
+      
+      caseCliquee(widget, evenement)
+    }
     
-    pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
-    imageCaseNoircie = Gtk::Image.new(pixCaseNoircie)
-    eventCaseNoircie = Gtk::EventBox.new.add(imageCaseNoircie)
+    return evenementCase
     
-    eventCaseNoircie.signal_connect("button_press_event") do
-      puts "Case noircie cliquée"
-    end
-    
-    return eventCaseNoircie
-  end
-  
-  # Retourne une case marquée cliquable
-  def caseMarquee()
-    
-    pixCaseMarquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
-    imageCaseMarquee = Gtk::Image.new(pixCaseMarquee)
-    eventCaseMarquee = Gtk::EventBox.new.add(imageCaseMarquee)
-    
-    eventCaseMarquee.signal_connect("button_press_event") do
-      puts "Case marquée cliquée"
-    end
-    
-    return eventCaseMarquee
   end
   
   def initialiserTableauJeu()
@@ -169,9 +192,7 @@ class EventsEditeur < Events
         #  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)
         #end
         
-        caseTableau = caseVide()
-        
-        @fenetre.tableauJeu.attach(caseTableau, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
+        @fenetre.tableauJeu.attach(caseDefault(), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end

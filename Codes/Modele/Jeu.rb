@@ -503,7 +503,7 @@ class Jeu
             @partie.noircir(x, y)
             
             if @partie.class == Partie then
-              return terminer?()
+              return termine?()
             end
         else
 
@@ -561,7 +561,7 @@ class Jeu
 
         if @partie != nil then
 
-            if @partie.classe() == Partie then
+            if @partie.class() == Partie then
                 
                 return @partie.termine()
             else

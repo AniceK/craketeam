@@ -95,7 +95,7 @@ class Grille
     end
 
 # Méthode permettant de noircir une Case à partir de ses coordonnées
-	def noircirCase(coordX, coordY)
+	def noircir(coordX, coordY)
 
 	    @colonne[coordX].noircir(coordY)
 	    @ligne[coordY].noircir(coordX)
@@ -173,7 +173,7 @@ class Grille
           
                 if (alea > unCoef) then
               
-                    self.noircirCase(i, j)
+                    self.noircir(i, j)
                 end
             end
         end

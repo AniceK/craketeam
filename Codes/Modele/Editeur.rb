@@ -28,7 +28,7 @@ class Editeur
 # Méthode permettant de noircir une case de la grille (ou de la blanchir si elle était déjà noircie)
 	def noircir(coordX, coordY)
 
-		@grille.noircir(coordxX, coordY)
+		@grille.noircir(coordX, coordY)
 
 	end
 
