@@ -279,7 +279,6 @@ class Jeu
             FileUtils.mkdir(aName)
             FileUtils.cd(aName)
             @profil = Profil.creer(aName)
-            FileUtils.mkdir('Parties')
             FileUtils.cd('../..')
 
 
@@ -434,7 +433,6 @@ class Jeu
                 liste = Array.new()
                 FileUtils.cd('Profil')
                 FileUtils.cd(@profil.nom)
-                FileUtils.cd('Parties')
                 liste = YAML::load(File.open('parties.yml'))
                 liste.push([nomSauvegarde, @partie])
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
