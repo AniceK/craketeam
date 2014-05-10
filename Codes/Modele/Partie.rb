@@ -141,7 +141,7 @@ class Partie
         
         if @grille.termine?() then
 
-          self.pause()
+          @chronometre.kill()
           scores = Array.new()
           if File.size("scores.yml") > 0 then
           
