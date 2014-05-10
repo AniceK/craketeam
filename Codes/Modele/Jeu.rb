@@ -416,6 +416,11 @@ class Jeu
         return @profil != nil
     end
 
+# Méthode pour vider le contenu de @partie
+    def quitterPartie()
+
+        @partie = nil
+    end
 #==============================================
     #Gestion de la Partie /de l'éditeur en Cours
 #==============================================
@@ -645,4 +650,9 @@ class Jeu
         end
     end
 
+# Méthode pour vider le contenu de @partie
+    def quitterPartie()
+
+        @partie = nil
+    end
 end
