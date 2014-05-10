@@ -194,7 +194,7 @@ class Grille
         FileUtils.cd('Grille')
         FileUtils.cd(@taille.to_s())
         tab = Array.new()
-        if File.size("grilles.yml") != 0 then
+        if File.size('grilles.yml') != 0 then
         
             tab = Array.new(YAML::load(File.open('grilles.yml')))
         end
