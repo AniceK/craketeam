@@ -423,7 +423,7 @@ class Jeu
 #==============================================
 
 # Méthode sauvegardant la partie en cours
-	def sauvegarderPartie(nom)
+	def sauvegarderPartie(nomSauvegarde)
 
         if @partie != nil then
 
@@ -434,7 +434,7 @@ class Jeu
                 FileUtils.cd(@profil.nom)
                 FileUtils.cd('Parties')
                 liste = YAML::load(File.open('parties.yml'))
-                liste.push([nom, @partie])
+                liste.push([nomSauvegarde, @partie])
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../../..')
             else
