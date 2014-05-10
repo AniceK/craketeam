@@ -24,12 +24,7 @@ class FenetreChoixSauvegarde < Fenetre
     @boutonPrecedent = Gtk::Button.new('Précédent')
     @boutonPrecedent.set_size_request(-1, 50)
     
-    @texteChoixSauvegarde = Gtk::Label.new("Remerciements:\n
-                     Chef de projet - Tremblain Rémi
-                     Documentaliste - Picard Colas
-                     Documentaliste - Crouillère Kévin
-                     Responsable de communication - Khomany Anice
-                     Ingénieur Informatique - Marchand Erwan")
+    @texteChoixSauvegarde = Gtk::Label.new("")
     
     vBox = Gtk::VBox.new(false, 0)
     vBox.set_border_width(5)

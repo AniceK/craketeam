@@ -13,6 +13,7 @@ require_relative 'EventsOptions'
 require_relative 'EventsProfil'
 require_relative 'EventsPreparation'
 require_relative 'EventsChoixPartie'
+require_relative 'EventsTailleEditeur'
 #require_relative 'EventsEditeur'
 require './Vue/Fenetres/FenetreAccueil'
 require './Vue/Dialogues/DialogueQuitter'
@@ -61,7 +62,7 @@ class EventsAccueil < Events
     @fenetre.boutonEditeur.signal_connect('clicked'){
       puts "> Éditeur"
       
-      #mouvement(EventsEditeur.new(jeu))
+      mouvement(EventsTailleEditeur.new(jeu))
     }
     
     @fenetre.boutonOptions.signal_connect('clicked'){

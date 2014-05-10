@@ -10,6 +10,7 @@ require_relative 'Fenetre'
 class FenetreJeu < Fenetre
   
   @texteTemps
+  @minutes
   @secondes
   @afficheTemps
   @tableauGeneral
@@ -20,7 +21,7 @@ class FenetreJeu < Fenetre
   @boutonPause
   @imagePause
   @imageLecture
-  @chronometre
+  @vBoxDroite
   
   @boutonMenuPrincipal
   @entreeSauvegarde
@@ -33,8 +34,9 @@ class FenetreJeu < Fenetre
               :boutonPause,
               :imagePause,
               :imageLecture,
+              :vBoxDroite,
               :afficheTemps,
-              :chronometre,
+              
               
               :boutonMenuPrincipal,
               :entreeSauvegarde,
@@ -44,6 +46,7 @@ class FenetreJeu < Fenetre
   attr_accessor :tableauConditionsV,
                 :tableauConditionsH,
                 :tableauJeu,
+                :minutes,
                 :secondes
   
   public_class_method :new
@@ -85,29 +88,10 @@ class FenetreJeu < Fenetre
     #                                                              #
     ################################################################
     
+    
     @texteTemps = Gtk::Label.new("Temps écoulé :")
     @secondes = 0
     @minutes = 0
-    
-    @chronometre = Thread.new {
-      
-      puts "Entrée dans le thread Chrono"
-      
-      while(true)
-        
-        temps = jeu.tempsActuel()
-        puts "temps = " + temps.to_s
-        @minutes = (temps / 60).round()
-        @secondes = temps % 60
-        @afficheTemps =  Gtk::Label.new(@minutes.to_s + ":" + @secondes.to_s)
-        
-        puts @afficheTemps.text()
-        
-        sleep 1.0
-      end
-    }
-    
-    @chronometre.run()
     
     
     ################################################################
@@ -119,7 +103,7 @@ class FenetreJeu < Fenetre
     
     @fenetre.set_title("Jouez !")
     
-    @afficheTemps =  Gtk::Label.new(@minutes.to_s + ":" + @secondes.to_s)
+    @afficheTemps =  Gtk::Label.new("")
     @boutonAide = Gtk::Button.new('Aide')
     @boutonPause = Gtk::Button.new()
     @tableauGeneral = Gtk::Table.new(0, 0, false)
@@ -157,23 +141,23 @@ class FenetreJeu < Fenetre
     @tableauGeneral.attach_defaults(@tableauJeu, 1, 2, 1, 2)
     
     hBoxTemps = Gtk::HBox.new(true, 0)
-    vBoxDroite = Gtk::VBox.new(true, 0)
+    @vBoxDroite = Gtk::VBox.new(true, 0)
     @hBoxPrincipale = Gtk::HBox.new(false, 5)
     
     hBoxTemps.set_border_width(5)
-    vBoxDroite.set_border_width(5)
+    @vBoxDroite.set_border_width(5)
     @hBoxPrincipale.set_border_width(5)
     
     hBoxTemps.pack_start(@texteTemps, false, false, 0)
     hBoxTemps.pack_start(@afficheTemps, false, false, 20)
     
-    vBoxDroite.pack_start(hBoxTemps, false, false, 30)
-    vBoxDroite.pack_start(@alignePause, false, false, 30)
-    vBoxDroite.pack_end(@boutonAide, false, false, 30)
+    @vBoxDroite.pack_start(hBoxTemps, false, false, 30)
+    @vBoxDroite.pack_start(@alignePause, false, false, 30)
+    @vBoxDroite.pack_end(@boutonAide, false, false, 30)
     
     @hBoxPrincipale.pack_start(@vBoxPause, true, false, 40)  # DEBUG
     @hBoxPrincipale.pack_start(@tableauGeneral, true, true, 0)
-    @hBoxPrincipale.pack_end(vBoxDroite, false, false, 10)
+    @hBoxPrincipale.pack_end(@vBoxDroite, false, false, 10)
     @hBoxPrincipale.pack_end(Gtk::VSeparator.new(), false, false, 0)
     
     @fenetre.add(@hBoxPrincipale)
@@ -232,14 +216,9 @@ class FenetreJeu < Fenetre
     @tableauGeneral.show_all()
   end
   
-  def lancerChrono()
-    
-    #@chronometre.run()
-  end
-  
-  def arreterChrono()
-    
-    @chronometre.exit()
+  def actualiserTemps()
+      
+    @afficheTemps.set_text(@minutes.to_s + ":" + @secondes.to_s)
   end
   
 end
