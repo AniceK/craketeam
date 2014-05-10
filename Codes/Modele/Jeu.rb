@@ -629,12 +629,12 @@ class Jeu
     end
 
 # Méthode pour récuperer le temps de la partie
-    def tempsactuel()
+    def tempsActuel()
 
-        if @partie.class == Partie then
+        if @partie != nil then
             return @partie.temps
         else
-            raise "erreur, une partie doit etre aftivée!"
+            raise "erreur, une partie doit etre activée!"
         end
     end
 
