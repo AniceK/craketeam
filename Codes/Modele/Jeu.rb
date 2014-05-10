@@ -279,6 +279,7 @@ class Jeu
             FileUtils.mkdir(aName)
             FileUtils.cd(aName)
             @profil = Profil.creer(aName)
+            FileUtils.mkdir('Parties')
             FileUtils.cd('../..')
 
 
