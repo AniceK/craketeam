@@ -12,6 +12,7 @@ require 'yaml'
 
 require_relative './Partie'
 require_relative './Profil'
+require_relative './Editeur'
 
 class Jeu
 
@@ -502,7 +503,8 @@ class Jeu
             @partie.noircir(x, y)
             
             if @partie.class == Partie then
-                return terminer?()
+              return terminer?()
+            end
         else
 
             raise "Aucune partie n'est en cours!"
@@ -636,7 +638,6 @@ class Jeu
 
         if @partie.class == Partie then
 
-            puts "envoi du temps"
             return @partie.temps
         else
             raise "erreur, une partie doit etre activée!"

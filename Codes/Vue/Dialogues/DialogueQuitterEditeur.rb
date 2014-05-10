@@ -9,20 +9,20 @@ require 'gtk2'
 
 require_relative 'Dialogue'
 
-class DialogueMenuPrincipal < Dialogue
+class DialogueQuitterEditeur < Dialogue
   
-  @doitArreterPartie
+  @doitArreterEditeur
   
-  attr_reader :doitArreterPartie
+  attr_reader :doitArreterEditeur
   
   public_class_method :new
   
   def initialize()
     
-    super("Arrêter partie ?",
+    super("Quitter éditeur ?",
     
-          "Êtes-vous sûr de vouloir quitter la partie en cours ?\n
-          Toute progression non sauvegardée sera perdue.")
+          "Êtes-vous sûr de vouloir quitter la création en cours ?\n
+          Votre grille ne sera pas sauvegardée.")
     
     @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
     
@@ -32,18 +32,18 @@ class DialogueMenuPrincipal < Dialogue
       case response
         when Gtk::Dialog::RESPONSE_ACCEPT
           puts "> Accueil"
-          @doitArreterPartie = true
+          @doitArreterEditeur = true
         else                                      
-          puts "> Jeu"
-          @doitArreterPartie = false
+          puts "> Editeur"
+          @doitArreterEditeur = false
       end
       
       @popup.destroy
     end
   end
   
-  def doitArreterPartie()
-    return @doitArreterPartie
+  def doitArreterEditeur()
+    return @doitArreterEditeur
   end
 
 end

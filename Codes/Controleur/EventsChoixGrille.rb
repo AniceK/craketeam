@@ -8,7 +8,6 @@
 require 'gtk2'
 
 require_relative 'Events'
-require_relative 'EventsPreparation'
 require_relative 'EventsJeu'
 require './Vue/Fenetres/FenetreChoixGrille'
 

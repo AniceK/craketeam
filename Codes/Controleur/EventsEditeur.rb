@@ -8,8 +8,8 @@
 require 'gtk2'
 
 require_relative 'Events'
-require './Vue/Fenetres/FenetreJeu'
-require './Vue/Dialogues/DialogueQuitterPartie'
+require './Vue/Fenetres/FenetreEditeur'
+require './Vue/Dialogues/DialogueQuitterEditeur'
 
 
 #===============================================================================#
@@ -21,21 +21,17 @@ require './Vue/Dialogues/DialogueQuitterPartie'
 #===============================================================================#
 
 
-class EventsJeu < Events
+class EventsEditeur < Events
   
   @tailleGrille
   @tailleCase
   @nbConditionsRangee
-  @estEnPause
   @optionsTableau
-  @chronometre
   
   attr_reader :tailleGrille,
               :tailleCase,
               :nbConditionsRangee,
-              :estEnPause,
-              :optionsTableau,
-              :chronometre
+              :optionsTableau
   
   public_class_method :new
   
@@ -50,18 +46,17 @@ class EventsJeu < Events
     #                                                              #
     ################################################################
     
-    @estEnPause = false
     @tailleGrille = @jeu.tailleGrille()
     @tailleCase = 30
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
     
     
-    @fenetre = FenetreJeu.new()
+    @fenetre = FenetreEditeur.new()
     
     case @tailleGrille
     when 5
-      initialiserGrille(500, 300)
+      initialiserGrille(350, 230)
     when 10
       initialiserGrille(700, 550)
     when 15
@@ -74,112 +69,31 @@ class EventsJeu < Events
       puts "Erreur: La taille n'est pas valide"
     end
     
-    self.initialiserChrono()
-    
     # Affichage
     
     @fenetre.afficher()
-    @fenetre.affichageJeu()
     
-    @jeu.lancerPartie()
-    self.lancerChrono()
-    
-    @fenetre.boutonAide.signal_connect('clicked'){
-      puts "> Aide"
+    @fenetre.boutonEnregistrer.signal_connect('clicked'){
+      puts "> Enregistrer"
       
-      #mouvement(EventsMenuJeu.new(jeu))
-      mouvement(EventsPreparation.new(jeu)) # DEBUG
+      #@fenetre.afficherEnregistrement()
+      # OU #
+      #mouvement(DialogueEnregistrer.new(jeu)) # DEBUG
     }
     
-    @fenetre.boutonPause.signal_connect('clicked'){
+    @fenetre.boutonQuitter.signal_connect('clicked'){
       
-      # Inversion du booléen
-      @estEnPause = @estEnPause.!
-
-      if @estEnPause
-        
-        @jeu.partieEnPause()
-        
-        if @jeu.profilConnecte?() then
-        
-          @fenetre.affichagePauseProfil()
-          
-        elsif !@jeu.profilConnecte?() then
-          
-          @fenetre.affichagePauseSimple()
-          
-        end
-        
-      elsif !@estEnPause then
-        
-        @fenetre.affichageJeu()
-        self.lancerChrono()
-        @jeu.lancerPartie()
-        
-      else
-        puts "Erreur du booléen \"@estEnPause\" déterminant la pause ou la lecture"
-      end
-    }
-    
-    
-    ################################################################
-    #                                                              #
-    #                          Menu Pause                          #
-    #                                                              #
-    ################################################################
-    
-    @fenetre.boutonSauvegarder.signal_connect('clicked'){
+      puts "> Quitter"
       
-      nomSauvegarde = @fenetre.entreeSauvegarde.text()
-      puts "> Accueil (nom de sauvegarde: " + nomSauvegarde + ")"
+      dialogue = DialogueQuitterEditeur.new()
       
-      @jeu.sauvegarderPartie(nomSauvegarde)
-      mouvement(EventsAccueil.new(jeu))
-    }
-    
-    @fenetre.boutonMenuPrincipal.signal_connect('clicked'){
-      
-      puts "> Dialogue Menu Principal"
-      
-      dialogue = DialogueQuitterPartie.new()
-      
-      if dialogue.doitArreterPartie() then
+      if dialogue.doitArreterEditeur then
         
         mouvement(EventsAccueil.new(jeu))
       end
     }
     
-  end
-  
-  
-  def initialiserChrono()
     
-    @chronometre = Thread.new {
-      
-      while(true)
-        
-        temps = @jeu.tempsActuel()
-        @fenetre.minutes = (temps / 60).round()
-        @fenetre.secondes = temps % 60
-        
-        @fenetre.actualiserTemps()
-        
-        sleep 1.0
-        
-        if @estEnPause then Thread.stop() end
-      end
-    }
-    
-  end
-  
-  def lancerChrono()
-    
-    @chronometre.run()
-  end
-  
-  def arreterChrono()
-    
-    @chronometre.exit()
   end
   
   
@@ -189,14 +103,10 @@ class EventsJeu < Events
     
     if @tailleGrille < 15 then
       @tailleCase = 30
-      @fenetre.grandesConditions()
     else
       @tailleCase = 20
-      @fenetre.petitesConditions()
     end
-    
-    initialiserConditionsV()
-    initialiserConditionsH()
+  
     initialiserTableauJeu()
     
   end
@@ -243,50 +153,6 @@ class EventsJeu < Events
     end
     
     return eventCaseMarquee
-  end
-  
-  def initialiserConditionsV()
-    
-    #@fenetre.tableauConditionsV.resize(@tailleGrille, 3)
-    
-    0.upto(@tailleGrille - 1) do |y|
-      
-      @nbConditionsRangee = @jeu.nbConditionsV(y)
-      
-        0.upto(@nbConditionsRangee) do |x|
-          
-          if @nbConditionsRangee != 0 then
-            
-            condition = Gtk::Label.new("")
-            condition.set_text(@jeu.conditionV(y, x).to_s)
-            @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
-          end
-            
-        end
-    end
-  end
-  
-  def initialiserConditionsH()
-    
-    #@fenetre.tableauConditionsH.resize(3, @tailleGrille)
-    
-    0.upto(@tailleGrille - 1) do |x|
-      
-      @nbConditionsRangee = @jeu.nbConditionsH(x)
-      
-      0.upto(@nbConditionsRangee) do |y|
-        
-        
-        
-        if @nbConditionsRangee != 0 then
-          
-          condition = Gtk::Label.new("")
-          condition.set_text(@jeu.conditionV(x, y).to_s)
-          @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
-        end
-        
-      end
-    end
   end
   
   def initialiserTableauJeu()
