@@ -216,16 +216,13 @@ class EventsJeu < Events
       
         0.upto(@nbConditionsRangee) do |x|
           
-          condition = Gtk::Label.new("")
-          
           if @nbConditionsRangee != 0 then
             
+            condition = Gtk::Label.new("")
             condition.set_text(@jeu.conditionV(y, x).to_s)
+            @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
           end
             
-            condition = Gtk::Label.new(@jeu.conditionV(y, x).to_s)
-            
-            @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
         end
     end
   end
