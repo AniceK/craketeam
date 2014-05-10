@@ -45,7 +45,7 @@ class Profil
         sauvegarde = @nom + ".yml"
         FileUtils.cd(@nom)
         File.open(sauvegarde, "w"){ |out| out.puts self.to_yaml}
-        File.open('parties.yml'){ |out| out.puts "test"}
+        File.new("parties.yml", "w")
         FileUtils.cd('../..')
 
     end
