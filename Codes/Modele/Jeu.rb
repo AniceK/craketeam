@@ -423,7 +423,7 @@ class Jeu
 #==============================================
 
 # Méthode sauvegardant la partie en cours
-	def sauvegarderPartie()
+	def sauvegarderPartie(nom)
 
         if @partie != nil then
 
@@ -434,7 +434,7 @@ class Jeu
                 FileUtils.cd(@profil.nom)
                 FileUtils.cd('Parties')
                 liste = YAML::load(File.open('parties.yml'))
-                liste.push(@partie)
+                liste.push([nom, @partie])
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../../..')
             else
@@ -632,6 +632,8 @@ class Jeu
     def tempsActuel()
 
         if @partie != nil then
+
+            puts "envoi du temps"
             return @partie.temps
         else
             raise "erreur, une partie doit etre activée!"
