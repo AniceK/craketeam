@@ -29,6 +29,7 @@ class Profil
       @nbGrilles = 0
       sauvegarde = @nom + ".yml"
       File.open(sauvegarde, "w"){ |out| out.puts self.to_yaml}
+      File.new("parties.yml", "w")
 
     end    #marqueur de fin d initialize
 
@@ -45,7 +46,6 @@ class Profil
         sauvegarde = @nom + ".yml"
         FileUtils.cd(@nom)
         File.open(sauvegarde, "w"){ |out| out.puts self.to_yaml}
-        File.new("parties.yml", "w")
         FileUtils.cd('../..')
 
     end
