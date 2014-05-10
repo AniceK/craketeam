@@ -457,7 +457,7 @@ class Jeu
             else
 
                 @profil.ajouterUneGrille()
-                @partie.sauvegarder()
+                @partie.sauvegarder(nomSauvegarde)
             end
 
         else

@@ -32,9 +32,11 @@ class NouveauJeu
   ### Initialisation des évènements et donc du moteur et de l'interface gtk ###
   def initialize()
     
+    verbose = false
+    
     puts "Lancement du programme"
     
-    jeu = Jeu.creer()
+    jeu = Jeu.creer(verbose)
 
     # Préparation de l'interface Gtk
     Gtk.init

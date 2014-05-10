@@ -160,6 +160,7 @@ class EventsJeu < Events
       if dialogue.doitArreterPartie then
         
         puts "> Accueil"
+        @jeu.quitterPartie()
         mouvement(EventsAccueil.new(jeu))
         
       else
@@ -257,7 +258,12 @@ class EventsJeu < Events
         
       end
       
-      if @jeu.termine?() then puts "Vous avez gagné !" end
+      if score = @jeu.termine?() then
+        
+        puts "Vous avez gagné ! (score = " + score.to_s + ")"
+        @jeu.quitterPartie()
+        
+      end
      
       # Gestion du marquage
       

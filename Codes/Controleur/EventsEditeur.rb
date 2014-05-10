@@ -88,7 +88,7 @@ class EventsEditeur < Events
       if dialogue.doitSauvegarderEtQuitter then
         
         puts "> Accueil (Nom de la grille créée: \"" + dialogue.nomSauvegarde + "\")"
-        #jeu.sauvegarderEditeur()
+        jeu.sauvegarderPartie(dialogue.nomSauvegarde)
         mouvement(EventsAccueil.new(jeu))
         
       else
@@ -106,6 +106,7 @@ class EventsEditeur < Events
       if dialogue.doitArreterEditeur then
         
         puts "> Accueil"
+        @jeu.quitterPartie()
         mouvement(EventsAccueil.new(jeu))
         
       else
