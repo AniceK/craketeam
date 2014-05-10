@@ -11,6 +11,7 @@ require 'FileUtils'
 require 'yaml'
 
 require_relative './Partie'
+require_relative './Profil'
 
 class Jeu
 
