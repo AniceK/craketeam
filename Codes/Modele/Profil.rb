@@ -29,6 +29,7 @@ class Profil
       @nbGrilles = 0
       sauvegarde = @nom + ".yml"
       File.open(sauvegarde, "w"){ |out| out.puts self.to_yaml}
+      FileUtils.mkdir('Parties')
 
     end    #marqueur de fin d initialize
 
