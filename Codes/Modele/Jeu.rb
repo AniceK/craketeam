@@ -7,7 +7,7 @@
 #Ce fichier contient la classe Jeu, qui est constituée d'un Profil et d'une Partie
 #ici une description de la classe Jeu.
 
-require 'FileUtils'
+require 'fileutils'
 require 'yaml'
 
 require_relative './Partie'
@@ -365,11 +365,6 @@ class Jeu
             @partie = Partie.creer(taille, difficulte, "Visiteur")
         end
     end
-# Méthode créant un éditeur de grille à partir des paramètres
-    def creerEditeur(taille)
-
-        @partie = Editeur.creer(@profil.nom(), taille)
-    end
 
 # Méthode pour afficher les scores, avec le choix entre tous les scores, ou juste ceux du profil en cours
     def afficherScores(tous)
@@ -421,7 +416,7 @@ class Jeu
     end
 
 #==============================================
-    #Gestion de la Partie en Cours
+    #Gestion de la Partie /de l'éditeur en Cours
 #==============================================
 
 # Méthode sauvegardant la partie en cours
@@ -442,7 +437,8 @@ class Jeu
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../..')
             else
-                raise "Impossible d'appeler sauvergarderPartie() pour autre chose qu'une Partie!"
+
+                @partie.sauvegarder()
             end
 
         else
@@ -504,6 +500,9 @@ class Jeu
         if @partie != nil then
             
             @partie.noircir(x, y)
+            
+            if @partie.class == Partie then
+                return terminer?()
         else
 
             raise "Aucune partie n'est en cours!"
@@ -594,7 +593,7 @@ class Jeu
 # Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
     def nbConditionsV(x)
 
-        if @partie.class == Partie then
+        if @partie != nil then
 
             return @partie.nbConditionsV(x)
         else
@@ -604,7 +603,7 @@ class Jeu
 # Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
     def nbConditionsH(x)
 
-        if @partie.class == Partie then
+        if @partie != nil then
 
             return @partie.nbConditionsH(x)
         else
@@ -614,7 +613,7 @@ class Jeu
 # Méthode pour retourner la condition y dans la colonne x passe en parametre
     def conditionV(x, y)
 
-        if @partie.class == Partie then
+        if @partie != nil then
 
             return @partie.conditionV(x, y)
         else
@@ -624,7 +623,7 @@ class Jeu
 # Méthode pour retourner la condition y dans la ligne y passe en parametre
     def conditionH(x, y)
 
-        if @partie.class == Partie then
+        if @partie != nil then
 
             return @partie.conditionH(x, y)
         else
@@ -635,7 +634,7 @@ class Jeu
 # Méthode pour récuperer le temps de la partie
     def tempsActuel()
 
-        if @partie != nil then
+        if @partie.class == Partie then
 
             puts "envoi du temps"
             return @partie.temps

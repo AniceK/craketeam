@@ -25,18 +25,6 @@ class Editeur
 
 	end
 
-# Méthode pour attribuer un nom a la grille
-    def nommerGrille(nom)
-
-        @grille.nommer(nom)
-    end
-
-# Méthode pour dater une Grille
-    def daterGrille()
-
-        @grille.dater(Time.now)
-    end
-
 # Méthode permettant de noircir une case de la grille (ou de la blanchir si elle était déjà noircie)
 	def noircir(coordX, coordY)
 
@@ -53,21 +41,10 @@ class Editeur
 	end
 
 # Méthode permettant de sauvegarder la grille
-	def sauvegarder()
-
-        @grille.sauvegarder()
-    end
-
-# Méthode pour terminer la grille, en calculer les conditions, et la sauvegarder
-    def terminer()
+	def sauvegarder(nom)
 
         self.conditionsDeterminer()
-        self.sauvegarder()
-        return 1
-    end
-
-	# Méthode permettant de charger une grille préalamblement amorcée
-	def charger(grille)
+        @grille.sauvegarder(nom)
     end
 
 # Méthode pour générer aléatoirement un grille, pour permettre à l'utilisateur de se faciliter la création de la grille
@@ -75,4 +52,35 @@ class Editeur
 
         @grille.genererAleatoire()
     end
+
+# Méthode pour retourner la taille de la grille
+    def tailleGrille()
+
+        return @grille.getTaille()
+    end
+
+# Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
+    def nbConditionsV(x)
+
+            return @grille.nbConditionsV(x)
+    end
+
+# Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
+    def nbConditionsH(x)
+
+            return @grille.nbConditionsH(x)
+    end
+
+# Méthode pour retourner la condition y dans la colonne x passe en parametre
+    def conditionV(x, y)
+
+            return @grille.conditionV(x, y)
+    end
+
+# Méthode pour retourner la condition y dans la ligne x passe en parametre
+    def conditionH(x, y)
+
+            return @grille.conditionH(x, y)
+    end
+
 end

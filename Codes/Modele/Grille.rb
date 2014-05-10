@@ -187,15 +187,18 @@ class Grille
     end
     
 # Méthode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
-    def sauvegarder()
+    def sauvegarder(nom)
 
         self.raz()
 
         FileUtils.cd('Grille')
         FileUtils.cd(@taille.to_s())
         tab = Array.new()
-        tab = Array.new(YAML::load(File.open('grilles.yml')))
-        tab.push(self)
+        if File.size("grilles.yml") != 0 then
+        
+            tab = Array.new(YAML::load(File.open('grilles.yml')))
+        end
+        tab.push([nom,self])
         File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
     end
   
