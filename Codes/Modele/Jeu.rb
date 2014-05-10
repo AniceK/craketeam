@@ -440,7 +440,7 @@ class Jeu
                 end
                 liste.push([nomSauvegarde, @partie])
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-                FileUtils.cd('../../..')
+                FileUtils.cd('../..')
             else
                 raise "Impossible d'appeler sauvergarderPartie() pour autre chose qu'une Partie!"
             end
