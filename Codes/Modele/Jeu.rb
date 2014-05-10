@@ -279,6 +279,7 @@ class Jeu
             FileUtils.mkdir(aName)
             FileUtils.cd(aName)
             @profil = Profil.creer(aName)
+            File.new("parties.yml", "w")
             FileUtils.cd('../..')
 
 
