@@ -434,7 +434,10 @@ class Jeu
                 liste = Array.new()
                 FileUtils.cd('Profil')
                 FileUtils.cd(@profil.nom)
-                liste = YAML::load(File.open('parties.yml'))
+                if File.size("parties.yml") != 0 then
+                
+                    liste = YAML::load(File.open('parties.yml'))
+                end
                 liste.push([nomSauvegarde, @partie])
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../../..')
