@@ -23,6 +23,9 @@ class DialogueQuitterEditeur < Dialogue
     
           "Êtes-vous sûr de vouloir quitter la création en cours ?\n
           Votre grille ne sera pas sauvegardée.")
+          
+    @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)
+    @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
     
     @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
     
@@ -31,19 +34,16 @@ class DialogueQuitterEditeur < Dialogue
     @popup.run do |response|
       case response
         when Gtk::Dialog::RESPONSE_ACCEPT
-          puts "> Accueil"
+          
           @doitArreterEditeur = true
+          
         else                                      
-          puts "> Editeur"
+          
           @doitArreterEditeur = false
       end
       
       @popup.destroy
     end
-  end
-  
-  def doitArreterEditeur()
-    return @doitArreterEditeur
   end
 
 end

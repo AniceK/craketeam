@@ -25,15 +25,15 @@ class EventsProfil < Events
       
       if @jeu.creerProfil(@fenetre.entreeNomProfil.text) then
       
-        puts "> Accueil (pseudo: " + @jeu.nomProfil() + ")"
+        puts "> Accueil (pseudo: \”" + @jeu.nomProfil() + "\")"
         mouvement(EventsAccueil.new(jeu))
       else
-        puts "Pseudo déjà utilisé"
+        puts "> Pseudo déjà utilisé"
       end
     }
     
     @fenetre.boutonChargerProfil.signal_connect('clicked'){
-      puts "> Accueil (pseudo: " + @fenetre.entreeNomProfil.text + ")"
+      puts "> Accueil (pseudo: \"" + @fenetre.entreeNomProfil.text + "\")"
       
       if @jeu.chargerProfil(@fenetre.entreeNomProfil.text) then
         mouvement(EventsAccueil.new(jeu))

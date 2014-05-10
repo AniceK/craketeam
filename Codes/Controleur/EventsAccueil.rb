@@ -83,8 +83,14 @@ class EventsAccueil < Events
       
       dialogue = DialogueQuitter.new()
       
-      if dialogue.doitQuitter() then
+      if dialogue.doitQuitter then
+        
+        puts "> Quitter"
         @fenetre.quitter()
+        
+      else
+        
+        puts "> Accueil"
       end
     }
     

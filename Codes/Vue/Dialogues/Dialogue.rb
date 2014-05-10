@@ -22,9 +22,6 @@ class Dialogue
     @popup.set_window_position(Gtk::Window::POS_CENTER)
     @popup.set_size_request(380, 100)
     @popup.set_resizable(false)
-                              
-    @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)
-    @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
     
     messageCentre = Gtk::Label.new(message)
     messageCentre.set_justify(Gtk::JUSTIFY_CENTER)

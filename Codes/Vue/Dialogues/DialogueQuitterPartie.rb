@@ -23,6 +23,9 @@ class DialogueQuitterPartie < Dialogue
     
           "Êtes-vous sûr de vouloir quitter la partie en cours ?\n
           Toute progression non sauvegardée sera perdue.")
+             
+    @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)      
+    @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
     
     @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
     
@@ -31,19 +34,17 @@ class DialogueQuitterPartie < Dialogue
     @popup.run do |response|
       case response
         when Gtk::Dialog::RESPONSE_ACCEPT
-          puts "> Accueil"
+  
           @doitArreterPartie = true
+          
         else                                      
-          puts "> Jeu"
+          
           @doitArreterPartie = false
+          
       end
       
       @popup.destroy
     end
-  end
-  
-  def doitArreterPartie()
-    return @doitArreterPartie
   end
 
 end

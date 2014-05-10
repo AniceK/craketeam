@@ -34,11 +34,19 @@ class EventsPreparation < Events
       
       puts "> Accueil"
       
-      # Si profil connecté
-      #mouvement(EventsChoixPartie.new(jeu))
+      if @jeu.profilConnecte?() then
+        
+        mouvement(EventsChoixPartie.new(jeu))
       
-      # Si pas de profil connecté
-      mouvement(EventsAccueil.new(jeu))
+      elsif !@jeu.profilConnecte?() then
+        
+        mouvement(EventsAccueil.new(jeu))
+        
+      else
+        
+        puts "Erreur: Problème booléen indiquant si un profil est connecté"
+        
+      end
     }
     
     @fenetre.boutonSuivant.signal_connect('clicked'){

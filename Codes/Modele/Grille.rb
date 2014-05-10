@@ -169,7 +169,8 @@ class Grille
           
                 if (alea > unCoef) then
               
-                    self.noircir(i, j)
+                    @colonne[i].noircir(j)
+                    @ligne[j].noircir(i)
                 end
             end
         end

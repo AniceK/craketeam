@@ -157,9 +157,15 @@ class EventsJeu < Events
       
       dialogue = DialogueQuitterPartie.new()
       
-      if dialogue.doitArreterPartie() then
+      if dialogue.doitArreterPartie then
         
+        puts "> Accueil"
         mouvement(EventsAccueil.new(jeu))
+        
+      else
+        
+        puts "> Jeu"
+        
       end
     }
     
@@ -250,6 +256,8 @@ class EventsJeu < Events
         widget.child.set_pixbuf(@pixCaseVide)
         
       end
+      
+      if @jeu.termine?() then puts "Vous avez gagné !" end
      
       # Gestion du marquage
       

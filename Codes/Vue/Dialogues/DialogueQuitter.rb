@@ -21,6 +21,9 @@ class DialogueQuitter < Dialogue
     
     super("Quitter ?",
           "Êtes-vous sûr de vouloir quitter ?")
+          
+    @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)
+    @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
     
     @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
     
@@ -29,19 +32,16 @@ class DialogueQuitter < Dialogue
     @popup.run do |response|
       case response
         when Gtk::Dialog::RESPONSE_ACCEPT
-          puts "> Quitter"
+          
           @doitQuitter = true
+          
         else                                      
-          puts "> Accueil"
+          
           @doitQuitter = false
       end
       
       @popup.destroy
     end
-  end
-  
-  def doitQuitter()
-    return @doitQuitter
   end
 
 end

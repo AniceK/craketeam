@@ -42,6 +42,7 @@ class FenetreEditeur < Fenetre
     @boutonQuitter = Gtk::Button.new('Quitter')
     @tableauJeu = Gtk::Table.new(0, 0, true)
     
+    @boutonEnregistrer.set_size_request(80, 30)
     @boutonQuitter.set_size_request(80, 30)
     
     @tableauJeu.set_column_spacings(2)

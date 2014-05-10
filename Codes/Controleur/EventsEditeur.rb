@@ -10,6 +10,7 @@ require 'gtk2'
 require_relative 'Events'
 require './Vue/Fenetres/FenetreEditeur'
 require './Vue/Dialogues/DialogueQuitterEditeur'
+require './Vue/Dialogues/DialogueEnregistrer'
 
 
 #===============================================================================#
@@ -34,7 +35,7 @@ class EventsEditeur < Events
               :tailleCase,
               :nbConditionsRangee,
               :optionsTableau,
-              :pixCaseVide
+              :pixCaseVide,
               :pixCaseNoircie
   
   public_class_method :new
@@ -55,25 +56,25 @@ class EventsEditeur < Events
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
     
-    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
-    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
-    
     @fenetre = FenetreEditeur.new()
     
     case @tailleGrille
     when 5
       initialiserGrille(350, 230)
     when 10
-      initialiserGrille(700, 550)
+      initialiserGrille(520, 400)
     when 15
-      initialiserGrille(750, 550)
+      initialiserGrille(680, 550)
     when 20
-      initialiserGrille(900, 700)
+      initialiserGrille(620, 500)
     when 25
-      initialiserGrille(1100, 800)
+      initialiserGrille(730, 600)
     else
       puts "Erreur: La taille n'est pas valide"
     end
+    
+    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
+    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
     
     # Affichage
     
@@ -82,9 +83,18 @@ class EventsEditeur < Events
     @fenetre.boutonEnregistrer.signal_connect('clicked'){
       puts "> Enregistrer"
       
-      #@fenetre.afficherEnregistrement()
-      # OU #
-      #mouvement(DialogueEnregistrer.new(jeu)) # DEBUG
+      dialogue = DialogueEnregistrer.new()
+      
+      if dialogue.doitSauvegarderEtQuitter then
+        
+        puts "> Accueil (Nom de la grille créée: \"" + dialogue.nomSauvegarde + "\")"
+        #jeu.sauvegarderEditeur()
+        mouvement(EventsAccueil.new(jeu))
+        
+      else
+        
+        puts "> Editeur"
+      end
     }
     
     @fenetre.boutonQuitter.signal_connect('clicked'){
@@ -95,7 +105,12 @@ class EventsEditeur < Events
       
       if dialogue.doitArreterEditeur then
         
+        puts "> Accueil"
         mouvement(EventsAccueil.new(jeu))
+        
+      else
+        
+        puts "> Editeur"  
       end
     }
     
@@ -107,12 +122,13 @@ class EventsEditeur < Events
     
     @fenetre.redimensionner(largeurFenetre, hauteurFenetre)
     
-    if @tailleGrille < 15 then
+    if @tailleGrille < 20 then
       @tailleCase = 30
     else
       @tailleCase = 20
     end
   
+    initialiserImages()
     initialiserTableauJeu()
     
   end
@@ -138,25 +154,6 @@ class EventsEditeur < Events
       end
       
     end
-     
-      # Gestion du marquage
-      
-    #elsif evenement.button() == 3 then
-    #  
-    #  if widget.child.pixbuf() == @pixCaseMarquee then
-    #    
-    #    widget.child.set_pixbuf(@pixCaseVide)
-    #    
-    #  elsif widget.child.pixbuf() == @pixCaseVide then
-    #    
-    #    widget.child.set_pixbuf(@pixCaseMarquee)
-    #    
-    #  end
-    #  
-    #else
-    #  
-    #  puts "Mauvaise gestion caseCliquée"
-    #end
       
   end
   
@@ -176,6 +173,12 @@ class EventsEditeur < Events
     
     return evenementCase
     
+  end
+  
+  def initialiserImages()
+    
+    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
+    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
   end
   
   def initialiserTableauJeu()
