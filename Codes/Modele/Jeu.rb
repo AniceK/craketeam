@@ -439,6 +439,7 @@ class Jeu
                 FileUtils.cd('../..')
             else
 
+                @profil.ajouterUneGrille()
                 @partie.sauvegarder()
             end
 
@@ -565,8 +566,8 @@ class Jeu
                 
                 return @partie.termine()
             else
-                @profil.ajouterUneGrille()
-                return @partie.terminer()
+
+                raise "Une partie doit etre en cours"
             end
         else
 
