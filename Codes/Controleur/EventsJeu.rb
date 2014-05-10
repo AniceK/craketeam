@@ -29,13 +29,23 @@ class EventsJeu < Events
   @estEnPause
   @optionsTableau
   @chronometre
+  @pixCaseVide
+  @pixCaseNoircie
+  @decalagePositionX
+  @decalagePositionY
   
   attr_reader :tailleGrille,
               :tailleCase,
               :nbConditionsRangee,
               :estEnPause,
               :optionsTableau,
-              :chronometre
+              :chronometre,
+              :pixCaseVide,
+              :pixCaseNoircie,
+              :decalagePositionX,
+              :decalagePositionY
+              
+              
   
   public_class_method :new
   
@@ -56,20 +66,24 @@ class EventsJeu < Events
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
     
-    
     @fenetre = FenetreJeu.new()
     
     case @tailleGrille
     when 5
       initialiserGrille(500, 300)
+      initialiserPositionsCases(2, 3)
     when 10
       initialiserGrille(700, 550)
+      initialiserPositionsCases(3, 5)
     when 15
       initialiserGrille(750, 550)
+      initialiserPositionsCases(4, 5)
     when 20
-      initialiserGrille(900, 700)
+      initialiserGrille(1000, 700)
+      initialiserPositionsCases(5, 6)
     when 25
-      initialiserGrille(1100, 800)
+      initialiserGrille(1200, 800)
+      initialiserPositionsCases(6, 6)
     else
       puts "Erreur: La taille n'est pas valide"
     end
@@ -151,7 +165,6 @@ class EventsJeu < Events
     
   end
   
-  
   def initialiserChrono()
     
     @chronometre = Thread.new {
@@ -187,6 +200,8 @@ class EventsJeu < Events
     
     @fenetre.redimensionner(largeurFenetre, hauteurFenetre)
     
+    puts "Taille la grille = " + @tailleGrille.to_s
+    
     if @tailleGrille < 15 then
       @tailleCase = 30
       @fenetre.grandesConditions()
@@ -195,54 +210,85 @@ class EventsJeu < Events
       @fenetre.petitesConditions()
     end
     
+    initialiserImages()
     initialiserConditionsV()
     initialiserConditionsH()
     initialiserTableauJeu()
     
   end
   
+  def initialiserImages()
+    
+    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
+    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
+    @pixCaseMarquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
+  end
+  
+  def initialiserPositionsCases(x, y)
+    
+    @decalagePositionX = x
+    @decalagePositionY = y
+  end
+  
+  def caseCliquee(widget, evenement)
+    
+    x = widget.allocation.x / 32 - @decalagePositionX
+    y = widget.allocation.y / 32 - @decalagePositionY
+    
+    puts "Case[" + x.to_s + "][" + y.to_s + "]"
+    
+    if evenement.button() == 1 then
+      
+      if widget.child.pixbuf() == @pixCaseVide then
+        
+        @jeu.noircir(x, y)
+        widget.child.set_pixbuf(@pixCaseNoircie)
+        
+      elsif widget.child.pixbuf() == @pixCaseNoircie then
+        
+        @jeu.noircir(x, y)
+        widget.child.set_pixbuf(@pixCaseVide)
+        
+      end
+     
+      # Gestion du marquage
+      
+    elsif evenement.button() == 3 then
+      
+      if widget.child.pixbuf() == @pixCaseMarquee then
+        
+        widget.child.set_pixbuf(@pixCaseVide)
+        
+      elsif widget.child.pixbuf() == @pixCaseVide then
+        
+        widget.child.set_pixbuf(@pixCaseMarquee)
+        
+      end
+      
+    else
+      
+      puts "Mauvaise gestion caseCliquée"
+    end
+      
+  end
   
   
   # Retourne une case vide cliquable
-  def caseVide()
+  def caseDefault()
     
-    pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
-    imageCaseVide = Gtk::Image.new(pixCaseVide)
-    eventCaseVide = Gtk::EventBox.new.add(imageCaseVide)
+    imageCaseVide = Gtk::Image.new(@pixCaseVide)
     
-    eventCaseVide.signal_connect("button_press_event") do
-      puts "Case vide cliquée"
-    end
+    evenementCase = Gtk::EventBox.new()
+    evenementCase.events = Gdk::Event::BUTTON_PRESS_MASK
+    evenementCase.add(imageCaseVide)
     
-    return eventCaseVide
-  end
-  
-  # Retourne une case noircie cliquable
-  def caseNoircie()
+    evenementCase.signal_connect('button_press_event') { |widget, evenement|
+      
+      caseCliquee(widget, evenement)
+    }
     
-    pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
-    imageCaseNoircie = Gtk::Image.new(pixCaseNoircie)
-    eventCaseNoircie = Gtk::EventBox.new.add(imageCaseNoircie)
+    return evenementCase
     
-    eventCaseNoircie.signal_connect("button_press_event") do
-      puts "Case noircie cliquée"
-    end
-    
-    return eventCaseNoircie
-  end
-  
-  # Retourne une case marquée cliquable
-  def caseMarquee()
-    
-    pixCaseMarquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
-    imageCaseMarquee = Gtk::Image.new(pixCaseMarquee)
-    eventCaseMarquee = Gtk::EventBox.new.add(imageCaseMarquee)
-    
-    eventCaseMarquee.signal_connect("button_press_event") do
-      puts "Case marquée cliquée"
-    end
-    
-    return eventCaseMarquee
   end
   
   def initialiserConditionsV()
@@ -255,13 +301,15 @@ class EventsJeu < Events
       
         0.upto(@nbConditionsRangee) do |x|
           
+          condition = Gtk::Label.new("")
+          
           if @nbConditionsRangee != 0 then
             
-            condition = Gtk::Label.new("")
             condition.set_text(@jeu.conditionV(y, x).to_s)
-            @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
-          end
             
+          end
+          
+            @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
         end
     end
   end
@@ -276,22 +324,20 @@ class EventsJeu < Events
       
       0.upto(@nbConditionsRangee) do |y|
         
-        
+        condition = Gtk::Label.new("")
         
         if @nbConditionsRangee != 0 then
           
-          condition = Gtk::Label.new("")
-          condition.set_text(@jeu.conditionV(x, y).to_s)
-          @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
+          condition.set_text(@jeu.conditionH(x, y).to_s)
+          
         end
         
+          @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)        
       end
     end
   end
   
   def initialiserTableauJeu()
-    
-    #@fenetre.tableauJeu.resize(@tailleGrille, @tailleGrille)
     
     1.upto(@tailleGrille) do |x|
       1.upto(@tailleGrille) do |y|
@@ -303,9 +349,7 @@ class EventsJeu < Events
         #  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)
         #end
         
-        caseTableau = caseVide()
-        
-        @fenetre.tableauJeu.attach(caseTableau, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
+        @fenetre.tableauJeu.attach(caseDefault(), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end

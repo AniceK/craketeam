@@ -169,7 +169,7 @@ class Grille
           
                 if (alea > unCoef) then
               
-                    self.noircirCase(i, j)
+                    self.noircir(i, j)
                 end
             end
         end

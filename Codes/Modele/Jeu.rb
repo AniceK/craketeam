@@ -561,7 +561,7 @@ class Jeu
 
         if @partie != nil then
 
-            if @partie.classe() == Partie then
+            if @partie.class() == Partie then
                 
                 return @partie.termine()
             else
