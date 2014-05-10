@@ -16,20 +16,23 @@ require_relative './Editeur'
 
 class Jeu
 
-  @profil
-  @partie
-  @evenements
+  @profil       #profil actif, courant, initialisé à nil
+  @partie       #partie ou editeur en cours, si il n'y a rien, il y a nil
+  @evenements   #evenement (pour le controleur)
+  @verbose      #booleen pour debuggage
 
-  attr_reader :profil, :partie, :evenements
+  attr_reader :profil, :partie, :evenements, :verbose
 
   # Constructeur de la classe Jeu
-    def Jeu.creer()
+    def Jeu.creer(v)
 
-        new()
+        new(v)
     end    #marqueur de fin de constructeur
 
 #méthode de classe d'initialisation, ou on initialise les valeurs à nil
-    def initialize()
+    def initialize(v)
+
+    @verbose = v
 
     #Test de la présence d'un dossier Picross, contenant les sauvegardes du jeu (profils, parties, grilles)
         begin
@@ -40,7 +43,7 @@ class Jeu
 
         #Creation de l'arborescence
 
-          puts "Le Dossier n'existe pas.. Création de l'arborescence"
+            if @verbose then puts "Le Dossier n'existe pas.. Création de l'arborescence" end
           FileUtils.mkdir('Picross')
           FileUtils.cd('Picross')
           FileUtils.mkdir('Profil')
@@ -58,7 +61,7 @@ class Jeu
         
         #Si le dossier existe, on vérifie toutefois son contenu
 
-          puts "Dossier Picross trouvé, vérification de son contenu..."
+            if @verbose then puts "Dossier Picross trouvé, vérification de son contenu..." end
 
           begin
 
@@ -66,13 +69,13 @@ class Jeu
 
           rescue Errno::ENOENT => e
 
-            puts "Pas de dossier profil.."
+              if @verbose then puts "Pas de dossier profil.." end
             FileUtils.mkdir('Profil')
-            puts "Dossier Profil créé !"
+            if @verbose then puts "Dossier Profil créé !" end
 
           else
 
-            puts "Dossier Profil présent"
+              if @verbose then puts "Dossier Profil présent" end
             FileUtils.cd('..')
 
           end
@@ -85,7 +88,7 @@ class Jeu
 
           rescue Errno::ENOENT => f
 
-            puts "Pas de dossier grille.."
+              if @verbose then puts "Pas de dossier grille.." end
             FileUtils.mkdir('Grille')
             FileUtils.cd('Grille')
             FileUtils.mkdir('5')
@@ -93,12 +96,12 @@ class Jeu
             FileUtils.mkdir('15')
             FileUtils.mkdir('20')
             FileUtils.mkdir('25')
-            puts "Dossier Grille crée !"
+            if @verbose then puts "Dossier Grille crée !" end
             FileUtils.cd('..')
 
           else
 
-            puts "Dossier Grille présent"
+              if @verbose then puts "Dossier Grille présent" end
             
             #test de l'existence des cinq dossiers correspondant aux tailles
             #test de l'existence du dossier 5
@@ -108,13 +111,13 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                puts "Pas de dossier 5.."
+                if @verbose then puts "Pas de dossier 5.." end
                 FileUtils.mkdir('5')
-                puts "Dossier 5 créé !"
+                if @verbose then puts "Dossier 5 créé !" end
 
             else
 
-                puts "Dossier 5 présent"
+                if @verbose then puts "Dossier 5 présent" end
                 FileUtils.cd('..')
 
             end
@@ -125,9 +128,9 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                puts "Pas de dossier 10.."
+                if @verbose then puts "Pas de dossier 10.."end
                 FileUtils.mkdir('5')
-                puts "Dossier 10 créé !"
+                if @verbose then puts "Dossier 10 créé !" end
 
             else
 
@@ -143,13 +146,13 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                puts "Pas de dossier 15.."
+                if @verbose then puts "Pas de dossier 15.." end
                 FileUtils.mkdir('15')
-                puts "Dossier 15 créé !"
+                if @verbose then puts "Dossier 15 créé !" end
 
             else
 
-                puts "Dossier 15 présent"
+                if @verbose then puts "Dossier 15 présent" end
                 FileUtils.cd('..')
 
             end
@@ -161,13 +164,13 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                puts "Pas de dossier 20.."
+                if @verbose then puts "Pas de dossier 20.." end
                 FileUtils.mkdir('20')
-                puts "Dossier 20 créé !"
+                if @verbose then puts "Dossier 20 créé !" end
 
             else
 
-                puts "Dossier 20 présent"
+                if @verbose then puts "Dossier 20 présent" end
                 FileUtils.cd('..')
 
             end
@@ -179,13 +182,13 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                puts "Pas de dossier 25.."
+                if @verbose then puts "Pas de dossier 25.." end
                 FileUtils.mkdir('25')
-                puts "Dossier 25 créé !"
+                if @verbose then puts "Dossier 25 créé !" end
 
             else
 
-                puts "Dossier 25 présent"
+                if @verbose then puts "Dossier 25 présent" end
                 FileUtils.cd('..')
 
             end
@@ -197,7 +200,7 @@ class Jeu
 
         ensure
 
-          puts "Initialisation du répertoire fini !"
+            if @verbose then puts "Initialisation du répertoire fini !" end
 
         end
 
@@ -221,13 +224,13 @@ class Jeu
 
         rescue Errno::ENOENT => e
 
-            puts "Le profil #{aName} n'existe pas!"
+            if @verbose then puts "Le profil #{aName} n'existe pas!" end
             resultat = false
             FileUtils.cd('..')
 
         else
 
-            puts "Le profil #{aName} existe!"
+            if @verbose then puts "Le profil #{aName} existe!" end
             #afficher une fenetre avec bienvenue truc
             nom = aName + ".yml"
             @profil = YAML::load( File.open(nom))
@@ -274,7 +277,7 @@ class Jeu
     #Si cela provoque une erreur, c'est que le dossier, et donc le profil, n'existait pas. On cree donc l'arborescence.
         rescue Errno::ENOENT => e
 
-            puts "Le profil #{aName} n'existe pas !"
+            if @verbose then puts "Le profil #{aName} n'existe pas !" end
 
     #Appel au constructeur de profil
             FileUtils.mkdir(aName)
@@ -287,7 +290,7 @@ class Jeu
     #Si le Dossier au nom du profil cree existe deja, alors on le signale
           else
 
-            puts "Le profil #{aName} existe déjà"
+              if @verbose then puts "Le profil #{aName} existe déjà" end
             resultat = false
             FileUtils.cd('../..')
 
@@ -307,6 +310,7 @@ class Jeu
             raise "Aucun profil n'est chargé : impossible de charger la liste des Partie Sauvegardées!"
         else
             
+            if @verbose then puts "chargement de la liste des parties sauvegardees du profil" + @profil.nom end
             liste = Array.new()
             FileUtils.cd('Profil')
             FileUtils.cd(@profil.nom)
@@ -315,6 +319,7 @@ class Jeu
             FileUtils.cd('../../..')
             if liste.empty? then
                 
+                if @verbose then puts "La liste des parties sauvegardées est vide!" end
                 return nil
             else
                 return liste
@@ -335,17 +340,24 @@ class Jeu
 
         if @profil != nil then
             
+            if @verbose then puts "suppression d'une partie!" end
             liste = Array.new()
             FileUtils.cd('Profil')
             FileUtils.cd(@profil.nom)
             FileUtils.cd('Parties')
-            liste = YAML::load(File.open('parties.yml'))
+
+            if File.size('parties.yml') > 0 then
+            
+                liste = YAML::load(File.open('parties.yml'))
+            end
             
             if liste.empty? then
 
+                if @verbose then puts "Aucune partie n'est sauvegardée, impossible de supprimer" end
                 return nil
             else
                 sup = liste.delete(p)
+                File.delete('parties.yml')
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../../..')
                 return (sup == p)
