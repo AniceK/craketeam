@@ -4,6 +4,7 @@
 # Contenu : Test de déplacement dans les dossiers et test de nom
 #
 require 'fileutils'
+require 'yaml'
 
 #===========================================#
 #               Arborescence                #
@@ -155,3 +156,5 @@ while temps < 16
     sleep 0.1
 end
 pause = true
+
+puts chronometre.to_yaml()
