@@ -10,9 +10,12 @@ require_relative 'Fenetre'
 class FenetreChoixSauvegarde < Fenetre
   
   @boutonPrecedent
+  @boutonSuivant
   @texteChoixSauvegarde
   
-  attr_reader :boutonPrecedent, :texteChoixSauvegarde
+  attr_reader :boutonPrecedent,
+              :boutonSuivant,
+              :texteChoixSauvegarde
   
   public_class_method :new
   
@@ -21,16 +24,49 @@ class FenetreChoixSauvegarde < Fenetre
     
     @fenetre.set_title("ChoixSauvegarde")
     
+    #==================================================#
+    #               Déclaration éléments               #
+    #==================================================#
+    
+    @texteChoixSauvegarde = Gtk::Label.new("Choisissez votre sauvegarde")
+    
     @boutonPrecedent = Gtk::Button.new('Précédent')
+    @boutonSuivant = Gtk::Button.new('Suivant')
+    
+    #==================================================#
+    #               Paramètrage éléments               #
+    #==================================================#
+    
     @boutonPrecedent.set_size_request(-1, 50)
+    @boutonSuivant.set_size_request(-1, 50)
     
-    @texteChoixSauvegarde = Gtk::Label.new("")
+    #==================================================#
+    #                  Déclaration Box                 #
+    #==================================================#
     
+    hBoxNavigation = Gtk::HBox.new(true, 0)
     vBox = Gtk::VBox.new(false, 0)
+    
+    #==================================================#
+    #                 Paramètrage Box                  #
+    #==================================================#
+    
     vBox.set_border_width(5)
+    hBoxNavigation.set_border_width(5)
+    
+    #==================================================#
+    #                  Remplissage Box                 #
+    #==================================================#
+    
+    hBoxNavigation.pack_start(@boutonPrecedent)
+    hBoxNavigation.pack_end(@boutonSuivant)
     
     vBox.pack_start(@texteChoixSauvegarde, true, true, 30)
-    vBox.pack_end(@boutonPrecedent, false, true, 0)
+    vBox.pack_end(hBoxNavigation, false, true, 0)
+    
+    #==================================================#
+    #                Ajout à la fenêtre                #
+    #==================================================#
     
     @fenetre.add(vBox)
   end

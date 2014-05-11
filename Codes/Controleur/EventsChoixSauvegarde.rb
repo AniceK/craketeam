@@ -10,7 +10,7 @@ require 'gtk2'
 require_relative 'Events'
 require './Vue/Fenetres/FenetreChoixSauvegarde'
 
-class EventsCredits < Events
+class EventsChoixSauvegarde < Events
   
   public_class_method :new
   
@@ -26,6 +26,23 @@ class EventsCredits < Events
     #  
     #  mouvement(Events.new(jeu))
     #}
+    
+    @fenetre.boutonPrecedent.signal_connect('clicked'){
+      
+      puts "> Choix Partie"
+      mouvement(EventsChoixPartie.new(@jeu))
+    }
+    
+    @fenetre.boutonSuivant.signal_connect('clicked'){
+      
+      #sauvegarde = @fenetre.choixSauvegarde()
+      
+      #puts "> Suivant (Sauvegarde: " + sauvegarde + ")"
+      
+      #@jeu.chargerPartie(sauvegarde)
+      
+      #mouvement(EventsJeu.new(@jeu))
+    }
   end
   
 end
