@@ -47,7 +47,7 @@ puts "Test de la Grille"
 g1 = Grille.creer("toto", taille)
 aide = Aide.creer(1)
 g1.genererAleatoire(20)
-g1.noircirCase(4, 4)
+g1.noircir(4, 4)
 g1.afficher()
 
 for i in (0 ... taille)
@@ -65,3 +65,4 @@ puts "\n"
 puts tmp
 
 puts g1.termine?().to_s()
+

@@ -10,6 +10,7 @@ require 'gtk2'
 require_relative 'Events'
 require_relative 'EventsPreparation'
 require_relative 'EventsAccueil'
+require_relative 'EventsChoixSauvegarde'
 require './Vue/Fenetres/FenetreChoixPartie'
 
 class EventsChoixPartie < Events
@@ -27,7 +28,7 @@ class EventsChoixPartie < Events
     @fenetre.boutonChoisirSauvegarde.signal_connect('clicked'){
       puts "> Choisir Sauvegarde"
       
-      mouvement(EventsChoisirSauvegarde.new(jeu))
+      mouvement(EventsChoixSauvegarde.new(jeu))
     }
     
     @fenetre.boutonNouvellePartie.signal_connect('clicked'){

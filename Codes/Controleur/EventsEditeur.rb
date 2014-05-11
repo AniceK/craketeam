@@ -137,7 +137,7 @@ class EventsEditeur < Events
     x = (widget.allocation.x / 32) - 1
     y = (widget.allocation.y / 32) - 1
     
-    puts "Evenement : " + evenement.to_s
+    puts "widget.class = " + widget.class.to_s + "\nCase[" + x.to_s + "][" + y.to_s + "]"
     
     if evenement.button() == 1 then
       
