@@ -18,3 +18,6 @@ image.enregistrer("test_tmp.jpg")
 tmp = image.traitementAffichage()
 #Traitement à venir : On envoie la grille dans l'édition ?
 puts tmp
+
+test = tmp.join("\n")
+puts test
