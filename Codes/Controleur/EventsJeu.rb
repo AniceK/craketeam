@@ -10,6 +10,7 @@ require 'gtk2'
 require_relative 'Events'
 require './Vue/Fenetres/FenetreJeu'
 require './Vue/Dialogues/DialogueQuitterPartie'
+require './Vue/Dialogues/DialogueAide'
 
 
 #===============================================================================#
@@ -101,8 +102,10 @@ class EventsJeu < Events
     @fenetre.boutonAide.signal_connect('clicked'){
       puts "> Aide"
       
-      #mouvement(EventsMenuJeu.new(jeu))
-      mouvement(EventsPreparation.new(jeu)) # DEBUG
+      #message = @jeu.chercherAide()
+      message = "En fait tu croyais que j'allais t'aider, mais en fait non, car je suis une chaîne de caractère complètement débile qui ne sait pas réfléchir et qui répetera éternellement la même chose ! Ahahahah"
+      
+      dialogue = DialogueAide.new(@fenetre.widget(), message)
     }
     
     @fenetre.boutonPause.signal_connect('clicked'){
@@ -155,7 +158,7 @@ class EventsJeu < Events
       
       puts "> Dialogue Menu Principal"
       
-      dialogue = DialogueQuitterPartie.new()
+      dialogue = DialogueQuitterPartie.new(@fenetre.widget())
       
       if dialogue.doitArreterPartie then
         
@@ -242,7 +245,7 @@ class EventsJeu < Events
     x = widget.allocation.x / 32 - @decalagePositionX
     y = widget.allocation.y / 32 - @decalagePositionY
     
-    puts "Case[" + x.to_s + "][" + y.to_s + "]"
+    puts "widget.class = " + widget.class.to_s + "\nCase[" + x.to_s + "][" + y.to_s + "]"
     
     if evenement.button() == 1 then
       

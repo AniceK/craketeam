@@ -17,11 +17,14 @@ class DialogueQuitter < Dialogue
   
   public_class_method :new
   
-  def initialize()
+  def initialize(fenetreParent)
     
-    super("Quitter ?",
+    super(fenetreParent, 350, 80,
+          "Quitter ?",
           "Êtes-vous sûr de vouloir quitter ?")
-          
+    
+    @popup.vbox.add(@messageCentre)
+    
     @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)
     @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
     

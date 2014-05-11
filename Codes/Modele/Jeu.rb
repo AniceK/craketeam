@@ -50,6 +50,7 @@ class Jeu
           FileUtils.mkdir('Grille')
           File.new("scores.yml", "w")
           FileUtils.cd('Grille')
+          FileUtils.mkdir('5')
           FileUtils.cd('5')
           File.open("grilles.yml", "w")
           FileUtils.cd('..')

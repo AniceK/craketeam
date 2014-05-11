@@ -44,44 +44,44 @@ class EventsAccueil < Events
     @fenetre.boutonPartieRapide.signal_connect('clicked'){
       puts "> Choix Taille"
       
-      mouvement(EventsPreparation.new(jeu))
+      mouvement(EventsPreparation.new(@jeu))
     }
     
     @fenetre.boutonJouer.signal_connect('clicked'){
       puts "> Choix Partie"
       
-      mouvement(EventsChoixPartie.new(jeu))
+      mouvement(EventsChoixPartie.new(@jeu))
     }
     
     @fenetre.boutonProfil.signal_connect('clicked'){
       puts "> Profil"
       
-      mouvement(EventsProfil.new(jeu))
+      mouvement(EventsProfil.new(@jeu))
     }
     
     @fenetre.boutonEditeur.signal_connect('clicked'){
       puts "> Éditeur"
       
-      mouvement(EventsTailleEditeur.new(jeu))
+      mouvement(EventsTailleEditeur.new(@jeu))
     }
     
     @fenetre.boutonOptions.signal_connect('clicked'){
       puts "> Options"
       
-      mouvement(EventsOptions.new(jeu))
+      mouvement(EventsOptions.new(@jeu))
     }
     
     @fenetre.boutonCredits.signal_connect('clicked'){
       puts "> Crédits"
       
-      mouvement(EventsCredits.new(jeu))
+      mouvement(EventsCredits.new(@jeu))
     }
     
     @fenetre.boutonQuitter.signal_connect('clicked'){
       puts "> Dialogue Quitter"
       
       
-      dialogue = DialogueQuitter.new()
+      dialogue = DialogueQuitter.new(@fenetre.widget())
       
       if dialogue.doitQuitter then
         

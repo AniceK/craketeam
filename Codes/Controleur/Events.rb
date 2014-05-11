@@ -35,6 +35,7 @@ class Events
 # On change l'évènement à prendre en compte dans le jeu lors d'un changement de fenêtre
   def mouvement(events)
     
+    #@jeu.position(@fenetre.position()) # => Jeu contient la position de la fenêtre [x, y]
     @fenetre.cacher()
     @jeu.ajouterEvenement(events)
   end

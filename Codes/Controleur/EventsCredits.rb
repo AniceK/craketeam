@@ -20,6 +20,7 @@ class EventsCredits < Events
     
     @fenetre = FenetreCredits.new()
     @fenetre.afficher()
+    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       puts "> Accueil"

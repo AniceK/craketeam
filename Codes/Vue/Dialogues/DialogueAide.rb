@@ -9,7 +9,7 @@ require 'gtk2'
 
 require_relative 'Dialogue'
 
-class DialogueQuitterPartie < Dialogue
+class DialogueAide < Dialogue
   
   @doitArreterPartie
   
@@ -17,30 +17,31 @@ class DialogueQuitterPartie < Dialogue
   
   public_class_method :new
   
-  def initialize()
+  def initialize(fenetreParent, message)
     
-    super("Arrêter partie ?",
+    super(fenetreParent, 380, 150, "Aide", message)
     
-          "Êtes-vous sûr de vouloir quitter la partie en cours ?\n
-          Toute progression non sauvegardée sera perdue.")
+    @popup.resize(380, 350)
              
-    @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)      
-    @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
+    @popup.add_button(Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT)
     
-    @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
+    @popup.default_response = Gtk::Dialog::RESPONSE_ACCEPT
+    
+    @messageCentre.set_wrap(true)
+    
+    scrollMessage = Gtk::ScrolledWindow.new()
+    scrollMessage.border_width = 5
+    scrollMessage.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+    scrollMessage.add_with_viewport(@messageCentre)
+    
+    @popup.vbox.add(scrollMessage)
     
     @popup.vbox.show_all()
       
     @popup.run do |response|
       case response
         when Gtk::Dialog::RESPONSE_ACCEPT
-  
-          @doitArreterPartie = true
-          
-        else                                      
-          
-          @doitArreterPartie = false
-          
+          puts "Ok cliqué"        
       end
       
       @popup.destroy

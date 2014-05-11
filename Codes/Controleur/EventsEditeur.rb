@@ -73,9 +73,6 @@ class EventsEditeur < Events
       puts "Erreur: La taille n'est pas valide"
     end
     
-    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
-    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
-    
     # Affichage
     
     @fenetre.afficher()
@@ -83,12 +80,12 @@ class EventsEditeur < Events
     @fenetre.boutonEnregistrer.signal_connect('clicked'){
       puts "> Enregistrer"
       
-      dialogue = DialogueEnregistrer.new()
+      dialogue = DialogueEnregistrer.new(@fenetre.widget())
       
       if dialogue.doitSauvegarderEtQuitter then
         
         puts "> Accueil (Nom de la grille créée: \"" + dialogue.nomSauvegarde + "\")"
-        jeu.sauvegarderPartie(dialogue.nomSauvegarde)
+        jeu.sauvegarderPartie(dialogue.nomSauvegarde) # => Ajouter test si nom existant pour cette taille
         mouvement(EventsAccueil.new(jeu))
         
       else
@@ -101,7 +98,7 @@ class EventsEditeur < Events
       
       puts "> Quitter"
       
-      dialogue = DialogueQuitterEditeur.new()
+      dialogue = DialogueQuitterEditeur.new(@fenetre.widget())
       
       if dialogue.doitArreterEditeur then
         
@@ -140,6 +137,8 @@ class EventsEditeur < Events
     x = (widget.allocation.x / 32) - 1
     y = (widget.allocation.y / 32) - 1
     
+    puts "Evenement : " + evenement.to_s
+    
     if evenement.button() == 1 then
       
       if widget.child.pixbuf() == @pixCaseVide then
@@ -151,6 +150,10 @@ class EventsEditeur < Events
         
         @jeu.noircir(x, y)
         widget.child.set_pixbuf(@pixCaseVide)
+        
+      else
+        
+        puts "Erreur: case n'est pas considérée comme vide ou noircie"
         
       end
       
@@ -171,6 +174,12 @@ class EventsEditeur < Events
       
       caseCliquee(widget, evenement)
     }
+    
+    # => Evenement en cas de cliqué-glissé (drag_enter_event ?)
+    #evenementCase.signal_connect('enter_notify_event') { |widget, evenement|
+    #  
+    #  caseCliquee(widget, evenement)
+    #}
     
     return evenementCase
     

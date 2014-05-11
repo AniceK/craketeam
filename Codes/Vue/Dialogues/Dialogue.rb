@@ -10,23 +10,29 @@ require 'gtk2'
 class Dialogue
   
   @popup
+  @messageCentre
   
-  attr_reader :popup
+  attr_reader :popup,
+              :messageCentre
   
   private_class_method :new
   
-  def initialize(titre, message)
+  def initialize(fenetreParent, largeur, hauteur, titre, message)
     
-    @popup = Gtk::Dialog.new(titre, $main_application_window, Gtk::Dialog::DESTROY_WITH_PARENT)           
-                         
+    @popup = Gtk::Dialog.new(titre, $main_application_window, Gtk::Dialog::MODAL | Gtk::Dialog::DESTROY_WITH_PARENT)           
+    
+    self.descendDe(fenetreParent)                     
     @popup.set_window_position(Gtk::Window::POS_CENTER)
-    @popup.set_size_request(380, 100)
+    @popup.set_size_request(largeur, hauteur)
     @popup.set_resizable(false)
     
-    messageCentre = Gtk::Label.new(message)
-    messageCentre.set_justify(Gtk::JUSTIFY_CENTER)
+    @messageCentre = Gtk::Label.new(message)
+    @messageCentre.set_justify(Gtk::JUSTIFY_CENTER)
+  end
+  
+  def descendDe(fenetreParent)
     
-    @popup.vbox.add(messageCentre)
+    @popup.set_transient_for(fenetreParent)
   end
   
 end

@@ -193,7 +193,6 @@ class Grille
 
         FileUtils.cd('Grille')
         FileUtils.cd(@taille.to_s())
-        puts FileUtils.pwd()
         tab = Array.new()
         if File.size('grilles.yml') != 0 then
         
@@ -201,6 +200,7 @@ class Grille
         end
         tab.push([@nom, @date,self])
         File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
+        FileUtils.cd('../..')
     end
   
   

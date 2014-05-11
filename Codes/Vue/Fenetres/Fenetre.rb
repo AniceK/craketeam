@@ -29,6 +29,21 @@ class Fenetre
     @fenetre.signal_connect('destroy') {fermeture}
   end
   
+  def widget()
+    
+    return @fenetre
+  end
+  
+  def position()
+    
+    return @fenetre.position()
+  end
+  
+  def move(x, y)
+    
+    return @fenetre.move(x, y)
+  end
+  
   def afficher()
     
     @fenetre.show_all()

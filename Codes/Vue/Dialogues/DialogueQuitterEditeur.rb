@@ -17,13 +17,15 @@ class DialogueQuitterEditeur < Dialogue
   
   public_class_method :new
   
-  def initialize()
+  def initialize(fenetreParent)
     
-    super("Quitter éditeur ?",
-    
+    super(fenetreParent, 380, 120,
+          "Quitter éditeur ?",
           "Êtes-vous sûr de vouloir quitter la création en cours ?\n
           Votre grille ne sera pas sauvegardée.")
           
+    @popup.vbox.add(@messageCentre)
+    
     @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)
     @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
     

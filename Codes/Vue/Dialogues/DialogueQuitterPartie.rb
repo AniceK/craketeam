@@ -17,12 +17,14 @@ class DialogueQuitterPartie < Dialogue
   
   public_class_method :new
   
-  def initialize()
+  def initialize(fenetreParent)
     
-    super("Arrêter partie ?",
-    
+    super(fenetreParent, 380, 130,
+          "Arrêter partie ?",
           "Êtes-vous sûr de vouloir quitter la partie en cours ?\n
           Toute progression non sauvegardée sera perdue.")
+     
+    @popup.vbox.add(@messageCentre)
              
     @popup.add_button(Gtk::Stock::YES, Gtk::Dialog::RESPONSE_ACCEPT)      
     @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)
