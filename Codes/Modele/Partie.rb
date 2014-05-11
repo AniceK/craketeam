@@ -41,11 +41,22 @@ class Partie
         @aide = Aide.creer(difficulte)
         @temps = 0
         @active = false
+        self.initialiserChrono()
+
+    end    #marqueur de fin d initialize
+
+# Méthode pour initialiser le chronometre, en dehors du initialize de Partie pour la sérialisation
+    def initialiserChrono()
+        
         @chronometre = Thread.new {
             
             time = Time.now
             loop do
-                
+               
+                if !@active then
+                    Thread.stop()
+                end
+
                 sleep 0.1
                 
                 if Time.now() - time >= 1.0 then
@@ -53,14 +64,17 @@ class Partie
                     @temps += 1
                     time = Time.now()
                 end
-                if !@active then
-                    Thread.stop()
-                end
             end
         }
 
+    end
 
-    end    #marqueur de fin d initialize
+# Méthode pour tuer le chronometre, et le vider, nécessaire pour sérialiser une partie.
+    def tuerChrono()
+
+        @chronometre.kill()
+        @chronometre = nil
+    end
 
 # Méthode lançant la partie, en activant le chronomètre
 	def lancer()

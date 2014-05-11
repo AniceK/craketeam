@@ -381,6 +381,7 @@ class Jeu
 	def chargerPartie(p)
 
         @partie = p
+        @partie.initialiserChrono()
 	end
     
 # Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
@@ -493,6 +494,7 @@ class Jeu
             if @partie.class == Partie then
             
                 liste = Array.new()
+                @partie.tuerChrono()
                 FileUtils.cd('Profil')
                 FileUtils.cd(@profil.nom)
                 if File.size("parties.yml") != 0 then
