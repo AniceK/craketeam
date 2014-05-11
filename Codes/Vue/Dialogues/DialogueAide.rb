@@ -19,7 +19,7 @@ class DialogueAide < Dialogue
   
   def initialize(fenetreParent, message)
     
-    super(fenetreParent, 380, 150, "Aide", message)
+    super(fenetreParent, 380, 250, "Aide", message)
     
     @popup.resize(380, 350)
              

@@ -102,9 +102,8 @@ class EventsJeu < Events
     @fenetre.boutonAide.signal_connect('clicked'){
       puts "> Aide"
       
-      #tableauMessages = @jeu.chercherAide()
-      #message = tableauMessages.join("\n")
-      message = "En fait tu croyais que j'allais t'aider, mais en fait non, car je suis une chaîne de caractère complètement débile qui ne sait pas réfléchir et qui répetera éternellement la même chose ! Ahahahah"
+      message = @jeu.chercherAide()
+      #message = "En fait tu croyais que j'allais t'aider, mais en fait non, car je suis une chaîne de caractère complètement débile qui ne sait pas réfléchir et qui répetera éternellement la même chose ! Ahahahah"
       
       dialogue = DialogueAide.new(@fenetre.widget(), message)
     }

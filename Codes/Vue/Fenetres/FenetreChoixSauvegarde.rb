@@ -6,32 +6,38 @@
 #
 
 require_relative 'Fenetre'
+require './Vue/Elements/ListeElements'
 
 class FenetreChoixSauvegarde < Fenetre
   
+  @texteChoixSauvegarde
   @boutonPrecedent
   @boutonSuivant
-  @texteChoixSauvegarde
+  @listeSauvegarde
+  
   
   attr_reader :boutonPrecedent,
               :boutonSuivant,
-              :texteChoixSauvegarde
+              :texteChoixSauvegarde,
+              :listeSauvegarde
   
   public_class_method :new
   
-  def initialize()
+  def initialize(listeSauvegardes)
     super()
     
     @fenetre.set_title("ChoixSauvegarde")
     
     #==================================================#
-    #               Déclaration éléments               #
+    #           Déclaration / Initialisation           #
     #==================================================#
     
     @texteChoixSauvegarde = Gtk::Label.new("Choisissez votre sauvegarde")
     
     @boutonPrecedent = Gtk::Button.new('Précédent')
     @boutonSuivant = Gtk::Button.new('Suivant')
+    
+    @listeSauvegardes = ListeElements.new(listeSauvegardes).widget()
     
     #==================================================#
     #               Paramètrage éléments               #
@@ -61,7 +67,8 @@ class FenetreChoixSauvegarde < Fenetre
     hBoxNavigation.pack_start(@boutonPrecedent)
     hBoxNavigation.pack_end(@boutonSuivant)
     
-    vBox.pack_start(@texteChoixSauvegarde, true, true, 30)
+    vBox.pack_start(@texteChoixSauvegarde, false, false, 5)
+    vBox.pack_start(@listeSauvegardes, true, true, 5)
     vBox.pack_end(hBoxNavigation, false, true, 0)
     
     #==================================================#
