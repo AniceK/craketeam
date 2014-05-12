@@ -10,17 +10,21 @@
 class Case
 
     @etat       #l'état est un entier qui indique si la case a été noircie, cochée par le joueur ou laissée blanche.
+    @x          #coordonnees en abcisse
+    @y          #coordonnees en ordonnees
 
     attr :etat, false
-    def Case.creer()
+    def Case.creer(x, y)
 
-		new()
+		new(x, y)
 
     end
 
-    def initialize()
+    def initialize(x, y)
 
 		  @etat = 0
+          @x = x
+          @y = y
 
     end
 
