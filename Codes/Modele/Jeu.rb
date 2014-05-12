@@ -688,6 +688,17 @@ class Jeu
         end
     end
 
+# Méthode pour charger une grille dont le nom est passé en paramètre
+    def chargerGrille(nom)
+
+        if @partie.class == Partie then
+
+            return @partie.chargerGrille(nom)
+        else
+            raise "erreur : une partie doit etre en cours"
+        end
+    end
+
 # Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
     def nbConditionsV(x)
 
