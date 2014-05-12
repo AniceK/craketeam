@@ -84,6 +84,9 @@ class Rangee
             
             end
         }
+        if @conditions.empty?() then
+            @valide = true
+        end
 	end
 
 	#Méthode réinitialisant l'état des cases de la Rangée
