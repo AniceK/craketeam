@@ -138,11 +138,12 @@ class Partie
 	end
 
 # Methode pour charger une grille dont le nom est passe en parametre
-    def chargerGrille(nom)
+    def chargerGrille(nom, taille)
 
         FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
-        tab = Array.new(YAML::load(File.open('grilles.yml')))
+        tab = Array.new()
+        tab = YAML::load(File.open('grilles.yml'))
         unTab = Array.new()
 
         tab.each { |x|
