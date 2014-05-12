@@ -28,6 +28,7 @@ class EventsAccueil < Events
     
     @fenetre = FenetreAccueil.new()
     @fenetre.afficher()
+    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     if @jeu.profilConnecte?() then
       

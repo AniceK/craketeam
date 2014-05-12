@@ -12,8 +12,10 @@ DATE  = 2;
 class ListeElements
   
   @listeDeroulante
+  @selection
   
-  attr_reader :listeDeroulante
+  attr_reader :listeDeroulante,
+              :selection
   
   def initialize(liste)
     
@@ -30,9 +32,15 @@ class ListeElements
       modele.set_value(reference, TAILLE, liste[i].taille)
       modele.set_value(reference, NOM, liste[i].nom)
       modele.set_value(reference, DATE, liste[i].date)
+      
     end
     
     affichage.model = modele
+    
+    affichage.signal_connect('button_release_event') do |widget,event|
+      
+      @selection = widget.selection.selected[1]
+    end
     
     @listeDeroulante.add(affichage)
     @listeDeroulante.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
@@ -60,17 +68,17 @@ class ListeElements
     
     rendreNoir = Gtk::CellRendererText.new()
     
-    column = Gtk::TreeViewColumn.new("Taille", rendreRouge,  :text => TAILLE)
-    self.triable(column, TAILLE)
-    affichage.append_column(column)
+    colonneTaille = Gtk::TreeViewColumn.new("Taille", rendreRouge,  :text => TAILLE)
+    colonneNom = Gtk::TreeViewColumn.new("Nom", rendreNoir, :text => NOM)
+    colonneDate = Gtk::TreeViewColumn.new("Date", rendreNoir, :text => DATE)
     
-    column = Gtk::TreeViewColumn.new("Nom", rendreNoir, :text => NOM)
-    self.triable(column, NOM)
-    affichage.append_column(column)
+    self.triable(colonneTaille, TAILLE)
+    self.triable(colonneNom, NOM)
+    #self.triable(colonneDate, DATE)
     
-    column = Gtk::TreeViewColumn.new("Date", rendreNoir, :text => DATE)
-    self.triable(column, DATE)
-    affichage.append_column(column)
+    affichage.append_column(colonneTaille)
+    affichage.append_column(colonneNom)
+    affichage.append_column(colonneDate)
   end
   
   
@@ -78,6 +86,12 @@ class ListeElements
     
     return @listeDeroulante
     
+  end
+  
+  
+  def selectionne()
+    
+    return @selection
   end
   
 end

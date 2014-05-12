@@ -9,6 +9,7 @@ require 'gtk2'
 
 require_relative 'Events'
 require_relative 'EventsJeu'
+require_relative 'EventsChoixCreation'
 require './Vue/Fenetres/FenetreChoixGrille'
 
 
@@ -30,12 +31,13 @@ class EventsChoixGrille < Events
     
     @fenetre = FenetreChoixGrille.new()
     @fenetre.afficher()
+    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     
     @fenetre.boutonGrilleCreee.signal_connect('clicked'){
       puts "> Grille créée"
       
-      #mouvement(EventsChoixGrilleCreee.new(jeu))
+      mouvement(EventsChoixCreation.new(jeu))
     }
     
     @fenetre.boutonGrilleAleatoire.signal_connect('clicked'){

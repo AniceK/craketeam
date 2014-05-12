@@ -8,8 +8,9 @@
 require 'gtk2'
 
 require_relative 'Events'
+require_relative 'EventsChoixGrille'
 require_relative 'EventsJeu'
-require './Vue/Fenetres/FenetreChoixSauvegarde'
+require './Vue/Fenetres/FenetreChoixCreation'
 
 #################### À supprimer par la suite #########################
                                                                       #
@@ -20,7 +21,7 @@ end                                                                   #
                                                                       #
 #######################################################################
 
-class EventsChoixSauvegarde < Events
+class EventsChoixCreation < Events
   
   public_class_method :new
   
@@ -28,37 +29,38 @@ class EventsChoixSauvegarde < Events
     
     super(jeu)
     
-    #listeSauvegardes = @jeu.listeSauvegardes() # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
+    #listeCreations = @jeu.listeCreations() # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
     
     ################# À supprimer par la suite ########################################
                                                                                       #
-    listeSauvegardes = Array.new                                                      #
-    listeSauvegardes[0] = GroceryItem.new(5,  "ma_grille_5", "01/07/14")              #
-    listeSauvegardes[1] = GroceryItem.new(5,  "ma_grille_mal_barree", "02/03/14")     #
-    listeSauvegardes[2] = GroceryItem.new(10, "ma_grille_10", "03/03/15")             #
-    listeSauvegardes[3] = GroceryItem.new(15,  "ma_grille_15", "04/04/14")            #
-    listeSauvegardes[4] = GroceryItem.new(20, "ma_grille_20", "05/03/13")             #
-    listeSauvegardes[5] = GroceryItem.new(25,  "ma_grille_25", "06/03/14")            #
+    listeCreations = Array.new                                                      #
+    listeCreations[0] = GroceryItem.new(5,  "ma_grille_5", "01/07/14")              #
+    listeCreations[1] = GroceryItem.new(5,  "ma_grille_mal_barree", "02/03/14")     #
+    listeCreations[2] = GroceryItem.new(10, "ma_grille_10", "03/03/15")             #
+    listeCreations[3] = GroceryItem.new(15,  "ma_grille_15", "04/04/14")            #
+    listeCreations[4] = GroceryItem.new(20, "ma_grille_20", "05/03/13")             #
+    listeCreations[5] = GroceryItem.new(25,  "ma_grille_25", "06/03/14")            #
                                                                                       #
     ###################################################################################
     
-    @fenetre = FenetreChoixSauvegarde.new(listeSauvegardes)
+    @fenetre = FenetreChoixCreation.new(listeCreations)
     @fenetre.afficher()
+    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       
-      puts "> Choix Partie"
-      mouvement(EventsChoixPartie.new(@jeu))
+      puts "> Choix Grille"
+      mouvement(EventsChoixGrille.new(@jeu))
     }
     
     @fenetre.boutonSuivant.signal_connect('clicked'){
       
-      nomSauvegarde = @fenetre.choixSauvegarde()
+      nomCreation = @fenetre.choixCreation()
       
-      puts "> Suivant (Sauvegarde: " + nomSauvegarde + ")"
+      puts "> Suivant (Creation: " + nomCreation + ")"
       
-      #@jeu.chargerPartie(nomSauvegarde)
+      #@jeu.chargerPartie(nomCreation)
       
       #mouvement(EventsJeu.new(@jeu))
     }

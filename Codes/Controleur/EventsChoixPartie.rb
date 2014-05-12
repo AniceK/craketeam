@@ -23,6 +23,7 @@ class EventsChoixPartie < Events
     
     @fenetre = FenetreChoixPartie.new()
     @fenetre.afficher()
+    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     
     @fenetre.boutonChoisirSauvegarde.signal_connect('clicked'){
