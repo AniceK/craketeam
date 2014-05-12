@@ -20,7 +20,7 @@ class Rangee
 #constructeur de la classe Rangee. Récupère en argument le nombre de cases de la rangée
     def Rangee.creer(nbreCase, y, sens)
 
-        new(nbreCase)
+        new(nbreCase, y, sens)
 
     end    #marqueur de fin de constructeur
 
