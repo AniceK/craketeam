@@ -33,8 +33,6 @@ class FenetreJeu < Fenetre
   @boutonNouvellePartie
   @boutonFinMenuPrincipal
   @vBoxNavigation
-  @scoreFinal
-  @tempsFinal
   
   
   attr_reader :texteTemps,
@@ -55,9 +53,7 @@ class FenetreJeu < Fenetre
               :boutonNouvellePartie,
               :texteGagne,
               :boutonFinMenuPrincipal,
-              :vBoxNavigation,
-              :scoreFinal,
-              :tempsFinal
+              :vBoxNavigation
               
   attr_accessor :tableauConditionsV,
                 :tableauConditionsH,
@@ -203,6 +199,15 @@ class FenetreJeu < Fenetre
     
   end
   
+  
+  
+  ################################################################
+  #                                                              #
+  #                           Méthodes                           #
+  #                                                              #
+  ################################################################
+  
+  
   def grandesConditions
     
     @aligneConditionsV.set_padding(0, 0, 40, 0)
@@ -267,10 +272,7 @@ class FenetreJeu < Fenetre
   
   def affichageFin(temps)
     
-    @tempsFinal = temps
-    @scoreFinal = @tempsFinal * 3
-    
-    puts "À afficher: temps = " + @tempsFinal.to_s + ", score = " + @scoreFinal.to_s
+    score = temps * 3
     
     @aligneConditionsV.hide_all()
     @aligneConditionsH.hide_all()
@@ -282,8 +284,8 @@ class FenetreJeu < Fenetre
     @texteGagne.set_text(
     "Félicitation !\n
     Vous avez gagné !\n
-    Temps: " + @tempsFinal.to_s + "
-    Score: " + @scoreFinal.to_s + "\n
+    Temps: " + @minutes.to_s + " minutes et " + @secondes.to_s + " secondes
+    Score: " + score.to_s + "\n
     Êtes-vous prêt à retenter l'expérience ?")
     
     @texteGagne.show_all()

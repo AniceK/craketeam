@@ -21,8 +21,9 @@ class Dialogue
     
     @popup = Gtk::Dialog.new(titre, $main_application_window, Gtk::Dialog::MODAL | Gtk::Dialog::DESTROY_WITH_PARENT)           
     
-    self.descendDe(fenetreParent)                     
-    @popup.set_window_position(Gtk::Window::POS_CENTER)
+    
+    
+    self.descendDe(fenetreParent)
     @popup.set_size_request(largeur, hauteur)
     @popup.set_resizable(false)
     

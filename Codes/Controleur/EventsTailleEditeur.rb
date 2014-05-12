@@ -22,18 +22,19 @@ class EventsTailleEditeur < Events
   
   public_class_method :new
   
-  def initialize(jeu)
-    
-    super(jeu)
+  def initialize(jeu, position)
     
     @fenetre = FenetreTailleEditeur.new()
+    
+    super(jeu, position)
+    
     @fenetre.afficher()
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       
       puts "> Accueil"
       
-      mouvement(EventsAccueil.new(jeu))
+      mouvement(EventsAccueil.new(@jeu, position() ))
     }
     
     @fenetre.boutonSuivant.signal_connect('clicked'){
@@ -46,7 +47,7 @@ class EventsTailleEditeur < Events
       
       @jeu.creerEditeur(tailleGrille)
       
-      mouvement(EventsEditeur.new(jeu))
+      mouvement(EventsEditeur.new(@jeu, position() ))
     }
   end
   

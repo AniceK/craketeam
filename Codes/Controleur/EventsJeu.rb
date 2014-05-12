@@ -12,7 +12,6 @@ require './Vue/Fenetres/FenetreJeu'
 require './Vue/Dialogues/DialogueQuitterPartie'
 require './Vue/Dialogues/DialogueAide'
 
-
 #===============================================================================#
 #                                                                               #
 #               La classe EventsJeu créé une fenêtre de jeu.                    #
@@ -52,9 +51,11 @@ class EventsJeu < Events
   
   public_class_method :new
   
-  def initialize(jeu)
+  def initialize(jeu, position)
     
-    super(jeu)
+    @fenetre = FenetreJeu.new()
+    
+    super(jeu, position)
     
     
     ################################################################
@@ -69,7 +70,6 @@ class EventsJeu < Events
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
     
-    @fenetre = FenetreJeu.new()
     
     case @tailleGrille
     when 5
@@ -153,7 +153,7 @@ class EventsJeu < Events
       puts "> Accueil (nom de sauvegarde: " + nomSauvegarde + ")"
       
       if @jeu.sauvegarderPartie(nomSauvegarde) then
-        mouvement(EventsAccueil.new(jeu))
+        mouvement(EventsAccueil.new(@jeu, position() ))
       else
         puts "Erreur: nom de sauvegarde existant"
       end
@@ -169,7 +169,7 @@ class EventsJeu < Events
         
         puts "> Accueil"
         @jeu.quitterPartie()
-        mouvement(EventsAccueil.new(jeu))
+        mouvement(EventsAccueil.new(@jeu, position() ))
         
       else
         
@@ -191,12 +191,12 @@ class EventsJeu < Events
       if @jeu.profilConnecte?() then
         
         puts "> Choix Partie"
-        mouvement(EventsChoixPartie.new(jeu))
+        mouvement(EventsChoixPartie.new(@jeu, position() ))
       
       elsif !@jeu.profilConnecte?() then
         
         puts "> Préparation Partie"
-        mouvement(EventsPreparation.new(jeu))
+        mouvement(EventsPreparation.new(@jeu, position() ))
         
       else
         
@@ -209,7 +209,7 @@ class EventsJeu < Events
       
       puts "> Menu Principal"
       
-      mouvement(EventsAccueil.new(jeu))
+      mouvement(EventsAccueil.new(@jeu, position() ))
     }
     
   end

@@ -40,9 +40,11 @@ class EventsEditeur < Events
 
   public_class_method :new
 
-  def initialize(jeu)
+  def initialize(jeu, position)
 
-    super(jeu)
+    @fenetre = FenetreEditeur.new()
+    
+    super(jeu, position)
 
 
     ################################################################
@@ -55,8 +57,6 @@ class EventsEditeur < Events
     @tailleCase = 30
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
-
-    @fenetre = FenetreEditeur.new()
 
     case @tailleGrille
     when 5
@@ -86,7 +86,7 @@ class EventsEditeur < Events
       if doitEnregistrerEtQuitter then
         
         #puts "> Accueil (Nom de la grille créée: \"" + dialogue.nomSauvegarde + "\")"
-        mouvement(EventsAccueil.new(jeu))
+        mouvement(EventsAccueil.new(@jeu, position() ))
         
       else
         
@@ -105,7 +105,7 @@ class EventsEditeur < Events
     
         puts "> Accueil"
         @jeu.quitterPartie()
-        mouvement(EventsAccueil.new(jeu))
+        mouvement(EventsAccueil.new(@jeu, position() ))
     
       else
     

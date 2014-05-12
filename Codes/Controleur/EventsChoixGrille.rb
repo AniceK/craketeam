@@ -25,11 +25,12 @@ class EventsChoixGrille < Events
   
   public_class_method :new
   
-  def initialize(jeu)
-    
-    super(jeu)
+  def initialize(jeu, position)
     
     @fenetre = FenetreChoixGrille.new()
+    
+    super(jeu, position)
+    
     @fenetre.afficher()
     #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
@@ -45,7 +46,7 @@ class EventsChoixGrille < Events
       
       afficheTout = true
       
-      mouvement(EventsChoixCreation.new(jeu, afficheTout))
+      mouvement(EventsChoixCreation.new(@jeu, position() , afficheTout))
     }
     
     @fenetre.boutonGrillesPerso.signal_connect('clicked'){
@@ -54,7 +55,7 @@ class EventsChoixGrille < Events
       
       afficheTout = false
       
-      mouvement(EventsChoixCreation.new(jeu, afficheTout))
+      mouvement(EventsChoixCreation.new(@jeu, position() , afficheTout))
     }
     
     @fenetre.boutonGrilleAleatoire.signal_connect('clicked'){
@@ -62,14 +63,14 @@ class EventsChoixGrille < Events
       puts "> Grille aleatoire"
       
       jeu.genererAleatoirementGrille()
-      mouvement(EventsJeu.new(jeu))
+      mouvement(EventsJeu.new(@jeu, position() ))
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       
       puts "> Accueil"
       
-      mouvement(EventsPreparation.new(jeu))
+      mouvement(EventsPreparation.new(@jeu, position() ))
     }
   end
   

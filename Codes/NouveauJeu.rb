@@ -42,7 +42,7 @@ class NouveauJeu
     Gtk.init
   
     # Création du premier ensemble d'évènements et de la première fenêtre
-    @evenements = EventsAccueil.new(jeu)
+    @evenements = EventsAccueil.new(jeu, Gtk::Window::POS_CENTER)
 
     # Lancement du programme lié aux évènements
     Gtk.main
