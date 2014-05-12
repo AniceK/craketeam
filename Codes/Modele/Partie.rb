@@ -153,7 +153,7 @@ class Partie
 
         if unTab.include?(nom) then
 
-            @grille = tab[unTab.index(nom)]
+            @grille = tab[unTab.index(nom)][1]
             FileUtils.cd('../..')
             return true
         else
