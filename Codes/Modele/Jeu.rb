@@ -643,7 +643,7 @@ class Jeu
 
             if @partie.class() == Partie then 
                 
-                @partie.chercherAide()
+                return @partie.chercherAide()
             else
                 raise "Impossible de chercher de l'aide en dehors d'une partie!"
             end
