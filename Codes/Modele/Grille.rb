@@ -204,6 +204,7 @@ class Grille
             }
             if tabnom.include?(unNom) then
 
+                FileUtils.cd('../..')
                 return false
             end
         end

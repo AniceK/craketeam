@@ -30,6 +30,7 @@ class Events
   def initialize(jeu)
     
     @jeu = jeu
+    
   end
 
 # On change l'évènement à prendre en compte dans le jeu lors d'un changement de fenêtre

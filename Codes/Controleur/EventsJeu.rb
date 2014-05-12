@@ -32,6 +32,7 @@ class EventsJeu < Events
   @chronometre
   @pixCaseVide
   @pixCaseNoircie
+  @evenementCase
   @decalagePositionX
   @decalagePositionY
   
@@ -44,7 +45,8 @@ class EventsJeu < Events
               :pixCaseVide,
               :pixCaseNoircie,
               :decalagePositionX,
-              :decalagePositionY
+              :decalagePositionY,
+              :evenementCase
               
               
   
@@ -91,12 +93,10 @@ class EventsJeu < Events
     
     self.initialiserChrono()
     
-    # Affichage
-    
     @fenetre.afficher()
     #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
-    @fenetre.affichageJeu()
+    @fenetre.affichageDepart()
     
     @jeu.lancerPartie()
     self.lancerChrono()
@@ -105,7 +105,6 @@ class EventsJeu < Events
       puts "> Aide"
       
       message = @jeu.chercherAide()
-      #message = "En fait tu croyais que j'allais t'aider, mais en fait non, car je suis une chaîne de caractère complètement débile qui ne sait pas réfléchir et qui répetera éternellement la même chose ! Ahahahah"
       
       dialogue = DialogueAide.new(@fenetre.widget(), message)
     }
@@ -147,6 +146,7 @@ class EventsJeu < Events
     #                                                              #
     ################################################################
     
+    
     @fenetre.boutonSauvegarder.signal_connect('clicked'){
       
       nomSauvegarde = @fenetre.entreeSauvegarde.text()
@@ -159,7 +159,7 @@ class EventsJeu < Events
       end
     }
     
-    @fenetre.boutonMenuPrincipal.signal_connect('clicked'){
+    @fenetre.boutonPauseMenuPrincipal.signal_connect('clicked'){
       
       puts "> Dialogue Menu Principal"
       
@@ -176,6 +176,40 @@ class EventsJeu < Events
         puts "> Jeu"
         
       end
+    }
+    
+    
+    ################################################################
+    #                                                              #
+    #                        Partie Gagnée                         #
+    #                                                              #
+    ################################################################
+    
+    
+    @fenetre.boutonNouvellePartie.signal_connect('clicked'){
+      
+      if @jeu.profilConnecte?() then
+        
+        puts "> Choix Partie"
+        mouvement(EventsChoixPartie.new(jeu))
+      
+      elsif !@jeu.profilConnecte?() then
+        
+        puts "> Préparation Partie"
+        mouvement(EventsPreparation.new(jeu))
+        
+      else
+        
+        puts "Erreur: Problème booléen indiquant si un profil est connecté"
+        
+      end
+    }
+    
+    @fenetre.boutonFinMenuPrincipal.signal_connect('clicked'){
+      
+      puts "> Menu Principal"
+      
+      mouvement(EventsAccueil.new(jeu))
     }
     
   end
@@ -250,7 +284,7 @@ class EventsJeu < Events
     x = widget.allocation.x / 32 - @decalagePositionX
     y = widget.allocation.y / 32 - @decalagePositionY
     
-    puts "widget.class = " + widget.class.to_s + "\nCase[" + x.to_s + "][" + y.to_s + "]"
+    puts "Case[" + x.to_s + "][" + y.to_s + "]"
     
     if evenement.button() == 1 then
       
@@ -266,10 +300,14 @@ class EventsJeu < Events
         
       end
       
-      if score = @jeu.termine?() then
+      if temps = @jeu.termine?() then
         
-        puts "Vous avez gagné ! (score = " + score.to_s + ")"
+        puts "> Partie gagnée (Temps = " + temps.to_s + ", Score = " + (temps * 3).to_s + ")"
+        
+        #@evenementCase.signal_emit_stop('button_press_event') # => Empêcher appuie sur case
+        # => Nettoyage cases marquées
         @jeu.quitterPartie()
+        @fenetre.affichageFin(temps)
         
       end
      
@@ -300,16 +338,16 @@ class EventsJeu < Events
     
     imageCaseVide = Gtk::Image.new(@pixCaseVide)
     
-    evenementCase = Gtk::EventBox.new()
-    evenementCase.events = Gdk::Event::BUTTON_PRESS_MASK
-    evenementCase.add(imageCaseVide)
+    @evenementCase = Gtk::EventBox.new()
+    @evenementCase.events = Gdk::Event::BUTTON_PRESS_MASK
+    @evenementCase.add(imageCaseVide)
     
-    evenementCase.signal_connect('button_press_event') { |widget, evenement|
+    @evenementCase.signal_connect('button_press_event') { |widget, evenement|
       
       caseCliquee(widget, evenement)
     }
     
-    return evenementCase
+    return @evenementCase
     
   end
   

@@ -33,14 +33,14 @@ class EventsPreparation < Events
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       
-      puts "> Accueil"
-      
       if @jeu.profilConnecte?() then
         
+        puts "> Choix Partie"
         mouvement(EventsChoixPartie.new(jeu))
       
       elsif !@jeu.profilConnecte?() then
         
+        puts "> Accueil"
         mouvement(EventsAccueil.new(jeu))
         
       else

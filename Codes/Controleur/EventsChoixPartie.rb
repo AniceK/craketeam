@@ -33,7 +33,7 @@ class EventsChoixPartie < Events
     }
     
     @fenetre.boutonNouvellePartie.signal_connect('clicked'){
-      puts "> Nouvelle Partie"
+      puts "> Préparation Partie"
       
       mouvement(EventsPreparation.new(jeu))
     }

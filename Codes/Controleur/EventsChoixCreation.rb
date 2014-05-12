@@ -64,7 +64,7 @@ class EventsChoixCreation < Events
       
       @jeu.chargerGrille(nomCreation, tailleCreation)
       
-      #mouvement(EventsJeu.new(@jeu))
+      mouvement(EventsJeu.new(@jeu))
     }
   end
   

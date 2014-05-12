@@ -12,10 +12,12 @@ require_relative 'Dialogue'
 class DialogueEnregistrer < Dialogue
   
   @doitSauvegarderEtQuitter
-  @nomSauvegarde
+  @entreeNomSauvegarde
+  @labelNomExistant
   
   attr_reader :doitSauvegarderEtQuitter,
-              :nomSauvegarde
+              :entreeNomSauvegarde,
+              :labelNomExistant
   
   public_class_method :new
   
@@ -30,33 +32,30 @@ class DialogueEnregistrer < Dialogue
     
     @popup.default_response = Gtk::Dialog::RESPONSE_REJECT
     
-    entreeNomSauvegarde = Gtk::Entry.new()
-    entreeNomSauvegarde.set_max_length(20)
-    entreeNomSauvegarde.set_text("ma_grille")
-    entreeNomSauvegarde.set_xalign(0.5)
+    @entreeNomSauvegarde = Gtk::Entry.new()
+    @entreeNomSauvegarde.set_max_length(20)
+    @entreeNomSauvegarde.set_text("ma_grille")
+    @entreeNomSauvegarde.set_xalign(0.5)
+    
+    @labelNomExistant = Gtk::Label.new("Nom déjà utilisé")
+    #@labelNomExistant.foreground = "#ff0000"
     
     @popup.vbox.add(@messageCentre)
-    @popup.vbox.add(entreeNomSauvegarde)
+    @popup.vbox.add(@entreeNomSauvegarde)
+    @popup.vbox.add(labelNomExistant)
     
     @popup.vbox.show_all()
-      
-    @popup.run do |response|
-      
-      case response
-        
-        when Gtk::Dialog::RESPONSE_ACCEPT
-          
-          @nomSauvegarde = entreeNomSauvegarde.text()
-          @doitSauvegarderEtQuitter = true
-          
-        else                                      
-          
-          @doitSauvegarderEtQuitter = false
-      end
-      
-      @popup.destroy
-    end
+    
+    @labelNomExistant.hide_all()
+    
   end
+  
+  def nomExistant(nom)
+    
+    @labelNomExistant.set_text("Le nom \"" + nom + "\" est déjà utilisé")
+    @labelNomExistant.show_all()
+  end
+  
 end
 
 
