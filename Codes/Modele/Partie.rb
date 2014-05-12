@@ -105,14 +105,16 @@ class Partie
 # Méthode permettant de renvoyer la Liste des grilles deja existante
 	def chargerListeGrillesExistantes(taille, toutes)
         
-        FileUtils.cd('Grilles')
+        FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
+        
         if File.size('grilles.ym') < 0 then
             
             return nil
         else
             
-            tab = Array.new(YAML::load(File.open('grilles.yml')))
+            tab = Array.new()
+            tab = YAML::load(File.open('grilles.yml'))
             unTab = Array.new()
 
             if !toutes then
@@ -135,14 +137,29 @@ class Partie
 
 	end
 
-# Methode pour charger une grille dont l index est passe en parametre
-    def chargerGrille(taille,index)
+# Methode pour charger une grille dont le nom est passe en parametre
+    def chargerGrille(nom)
 
-        FileUtils.cd('Grilles')
+        FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
         tab = Array.new(YAML::load(File.open('grilles.yml')))
-        @grille = tab.at(index)
-        FileUtils.cd('../..')
+        unTab = Array.new()
+
+        tab.each { |x|
+
+            unTab.push(x[0])
+        }
+
+        if unTab.include?(nom) then
+
+            @grille = tab[unTab.index(nom)]
+            FileUtils.cd('../..')
+            return true
+        else
+
+            FileUtils.cd('../..')
+            return false
+        end
     end
 
 
