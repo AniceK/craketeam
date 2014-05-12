@@ -86,8 +86,12 @@ class EventsEditeur < Events
       if dialogue.doitSauvegarderEtQuitter then
         
         puts "> Accueil (Nom de la grille créée: \"" + dialogue.nomSauvegarde + "\")"
-        jeu.sauvegarderPartie(dialogue.nomSauvegarde) # => Ajouter test si nom existant pour cette taille
-        mouvement(EventsAccueil.new(jeu))
+
+        if @jeu.sauvegarderPartie(dialogue.nomSauvegarde) then
+          mouvement(EventsAccueil.new(jeu))
+        else
+          puts "Erreur: nom de création existant"
+        end
         
       else
         

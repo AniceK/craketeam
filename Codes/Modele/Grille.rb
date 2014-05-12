@@ -202,7 +202,7 @@ class Grille
             tab.each { |x|
                 tabnom.push(x[0])
             }
-            if tabnom.inculde?(unNom) then
+            if tabnom.include?(unNom) then
 
                 return false
             end

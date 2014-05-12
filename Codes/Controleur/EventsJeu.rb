@@ -152,8 +152,11 @@ class EventsJeu < Events
       nomSauvegarde = @fenetre.entreeSauvegarde.text()
       puts "> Accueil (nom de sauvegarde: " + nomSauvegarde + ")"
       
-      @jeu.sauvegarderPartie(nomSauvegarde)
-      mouvement(EventsAccueil.new(jeu))
+      if @jeu.sauvegarderPartie(nomSauvegarde) then
+        mouvement(EventsAccueil.new(jeu))
+      else
+        puts "Erreur: nom de sauvegarde existant"
+      end
     }
     
     @fenetre.boutonMenuPrincipal.signal_connect('clicked'){
