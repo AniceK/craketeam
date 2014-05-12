@@ -41,7 +41,7 @@ ra.afficher()
 
 =end
 
-taille = 10
+taille = 15
    
 puts "Test de la Grille"
 g1 = Grille.creer("toto", taille)
