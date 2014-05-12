@@ -194,13 +194,24 @@ class Grille
         FileUtils.cd('Grille')
         FileUtils.cd(@taille.to_s())
         tab = Array.new()
+
         if File.size('grilles.yml') != 0 then
         
             tab = Array.new(YAML::load(File.open('grilles.yml')))
+            tabnom = Array.new()
+            tab.each { |x|
+                tabnom.push(x[0])
+            }
+            if tabnom.inculde?(unNom) then
+
+                return false
+            end
         end
         tab.push([@nom, @date,self])
+        File.delete('grilles.yml')
         File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
         FileUtils.cd('../..')
+        return true
     end
   
   
