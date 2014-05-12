@@ -1,0 +1,61 @@
+Ceci est un document intermédiaire de documentation. Il doit permettre de rassembler un certain nombre d'informations devenues nécesaire, afin d'éviter à chacun de parcourir tous les fichiers pour trouver une méthode ou son nombre d'argument.
+
+Il fait la liste pour chacun(e) des composants/classes de ses différents attributs et méthodes. Il indique également les spécificités d'utilisation lorsqu'il y en a.
+
+Les abbréviations suivantes sont utilisées :
+[M.C] : méthode de classe
+[M.I] : méthode d'instance
+[A.C] : attribut de classe
+[R] : attribut déclaré en lecture
+[W] : attribut déclaré en écriture
+@[a-z]* : attributs
+-----------------------------------------------------------------------------------------------------------------------
+Classe Case :
+    
+    -Attributs :
+    
+        -etat [R]  : l'etat d'une Case est un entier indiquant si la case est vierge(0), noircie(1) ou marquée(2)
+    
+    -Méthodes :
+
+        -creer()   [M.C] : crée une Case et appelle initialize()
+        -initialize() [M.C] : est appelée uniquement par créer() et fixe l'@etat de la Case à 0
+        -noircir() [M.I] : fixe l'@etat de la Case à 1 si ce dernier était à 0, et vice versa. Noircie ou dé-noircie la Case.
+        -marquer() [M.I] : fixe l'@etat de la Case à 2 si ce dernier était à 0, et vice versa. Marque ou dé-marque la Case
+        -raz()  [M.I] : fixe l'@etat de la Case à 0 quelque ce soit l'@etat précédent.
+        -afficher() [M.I] : affiche l'@etat. À utiliser uniquement dans les tests.
+-----------------------------------------------------------------------------------------------------------------------
+Classe Rangée
+    
+    -Attributs :
+        
+        -cases [R] : @cases est un tableau de Case, comme défini précédemment
+        -conditions [R] : @conditions est un tableau d'entier indiquant le nombre et l'ordre des Cases à noircir.
+        -valide [R] : booléen indiquant si la rangée est valide, cad si @cases respecte les conditions
+
+    -Méthodes :
+        
+        -creer(entier)    [M.C] : crée une Rangée en faisant appel à initialize(entier).
+        -initialize(entier) [M.C] : initialise @cases en tant que tableau de taille "entier", initialise @conditions en tant que tableau, fixe @valide à faux/false, et crée "entier" Cases qui sont ajoutées dans @cases.
+        -remplir(tableau)   [M.I] : remplit @cases avec le tableau passé en paramètre
+        -determinerConditions() [M.I] : détermine avec quelles valeurs remplir @conditions à partir de @cases.
+        -razCases() [M.I] : appelle la méthode raz() de toutes les Case de @cases
+        -verifier() [M.I] : vérifie si @cases respecte @conditions, renvoie un booleen, et met @valide à true.
+        -noircir(entier)    [M.I] : appelle la méthode noircir() de @cases[numero]
+        -marquer(entier)    [M.I] : appelle la méthode marquer() de @cases[numero]
+        -noircie?(entier)   [M.I] : verifie si @cases[entier] est noircie
+        -afficher() [M.I] : affiche la Rangee, avec @conditions et l@etat de chaque element de @cases
+-----------------------------------------------------------------------------------------------------------------------
+Classe Grille
+
+    -Attributs
+        
+        -ligne [R] : @ligne est un tableau de Rangée, comme défini précédemment, représentant les lignes de la Grille
+        -colonne [R] : @colonne est un tableau de Rangée, comme défini précédemment, représentant les colonnes de la Grille.
+        -grille [R] : @grille est une matrice de Case. Elle est utilisé notemment pour faciliter les représentations de la grille.
+        -createur [R] : chaine de caractère indiquant qui a créé ou généré aléatoirement cette grille.
+        -taille [R] : entier définissant la taille de la grille.
+
+    -Méthodes
+        -creer(nom, entier)  [M.C] : méthode créant une grille en appelant initialize(nom, entier).
+        -initialize(nom, entier) : initialise @ligne et @colonne en tant que tableau de Rangée de taille "entier", initialise @grille en tant que matrice de Case de "entier" x "entier", initialise @taille avec entier et createur avec nom.
