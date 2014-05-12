@@ -8,36 +8,36 @@
 require_relative 'Fenetre'
 require './Vue/Elements/ListeElements'
 
-class FenetreChoixSauvegarde < Fenetre
+class FenetreChoixCreation < Fenetre
   
-  @texteChoixSauvegarde
+  @texteChoixCreation
   @boutonPrecedent
   @boutonSuivant
-  @listeSauvegarde
+  @listeCreation
   
   
   attr_reader :boutonPrecedent,
               :boutonSuivant,
-              :texteChoixSauvegarde,
-              :listeSauvegarde
+              :texteChoixCreation,
+              :listeCreation
   
   public_class_method :new
   
-  def initialize(listeSauvegardes)
+  def initialize(listeCreations)
     super()
     
-    @fenetre.set_title("ChoixSauvegarde")
+    @fenetre.set_title("ChoixCreation")
     
     #==================================================#
     #           Déclaration / Initialisation           #
     #==================================================#
     
-    @texteChoixSauvegarde = Gtk::Label.new("Choisissez votre sauvegarde")
+    @texteChoixCreation = Gtk::Label.new("Choisissez votre creation")
     
     @boutonPrecedent = Gtk::Button.new('Précédent')
     @boutonSuivant = Gtk::Button.new('Suivant')
     
-    @listeSauvegardes = ListeElements.new(listeSauvegardes)
+    @listeCreations = ListeElements.new(listeCreations)
     
     #==================================================#
     #               Paramètrage éléments               #
@@ -67,8 +67,8 @@ class FenetreChoixSauvegarde < Fenetre
     hBoxNavigation.pack_start(@boutonPrecedent)
     hBoxNavigation.pack_end(@boutonSuivant)
     
-    vBox.pack_start(@texteChoixSauvegarde, false, false, 5)
-    vBox.pack_start(@listeSauvegardes.widget(), true, true, 5)
+    vBox.pack_start(@texteChoixCreation, false, false, 5)
+    vBox.pack_start(@listeCreations.widget(), true, true, 5)
     vBox.pack_end(hBoxNavigation, false, true, 0)
     
     #==================================================#
@@ -78,9 +78,9 @@ class FenetreChoixSauvegarde < Fenetre
     @fenetre.add(vBox)
   end
   
-  def choixSauvegarde()
+  def choixCreation()
     
-    return @listeSauvegardes.selectionne()
+    return @listeCreations.selectionne()
   end
   
 end

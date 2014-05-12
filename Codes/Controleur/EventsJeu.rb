@@ -94,6 +94,8 @@ class EventsJeu < Events
     # Affichage
     
     @fenetre.afficher()
+    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
+    
     @fenetre.affichageJeu()
     
     @jeu.lancerPartie()
