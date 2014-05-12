@@ -60,7 +60,45 @@ class Aide
     
     return check
   end
+   
+  def milieu(depart, fin, nbNoir)
+    retour = Array.new()
+    depart.upto(fin){ |x|
+      retour.push(x) 
+    }
+    boucle = (fin - nbNoir) / 2
+    0.upto(boucle){ |x|
+      retour.delete(retour.first())
+      retour.delete(retour.last())
+    }
+    return retour
+  end
+   
+  def supperposition(tabCond, taille)
+    coord = Array.new()
+    ecart = taille - tabCond.first() -1
+    if tabCond.first() > (ecart/2) 
+      if ecart%2 == 0
+        nbNoir = ecart - tabCond.first()
+      else
+        nbNoir = ecart - ( tabCond.first() + 1)
+      end
+      coord = milieu(0, ecart, nbNoir)
+    end
     
+    limite = tabCond.first() + 2
+    ecart = taille - limite
+    if tabCond.last() > (ecart/2) 
+      if ecart%2 == 0
+        nbNoir = ecart - tabCond.last()
+      else
+        nbNoir = ecart - ( tabCond.last() + 1)
+      end
+      coord = milieu(0, ecart, nbNoir)
+    end
+        
+  end
+  
   def chercherAide(tabCol, tabLig, diffculte)
     
     tabTaille = tabCol.size()
