@@ -107,24 +107,31 @@ class Partie
         
         FileUtils.cd('Grilles')
         FileUtils.cd(taille.to_s())
-        tab = Array.new(YAML::load(File.open('grilles.yml')))
-        unTab = Array.new()
-
-        if !toutes then
-
-            tab.delete_if{ |x|
-                
-                x.nom != @joueur
-            }
-        end
-        
-        tab.each { |x|
+        if File.size('grilles.ym') < 0 then
             
-            unTab.push(x[1])
-        }
+            return nil
+        else
+            
+            tab = Array.new(YAML::load(File.open('grilles.yml')))
+            unTab = Array.new()
 
-        return unTab
-        FileUtils.cd('../..')
+            if !toutes then
+
+                tab.delete_if{ |x|
+                
+                    x.nom != @joueur
+                }
+            end
+        
+            tab.each { |x|
+            
+                unTab.push(x[1])
+            }
+
+            FileUtils.cd('../..')
+
+            return unTab
+        end
 
 	end
 
