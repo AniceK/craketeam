@@ -207,7 +207,7 @@ class Grille
                 return false
             end
         end
-        tab.push([@nom, @date,self])
+        tab.push([@nom, self])
         File.delete('grilles.yml')
         File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
         FileUtils.cd('../..')

@@ -103,7 +103,7 @@ class Partie
     end
 
 # Méthode permettant de renvoyer la Liste des grilles deja existante
-	def chargerGrillesExistantes(taille, toutes)
+	def chargerListeGrillesExistantes(taille, toutes)
         
         FileUtils.cd('Grilles')
         FileUtils.cd(taille.to_s())
@@ -113,12 +113,14 @@ class Partie
         if !toutes then
 
             tab.delete_if{ |x|
+                
                 x.nom != @joueur
             }
         end
         
         tab.each { |x|
-            unTab.push([x.nom, x.date, tab.index(x)])
+            
+            unTab.push(x[1])
         }
 
         return unTab

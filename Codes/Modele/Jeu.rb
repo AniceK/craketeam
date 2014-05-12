@@ -378,10 +378,30 @@ class Jeu
 
 
 # Méthode recuperant une partie passée en paramètre, et fait de cette partie la partie en cours.
-	def chargerPartie(p)
+	def chargerPartie(unNom)
 
-        @partie = p
-        @partie.initialiserChrono()
+        liste = Array.new()
+        liste = self.chargerListePartiesSauvegardees()
+        if liste.empty? then
+            
+            return false
+        else
+
+            listeNom = Array.new()
+            liste.each { |x|
+
+                listeNom.push(x[0])
+            }
+            if listeNom.include?(unNom) then
+
+                @partie = liste[listeNom.index(unNom)]
+                @partie.initialiserChrono()
+                return true
+            else
+
+                return false
+            end
+        end
 	end
     
 # Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
@@ -652,13 +672,13 @@ class Jeu
     end
 
 # Méthode pour charger la liste des grilles existantes
-    def chargerGrillesExistantes(taille, toutes)
+    def chargerListeGrillesExistantes(taille, toutes)
 
         if @partie != nil then
 
             if @partie.class() == Partie then
 
-                return @partie.chargerGrillesExistantes(taille, toutes)
+                return @partie.chargerListeGrillesExistantes(taille, toutes)
             else
                 raise "impossible de charger les grilles existantes pour autre chose qu'une partie!"
             end
