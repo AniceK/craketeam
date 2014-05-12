@@ -168,7 +168,8 @@ class Partie
 # Methode pour actualiser l'aide
     def chercherAide()
 
-        @aide.chercherAide(@grille.colonne, @grille.ligne)
+        @temps += 10
+        return @aide.chercherAide(@grille.colonne, @grille.ligne)
     end
 
 # Methode pour noircir une case et verifier si la colonne et la grille correspondante sont validées
