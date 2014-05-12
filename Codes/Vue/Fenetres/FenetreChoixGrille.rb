@@ -10,11 +10,16 @@ require_relative 'Fenetre'
 class FenetreChoixGrille < Fenetre
   
   @texteChoixGrille
-  @boutonGrilleCreee
+  @boutonToutesGrilles
+  @boutonGrillesPerso
   @boutonGrilleAleatoire
   @boutonPrecedent
   
-  attr_reader :texteChoixGrille, :boutonGrilleCreee, :boutonGrilleAleatoire, :boutonPrecedent
+  attr_reader :texteChoixGrille,
+              :boutonToutesGrilles,
+              :boutonGrillesPerso,
+              :boutonGrilleAleatoire,
+              :boutonPrecedent
   
   public_class_method :new
   
@@ -24,12 +29,14 @@ class FenetreChoixGrille < Fenetre
     @fenetre.set_title("Choix de grille")
     
     @texteChoixGrille = Gtk::Label.new("Veuillez choisir une grille créée ou aléatoire")
-    @boutonGrilleCreee = Gtk::Button.new("Grille créée")
+    @boutonToutesGrilles = Gtk::Button.new("Toutes les grilles")
+    @boutonGrillesPerso = Gtk::Button.new("Grilles perso")
     @boutonGrilleAleatoire = Gtk::Button.new("Grille aléatoire")
     @boutonPrecedent = Gtk::Button.new("Précédent")
     
-    @boutonGrilleCreee.set_size_request(100, 30)
-    @boutonGrilleAleatoire.set_size_request(100, 30)
+    @boutonToutesGrilles.set_size_request(120, 30)
+    @boutonGrillesPerso.set_size_request(120, 30)
+    @boutonGrilleAleatoire.set_size_request(120, 30)
     @boutonPrecedent.set_size_request(-1, 50)
     
     hBoxBoutons = Gtk::HBox.new(true, 0)
@@ -38,7 +45,8 @@ class FenetreChoixGrille < Fenetre
     hBoxBoutons.set_border_width(5)
     vBox.set_border_width(5)
     
-    hBoxBoutons.pack_start(@boutonGrilleCreee, false, false, 0)
+    hBoxBoutons.pack_start(@boutonToutesGrilles, false, false, 0)
+    hBoxBoutons.pack_start(@boutonGrillesPerso, false, false, 0)
     hBoxBoutons.pack_start(@boutonGrilleAleatoire, false, false, 0)
     
     vBox.pack_start(@texteChoixGrille, false, false, 30)
@@ -46,6 +54,11 @@ class FenetreChoixGrille < Fenetre
     vBox.pack_start(@boutonPrecedent, false, false, 20)
     
     @fenetre.add(vBox)
+  end
+  
+  def affichageVisiteur
+    
+    @boutonGrillesPerso.hide_all()
   end
   
 end

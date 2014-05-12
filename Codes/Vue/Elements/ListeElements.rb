@@ -20,7 +20,7 @@ class ListeElements
   def initialize(liste)
     
     affichage = Gtk::TreeView.new()
-    modele = Gtk::ListStore.new(Integer, String, String)
+    modele = Gtk::ListStore.new(Integer, String, Time)
     @listeDeroulante = Gtk::ScrolledWindow.new()
     
     parametrerAffichage(affichage, modele)
@@ -31,7 +31,7 @@ class ListeElements
     
       modele.set_value(reference, TAILLE, liste[i].taille)
       modele.set_value(reference, NOM, liste[i].nom)
-      modele.set_value(reference, DATE, liste[i].date)
+      modele.set_value(reference, DATE, liste[i].date.asctime())
       
     end
     
@@ -78,7 +78,7 @@ class ListeElements
     
     affichage.append_column(colonneTaille)
     affichage.append_column(colonneNom)
-    affichage.append_column(colonneDate)
+    #affichage.append_column(colonneDate)
   end
   
   

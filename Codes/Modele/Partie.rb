@@ -105,37 +105,63 @@ class Partie
 # Méthode permettant de renvoyer la Liste des grilles deja existante
 	def chargerListeGrillesExistantes(taille, toutes)
         
-        FileUtils.cd('Grilles')
+        FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
-        tab = Array.new(YAML::load(File.open('grilles.yml')))
-        unTab = Array.new()
-
-        if !toutes then
-
-            tab.delete_if{ |x|
-                
-                x.nom != @joueur
-            }
-        end
         
-        tab.each { |x|
+        if File.size('grilles.yml') < 0 then
+           
+          FileUtils.cd('../..')  
+          return nil
+        else
             
-            unTab.push(x[1])
-        }
+            tab = Array.new()
+            tab = YAML::load(File.open('grilles.yml'))
+            unTab = Array.new()
 
-        return unTab
-        FileUtils.cd('../..')
+            if !toutes then
+
+                tab.delete_if{ |x|
+                
+                    x[0] != @joueur
+                }
+            end
+        
+            tab.each { |x|
+            
+                unTab.push(x[1])
+            }
+
+            FileUtils.cd('../..')
+
+            return unTab
+        end
 
 	end
 
-# Methode pour charger une grille dont l index est passe en parametre
-    def chargerGrille(taille,index)
+# Methode pour charger une grille dont le nom est passe en parametre
+    def chargerGrille(nom, taille)
 
-        FileUtils.cd('Grilles')
+        FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
-        tab = Array.new(YAML::load(File.open('grilles.yml')))
-        @grille = tab.at(index)
-        FileUtils.cd('../..')
+        tab = Array.new()
+        tab = YAML::load(File.open('grilles.yml'))
+        unTab = Array.new()
+
+        tab.each { |x|
+
+            unTab.push(x[0])
+        }
+
+        if unTab.include?(nom) then
+
+            @grille = tab[unTab.index(nom)][1]
+            FileUtils.cd('../..')
+            return true
+        else
+
+            FileUtils.cd('../..')
+            return false
+        end
     end
 
 

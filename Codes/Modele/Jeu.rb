@@ -643,7 +643,7 @@ class Jeu
 
             if @partie.class() == Partie then 
                 
-                @partie.chercherAide()
+                return @partie.chercherAide()
             else
                 raise "Impossible de chercher de l'aide en dehors d'une partie!"
             end
@@ -685,6 +685,17 @@ class Jeu
         else
             raise "Aucune partie en cours!"
             return nil
+        end
+    end
+
+# Méthode pour charger une grille dont le nom est passé en paramètre
+    def chargerGrille(nom)
+
+        if @partie.class == Partie then
+
+            return @partie.chargerGrille(nom)
+        else
+            raise "erreur : une partie doit etre en cours"
         end
     end
 
