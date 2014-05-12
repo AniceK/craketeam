@@ -109,6 +109,13 @@ class Aide
             end
           end
             
+        elsif totalCol == tabTaille - (tabTabCol.count - 1)
+          if difficulte == 1
+            strMessage += "Colonne #{pos} : 1 case blanche entre chaque condition\n"
+          else
+            strMessage += "Colonne #{pos}\n"
+          end
+            
         else
           if difficulte == 1
               #strMessage += "Colonne #{pos}: aucune aide disponible\n"
@@ -166,6 +173,13 @@ class Aide
             else
               strMessage += "Ligne #{pos}\n"
             end
+          end
+          
+        elsif totalLig == tabTaille - (tabTabLig.count - 1)
+          if difficulte == 1
+            strMessage += "Ligne #{pos} : 1 case blanche entre chaque condition\n"
+          else
+            strMessage += "Ligne #{pos}\n"
           end
           
         else
