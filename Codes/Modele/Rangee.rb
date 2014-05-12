@@ -18,14 +18,14 @@ class Rangee
     attr_reader :cases, :conditions, :valide
 
 #constructeur de la classe Rangee. Récupère en argument le nombre de cases de la rangée
-    def Rangee.creer(nbreCase)
+    def Rangee.creer(nbreCase, y, sens)
 
         new(nbreCase)
 
     end    #marqueur de fin de constructeur
 
 #Initialisateur de la classe Rangee. Récupère en paramètre le nombre de case de la rangee, et initialise un tableau de case de cette taille, ainsi qu'un second tableau, moitié plus petit.
-    def initialize(nbre)
+    def initialize(nbre, y, horizontal)
 
         @cases = Array.new(nbre)
         @conditions = Array.new()
@@ -33,20 +33,17 @@ class Rangee
 
         for i in (0 .. nbre-1)
 
-            @cases[i] = Case.creer()
+            if horizontal then
+            
+                @cases[i] = Case.creer(i, y)
+            else
+                @cases[i] = Case.creer(y, i)
+            end
         end
 
         self.razCases()
 
     end    #marqueur de fin d initialize
-
-    #methode recuperant un numero de cas et un etat et mettant la case numero a cet etat
-=begin
-    def setCase(numero, etat)
-        
-        @cases[numero].etat = etat
-    end
-=end
 
 #methode d'instance remplissant le tableau de cases à partir d'un tableau passé en paramètre
     def remplir(tab)
