@@ -44,7 +44,7 @@ class Editeur
 	def sauvegarder(nom)
 
         self.conditionsDeterminer()
-        @grille.sauvegarder(nom)
+        return @grille.sauvegarder(nom)
     end
 
 # Méthode pour générer aléatoirement un grille, pour permettre à l'utilisateur de se faciliter la création de la grille

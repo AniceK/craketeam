@@ -500,14 +500,22 @@ class Jeu
                 if File.size("parties.yml") != 0 then
                 
                     liste = YAML::load(File.open('parties.yml'))
+                    listenom = Array.new()
+                    liste.each { |x|
+                        listenom.push(x[0])
+                    }
+                    if listenom.include?(nomSauvegarde) then
+                        return false
+                    end
                 end
                 liste.push([nomSauvegarde, @partie])
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../..')
+                return true
             else
 
                 @profil.ajouterUneGrille()
-                @partie.sauvegarder(nomSauvegarde)
+                return @partie.sauvegarder(nomSauvegarde)
             end
 
         else
