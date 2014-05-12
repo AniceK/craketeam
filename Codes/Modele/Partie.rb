@@ -108,9 +108,10 @@ class Partie
         FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
         
-        if File.size('grilles.ym') < 0 then
-            
-            return nil
+        if File.size('grilles.yml') < 0 then
+           
+          FileUtils.cd('../..')  
+          return nil
         else
             
             tab = Array.new()
@@ -121,7 +122,7 @@ class Partie
 
                 tab.delete_if{ |x|
                 
-                    x.nom != @joueur
+                    x[0] != @joueur
                 }
             end
         

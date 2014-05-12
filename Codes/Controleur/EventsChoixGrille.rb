@@ -33,14 +33,32 @@ class EventsChoixGrille < Events
     @fenetre.afficher()
     #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
-    
-    @fenetre.boutonGrilleCreee.signal_connect('clicked'){
-      puts "> Grille créée"
+    if !@jeu.profilConnecte?() then
       
-      mouvement(EventsChoixCreation.new(jeu))
+      @fenetre.affichageVisiteur()
+      
+    end
+    
+    @fenetre.boutonToutesGrilles.signal_connect('clicked'){
+      
+      puts "> Toutes les grilles"
+      
+      afficheTout = true
+      
+      mouvement(EventsChoixCreation.new(jeu, afficheTout))
+    }
+    
+    @fenetre.boutonGrillesPerso.signal_connect('clicked'){
+      
+      puts "> Grilles perso"
+      
+      afficheTout = false
+      
+      mouvement(EventsChoixCreation.new(jeu, afficheTout))
     }
     
     @fenetre.boutonGrilleAleatoire.signal_connect('clicked'){
+      
       puts "> Grille aleatoire"
       
       jeu.genererAleatoirementGrille()
@@ -48,6 +66,7 @@ class EventsChoixGrille < Events
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
+      
       puts "> Accueil"
       
       mouvement(EventsPreparation.new(jeu))
