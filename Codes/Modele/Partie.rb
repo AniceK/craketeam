@@ -14,7 +14,7 @@ require 'fileutils'
 class Partie
 
     @grille
-    @creation       #heure et date de la creation de la partie
+    @date       #heure et date de la creation de la partie
     @joueur         #nom du joueur qui joue (différent du créateur de la grille)
     @type           #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
     @aide           #contient l'IA d'aide
@@ -23,7 +23,7 @@ class Partie
     @active         #booleen définissant si la partie est active (lancée, en cours) ou non
 
 
-    attr_reader :grille, :type, :aide, :creation, :joueur, :temps, :chronometre, :active
+    attr_reader :grille, :type, :aide, :date, :joueur, :temps, :chronometre, :active
 
 # Constructeur de la classe Partie
     def Partie.creer(taille, difficulte, nom)
@@ -36,7 +36,7 @@ class Partie
     def initialize(taille, difficulte, nom)
 
 		@grille = Grille.creer(nom, taille)
-		@creation = Time.now
+		@date = Time.now
         @joueur = nom
         @aide = Aide.creer(difficulte)
         @temps = 0
@@ -108,9 +108,9 @@ class Partie
         FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
         
-        if File.size('grilles.yml') < 0 then
+        if File.size('grilles.yml') == 0 then
            
-          FileUtils.cd('../..')  
+          FileUtils.cd('../..')
           return nil
         else
             
