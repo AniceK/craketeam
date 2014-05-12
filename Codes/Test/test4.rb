@@ -9,7 +9,7 @@
 load "../Modele/TraitementImage.rb"
 
 #Meilleur résultat sur de grande taille 
-taille = 20
+taille = 25
 image = TraitementImage.lire("test.jpg")
 
 image.traitementTotal(taille)

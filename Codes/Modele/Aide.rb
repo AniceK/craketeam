@@ -47,7 +47,7 @@ class Aide
     case difficulte
       
       when 1
-        strMessage += "Difficulté de niveau 1\nLa total\n"
+        strMessage += "Difficulté de niveau 1\nLa totale\n"
         
       when 2
         strMessage += "Difficulté de niveau 2\nIndication des lignes à potentiel\nVérification des lignes\n"
@@ -111,7 +111,7 @@ class Aide
             
         else
           if difficulte == 1
-              strMessage += "Colonne #{pos}: aucune aide disponible\n"
+              #strMessage += "Colonne #{pos}: aucune aide disponible\n"
           end
         end
       
@@ -170,7 +170,7 @@ class Aide
           
         else
           if difficulte == 1
-            strMessage += "Ligne #{pos} : aucune aide disponible\n"
+            #strMessage += "Ligne #{pos} : aucune aide disponible\n"
           end
         end
       
