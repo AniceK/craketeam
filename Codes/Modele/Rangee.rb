@@ -106,6 +106,11 @@ class Rangee
                 nbreCaseNoircie+=1
             end
         }
+        if @conditions.empty? and nbreCaseNoircie == 0 then
+
+            @valide =true
+            return true
+        end
 
         @conditions.each{ |x|
             nbreCaseANoircir += x
@@ -116,12 +121,7 @@ class Rangee
             @valide = false
             return false
         end
-        if nbreCaseNoircie == 0 and nbreCaseANoircir == 0 then
-           
-            @valide = true
-            return true
-        end
-
+        
         i = 0   #Compteur pour le tableau de conditions
         j = 0   #Compteur pour le tableau de cases
 
