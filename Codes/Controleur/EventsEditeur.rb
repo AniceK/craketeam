@@ -88,9 +88,14 @@ class EventsEditeur < Events
         puts "> Accueil (Nom de la grille créée: \"" + dialogue.nomSauvegarde + "\")"
 
         if @jeu.sauvegarderPartie(dialogue.nomSauvegarde) then
+          
+          #dialogue.fermerPopup()
           mouvement(EventsAccueil.new(jeu))
+          
         else
+          
           puts "Erreur: nom de création existant"
+          
         end
         
       else
