@@ -689,11 +689,11 @@ class Jeu
     end
 
 # Méthode pour charger une grille dont le nom est passé en paramètre
-    def chargerGrille(nom)
+    def chargerGrille(nom, taille)
 
         if @partie.class == Partie then
 
-            return @partie.chargerGrille(nom)
+            return @partie.chargerGrille(nom, taille)
         else
             raise "erreur : une partie doit etre en cours"
         end

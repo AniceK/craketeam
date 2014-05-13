@@ -25,9 +25,11 @@ class EventsChoixCreation < Events
   
   public_class_method :new
   
-  def initialize(jeu, afficheTout)
+  def initialize(jeu, position, afficheTout)
     
-    super(jeu)
+    @fenetre = FenetreChoixCreation.new(listeCreations)
+    
+    super(jeu, position)
     
     tailleCreation = @jeu.tailleGrille()
     
@@ -45,7 +47,7 @@ class EventsChoixCreation < Events
     #                                                                                 #
     ###################################################################################
     
-    @fenetre = FenetreChoixCreation.new(listeCreations)
+    
     @fenetre.afficher()
     #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
@@ -53,7 +55,7 @@ class EventsChoixCreation < Events
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       
       puts "> Choix Grille"
-      mouvement(EventsChoixGrille.new(@jeu))
+      mouvement(EventsChoixGrille.new(@jeu, position() ))
     }
     
     @fenetre.boutonSuivant.signal_connect('clicked'){
@@ -64,7 +66,7 @@ class EventsChoixCreation < Events
       
       @jeu.chargerGrille(nomCreation, tailleCreation)
       
-      #mouvement(EventsJeu.new(@jeu))
+      mouvement(EventsJeu.new(@jeu, position() ))
     }
   end
   

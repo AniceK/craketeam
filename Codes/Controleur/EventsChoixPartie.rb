@@ -17,11 +17,12 @@ class EventsChoixPartie < Events
   
   public_class_method :new
   
-  def initialize(jeu)
-    
-    super(jeu)
+  def initialize(jeu, position)
     
     @fenetre = FenetreChoixPartie.new()
+    
+    super(jeu, position)
+    
     @fenetre.afficher()
     #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
@@ -29,19 +30,19 @@ class EventsChoixPartie < Events
     @fenetre.boutonChoisirSauvegarde.signal_connect('clicked'){
       puts "> Choisir Sauvegarde"
       
-      mouvement(EventsChoixSauvegarde.new(jeu))
+      mouvement(EventsChoixSauvegarde.new(@jeu, position() ))
     }
     
     @fenetre.boutonNouvellePartie.signal_connect('clicked'){
-      puts "> Nouvelle Partie"
+      puts "> Préparation Partie"
       
-      mouvement(EventsPreparation.new(jeu))
+      mouvement(EventsPreparation.new(@jeu, position() ))
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       puts "> Accueil"
       
-      mouvement(EventsAccueil.new(jeu))
+      mouvement(EventsAccueil.new(@jeu, position() ))
     }
   end
   

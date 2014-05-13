@@ -20,23 +20,78 @@ class Events
   
   @jeu
   @fenetre
-  @eventsCourants
   
-  attr_reader :jeu, :fenetre, :eventsCourants
+  attr_reader :jeu,
+              :fenetre
   
   private_class_method :new
   
 # On transmet les données du jeu entre les évènements
-  def initialize(jeu)
+  def initialize(jeu, position)
     
     @jeu = jeu
+    
+    if position != Gtk::Window::POS_CENTER then
+      
+      self.bouger(position)
+      
+    else
+      
+      @fenetre.widget.set_window_position(Gtk::Window::POS_CENTER)
+      
+    end
+    
+    
+    if @jeu.profilConnecte?() then
+      
+      pseudoTitre = jeu.profil.nom
+      
+    elsif !@jeu.profilConnecte?() then
+      
+      pseudoTitre = "Visiteur"
+      
+    else
+      
+      puts "Erreur: Problème de détection du profil"
+      
+    end
+    
+    @fenetre.titre(pseudoTitre)
+    
   end
 
 # On change l'évènement à prendre en compte dans le jeu lors d'un changement de fenêtre
   def mouvement(events)
     
-    #@jeu.position(@fenetre.position()) # => Jeu contient la position de la fenêtre [x, y]
     @fenetre.cacher()
     @jeu.ajouterEvenement(events)
   end
+  
+  def position()
+    
+    return @fenetre.position()
+  end
+  
+  def bouger(position)
+    
+    @fenetre.move(position[0], position[1])
+  end
+  
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

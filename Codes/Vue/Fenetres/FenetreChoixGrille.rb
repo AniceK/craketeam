@@ -51,7 +51,7 @@ class FenetreChoixGrille < Fenetre
     
     vBox.pack_start(@texteChoixGrille, false, false, 30)
     vBox.pack_start(hBoxBoutons, false, false, 20)
-    vBox.pack_start(@boutonPrecedent, false, false, 20)
+    vBox.pack_end(@boutonPrecedent, false, false, 0)
     
     @fenetre.add(vBox)
   end

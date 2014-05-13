@@ -24,9 +24,11 @@ class EventsChoixSauvegarde < Events
   
   public_class_method :new
   
-  def initialize(jeu)
+  def initialize(jeu, position)
     
-    super(jeu)
+    @fenetre = FenetreChoixSauvegarde.new(listeSauvegardes)
+    
+    super(jeu, position)
     
     #listeSauvegardes = @jeu.listeSauvegardes() # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
     
@@ -42,14 +44,13 @@ class EventsChoixSauvegarde < Events
                                                                                       #
     ###################################################################################
     
-    @fenetre = FenetreChoixSauvegarde.new(listeSauvegardes)
     @fenetre.afficher()
     
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       
       puts "> Choix Partie"
-      mouvement(EventsChoixPartie.new(@jeu))
+      mouvement(EventsChoixPartie.new(@jeu, position() ))
     }
     
     @fenetre.boutonSuivant.signal_connect('clicked'){
@@ -60,7 +61,7 @@ class EventsChoixSauvegarde < Events
       
       #@jeu.chargerPartie(nomSauvegarde)
       
-      #mouvement(EventsJeu.new(@jeu))
+      #mouvement(EventsJeu.new(@jeu, position() ))
     }
   end
   

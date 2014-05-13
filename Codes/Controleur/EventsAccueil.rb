@@ -22,13 +22,13 @@ class EventsAccueil < Events
   
   public_class_method :new
   
-  def initialize(jeu)
+  def initialize(jeu, position)
     
-    super(jeu)
+      @fenetre = FenetreAccueil.new()
     
-    @fenetre = FenetreAccueil.new()
+    super(jeu, position)
+    
     @fenetre.afficher()
-    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     if @jeu.profilConnecte?() then
       
@@ -45,37 +45,37 @@ class EventsAccueil < Events
     @fenetre.boutonPartieRapide.signal_connect('clicked'){
       puts "> Choix Taille"
       
-      mouvement(EventsPreparation.new(@jeu))
+      mouvement(EventsPreparation.new(@jeu, position() ))
     }
     
     @fenetre.boutonJouer.signal_connect('clicked'){
       puts "> Choix Partie"
       
-      mouvement(EventsChoixPartie.new(@jeu))
+      mouvement(EventsChoixPartie.new(@jeu, position() ))
     }
     
     @fenetre.boutonProfil.signal_connect('clicked'){
       puts "> Profil"
       
-      mouvement(EventsProfil.new(@jeu))
+      mouvement(EventsProfil.new(@jeu, position() ))
     }
     
     @fenetre.boutonEditeur.signal_connect('clicked'){
       puts "> Éditeur"
       
-      mouvement(EventsTailleEditeur.new(@jeu))
+      mouvement(EventsTailleEditeur.new(@jeu, position() ))
     }
     
     @fenetre.boutonOptions.signal_connect('clicked'){
       puts "> Options"
       
-      mouvement(EventsOptions.new(@jeu))
+      mouvement(EventsOptions.new(@jeu, position() ))
     }
     
     @fenetre.boutonCredits.signal_connect('clicked'){
       puts "> Crédits"
       
-      mouvement(EventsCredits.new(@jeu))
+      mouvement(EventsCredits.new(@jeu, position() ))
     }
     
     @fenetre.boutonQuitter.signal_connect('clicked'){

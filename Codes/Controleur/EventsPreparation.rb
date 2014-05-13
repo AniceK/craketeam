@@ -23,25 +23,26 @@ class EventsPreparation < Events
   
   public_class_method :new
   
-  def initialize(jeu)
-    
-    super(jeu)
+  def initialize(jeu, position)
     
     @fenetre = FenetrePreparation.new()
+    
+    super(jeu, position)
+    
     @fenetre.afficher()
     #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       
-      puts "> Accueil"
-      
       if @jeu.profilConnecte?() then
         
-        mouvement(EventsChoixPartie.new(jeu))
+        puts "> Choix Partie"
+        mouvement(EventsChoixPartie.new(@jeu, position() ))
       
       elsif !@jeu.profilConnecte?() then
         
-        mouvement(EventsAccueil.new(jeu))
+        puts "> Accueil"
+        mouvement(EventsAccueil.new(@jeu, position() ))
         
       else
         
@@ -62,7 +63,7 @@ class EventsPreparation < Events
       
       @jeu.creerPartie(tailleGrille, difficulte)
       
-      mouvement(EventsChoixGrille.new(jeu))
+      mouvement(EventsChoixGrille.new(@jeu, position() ))
     }
   end
   

@@ -24,8 +24,9 @@ class Fenetre
     
     redimensionner(500, 250)
     
+    @fenetre.set_gravity(Gdk::Window::GRAVITY_CENTER) # =>  À faire fonctionner
+    
     #@fenetre.set_decorated(false)
-    @fenetre.set_window_position(Gtk::Window::POS_CENTER)
     @fenetre.signal_connect('destroy') {fermeture}
   end
   
@@ -68,6 +69,11 @@ class Fenetre
                                 @fenetreHints,
                                 Gdk::Window::HINT_MIN_SIZE |
                                 Gdk::Window::HINT_MAX_SIZE)
+  end
+  
+  def titre(pseudo)
+    
+    @fenetre.set_title( @fenetre.title() + " - " + pseudo )
   end
   
   ### Fin de l'exécution ###

@@ -115,6 +115,9 @@ class Aide
           else
             strMessage += "Colonne #{pos}\n"
           end
+          
+        #elsif 
+            #voir le traitement des lignes / colonnes
             
         else
           if difficulte == 1
@@ -198,7 +201,7 @@ class Aide
     posLig = 0
     for x in tabLig
       tmp = true
-      if x.valide() == false then #Change to false pour les tests
+      if x.valide() == false then #Change to true pour les tests
         tmp = false
       end
   
