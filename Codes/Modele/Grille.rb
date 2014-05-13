@@ -93,9 +93,9 @@ class Grille
 # Méthode permettant de noircir une Case à partir de ses coordonnées
 	def noircir(coordX, coordY)
 
-	    @colonne[coordX].noircir(coordY)
-	    @ligne[coordY].noircir(coordX)
-        @grille[coordY].at(coordX).noircir()
+	    @colonne[coordY].noircir(coordX)
+	    @ligne[coordX].noircir(coordY)
+        @grille[coordX][coordY].noircir()
 
 	end
 
@@ -142,9 +142,9 @@ class Grille
 
 	def marquerCase(coordX, coordY)
 
-	    @colonne[coordX].marquer(coordY)
-	    @ligne[coordY].marquer(coordX)
-        @grille[coordY][coordX].marquer()
+	    @colonne[coordY].marquer(coordX)
+	    @ligne[coordX].marquer(coordY)
+        @grille[coordX][coordY].marquer()
 
     end
     
@@ -161,6 +161,13 @@ class Grille
             
             x.razCases()
         }
+        @grille.each { |x|
+
+            x.each { |y|
+
+                y.raz()
+            }
+        }
 
         #on noircit des cases au hasard
         for i in (0..@taille-1)
@@ -173,6 +180,8 @@ class Grille
               
                     @colonne[i].noircir(j)
                     @ligne[j].noircir(i)
+                    @grille[j][i].noircir()
+
                 end
             end
         end
@@ -219,10 +228,17 @@ class Grille
 # Méthode d'affichage reservee aux tests, affichage uniquement des colonnes
     def afficher()
 
-        @colonne.each { |x|
+        #@colonne.each { |x|
             
-            x.afficher()
-        }
+        #    x.afficher()
+        #    puts "|"
+        #}
+        for i in (0..taille-1)
+            for j in (0.. taille-1)
+                @grille[i][j].afficher()
+            end
+            puts "|"
+        end
     end
 
 # Méthode pour retourner le nombre de conditions dans la colonne x passe en parametre
@@ -252,7 +268,7 @@ class Grille
 # Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
     def etatCase(x, y)
 
-            return @grille[x][y]
+            return @grille[x][y].etat
     end
 
 end

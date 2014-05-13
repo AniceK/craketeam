@@ -24,25 +24,25 @@ class EventsChoixSauvegarde < Events
   
   public_class_method :new
   
-  def initialize(jeu, position)
+  def initialize(jeu, position, listeSauvegardes)
+    
+    
+    ################# À supprimer par la suite ########################################
+                                                                                      #
+    #listeSauvegardes = Array.new                                                      #
+    #listeSauvegardes[0] = GroceryItem.new(5,  "ma_grille_5", Time.new())              #
+    #listeSauvegardes[1] = GroceryItem.new(5,  "ma_grille_mal_barree", "02/03/14")     #
+    #listeSauvegardes[2] = GroceryItem.new(10, "ma_grille_10", "03/03/15")             #
+    #listeSauvegardes[3] = GroceryItem.new(15,  "ma_grille_15", "04/04/14")            #
+    #listeSauvegardes[4] = GroceryItem.new(20, "ma_grille_20", "05/03/13")             #
+    #listeSauvegardes[5] = GroceryItem.new(25,  "ma_grille_25", "06/03/14")            #
+                                                                                      #
+    ###################################################################################
     
     @fenetre = FenetreChoixSauvegarde.new(listeSauvegardes)
     
     super(jeu, position)
     
-    #listeSauvegardes = @jeu.listeSauvegardes() # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
-    
-    ################# À supprimer par la suite ########################################
-                                                                                      #
-    listeSauvegardes = Array.new                                                      #
-    listeSauvegardes[0] = GroceryItem.new(5,  "ma_grille_5", "01/07/14")              #
-    listeSauvegardes[1] = GroceryItem.new(5,  "ma_grille_mal_barree", "02/03/14")     #
-    listeSauvegardes[2] = GroceryItem.new(10, "ma_grille_10", "03/03/15")             #
-    listeSauvegardes[3] = GroceryItem.new(15,  "ma_grille_15", "04/04/14")            #
-    listeSauvegardes[4] = GroceryItem.new(20, "ma_grille_20", "05/03/13")             #
-    listeSauvegardes[5] = GroceryItem.new(25,  "ma_grille_25", "06/03/14")            #
-                                                                                      #
-    ###################################################################################
     
     @fenetre.afficher()
     
@@ -59,9 +59,15 @@ class EventsChoixSauvegarde < Events
       
       puts "> Suivant (Sauvegarde: " + nomSauvegarde + ")"
       
-      #@jeu.chargerPartie(nomSauvegarde)
+      if @jeu.chargerPartie(nomSauvegarde) then
       
-      #mouvement(EventsJeu.new(@jeu, position() ))
+        mouvement(EventsJeu.new(@jeu, position() ))
+        
+      else
+        
+        puts "Erreur: Sauvegarde non chargée"
+        
+      end
     }
   end
   

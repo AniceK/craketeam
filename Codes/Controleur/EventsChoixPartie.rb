@@ -24,13 +24,25 @@ class EventsChoixPartie < Events
     super(jeu, position)
     
     @fenetre.afficher()
-    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
+    @fenetre.affichageDepart()
     
     
     @fenetre.boutonChoisirSauvegarde.signal_connect('clicked'){
       puts "> Choisir Sauvegarde"
       
-      mouvement(EventsChoixSauvegarde.new(@jeu, position() ))
+      # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
+      if listeSauvegardes = jeu.chargerListePartiesSauvegardees() then
+      
+        mouvement(EventsChoixSauvegarde.new(@jeu, position(), listeSauvegardes))
+        
+      else
+        
+        @fenetre.affichagePasDeSauvegarde()
+        puts "Pas de sauvegardes"
+        
+      end
+      
+      
     }
     
     @fenetre.boutonNouvellePartie.signal_connect('clicked'){

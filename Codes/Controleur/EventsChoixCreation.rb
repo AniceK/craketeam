@@ -25,15 +25,11 @@ class EventsChoixCreation < Events
   
   public_class_method :new
   
-  def initialize(jeu, position, afficheTout)
+  def initialize(jeu, position, listeCreations, afficheTout)
     
     @fenetre = FenetreChoixCreation.new(listeCreations)
     
     super(jeu, position)
-    
-    tailleCreation = @jeu.tailleGrille()
-    
-    listeCreations = @jeu.chargerListeGrillesExistantes(tailleCreation, afficheTout) # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
     
     ################# À supprimer par la suite ########################################
     #                                                                                 #
@@ -61,6 +57,7 @@ class EventsChoixCreation < Events
     @fenetre.boutonSuivant.signal_connect('clicked'){
       
       nomCreation = @fenetre.choixCreation()
+      tailleCreation = @jeu.tailleGrille()
       
       puts "> Suivant (Creation: " + nomCreation + ")"
       
@@ -71,3 +68,8 @@ class EventsChoixCreation < Events
   end
   
 end
+
+
+
+
+

@@ -13,8 +13,13 @@ class FenetreChoixPartie < Fenetre
   @boutonChoisirSauvegarde
   @boutonPartie
   @boutonPrecedent
+  @textePasDeSauvegardes
   
-  attr_reader :texteChoixPartie, :boutonChoisirSauvegarde, :boutonNouvellePartie, :boutonPrecedent
+  attr_reader :texteChoixPartie,
+              :boutonChoisirSauvegarde,
+              :boutonNouvellePartie,
+              :boutonPrecedent,
+              :textePasDeSauvegardes
   
   public_class_method :new
   
@@ -27,6 +32,9 @@ class FenetreChoixPartie < Fenetre
     @boutonChoisirSauvegarde = Gtk::Button.new("Choisir une Sauvegarde")
     @boutonNouvellePartie = Gtk::Button.new("Nouvelle Partie")
     @boutonPrecedent = Gtk::Button.new("Précédent")
+    
+    @textePasDeSauvegarde = Gtk::Label.new("Aucune Sauvegarde enregistrée")
+    
     
     @boutonChoisirSauvegarde.set_size_request(200, 50)
     @boutonNouvellePartie.set_size_request(200, 50)
@@ -42,10 +50,22 @@ class FenetreChoixPartie < Fenetre
     hBoxBoutons.pack_start(@boutonNouvellePartie, false, false, 0)
     
     vBox.pack_start(@texteChoixPartie, false, false, 30)
-    vBox.pack_start(hBoxBoutons, false, false, 20)
+    vBox.pack_start(hBoxBoutons, false, false, 10)
+    vBox.pack_start(@textePasDeSauvegarde, false, false, 3)
     vBox.pack_end(@boutonPrecedent, false, false, 0)
     
     @fenetre.add(vBox)
+  end
+  
+  
+  def affichageDepart()
+    
+    @textePasDeSauvegarde.hide_all()
+  end
+  
+  def affichagePasDeSauvegarde()
+    
+    @textePasDeSauvegarde.show_all()
   end
   
 end

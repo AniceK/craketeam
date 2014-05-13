@@ -441,17 +441,17 @@ class EventsJeu < Events
         
         # => À décommenter quand méthode de récupération de l'état de la case[x,y] opérationnelle
         
-        #case @jeu.etatCase(x, y)
-        #  
-        #when vide then etat = @vide
-        #when noircie then etat = @noircie
-        #when marquee then etat = @marquee
-        #  
-        #else puts "Erreur: L'état de la case à initialiser est inconnu"
-        #  
-        #end
+        case @jeu.etatCase(x, y)
+          
+        when 0 then etat = @vide
+        when 1 then etat = @noircie
+        when 2 then etat = @marquee
+          
+        else puts "Erreur: L'état de la case à initialiser est inconnu ==> " + @jeu.etatCase(x, y).to_s
+          
+        end
         
-        caseCartesienne = CaseCartesienne.new(x, y, @vide)  # => Remplacer "@vide" par "etat"
+        caseCartesienne = CaseCartesienne.new(x, y, etat)  # => Remplacer "@vide" par "etat"
         
         caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
       

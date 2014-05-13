@@ -378,7 +378,7 @@ class Jeu
 
                 liste.each{ |x|
 
-                    tab.push([x[0], x[1].tailleGrille(), x[1].date])
+                    tab.push([x[1].tailleGrille(), x[0], x[1].date])
                 }
 
                 return tab
@@ -400,14 +400,32 @@ class Jeu
 
             listeNom = Array.new()
             liste.each { |x|
-
-                listeNom.push(x[0])
+                
+                listeNom.push(x[1])
             }
             if listeNom.include?(unNom) then
+              
+                taille = liste[listeNom.index(unNom)][0]
+                FileUtils.cd('Profil')
+                FileUtils.cd(nomProfil())
+                listePartie = YAML::load(File.open('parties.yml'))
+                
+                listePartie.each { |x|
 
-                @partie = liste[listeNom.index(unNom)]
-                @partie.initialiserChrono()
-                return (@partie != nil)
+                    listeNom.push(x[0])
+                }
+                
+                FileUtils.cd('../..')
+                
+                if listeNom.include?(unNom) then
+
+                    @partie = listePartie[listeNom.index(unNom)][1]
+                    @partie.initialiserChrono()
+                    
+                    return(@partie != nil)
+                    
+                end
+                
             else
 
                 return false

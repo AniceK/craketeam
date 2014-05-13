@@ -37,12 +37,11 @@ class DialogueEnregistrer < Dialogue
     @entreeNomSauvegarde.set_text("ma_grille")
     @entreeNomSauvegarde.set_xalign(0.5)
     
-    @labelNomExistant = Gtk::Label.new("Nom déjà utilisé")
-    #@labelNomExistant.foreground = "#ff0000"
+    @labelNomExistant = Gtk::Label.new("")
     
     @popup.vbox.add(@messageCentre)
     @popup.vbox.add(@entreeNomSauvegarde)
-    @popup.vbox.add(labelNomExistant)
+    @popup.vbox.add(@labelNomExistant)
     
     @popup.vbox.show_all()
     
@@ -52,7 +51,8 @@ class DialogueEnregistrer < Dialogue
   
   def nomExistant(nom)
     
-    @labelNomExistant.set_text("Le nom \"" + nom + "\" est déjà utilisé")
+    #@labelNomExistant.set_text("Le nom \"" + nom + "\" est déjà utilisé")
+    @labelNomExistant.set_markup("<span foreground='red'>Nom \"" + nom + "\" déjà utilisé</span>")
     @labelNomExistant.show_all()
   end
   
