@@ -161,6 +161,13 @@ class Grille
             
             x.razCases()
         }
+        @grille.each { |x|
+
+            x.each { |y|
+
+                y.raz()
+            }
+        }
 
         #on noircit des cases au hasard
         for i in (0..@taille-1)
@@ -173,6 +180,8 @@ class Grille
               
                     @colonne[i].noircir(j)
                     @ligne[j].noircir(i)
+                    @grille[j][i].noircir()
+
                 end
             end
         end
