@@ -36,12 +36,15 @@ class Aide
     strMessage = ""
     tabTaille = tabCol.size()
     
+    @tabCondCol.clear()
+    @tabCondLig.clear()
+    
     tabCol.each{ |x|
-      tabCondCol.push(x.conditions)
+      @tabCondCol.push(x.conditions)
     }
     
     tabLig.each{ |x|
-      tabCondLig.push(x.conditions)
+      @tabCondLig.push(x.conditions)
     }
     
     case difficulte
@@ -116,10 +119,6 @@ class Aide
             strMessage += "Colonne #{pos}\n"
           end
           
-        #elsif 
-            #voir le traitement des lignes / colonnes
-            
-        else
           if difficulte == 1
               #strMessage += "Colonne #{pos}: aucune aide disponible\n"
           end
