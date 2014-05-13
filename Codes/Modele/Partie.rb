@@ -14,7 +14,7 @@ require 'fileutils'
 class Partie
 
     @grille
-    @date       #heure et date de la creation de la partie
+    @date           #heure et date de la sauvegarde de la partie
     @joueur         #nom du joueur qui joue (différent du créateur de la grille)
     @type           #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
     @aide           #contient l'IA d'aide
@@ -100,6 +100,12 @@ class Partie
 
             raise "La partie n'était pas active"
         end
+    end
+
+# Méthode  pour actualiser la date au moment de la sauvegarde
+    def actualiser
+
+        @date = Time.now()
     end
 
 # Méthode permettant de renvoyer la Liste des grilles deja existante
@@ -199,6 +205,7 @@ class Partie
           return nil
 	  end
     end
+
 
 #=================================================
     #ici commencent les méthodes de retransmission
