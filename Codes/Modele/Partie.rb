@@ -134,7 +134,7 @@ class Partie
         
             tab.each { |x|
             
-                unTab.push(x[1])
+                unTab.push([x[0], x[1].taille, x[1].date])
             }
 
             FileUtils.cd('../..')
