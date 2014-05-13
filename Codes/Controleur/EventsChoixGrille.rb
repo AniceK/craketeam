@@ -44,9 +44,20 @@ class EventsChoixGrille < Events
       
       puts "> Toutes les grilles"
       
+      tailleCreation = @jeu.tailleGrille()
+      
       afficheTout = true
       
-      mouvement(EventsChoixCreation.new(@jeu, position() , afficheTout))
+      # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
+      if listeCreations = @jeu.chargerListeGrillesExistantes(tailleCreation, afficheTout) then
+      
+        mouvement(EventsChoixCreation.new(@jeu, position() , listeCreations, afficheTout))
+        
+      else
+        
+        puts "Erreur: Pas de créations"
+        
+      end
     }
     
     @fenetre.boutonGrillesPerso.signal_connect('clicked'){

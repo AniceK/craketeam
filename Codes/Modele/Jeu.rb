@@ -378,7 +378,7 @@ class Jeu
 
                 liste.each{ |x|
 
-                    tab.push([x[0], x[1].tailleGrille(), x[1].date])
+                    tab.push([x[1].tailleGrille(), x[0], x[1].date])
                 }
 
                 return tab
@@ -400,12 +400,12 @@ class Jeu
 
             listeNom = Array.new()
             liste.each { |x|
-
+                
                 listeNom.push(x[0])
             }
             if listeNom.include?(unNom) then
 
-                @partie = liste[listeNom.index(unNom)]
+                @partie = liste[listeNom.index(unNom)][1]
                 @partie.initialiserChrono()
                 return true
             else

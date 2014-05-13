@@ -27,11 +27,19 @@ class ListeElements
     
     liste.each_with_index do |e, i|
       
+      puts e.to_s
+      
       reference = modele.append
     
-      modele.set_value(reference, TAILLE, liste[i].taille)
-      modele.set_value(reference, NOM, liste[i].nom)
-      modele.set_value(reference, DATE, liste[i].date.asctime())
+      #  À utiliser par la suite
+      # 
+       modele.set_value(reference, TAILLE, liste[i][0])
+       modele.set_value(reference, NOM, liste[i][1])
+       modele.set_value(reference, DATE, liste[i][2].asctime())
+      
+      #modele.set_value(reference, TAILLE, liste[i].taille)
+      #modele.set_value(reference, NOM, liste[i].nom)
+      #modele.set_value(reference, DATE, liste[i].date.asctime())
       
     end
     
