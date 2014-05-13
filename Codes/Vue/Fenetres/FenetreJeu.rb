@@ -148,6 +148,9 @@ class FenetreJeu < Fenetre
     #@aligneConditionsV.set_padding(0, 0, 10, 0)
     @aligneConditionsV.add(@tableauConditionsV)
     
+    @tableauGeneral.set_row_spacings(10)
+    @tableauGeneral.set_column_spacings(10)
+    
     @tableauGeneral.attach_defaults(@aligneConditionsV, 1, 2, 0, 1)
     @tableauGeneral.attach_defaults(@aligneConditionsH, 0, 1, 1, 2)
     @tableauGeneral.attach_defaults(@tableauJeu, 1, 2, 1, 2)
