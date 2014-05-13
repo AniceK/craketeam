@@ -359,18 +359,29 @@ class Jeu
         else
             
             if @verbose then puts "chargement de la liste des parties sauvegardees du profil" + @profil.nom end
+            
             liste = Array.new()
             FileUtils.cd('Profil')
             FileUtils.cd(@profil.nom)
-            FileUtils.cd('Parties')
-            liste = YAML::load(File.open('parties.yml'))
-            FileUtils.cd('../../..')
-            if liste.empty? then
+
+            if File.size('parties.yml') <= 0 then
                 
+                FileUtils.cd('../..')
                 if @verbose then puts "La liste des parties sauvegardées est vide!" end
                 return nil
             else
-                return liste
+
+                liste = YAML::load(File.open('parties.yml'))
+                FileUtils.cd('../..')
+
+                tab = Array.new()
+
+                liste.each{ |x|
+
+                    tab.push([x[0], x[1].tailleGrille(), x[1].date])
+                }
+
+                return tab
             end
         end
 
@@ -396,7 +407,7 @@ class Jeu
 
                 @partie = liste[listeNom.index(unNom)]
                 @partie.initialiserChrono()
-                return true
+                return (@partie != nil)
             else
 
                 return false
@@ -423,7 +434,7 @@ class Jeu
             if liste.empty? then
 
                 if @verbose then puts "Aucune partie n'est sauvegardée, impossible de supprimer" end
-                return nil
+                return false
             else
                 sup = liste.delete(p)
                 File.delete('parties.yml')
@@ -515,6 +526,7 @@ class Jeu
             
                 liste = Array.new()
                 @partie.tuerChrono()
+                @partie.actualiser()
                 FileUtils.cd('Profil')
                 FileUtils.cd(@profil.nom)
                 if File.size("parties.yml") != 0 then
