@@ -401,7 +401,7 @@ class Jeu
             listeNom = Array.new()
             liste.each { |x|
                 
-                listeNom.push(x[0])
+                listeNom.push(x[1])
             }
             if listeNom.include?(unNom) then
               
@@ -414,6 +414,9 @@ class Jeu
 
                     listeNom.push(x[0])
                 }
+                
+                FileUtils.cd('../..')
+                
                 if listeNom.include?(unNom) then
 
                     @partie = listePartie[listeNom.index(unNom)][1]
@@ -421,6 +424,8 @@ class Jeu
                     
                     return(@partie != nil)
                     
+                end
+                
             else
 
                 return false
