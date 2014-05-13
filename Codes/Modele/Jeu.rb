@@ -751,6 +751,17 @@ class Jeu
         end
     end
 
+# Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres (utile au chargement d'une partie sauvegardee)
+    def etatCase(x, y)
+
+        if @partie.class == Partie then
+
+            return @partie.etatCase(x, y)
+        else
+            raise "erreur : cette methode doit etre appelee lorsqu'une partie est active"
+        end
+    end
+
 # Méthode pour vider le contenu de @partie
     def quitterPartie()
 

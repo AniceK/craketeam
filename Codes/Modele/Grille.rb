@@ -249,4 +249,10 @@ class Grille
             return @ligne[x].condition(y)
     end
 
+# Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
+    def etatCase(x, y)
+
+            return @grille[x][y]
+    end
+
 end
