@@ -405,9 +405,21 @@ class Jeu
             }
             if listeNom.include?(unNom) then
 
-                @partie = liste[listeNom.index(unNom)]
-                @partie.initialiserChrono()
-                return (@partie != nil)
+                taille = liste[listeNom.index(unNom)][0]
+                FileUtils.cd('Profil')
+                FileUtils.cd(nomProfil())
+                listePartie = YAML::load(File.open('parties.yml'))
+                
+                listePartie.each { |x|
+
+                    listeNom.push(x[0])
+                }
+                if listeNom.include?(unNom) then
+
+                    @partie = listePartie[listeNom.index(unNom)][1]
+                    @partie.initialiserChrono()
+                    
+                    return(@partie != nil)
             else
 
                 return false
