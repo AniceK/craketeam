@@ -24,6 +24,8 @@ class Fenetre
     
     redimensionner(500, 250)
     
+    @fenetre.set_gravity(Gdk::Window::GRAVITY_CENTER) # =>  À faire fonctionner
+    
     #@fenetre.set_decorated(false)
     @fenetre.signal_connect('destroy') {fermeture}
   end

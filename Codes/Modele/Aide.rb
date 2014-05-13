@@ -116,12 +116,8 @@ class Aide
             strMessage += "Colonne #{pos}\n"
           end
           
-        elsif 
+        #elsif 
             #voir le traitement des lignes / colonnes
-            
-            
-            
-        end
             
         else
           if difficulte == 1

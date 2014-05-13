@@ -141,11 +141,11 @@ class FenetreJeu < Fenetre
     @alignePause.add(@boutonPause)
     
     @aligneConditionsH = Gtk::Alignment.new(1,0,0,1)
-    @aligneConditionsH.set_padding(12, 0, 0, 0)
+    #@aligneConditionsH.set_padding(12, 0, 0, 0)
     @aligneConditionsH.add(@tableauConditionsH)
     
     @aligneConditionsV = Gtk::Alignment.new(0,1,1,0)
-    @aligneConditionsV.set_padding(0, 0, 10, 0)
+    #@aligneConditionsV.set_padding(0, 0, 10, 0)
     @aligneConditionsV.add(@tableauConditionsV)
     
     @tableauGeneral.attach_defaults(@aligneConditionsV, 1, 2, 0, 1)
@@ -210,19 +210,19 @@ class FenetreJeu < Fenetre
   
   def grandesConditions
     
-    @aligneConditionsV.set_padding(0, 0, 40, 0)
+    #@aligneConditionsV.set_padding(0, 0, 40, 0)
     @tableauConditionsV.set_column_spacings(25)
     
-    @aligneConditionsH.set_padding(40, 0, 0, 0)
+    #@aligneConditionsH.set_padding(40, 0, 0, 0)
     @tableauConditionsH.set_row_spacings(19)
   end
   
   def petitesConditions
     
-    @aligneConditionsV.set_padding(0, 0, 27, 0)
+    #@aligneConditionsV.set_padding(0, 0, 27, 0)
     @tableauConditionsV.set_column_spacings(15)
     
-    @aligneConditionsH.set_padding(25, 0, 0, 0)
+   #@aligneConditionsH.set_padding(25, 0, 0, 0)
     @tableauConditionsH.set_row_spacings(9.3)
   end
   

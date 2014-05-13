@@ -9,6 +9,7 @@ require 'gtk2'
 
 require_relative 'Events'
 require './Vue/Fenetres/FenetreJeu'
+require './Vue/Elements/CaseCartesienne'
 require './Vue/Dialogues/DialogueQuitterPartie'
 require './Vue/Dialogues/DialogueAide'
 
@@ -24,6 +25,7 @@ require './Vue/Dialogues/DialogueAide'
 class EventsJeu < Events
   
   @tailleGrille
+  @tailleConditions
   @tailleCase
   @nbConditionsRangee
   @estEnPause
@@ -36,6 +38,7 @@ class EventsJeu < Events
   @decalagePositionY
   
   attr_reader :tailleGrille,
+              :tailleConditions,
               :tailleCase,
               :nbConditionsRangee,
               :estEnPause,
@@ -66,6 +69,7 @@ class EventsJeu < Events
     
     @estEnPause = false
     @tailleGrille = @jeu.tailleGrille()
+    @tailleConditions = (@tailleGrille / 2.0).round()
     @tailleCase = 30
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
@@ -85,7 +89,7 @@ class EventsJeu < Events
       initialiserGrille(1000, 700)
       initialiserPositionsCases(5, 6)
     when 25
-      initialiserGrille(1200, 800)
+      initialiserGrille(1300, 800)
       initialiserPositionsCases(6, 6)
     else
       puts "Erreur: La taille n'est pas valide"
@@ -94,7 +98,6 @@ class EventsJeu < Events
     self.initialiserChrono()
     
     @fenetre.afficher()
-    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
     
     @fenetre.affichageDepart()
     
@@ -268,9 +271,9 @@ class EventsJeu < Events
   
   def initialiserImages()
     
-    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
-    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
-    @pixCaseMarquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
+    @vide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
+    @noircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
+    @marquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
   end
   
   def initialiserPositionsCases(x, y)
@@ -281,22 +284,22 @@ class EventsJeu < Events
   
   def caseCliquee(widget, evenement)
     
-    x = widget.allocation.x / 32 - @decalagePositionX
-    y = widget.allocation.y / 32 - @decalagePositionY
+    x = widget.coordonneeX
+    y = widget.coordonneeY
     
     puts "Case[" + x.to_s + "][" + y.to_s + "]"
     
     if evenement.button() == 1 then
       
-      if widget.child.pixbuf() == @pixCaseVide then
+      if widget.etatCourant() == @vide then
         
         @jeu.noircir(x, y)
-        widget.child.set_pixbuf(@pixCaseNoircie)
+        widget.changerEtat(@noircie)
         
-      elsif widget.child.pixbuf() == @pixCaseNoircie then
+      elsif widget.etatCourant() == @noircie then
         
         @jeu.noircir(x, y)
-        widget.child.set_pixbuf(@pixCaseVide)
+        widget.changerEtat(@vide)
         
       end
       
@@ -315,13 +318,13 @@ class EventsJeu < Events
       
     elsif evenement.button() == 3 then
       
-      if widget.child.pixbuf() == @pixCaseMarquee then
+      if widget.etatCourant() == @marquee then
         
-        widget.child.set_pixbuf(@pixCaseVide)
+        widget.changerEtat(@vide)
         
-      elsif widget.child.pixbuf() == @pixCaseVide then
+      elsif widget.etatCourant() == @vide then
         
-        widget.child.set_pixbuf(@pixCaseMarquee)
+        widget.changerEtat(@marquee)
         
       end
       
@@ -332,25 +335,6 @@ class EventsJeu < Events
       
   end
   
-  
-  # Retourne une case vide cliquable
-  def caseDefault()
-    
-    imageCaseVide = Gtk::Image.new(@pixCaseVide)
-    
-    @evenementCase = Gtk::EventBox.new()
-    @evenementCase.events = Gdk::Event::BUTTON_PRESS_MASK
-    @evenementCase.add(imageCaseVide)
-    
-    @evenementCase.signal_connect('button_press_event') { |widget, evenement|
-      
-      caseCliquee(widget, evenement)
-    }
-    
-    return @evenementCase
-    
-  end
-  
   def initialiserConditionsV()
     
     #@fenetre.tableauConditionsV.resize(@tailleGrille, 3)
@@ -359,18 +343,41 @@ class EventsJeu < Events
       
       @nbConditionsRangee = @jeu.nbConditionsV(y)
       
-        0.upto(@nbConditionsRangee) do |x|
-          
-          condition = Gtk::Label.new("")
-          
-          if @nbConditionsRangee != 0 then
-            
-            condition.set_text(@jeu.conditionV(y, x).to_s)
-            
-          end
-          
-            @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
-        end
+      if @nbConditionsRangee == 0 then
+        
+        @fenetre.tableauConditionsV.attach(Gtk::Label.new("0"), y, y+1, @tailleConditions - 1, @tailleConditions, @optionsTableau, @optionsTableau)
+        
+      else
+        
+        # Variable incrémentant la boucle interne
+        xCondition = @tailleConditions
+        x = @tailleConditions - 1
+           
+         # Tant que l'on est pas arrivé à la dernière conditions
+         while (xCondition >= 0) && (x > 0) do
+           
+           condition = Gtk::Label.new("")
+         
+           # Tant qu'on obtient une condition vide et que l'on reste dans la taille des conditions
+           while (condition.text == "") && (xCondition >= 0) do
+             
+             xCondition -= 1
+             
+             # On prend la condition de la ligne et on décrémente la variable interne
+             condition.set_text(@jeu.conditionV(y, xCondition).to_s)
+             
+           end
+           
+           # Si la condition est à prendre en compte
+           if xCondition >= 0 then
+               
+             # On ajoute la condition non-vide au tableau par le bas  
+             @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
+             
+             x -= 1
+           end
+         end
+      end
     end
   end
   
@@ -382,25 +389,48 @@ class EventsJeu < Events
       
       @nbConditionsRangee = @jeu.nbConditionsH(x)
       
-      0.upto(@nbConditionsRangee) do |y|
+      if @nbConditionsRangee == 0 then
         
-        condition = Gtk::Label.new("")
+        @fenetre.tableauConditionsH.attach(Gtk::Label.new("0"), x, x+1, @tailleConditions - 1, @tailleConditions, @optionsTableau, @optionsTableau)
         
-        if @nbConditionsRangee != 0 then
-          
-          condition.set_text(@jeu.conditionH(x, y).to_s)
-          
-        end
+      else
         
-          @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)        
+        # Variable incrémentant la boucle interne
+        yCondition = @tailleConditions
+        y = @tailleConditions - 1
+           
+         # Tant que l'on est pas arrivé à la dernière conditions
+         while (yCondition >= 0) && (y > 0) do
+           
+           condition = Gtk::Label.new("")
+         
+           # Tant qu'on obtient une condition vide et que l'on reste dans la taille des conditions
+           while (condition.text == "") && (yCondition >= 0) do
+             
+             yCondition -= 1
+             
+             # On prend la condition de la ligne et on décrémente la variable interne
+             condition.set_text(@jeu.conditionH(x, yCondition).to_s)
+             
+           end
+           
+           # Si la condition est à prendre en compte
+           if yCondition >= 0 then
+               
+             # On ajoute la condition non-vide au tableau par la droite  
+             @fenetre.tableauConditionsH.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
+             
+             y -= 1
+           end
+         end
       end
     end
   end
-  
+
   def initialiserTableauJeu()
     
-    1.upto(@tailleGrille) do |x|
-      1.upto(@tailleGrille) do |y|
+    0.upto(@tailleGrille - 1) do |x|
+      0.upto(@tailleGrille - 1) do |y|
         
         # Ajout séparation toutes les 5 lignes
         
@@ -409,7 +439,26 @@ class EventsJeu < Events
         #  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)
         #end
         
-        @fenetre.tableauJeu.attach(caseDefault(), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
+        # => À décommenter quand méthode de récupération de l'état de la case[x,y] opérationnelle
+        
+        #case @jeu.etatCase(x, y)
+        #  
+        #when vide then etat = @vide
+        #when noircie then etat = @noircie
+        #when marquee then etat = @marquee
+        #  
+        #else puts "Erreur: L'état de la case à initialiser est inconnu"
+        #  
+        #end
+        
+        caseCartesienne = CaseCartesienne.new(x, y, @vide)  # => Remplacer "@vide" par "etat"
+        
+        caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
+      
+          caseCliquee(widget, evenement)
+        }
+        
+        @fenetre.tableauJeu.attach(caseCartesienne, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end
