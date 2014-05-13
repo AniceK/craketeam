@@ -32,7 +32,9 @@ class FenetreChoixPartie < Fenetre
     @boutonChoisirSauvegarde = Gtk::Button.new("Choisir une Sauvegarde")
     @boutonNouvellePartie = Gtk::Button.new("Nouvelle Partie")
     @boutonPrecedent = Gtk::Button.new("Précédent")
+    
     @textePasDeSauvegarde = Gtk::Label.new("Aucune Sauvegarde enregistrée")
+    
     
     @boutonChoisirSauvegarde.set_size_request(200, 50)
     @boutonNouvellePartie.set_size_request(200, 50)

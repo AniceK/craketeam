@@ -447,7 +447,7 @@ class EventsJeu < Events
         when 1 then etat = @noircie
         when 2 then etat = @marquee
           
-        else puts "Erreur: L'état de la case à initialiser est inconnu"
+        else puts "Erreur: L'état de la case à initialiser est inconnu ==> " + @jeu.etatCase(x, y).to_s
           
         end
         
