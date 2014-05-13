@@ -108,7 +108,7 @@ class Rangee
         }
         if @conditions.empty?() and nbreCaseNoircie == 0 then
 
-            puts "la rangee est vide, si aucune case n'est noircie on la valide"
+            #puts "la rangee est vide, si aucune case n'est noircie on la valide"
             @valide =true
             return true
         end

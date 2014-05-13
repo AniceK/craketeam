@@ -47,6 +47,9 @@ class Aide
       @tabCondLig.push(x.conditions)
     }
     
+    toto = 2
+    puts tabCol[toto].valide()
+    
     case difficulte
       
       when 1
@@ -67,63 +70,69 @@ class Aide
       pos = 1
 
       strMessage += "\nCondition des colonnes\n"
-      for tabTabCol in tabCondCol
+      for col in tabCondCol
         totalCol = 0
       
-        for valCol in tabTabCol 
+        for valCol in col 
           totalCol += valCol
         end
-      
+        
         #puts "Total de la colonne #{pos} : #{totalCol}"
       
-        if totalCol == tabTaille then
-          if difficulte == 1
-            strMessage += "Colonne #{pos} : pleine\n"
-          else
-            strMessage += "Colonne #{pos}\n" 
-          end
-        
-        elsif totalCol == 0
-          if difficulte == 1
-             strMessage += "Colonne #{pos} : vide\n"
-          else
-             strMessage += "Colonne #{pos}\n"
-          end
-        
-        elsif tabTabCol.count > tabTaille/2 && tabTaille%2 == 1
-          if difficulte == 1
-            strMessage += "Colonne #{pos} : une case sur deux en partant du bord\n"
-          else
-            strMessage += "Colonne #{pos}\n"
-          end
-        
-        elsif tabTabCol.count == 1 && totalCol > tabTaille/2 
-          if tabTaille%2 == 1
-            if difficulte == 1
-              strMessage += "Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} case#{ (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} à colorier au centre\n"
-            else
-               strMessage += "Colonne #{pos}\n"
-            end
-          else
-            if difficulte == 1
-              strMessage += "Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} cases à colorier au centre\n"
-            else
-              strMessage += "Colonne #{pos}\n"
-            end
-          end
-            
-        elsif totalCol == tabTaille - (tabTabCol.count - 1)
-          if difficulte == 1
-            strMessage += "Colonne #{pos} : 1 case blanche entre chaque condition\n"
-          else
-            strMessage += "Colonne #{pos}\n"
-          end
-          
-          if difficulte == 1
-              #strMessage += "Colonne #{pos}: aucune aide disponible\n"
-          end
-        end
+        if(tabCol[pos].valide() == false) then
       
+            if totalCol == tabTaille then
+              if difficulte == 1
+                strMessage += "Colonne #{pos} : pleine\n"
+              else
+                strMessage += "Colonne #{pos}\n" 
+              end
+        
+            elsif totalCol == 0
+              if difficulte == 1
+                 strMessage += "Colonne #{pos} : vide\n"
+              else
+                 strMessage += "Colonne #{pos}\n"
+              end
+        
+            elsif col.count > tabTaille/2 && tabTaille%2 == 1
+              if difficulte == 1
+                strMessage += "Colonne #{pos} : une case sur deux en partant du bord\n"
+              else
+                strMessage += "Colonne #{pos}\n"
+              end
+        
+            elsif col.count == 1 && totalCol > tabTaille/2 
+              if tabTaille%2 == 1
+                if difficulte == 1
+                  strMessage += "Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} case#{ (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} à colorier au centre\n"
+                else
+                   strMessage += "Colonne #{pos}\n"
+                end
+              else
+                if difficulte == 1
+                  strMessage += "Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} cases à colorier au centre\n"
+                else
+                  strMessage += "Colonne #{pos}\n"
+                end
+              end
+            
+            elsif totalCol == tabTaille - (col.count - 1)
+              if difficulte == 1
+                strMessage += "Colonne #{pos} : 1 case blanche entre chaque condition\n"
+              else
+                strMessage += "Colonne #{pos}\n"
+              end
+          
+              if difficulte == 1
+                  #strMessage += "Colonne #{pos}: aucune aide disponible\n"
+              end
+            end
+      
+        else
+            puts "Valide"
+        end
+        
         pos += 1
       end
     
@@ -133,10 +142,10 @@ class Aide
       pos = 1
     
       strMessage += "\nCondition des lignes\n"
-      for tabTabLig in tabCondLig
+      for lig in tabCondLig
         totalLig = 0
       
-        for valLig in tabTabLig 
+        for valLig in lig 
           totalLig += valLig
         end
       
@@ -153,7 +162,7 @@ class Aide
         elsif totalLig == 0 
           strMessage += "Ligne #{pos} : vide\n"
         
-        elsif tabTabLig.count > tabTaille/2 && tabTaille%2 == 1
+        elsif lig.count > tabTaille/2 && tabTaille%2 == 1
           if difficulte == 1
             strMessage += "Ligne #{pos} : une case sur deux est noir en partant du bord\n"
           
@@ -161,7 +170,7 @@ class Aide
             strMessage += "Ligne #{pos}\n"
           end
         
-        elsif tabTabLig.count == 1 && totalLig > tabTaille/2
+        elsif lig.count == 1 && totalLig > tabTaille/2
           if tabTaille%2 == 1
             if difficulte == 1
               strMessage += "Ligne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} case#{(tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} a colorier au centre\n"
@@ -177,7 +186,7 @@ class Aide
             end
           end
           
-        elsif totalLig == tabTaille - (tabTabLig.count - 1)
+        elsif totalLig == tabTaille - (lig.count - 1)
           if difficulte == 1
             strMessage += "Ligne #{pos} : 1 case blanche entre chaque condition\n"
           else
@@ -197,7 +206,7 @@ class Aide
     strMessage += "\nVérification des lignes et des colonnes\n"
     
     #puts "\nVérification des lignes\n"
-    posLig = 0
+    posLig = 1
     for x in tabLig
       tmp = true
       if x.valide() == false then #Change to true pour les tests
@@ -209,7 +218,7 @@ class Aide
     end
     
     #puts "\nVérification des colonnes\n"
-    posCol = 0
+    posCol = 1
     for y in tabCol
       tmp = true
       if y.valide() == false then
