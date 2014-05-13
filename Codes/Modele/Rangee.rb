@@ -177,7 +177,7 @@ class Rangee
 #methode d'affichage dans un terminal pour les tests
     def afficher()
         
-        puts @conditions.to_s()
+        print @conditions.to_s()
         @cases.each { |x|
             x.afficher()
         }

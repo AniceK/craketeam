@@ -142,9 +142,9 @@ class Grille
 
 	def marquerCase(coordX, coordY)
 
-	    @colonne[coordX].marquer(coordY)
-	    @ligne[coordY].marquer(coordX)
-        @grille[coordY][coordX].marquer()
+	    @colonne[coordY].marquer(coordX)
+	    @ligne[coordX].marquer(coordY)
+        @grille[coordX][coordY].marquer()
 
     end
     
@@ -219,10 +219,17 @@ class Grille
 # Méthode d'affichage reservee aux tests, affichage uniquement des colonnes
     def afficher()
 
-        @colonne.each { |x|
+        #@colonne.each { |x|
             
-            x.afficher()
-        }
+        #    x.afficher()
+        #    puts "|"
+        #}
+        for i in (0..taille-1)
+            for j in (0.. taille-1)
+                @grille[i][j].afficher()
+            end
+            puts "|"
+        end
     end
 
 # Méthode pour retourner le nombre de conditions dans la colonne x passe en parametre
@@ -252,7 +259,7 @@ class Grille
 # Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
     def etatCase(x, y)
 
-            return @grille[x][y].etat()
+            return @grille[x][y]
     end
 
 end

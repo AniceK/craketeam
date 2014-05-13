@@ -71,7 +71,7 @@ class Case
 
 #Methode d'affichage en terminal pour les tests
     def afficher()
-        puts @etat
+        print "|" + @etat.to_s
     end
 
 end
