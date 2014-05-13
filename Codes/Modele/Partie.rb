@@ -245,4 +245,10 @@ class Partie
 
             return @grille.conditionH(x, y)
     end
+
+# Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
+    def etatCase(x, y)
+
+            return @grille.etatCase(x, y)
+    end
 end
