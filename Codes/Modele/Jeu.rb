@@ -407,7 +407,7 @@ class Jeu
 
                 @partie = liste[listeNom.index(unNom)]
                 @partie.initialiserChrono()
-                return true
+                return (@partie != nil)
             else
 
                 return false
