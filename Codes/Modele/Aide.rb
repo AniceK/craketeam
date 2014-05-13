@@ -79,7 +79,7 @@ class Aide
         
         #puts "Total de la colonne #{pos} : #{totalCol}"
       
-        if(tabCol[pos].valide() == false) then
+        if(tabCol[2].valide() == false) then
       
             if totalCol == tabTaille then
               if difficulte == 1
@@ -206,7 +206,7 @@ class Aide
     strMessage += "\nVérification des lignes et des colonnes\n"
     
     #puts "\nVérification des lignes\n"
-    posLig = 1
+    posLig = 0
     for x in tabLig
       tmp = true
       if x.valide() == false then #Change to true pour les tests
@@ -218,7 +218,7 @@ class Aide
     end
     
     #puts "\nVérification des colonnes\n"
-    posCol = 1
+    posCol = 0
     for y in tabCol
       tmp = true
       if y.valide() == false then
