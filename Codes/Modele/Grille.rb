@@ -268,7 +268,7 @@ class Grille
 # Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
     def etatCase(x, y)
 
-            return @grille[x][y]
+            return @grille[x][y].etat
     end
 
 end
