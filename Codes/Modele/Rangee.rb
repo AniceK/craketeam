@@ -79,6 +79,7 @@ class Rangee
         }
         if @conditions.empty?() then
             @valide = true
+            @conditions.push(0)
         end
 	end
 

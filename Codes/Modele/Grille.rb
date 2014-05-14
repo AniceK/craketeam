@@ -93,9 +93,9 @@ class Grille
 # Méthode permettant de noircir une Case à partir de ses coordonnées
 	def noircir(coordX, coordY)
 
-	    @colonne[coordY].noircir(coordX)
-	    @ligne[coordX].noircir(coordY)
-        @grille[coordX][coordY].noircir()
+	    @colonne[coordX].noircir(coordY)
+	    @ligne[coordY].noircir(coordX)
+        @grille[coordY][coordX].noircir()
 
 	end
 
