@@ -101,7 +101,7 @@ class Aide
                   #puts "#{glueCol} at #{pos}"
                   
                   if(glueCol > 0) then
-                      strMessage += "Colonne #{pos} : #{glueCol} case#{glueCol>1 ? "s":""} à colorier à la position #{col.count - glueCol}\n"
+                      strMessage += "Colonne #{pos} : #{glueCol} case#{glueCol>1 ? "s":""} à colorier au niveau de la condition max\n"
                   end
               else
                   if(glueCol > 0) then
@@ -184,7 +184,7 @@ class Aide
               #puts "#{glueLig} at #{pos}"
               
               if(glueLig > 0) then
-                  strMessage += "Ligne #{pos} : #{glueLig} case#{glueLig>1 ? "s":""} à colorier à la position #{lig.count - glueLig}\n"
+                  strMessage += "Ligne #{pos} : #{glueLig} case#{glueLig>1 ? "s":""} à colorier au niveau de la condition max\n"
               end
           else
               if(glueLig > 0) then
