@@ -29,7 +29,7 @@ class Aide
       @tabCondCol = Array.new()
       @tabCondLig = Array.new()
 
-    end    #marqueur de fin d initialize
+    end   
     
   def chercherAide(tabCol, tabLig)
     
@@ -38,7 +38,8 @@ class Aide
     
     @tabCondCol.clear()
     @tabCondLig.clear()
-    
+
+    #Remplissage des tableaux de conditions
     tabCol.each{ |x|
       @tabCondCol.push(x.conditions)
     }
@@ -51,13 +52,13 @@ class Aide
     case difficulte
       
       when 1
-        strMessage += "Difficulté de niveau 1\nLa totale\n"
+        strMessage += "Difficulté de niveau 1\nIndication des astuces et solutions possible\nVérification des lignes\n"
         
       when 2
         strMessage += "Difficulté de niveau 2\nIndication des lignes à potentiel\nVérification des lignes\n"
         
       when 3
-        strMessage += "Difficulté de niveau 3\nVérification des lignes\n"
+        strMessage += "Difficulté de niveau 3\nVérification des lignes & colonnes\n"
         
     end
     
@@ -94,12 +95,12 @@ class Aide
               end
               
           elsif totalCol > tabTaille/2 && col.count > 1
+              
+              glueCol = col.max() - (tabTaille - (totalCol + col.count - 1))
+              #puts "#{glueCol} at #{pos}"
+              
               if difficulte == 1
-                  #puts "valeur col.max #{col.max} - tabTaille #{tabTaille} - totalCol #{totalCol} - col.count #{col.count}"
-                  glueCol = col.max() - (tabTaille - (totalCol + col.count - 1))
-                  
-                  #puts "#{glueCol} at #{pos}"
-                  
+                  #puts "valeur col.max #{col.max} - tabTaille #{tabTaille} - totalCol #{totalCol} - col.count #{col.count}"      
                   if(glueCol > 0) then
                       strMessage += "Colonne #{pos} : #{glueCol} case#{glueCol>1 ? "s":""} à colorier au niveau de la condition max\n"
                   end
@@ -177,11 +178,14 @@ class Aide
           end
           
       elsif totalLig > tabTaille/2 && lig.count > 1
+          
+          glueLig = (lig.max() - (tabTaille - (totalLig + lig.count - 1)))
+          #puts "#{glueLig} at #{pos}"
+          
           if difficulte == 1
               #puts "valeur lig.max #{lig.max} - (tabTaille #{tabTaille} - (totalLig #{totalLig} + lig.count #{lig.count-1}))) = #{lig.max() - (tabTaille - (totalLig + (lig.count) - 1))}"
               
-              glueLig = (lig.max() - (tabTaille - (totalLig + lig.count - 1)))
-              #puts "#{glueLig} at #{pos}"
+              
               
               if(glueLig > 0) then
                   strMessage += "Ligne #{pos} : #{glueLig} case#{glueLig>1 ? "s":""} à colorier au niveau de la condition max\n"
@@ -227,11 +231,36 @@ class Aide
       
         pos += 1
       end
+      
+      
+      
+    else
+    
+        strMessage += "\nVérification des lignes\n"
+        posLig = 0
+        for x in tabLig
+          tmp = true
+          if x.valide() == false then #Change to false pour les tests
+            tmp = false
+          end
+
+          strMessage += "Ligne #{posLig+=1} #{tmp ? "bonne":"erronnée"}\n"
+
+        end
+
+        strMessage += "\nVérification des colonnes\n"
+        posCol = 0
+        for y in tabCol
+          tmp = true
+          if y.valide() == false then
+            tmp = false
+          end
+
+          strMessage += "Colonne #{posCol+=1} #{tmp ? "bonne":"erronnée"}\n"
+        end
     end
     
-  
     return strMessage
-  
-  end
-  
+    
+  end  
 end #marqueur de fin de classe
