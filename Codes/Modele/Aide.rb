@@ -95,7 +95,8 @@ class Aide
               
           elsif totalCol > tabTaille/2 && col.count > 1
               if difficulte == 1
-                  strMessage += "Colonne #{pos} : #{col.max() - (tabTaille - (totalCol + (col.count -1)))} case#{(col.max() - (tabTaille - (totalCol + (col.count -1)))>1 ? "s":"")} à colorier\n"
+                  #puts "valeur col.max #{col.max} - tabTaille #{tabTaille} - totalCol #{totalCol} - col.count #{col.count}"
+                  strMessage += "Colonne #{pos} : #{col.max() - (tabTaille - (totalCol + col.count - 1))} case#{(col.max() - (tabTaille - (totalCol + col.count - 1))>1 ? "s":"")} à colorier\n"
               else
                   strMessage += "Colonne #{pos}\n"
               end
@@ -169,7 +170,8 @@ class Aide
           
       elsif totalLig > tabTaille/2 && lig.count > 1
           if difficulte == 1
-              strMessage += "Ligne #{pos} : #{lig.max() - (tabTaille - (totalLig + (lig.count -1)))} case#{(lig.max() - (tabTaille - (totalLig + (lig.count -1)))>1 ? "s":"")} à colorier\n"
+              #puts "valeur lig.max #{lig.max} - (tabTaille #{tabTaille} - (totalLig #{totalLig} + lig.count #{lig.count-1}))) = #{lig.max() - (tabTaille - (totalLig + (lig.count) - 1))}"
+              strMessage += "Ligne #{pos} : #{lig.max() - (tabTaille - (totalLig + lig.count - 1))} case#{(lig.max() - (tabTaille - (totalLig + lig.count - 1))>1 ? "s":"")} à colorier\n"
           else
               strMessage += "Ligne #{pos}\n"
           end
