@@ -228,17 +228,17 @@ class Grille
 # Méthode d'affichage reservee aux tests, affichage uniquement des colonnes
     def afficher()
 
-        #@colonne.each { |x|
+        @ligne.each { |x|
             
-        #    x.afficher()
-        #    puts "|"
-        #}
-        for i in (0..taille-1)
-            for j in (0.. taille-1)
-                @grille[i][j].afficher()
-            end
+            x.afficher()
             puts "|"
-        end
+    }
+       # for i in (0..taille-1)
+        #    for j in (0.. taille-1)
+         #       @grille[i][j].afficher()
+          #  end
+           # puts "|"
+        #end
     end
 
 # Méthode pour retourner le nombre de conditions dans la colonne x passe en parametre
