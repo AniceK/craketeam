@@ -42,6 +42,7 @@ class EventsOptions < Events
       puts ("> Vider Grilles")
       
       @jeu.viderGrilles()
+      @fenetre.affichageInfos("Les grilles du profil ont été effacées")
     }
     
     @fenetre.boutonViderSauvegardes.signal_connect('clicked'){
@@ -49,6 +50,7 @@ class EventsOptions < Events
       puts ("> Vider Sauvegardes")
       
       @jeu.viderParties()
+      @fenetre.affichageInfos("Les sauvegardes du profil ont été effacées")
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
