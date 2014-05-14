@@ -234,7 +234,7 @@ class Aide
                     pos += 1
             end
         
-        else
+        else #
 
             strMessage += "\nVérification des lignes\n"
             posLig = 0
