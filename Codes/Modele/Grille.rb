@@ -197,7 +197,7 @@ class Grille
         return res
     end
 
-# Méthode d'affichage reservee aux tests, affichage uniquement des colonnes
+# Méthode d'affichage reservee aux tests, affichage des lignes dans le terminal
     def afficher()
 
         @ligne.each { |x|
@@ -205,12 +205,6 @@ class Grille
             x.afficher()
             puts "|"
     }
-       # for i in (0..taille-1)
-        #    for j in (0.. taille-1)
-         #       @grille[i][j].afficher()
-          #  end
-           # puts "|"
-        #end
     end
 
 # Méthode pour retourner le nombre de conditions dans la colonne x passe en parametre
@@ -219,7 +213,7 @@ class Grille
             return @colonne[x].nbConditions()
     end
 
-# Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
+# Méthode pour retourner le nombre de conditions dans la ligne x passe en parametre
     def nbConditionsH(x)
 
             return @ligne[x].nbConditions()
