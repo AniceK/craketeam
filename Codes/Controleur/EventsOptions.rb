@@ -22,6 +22,20 @@ class EventsOptions < Events
     
     @fenetre.afficher()
     
+    @fenetre.boutonViderGrilles.signal_connect('clicked'){
+      
+      puts ("> Vider Grilles")
+      
+      @jeu.viderGrilles()
+    }
+    
+    @fenetre.boutonViderSauvegardes.signal_connect('clicked'){
+      
+      puts ("> Vider Sauvegardes")
+      
+      @jeu.viderParties()
+    }
+    
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       puts "> Accueil"
       

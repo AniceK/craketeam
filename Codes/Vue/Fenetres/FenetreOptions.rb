@@ -9,11 +9,13 @@ require_relative 'Fenetre'
 
 class FenetreOptions < Fenetre
   
-  @texteLangue
-  @comboBoxLangues
+  @boutonViderGrilles
+  @boutonViderSauvegardes
   @boutonPrecedent
   
-  attr_reader :texteLangue, :comboBoxLangues, :boutonPrecedent
+  attr_reader :boutonViderGrilles,
+              :boutonViderSauvegardes,
+              :boutonPrecedent
   
   public_class_method :new
   
@@ -22,23 +24,27 @@ class FenetreOptions < Fenetre
     
     @fenetre.set_title("Options")
     
-    @texteLangue = Gtk::Label.new("Langue :")
-    @comboBoxLangues = Gtk::ComboBox.new()
+    @boutonViderGrilles = Gtk::Button.new('Réinitialiser Créations')
+    @boutonViderSauvegardes = Gtk::Button.new('Réinitialiser Sauvegarde')
+    
+    @boutonViderGrilles.set_size_request(-1, 40)
+    @boutonViderSauvegardes.set_size_request(-1, 40)
+    
     @boutonPrecedent = Gtk::Button.new('Précédent')
     
     @boutonPrecedent.set_size_request(-1, 50)
     
-    hBox = Gtk::HBox.new(true, 0)
+    hBoxVider = Gtk::HBox.new(true, 0)
     vBox = Gtk::VBox.new(false, 0)
     
-    hBox.set_border_width(5)
+    hBoxVider.set_border_width(5)
     vBox.set_border_width(5)
     
-    hBox.pack_start(@texteLangue, true, true, 0)
-    hBox.pack_start(@comboBoxLangues, false, false, 0)
+    hBoxVider.pack_start(@boutonViderGrilles, false, false, 0)
+    hBoxVider.pack_start(@boutonViderSauvegardes, false, false, 0)
     
-    vBox.pack_start(hBox, true, false, 65)
-    vBox.pack_start(@boutonPrecedent, false, true, 0)
+    vBox.pack_start(hBoxVider, true, false, 10)
+    vBox.pack_end(@boutonPrecedent, false, true, 0)
     
     @fenetre.add(vBox)
   end

@@ -389,7 +389,7 @@ class EventsJeu < Events
         x = @tailleConditions - 1
            
          # Tant que l'on est pas arrivé à la dernière conditions
-         while (xCondition >= 0) && (x > 0) do
+         while (xCondition >= 0) && (x >= 0) do
            
            condition = Gtk::Label.new("")
          
@@ -431,7 +431,7 @@ class EventsJeu < Events
         y = @tailleConditions - 1
            
          # Tant que l'on est pas arrivé à la dernière conditions
-         while (yCondition >= 0) && (y > 0) do
+         while (yCondition >= 0) && (y >= 0) do
            
            condition = Gtk::Label.new("")
          

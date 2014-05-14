@@ -559,7 +559,7 @@ class Jeu
             FileUtils.cd('Grille')
             for i in [5, 10, 15, 20, 25]
 
-                FileUtils.cd(i)
+                FileUtils.cd(i.to_s)
                 File.delete('grilles.yml')
                 File.new('grilles.yml')
                 FileUtils.cd('..')
