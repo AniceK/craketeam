@@ -91,7 +91,7 @@ class Rangee
 		}
 	end
 
-#Methode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes).
+# Méthode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes). On retourne le résultat.
     def verifier()
 
         nbreCaseNoircie = 0
@@ -105,18 +105,20 @@ class Rangee
                 nbreCaseNoircie+=1
             end
         }
-    # Si le tableau @conditions est vide(ne contient qu'un 0), 
+    # Si le tableau @conditions est vide(ne contient qu'un 0), alors on met @valide a true
         if @conditions.first == 0 and nbreCaseNoircie == 0 then
 
-            #puts "la rangee est vide, si aucune case n'est noircie on la valide"
             @valide =true
             return true
         end
 
+    # Sinon, on compte le nombre de case à noircir en tout dans le tableau @conditions
         @conditions.each{ |x|
+            
             nbreCaseANoircir += x
         }
 
+    # Cela permet de 
         if nbreCaseNoircie != nbreCaseANoircir then
 
             @valide = false
@@ -126,27 +128,31 @@ class Rangee
         i = 0   #Compteur pour le tableau de conditions
         j = 0   #Compteur pour le tableau de cases
 
+    # On parcours le tableau @condition, en s'arretant sur chaque élément, pour verifier s'il y a bien le nombre de Case noircie nécessaire
         while (j < @cases.size()-1 and i < @conditions.size()-1)
 
-          while (@cases[j].etat !=1 and j < @cases.size()-1)
+    # On passe toutes les cases blanches
+            while (@cases[j].etat !=1 and j < @cases.size()-1)
+              
+                j+=1
+            end
 
-            j+=1
-          end
+            nbreCaseNoircie = 0
 
-          nbreCaseNoircie = 0
+            while (j < @cases.size()-1 and nbreCaseNoircie < @conditions[i] and @cases[j].etat == 1)
 
-          while (j < @cases.size()-1 and nbreCaseNoircie < @conditions[i] and @cases[j].etat == 1)
+                j+=1
+                nbreCaseNoircie +=1
+            end
 
-            j+=1
-            nbreCaseNoircie +=1
-          end
+            # Si le parcours s'interrompt, on vérifie la cause
+            if (@cases[j].etat == 1 and nbreCaseNoircie >= @conditions[i] or nbreCaseNoircie < @conditions[i]) then
 
-          if (@cases[j].etat == 1 and nbreCaseNoircie >= @conditions[i] or nbreCaseNoircie < @conditions[i]) then
-            @valide = false
-            return false
-          end
+                @valide = false
+                return false
+            end
 
-          i +=1
+            i +=1
         end
 
         @valide = true
@@ -169,8 +175,9 @@ class Rangee
 
     end
     
-    #methode vérifiant si la case numero est noircie
+# Méthode vérifiant si la case numero est noircie
     def noircie?(numero)
+        
         return @cases[numero].etat == 1
     end
 
@@ -184,17 +191,13 @@ class Rangee
         #puts @valide.to_s()
     end
 
-# Méthode pour retourner la condition x
+# Méthode pour retourner la condition x, pour l'interface graphique
     def condition(x)
 
-        #if x < @conditions.size() then
             return @conditions[x]
-        #else
-       #     raise "erreur : la valeur envoyée est supérieur a la taille du tableau de condition!", caller
-       # end
     end
 
-# Méthode pour retourner la taille du tableau de condition
+# Méthode pour retourner la taille du tableau de condition, pour l'interface graphique
     def nbConditions
 
         return @conditions.size()
