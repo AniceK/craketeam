@@ -218,13 +218,14 @@ class FenetreJeu < Fenetre
   
   def petitesConditions
     
+    #puts Gtk::VERSION.to_s
     @aligneConditionsV.set_padding(0, 0, 5, 0)
-    #@tableauConditionsV.set_column_spacings(15)
-    @tableauConditionsV.set_column_spacings(10)
+    @tableauConditionsV.set_column_spacings(15)
+    #@tableauConditionsV.set_column_spacings(10)
     
     @aligneConditionsH.set_padding(5, 0, 0, 0)
-    #@tableauConditionsH.set_row_spacings(9.3)
-    @tableauConditionsH.set_row_spacings(7)
+    @tableauConditionsH.set_row_spacings(9.3)
+    #@tableauConditionsH.set_row_spacings(7)
   end
   
   def nomSauvegardeDefaut(nomParDefaut)
