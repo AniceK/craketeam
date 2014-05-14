@@ -14,12 +14,14 @@ class FenetreChoixCreation < Fenetre
   @boutonPrecedent
   @boutonSuivant
   @listeCreation
+  @texteAucuneCreationSelectionnee
   
   
   attr_reader :boutonPrecedent,
               :boutonSuivant,
               :texteChoixCreation,
-              :listeCreation
+              :listeCreation,
+              :texteAucuneCreationSelectionnee
   
   public_class_method :new
   
@@ -33,6 +35,8 @@ class FenetreChoixCreation < Fenetre
     #==================================================#
     
     @texteChoixCreation = Gtk::Label.new("Choisissez votre creation")
+    
+    @texteAucuneCreationSelectionnee = Gtk::Label.new.set_markup("<span foreground='red'>Veuillez sélectionner une création</span>")
     
     @boutonPrecedent = Gtk::Button.new('Précédent')
     @boutonSuivant = Gtk::Button.new('Suivant')
@@ -69,6 +73,7 @@ class FenetreChoixCreation < Fenetre
     
     vBox.pack_start(@texteChoixCreation, false, false, 5)
     vBox.pack_start(@listeCreations.widget(), true, true, 5)
+    vBox.pack_start(@texteAucuneCreationSelectionnee, false, false, 2)
     vBox.pack_end(hBoxNavigation, false, true, 0)
     
     #==================================================#
@@ -80,7 +85,30 @@ class FenetreChoixCreation < Fenetre
   
   def choixCreation()
     
-    return @listeCreations.selectionCourante()
+    if (selection = @listeCreations.selectionCourante() ) != nil then
+    
+      return selection
+      
+    elsif @listeCreations.selectionCourante() == nil
+      
+      return nil
+      
+    else
+      
+      puts "[FenetreChoixCreation]Erreur: Problème dans le choix de création"
+      
+    end
+    
+  end
+  
+  def affichageDepart()
+    
+    @texteAucuneCreationSelectionnee.hide_all()
+  end
+  
+  def affichageAucuneCreationSelectionnee
+    
+    @texteAucuneCreationSelectionnee.show_all()
   end
   
 end

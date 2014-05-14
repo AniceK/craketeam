@@ -32,6 +32,8 @@ class FenetreChoixGrille < Fenetre
     @boutonToutesGrilles = Gtk::Button.new("Toutes les grilles")
     @boutonGrillesPerso = Gtk::Button.new("Grilles perso")
     @boutonGrilleAleatoire = Gtk::Button.new("Grille aléatoire")
+    @texteAucuneGrille = Gtk::Label.new.set_markup("<span foreground='red'>Il n'y a aucune grille de disponible\nMais vous pouvez en créer une dans l'éditeur avec un profil !</span>")
+    @texteAucuneGrillePerso = Gtk::Label.new.set_markup("<span foreground='red'>Vous n'avez aucune grille perso\nMais vous pouvez en créer une dans l'éditeur !</span>")
     @boutonPrecedent = Gtk::Button.new("Précédent")
     
     @boutonToutesGrilles.set_size_request(120, 30)
@@ -49,8 +51,10 @@ class FenetreChoixGrille < Fenetre
     hBoxBoutons.pack_start(@boutonGrillesPerso, false, false, 0)
     hBoxBoutons.pack_start(@boutonGrilleAleatoire, false, false, 0)
     
-    vBox.pack_start(@texteChoixGrille, false, false, 30)
+    vBox.pack_start(@texteChoixGrille, false, false, 20)
     vBox.pack_start(hBoxBoutons, false, false, 20)
+    vBox.pack_start(@texteAucuneGrille, false, false, 0)
+    vBox.pack_start(@texteAucuneGrillePerso, false, false, 0)
     vBox.pack_end(@boutonPrecedent, false, false, 0)
     
     @fenetre.add(vBox)
@@ -59,6 +63,24 @@ class FenetreChoixGrille < Fenetre
   def affichageVisiteur
     
     @boutonGrillesPerso.hide_all()
+  end
+  
+  def affichageDepart()
+    
+    @texteAucuneGrille.hide_all()
+    @texteAucuneGrillePerso.hide_all()
+  end
+  
+  def affichageAucuneGrille
+    
+    @texteAucuneGrillePerso.hide_all()
+    @texteAucuneGrille.show_all()
+  end
+  
+  def affichageAucuneGrillePerso
+    
+    @texteAucuneGrille.hide_all()
+    @texteAucuneGrillePerso.show_all()
   end
   
 end

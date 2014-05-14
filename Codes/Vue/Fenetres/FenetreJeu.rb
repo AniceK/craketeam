@@ -92,8 +92,7 @@ class FenetreJeu < Fenetre
     @vBoxPause.pack_start(@vBoxSauvegarde, false, false, 0)
     @vBoxPause.pack_start(@boutonPauseMenuPrincipal, false, false, 0)
     
-    
-    
+        
     ################################################################
     #                                                              #
     #                          Chronomètre                          #
@@ -232,6 +231,8 @@ class FenetreJeu < Fenetre
     
     @tableauGeneral.hide_all()   
     @vBoxPause.show_all()
+    
+    @entreeSauvegarde.set_focus(true)
   end
   
   def affichagePauseSimple()
