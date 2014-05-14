@@ -12,33 +12,33 @@ require 'fileutils'
 
 class Grille
 
-    @colonne
-    @ligne
-    @grille
-    @createur
-    @taille
-    @nom
-    @date
+    @colonne        # Variable contenant un tableau de Rangée destinées à être verticales
+    @ligne          # Variable contenant un tableau de Rangée destinées à être horizontales
+    @grille         # Variable contenant une matrice de case
+    @createur       # Variable contenant le nom du profil ayant créé la grille
+    @taille         # Variable définissant la taille de la grille
+    @nom            # Variable contenant le nom de la grille
+    @date           # Variable contenant la date de création de la grille
 
     attr_reader :colonne, :ligne, :grille, :createur, :taille, :nom, :date
 
-	# Constructeur de la classe Grille
-
+# Méthode de classe de Création de la classe Grille, ou la taille et le nom du créateur sont passés en paramètres
     def Grille.creer(nom, taille)
     
         new(nom, taille)
-
     end
 
+# Méthode de classe d'initialisation de la classe Grille
     def initialize(nom, taille)
 
         @taille = taille
-        @date = Time.now()
-        @colonne = Array.new(taille)
+        @date = Time.now()                  # La date est définie à la création
+        @colonne = Array.new(taille)        # Création des tableaux pour accueuillir les Rangées
         @ligne = Array.new(taille)
         @grille = Array.new(taille)
-        @createur = nom
+        @createur = nom                     # Récupération du nom du créateur passé en paramètre
 
+    # Une boucle est utilisé afin chaque éléments de @ligne, @colonne et @grille avec des Rangées ou des tableaux de Case
         for i in (0 .. taille-1)
 
             @colonne[i] = Rangee.creer(taille)
@@ -53,41 +53,15 @@ class Grille
 
     end
 
-
-# Méthode renvoyant la taille de la grille
-    def getTaille()
-
-        return @taille
-    end
-
+# ========================================
+    # Méthodes d'écriture des données
+#========================================
 	# Méthode vérifiant la validité du coup joué
 
     def verifierCoup(coordX, coordY)
 
       @colonne[coordX].verifier()
       @ligne[coordY].verifier()
-
-    end
-
-	# Méthode vérifiant si la partie est terminée, en passant en revue la validité de chacune des Rangées
-
-    def termine?()
-
-      res = true
-      @colonne.each { |x|
-          
-          if x.valide() == false then
-              res = false
-          end
-      }
-      @ligne.each { |x|
-          
-          if x.valide() == false then
-              res = false
-          end
-      }
-      return res
-
     end
 
 # Méthode permettant de noircir une Case à partir de ses coordonnées
@@ -96,7 +70,6 @@ class Grille
 	    @colonne[coordX].noircir(coordY)
 	    @ligne[coordY].noircir(coordX)
         @grille[coordY][coordX].noircir()
-
 	end
 
 # Méthode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
@@ -148,10 +121,10 @@ class Grille
 
     end
     
-# Méthode de génération aléatoire d'une grille, noircissant au hasard des cases, déterminant les conditions et remettant la grille à 0   
+# Méthode de génération aléatoire d'une grille, noircissant au hasarad à l'aide d'un coefficient des cases
     def genererAleatoire(unCoef)
 
-        #remise à zéro des rangées
+    # Les colonnes et les lignes sont préalablement remises à zéro
         @ligne.each { |x|
             
             x.razCases()
@@ -169,7 +142,7 @@ class Grille
             }
         }
 
-        #on noircit des cases au hasard
+        # Deux boucles parcours l'ensemble des cases, et noircissent selon le coefficient passé en paramètres certaines cases
         for i in (0..@taille-1)
       
             for j in (0..@taille-1)
@@ -186,45 +159,44 @@ class Grille
             end
         end
 
-        #la grille remplit les conditions de chaque ligne et colonne.
+        # Pour chaque ligne et colonne les conditions sont déterminées
 	    self.conditionsDeterminer()
 
-        #on remet la grille à zéro (les cases uniquement, pas les conditions)
+        # Toutes les cases noircies sont passées à zéro.
         self.raz()
-
     end
-    
-# Méthode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
-    def sauvegarder(unNom)
 
-        self.raz()
-        @nom = unNom
+#=====================================================
+    # Méthodes de lecture des données
+#=====================================================
 
-        FileUtils.cd('Grille')
-        FileUtils.cd(@taille.to_s())
-        tab = Array.new()
+# Méthode renvoyant la taille de la grille
+    def getTaille()
 
-        if File.size('grilles.yml') != 0 then
-        
-            tab = Array.new(YAML::load(File.open('grilles.yml')))
-            tabnom = Array.new()
-            tab.each { |x|
-                tabnom.push(x[0])
-            }
-            if tabnom.include?(unNom) then
+        return @taille
+    end
 
-                FileUtils.cd('../..')
-                return false
+# Méthode vérifiant si la partie est terminée, en passant en revue la validité de chacune des Rangées
+    def termine?()
+
+        res = true
+    # Chaque colonne et chaque ligne sont parcourues pour vérifier si leurs éléments sont valides
+        @colonne.each { |x|
+
+            if x.valide() == false then
+                res = false
             end
-        end
-        tab.push([@nom, self])
-        File.delete('grilles.yml')
-        File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
-        FileUtils.cd('../..')
-        return true
+        }
+        @ligne.each { |x|
+          
+            if x.valide() == false then
+                
+                res = false
+            end
+        }
+        return res
     end
-  
-  
+
 # Méthode d'affichage reservee aux tests, affichage uniquement des colonnes
     def afficher()
 
@@ -271,4 +243,39 @@ class Grille
             return @grille[y][x].etat
     end
 
+
+#=====================================================
+    # Méthode de sérialisation
+#=====================================================
+
+# Méthode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
+    def sauvegarder(unNom)
+
+        self.raz()
+        @nom = unNom
+
+        FileUtils.cd('Grille')
+        FileUtils.cd(@taille.to_s())
+        tab = Array.new()
+
+        if File.size('grilles.yml') != 0 then
+        
+            tab = Array.new(YAML::load(File.open('grilles.yml')))
+            tabnom = Array.new()
+            tab.each { |x|
+                tabnom.push(x[0])
+            }
+            if tabnom.include?(unNom) then
+
+                FileUtils.cd('../..')
+                return false
+            end
+        end
+        tab.push([@nom, self])
+        File.delete('grilles.yml')
+        File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
+        FileUtils.cd('../..')
+        return true
+    end
+    
 end

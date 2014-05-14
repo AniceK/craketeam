@@ -555,6 +555,40 @@ class Jeu
 
         @partie = nil
     end
+
+# Méthode pour vider toutes les grilles existantes
+    def viderGrilles()
+
+        if @profil!= nil then
+            
+            FileUtils.cd('Grille')
+            for i in [5, 10, 15, 20, 25]
+
+                FileUtils.cd(i.to_s)
+                File.delete('grilles.yml')
+                File.new('grilles.yml', "w")
+                FileUtils.cd('..')
+            end
+            FileUtils.cd('..')
+        else
+
+            raise "Erreur, un profil doit être connecté"
+        end
+    end
+
+# Méthode pour vider les parties sauvegardées
+    def viderParties
+
+        if @profil != nil then
+
+            FileUtils.cd('Profil')
+            FileUtils.cd(self.nomProfil())
+            File.delete('parties.yml')
+            File.new('parties.yml', "w")
+            FileUtils.cd('../..')
+        end
+    end
+
 #===============================================
     #Gestion de la Partie /de l'éditeur en Cours
 #===============================================

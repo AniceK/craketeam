@@ -103,9 +103,10 @@ class EventsJeu < Events
       puts "La sauvegarde en cours a pour nom: " + nomSauvegardeDefaut
       @fenetre.nomSauvegardeDefaut(nomSauvegardeDefaut)
       
-    elsif @jeu.nomSauvegardeDefaut() == nil then
+    elsif !@jeu.nomSauvegardeDefaut() == nil then
       
       puts "Le jeu n'est pas issu d'une sauvegarde"
+      @fenetre.nomSauvegardeDefaut(@jeu.nomProfil() + " " + @tailleGrille.to_s + "x" + @tailleGrille.to_s)
       
     else
       
@@ -320,7 +321,7 @@ class EventsJeu < Events
     x = widget.coordonneeX
     y = widget.coordonneeY
     
-    puts "Case[" + x.to_s + "][" + y.to_s + "]"
+    #puts "Case[" + x.to_s + "][" + y.to_s + "]"
     
     if evenement.button() == 1 then
       
@@ -389,7 +390,7 @@ class EventsJeu < Events
         x = @tailleConditions - 1
            
          # Tant que l'on est pas arrivé à la dernière conditions
-         while (xCondition >= 0) && (x > 0) do
+         while (xCondition >= 0) && (x >= 0) do
            
            condition = Gtk::Label.new("")
          
@@ -431,7 +432,7 @@ class EventsJeu < Events
         y = @tailleConditions - 1
            
          # Tant que l'on est pas arrivé à la dernière conditions
-         while (yCondition >= 0) && (y > 0) do
+         while (yCondition >= 0) && (y >= 0) do
            
            condition = Gtk::Label.new("")
          

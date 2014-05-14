@@ -83,7 +83,6 @@ class FenetreJeu < Fenetre
     
     @boutonPauseMenuPrincipal.set_size_request(-1, 50)
     @entreeSauvegarde.set_max_length(30)
-    @entreeSauvegarde.set_text("save_")
     @boutonSauvegarder.set_size_request(-1, 50)
     
     @vBoxSauvegarde.pack_start(texteSauvegarde, false, false, 0)
@@ -210,20 +209,20 @@ class FenetreJeu < Fenetre
   
   def grandesConditions
     
-    @aligneConditionsV.set_padding(0, 0, 10, 0)
-    @tableauConditionsV.set_column_spacings(25)
-    
-    @aligneConditionsH.set_padding(10, 0, 0, 0)
-    @tableauConditionsH.set_row_spacings(19)
+    #@aligneConditionsV.set_padding(0, 0, 10, 0)
+    #@tableauConditionsV.set_column_spacings(25)
+    #
+    #@aligneConditionsH.set_padding(10, 0, 0, 0)
+    #@tableauConditionsH.set_row_spacings(19)
   end
   
   def petitesConditions
     
-    @aligneConditionsV.set_padding(0, 0, 5, 0)
-    @tableauConditionsV.set_column_spacings(15)
-    
-    @aligneConditionsH.set_padding(5, 0, 0, 0)
-    @tableauConditionsH.set_row_spacings(9.3)
+    #@aligneConditionsV.set_padding(0, 0, 5, 0)
+    #@tableauConditionsV.set_column_spacings(15)
+    #
+    #@aligneConditionsH.set_padding(5, 0, 0, 0)
+    #@tableauConditionsH.set_row_spacings(9.3)
   end
   
   def nomSauvegardeDefaut(nomParDefaut)

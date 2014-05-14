@@ -21,6 +21,37 @@ class EventsOptions < Events
     super(jeu, position)
     
     @fenetre.afficher()
+    @fenetre.affichageDepart()
+    
+    if @jeu.profilConnecte?() then
+      
+      @fenetre.affichageProfil()
+      
+    elsif !@jeu.profilConnecte?() then
+      
+      @fenetre.affichageSimple()
+      
+    else
+      
+      puts "[EventsOptions]Erreur: Test si profil connecté"
+      
+    end
+    
+    @fenetre.boutonViderGrilles.signal_connect('clicked'){
+      
+      puts ("> Vider Grilles")
+      
+      @jeu.viderGrilles()
+      @fenetre.affichageInfos("Les grilles du profil ont été effacées")
+    }
+    
+    @fenetre.boutonViderSauvegardes.signal_connect('clicked'){
+      
+      puts ("> Vider Sauvegardes")
+      
+      @jeu.viderParties()
+      @fenetre.affichageInfos("Les sauvegardes du profil ont été effacées")
+    }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
       puts "> Accueil"
