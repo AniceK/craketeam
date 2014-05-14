@@ -43,6 +43,10 @@ class Rangee
 
     end    #marqueur de fin d initialize
 
+#====================================
+    #Méthodes d'écriture des donnees
+#====================================
+
 # Méthode permettant de déterminer les conditions à partir d'un tableau
 	def conditionsDeterminer()
 
@@ -160,21 +164,24 @@ class Rangee
 
     end     #marqueur de fin de verifier
 
-#methode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
+# Méthode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
     def noircir(numero)
 
         @cases[numero].noircir()
 
     end     #marqueur de fin de noircir
 
-#methode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
-
+# Méthode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
     def marquer(numero)
 
         @cases[numero].marquer
-
     end
     
+#============================================
+    # Méthode de lecture de données
+#============================================
+
+
 # Méthode vérifiant si la case numero est noircie
     def noircie?(numero)
         
