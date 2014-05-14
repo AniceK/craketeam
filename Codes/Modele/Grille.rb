@@ -245,29 +245,43 @@ class Grille
 # Méthode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
     def sauvegarder(unNom)
 
+    # La grille est remise à zéro (pas de case noircie ou marquée)
         self.raz()
         @nom = unNom
 
+    # On se déplace dans le répertoir /Grille/Taille, pour charger le fichier contenant toutes les grilles de cette taille
         FileUtils.cd('Grille')
         FileUtils.cd(@taille.to_s())
         tab = Array.new()
 
-        if File.size('grilles.yml') != 0 then
+    # Si la taille de ce fichier est supérieur à 0 (il n'est donc pas vide), son contenu est chargé dans un tableau tab
+        if File.size('grilles.yml') > 0 then
         
             tab = Array.new(YAML::load(File.open('grilles.yml')))
             tabnom = Array.new()
+
+        # Dans un second tableau, on récupère tous les noms de grilles déjà enregistrées
             tab.each { |x|
                 tabnom.push(x[0])
             }
+        # Si le nom proposé par l'utilisateur est déjà pris, on remonte dans l'arborescence jusqu'à Picross, et on retourne Faux
             if tabnom.include?(unNom) then
 
                 FileUtils.cd('../..')
                 return false
             end
         end
+
+    # On ajoute au tableau tab la dernière grille sous la forme d'un tableau contenant son nom de sauvegarde et la grille
         tab.push([@nom, self])
+
+    # On supprime le fichier précédent, pour éviter d'écrire deux fois le tableau tab
         File.delete('grilles.yml')
+
+    # On enregistre via YAML le tableau dans le fichier
         File.open('grilles.yml',"w"){|out| out.puts tab.to_yaml()}
+
+    #On remonte dans l'arborescence et on retourne true, signe que tout s'est bien passé.
         FileUtils.cd('../..')
         return true
     end
