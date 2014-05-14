@@ -25,7 +25,7 @@ class Rangee
 
 # Méthode de classe d'initialisation de la classe Rangee. Récupère en paramètre le nombre de case de la rangee
 
-    def initialze(nbre)
+    def initialize(nbre)
 
     # On initialise @cases et @conditions avec des tableaux, et on spécifie la taille du tableau de case
         @cases = Array.new(nbre)

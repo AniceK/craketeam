@@ -86,7 +86,20 @@ class ListeElements
   
   def selectionCourante()
     
-    return @selection = widget.child.selection.selected[1]
+    if widget.child.selection.selected() != nil then
+      
+      return @selection = widget.child.selection.selected[1]
+      
+    elsif widget.child.selection.selected() == nil then
+      
+      return nil
+      
+    else
+      
+      puts "[ListeElements]Erreur: Mauvaise réception de la sélection courante"
+      
+    end
+    
   end
   
 end

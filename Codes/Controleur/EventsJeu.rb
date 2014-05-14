@@ -11,6 +11,7 @@ require_relative 'Events'
 require './Vue/Fenetres/FenetreJeu'
 require './Vue/Elements/CaseCartesienne'
 require './Vue/Dialogues/DialogueQuitterPartie'
+require './Vue/Dialogues/DialogueEcraserSauvegarde'
 require './Vue/Dialogues/DialogueAide'
 
 #===============================================================================#
@@ -83,10 +84,10 @@ class EventsJeu < Events
       initialiserGrille(700, 550)
       initialiserPositionsCases(3, 5)
     when 15
-      initialiserGrille(750, 550)
+      initialiserGrille(800, 500)
       initialiserPositionsCases(4, 5)
     when 20
-      initialiserGrille(1000, 700)
+      initialiserGrille(1100, 650)
       initialiserPositionsCases(5, 6)
     when 25
       initialiserGrille(1300, 800)
@@ -156,9 +157,26 @@ class EventsJeu < Events
       puts "> Accueil (nom de sauvegarde: " + nomSauvegarde + ")"
       
       if @jeu.sauvegarderPartie(nomSauvegarde) then
+        
         mouvement(EventsAccueil.new(@jeu, position() ))
+        
       else
+        
         puts "Erreur: nom de sauvegarde existant"
+        dialog = DialogueEcraserSauvegarde.new(@fenetre.widget())
+        
+        if dialog.doitEcraser == true then
+          
+          puts "Sauvegarde écrasée"
+          @jeu.remplacerSauvegarde(nomSauvegarde)
+          mouvement(EventsAccueil.new(@jeu, position() ))
+          
+        elsif dialog.doitEcraser == false then
+          
+          puts "Sauvegarde non écrasée"
+          
+        end
+        
       end
     }
     

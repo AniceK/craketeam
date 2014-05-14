@@ -74,6 +74,8 @@ class FenetreAccueil < Fenetre
   
   def affichageSansProfil()
     
+    @fenetre.set_title("Accueil - Visiteur")
+    
     @boutonJouer.hide_all()
     @boutonEditeur.hide_all()
     @boutonDeconnexion.hide_all()

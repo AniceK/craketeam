@@ -45,7 +45,7 @@ class EventsChoixCreation < Events
     
     
     @fenetre.afficher()
-    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
+    @fenetre.affichageDepart()
     
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){
@@ -56,14 +56,26 @@ class EventsChoixCreation < Events
     
     @fenetre.boutonSuivant.signal_connect('clicked'){
       
-      nomCreation = @fenetre.choixCreation()
-      tailleCreation = @jeu.tailleGrille()
       
-      puts "> Suivant (Creation: " + nomCreation + ")"
-      
-      @jeu.chargerGrille(nomCreation, tailleCreation)
-      
-      mouvement(EventsJeu.new(@jeu, position() ))
+      if (nomCreation = @fenetre.choixCreation() ) != nil then
+        
+        tailleCreation = @jeu.tailleGrille()
+        
+        puts "> Suivant (Creation: " + nomCreation + ")"
+        
+        @jeu.chargerGrille(nomCreation, tailleCreation)
+        
+        mouvement(EventsJeu.new(@jeu, position() ))
+        
+      elsif @fenetre.choixCreation() == nil then 
+        
+        @fenetre.affichageAucuneGrilleSelectionnee()
+        
+      else
+        
+        puts "[EventsChoixCreation]Erreur: Mauvaise gestion du choix de création"
+        
+      end
     }
   end
   

@@ -32,7 +32,7 @@ class EventsChoixGrille < Events
     super(jeu, position)
     
     @fenetre.afficher()
-    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
+    @fenetre.affichageDepart()
     
     if !@jeu.profilConnecte?() then
       
@@ -56,6 +56,7 @@ class EventsChoixGrille < Events
       else
         
         puts "Erreur: Pas de créations"
+        @fenetre.affichageAucuneGrille()
         
       end
     }
@@ -77,6 +78,7 @@ class EventsChoixGrille < Events
       else
         
         puts "Erreur: Pas de créations"
+        @fenetre.affichageAucuneGrillePerso()
         
       end
     }
@@ -98,3 +100,16 @@ class EventsChoixGrille < Events
   end
   
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
