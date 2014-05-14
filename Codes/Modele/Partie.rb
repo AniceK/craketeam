@@ -13,8 +13,9 @@ require 'fileutils'
 
 class Partie
 
-    @grille
-    @date           #heure et date de la sauvegarde de la partie
+    @grille         # Grille de jeu
+    @date           # heure et date de la derniere sauvegarde de la partie
+    @nom            # nom de la derniere sauvegarde de la partie
     @joueur         #nom du joueur qui joue (différent du créateur de la grille)
     @type           #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
     @aide           #contient l'IA d'aide
@@ -23,7 +24,7 @@ class Partie
     @active         #booleen définissant si la partie est active (lancée, en cours) ou non
 
 
-    attr_reader :grille, :type, :aide, :date, :joueur, :temps, :chronometre, :active
+    attr_reader :grille, :type, :aide, :date, :joueur, :temps, :chronometre, :active, :nom
 
 # Constructeur de la classe Partie
     def Partie.creer(taille, difficulte, nom)
@@ -37,6 +38,7 @@ class Partie
 
 		@grille = Grille.creer(nom, taille)
 		@date = Time.now
+        @nom = nil
         @joueur = nom
         @aide = Aide.creer(difficulte)
         @temps = 0
@@ -88,6 +90,12 @@ class Partie
             raise "Partie déjà en cours!"
         end
 	end
+
+# Méthode pour écrire le nom de la sauvegarde dans la partie
+    def ecrireNom(unNom)
+
+        @nom = unNom
+    end
 
 #méthode chargée de mettre le chronomètre et la partie en pause
     def pause()

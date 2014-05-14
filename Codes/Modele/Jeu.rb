@@ -581,6 +581,7 @@ class Jeu
                 end
                 @partie.tuerChrono()
                 @partie.actualiser()
+                @partie.ecrireNom(nomSauvegarde)
                 liste.push([nomSauvegarde, @partie])
                 File.delete('parties.yml')
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
@@ -833,4 +834,13 @@ class Jeu
         end
     end
 
+# Méthode pour récuperer le nom de la sauvegarde
+    def nomSauvegardeDefaut()
+
+        if @partie.class == Partie then
+
+            return @partie.nom
+        else
+            raise "erreur : une partie doit être en cours pour demander le nom de la dernière sauvegarde de cette partie"
+    end
 end
