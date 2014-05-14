@@ -12,11 +12,11 @@ require 'fileutils'
 
 class Grille
 
-    @colonne
-    @ligne
-    @grille
-    @createur
-    @taille
+    @colonne        # Variable contenant un tableau de Rangée destinées à être verticales
+    @ligne          # Variable contenant un tableau de Rangée destinées à être horizontales
+    @grille         # Variable contenant une matrice de case
+    @createur       # Variable contenant le nom du profil ayant créé la grille
+    @taille         # Variable définissant la taille de la grille
     @nom
     @date
 
