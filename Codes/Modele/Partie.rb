@@ -220,7 +220,7 @@ class Partie
 # Methode de marquage d'une case (X, Y)
     def marquer(x, y)
 
-        @grille.marquer(x, y)
+        @grille.marquerCase(x, y)
     end
 
 # Méthode pour retourner la taille de la grille

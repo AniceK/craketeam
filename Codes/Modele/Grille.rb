@@ -142,9 +142,9 @@ class Grille
 
 	def marquerCase(coordX, coordY)
 
-	    @colonne[coordY].marquer(coordX)
-	    @ligne[coordX].marquer(coordY)
-        @grille[coordX][coordY].marquer()
+	    @colonne[coordX].marquer(coordY)
+	    @ligne[coordY].marquer(coordX)
+        @grille[coordY][coordX].marquer()
 
     end
     
