@@ -29,7 +29,7 @@ Diapo trois
 Diapo quatre
 ============
     Introduction
-        --> Projet dans le cadre de notre L3 blablabla..... (langage imposé, séances hebdomadaire, cahier des charges,
+        --> Projet dans le cadre de notre L3 blablabla..... (langage imposé, séances hebdomadaireis, cahier des charges,
 			dossier de conception...)
 
 =================
@@ -44,14 +44,14 @@ Diapo sept à neuf
 =================
     Choix de conception
         --> Très grosse partie, énumération et justification des choix de conception (résumé du dossier de conception)
-			shémas issus du Dossier de Conception (diagramme de classe, PERT....), ainsi que Design Pattern utilisés que
-			l'utilisation de YAML pour la sérialisation et pourquoi
+			shémas issus du Dossier de Conception (diagramme de classe, PERT....), ainsi que les Design Pattern utilisés
+			et l'utilisation de YAML pour la sérialisation et pourquoi
 
 ==================
 Diapo dix à treize
 ==================
     Déroulement du projet
-        --> Explication de l'organisation (répartion des taĉhes dans le temps et entre les différentes équipes)
+        --> Explication de l'organisation (répartion des tâches dans le temps et entre les différentes équipes)
 			planning prévisionnel et planning réel, difficultés rencontrées (seulement celles qui peuvent intéresser un
 			client)
 
@@ -87,5 +87,6 @@ Diapo dix-neuf et vingt
 =======================
     Remerciement & Questions
         --> Remerciements hypocrites de rigueur (remercier les concepteurs de ruby et de YAML ainsi que l'inconnu
-			inventeur du picross)
+			inventeur du picross et peut être nos profs, mais ça je ne sais pas si ça vaut le coup ou si c'est même
+			crédible)
         --> Questions ?
