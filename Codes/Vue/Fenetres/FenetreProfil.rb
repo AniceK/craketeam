@@ -29,6 +29,8 @@ class FenetreProfil < Fenetre
     @boutonCreerProfil = Gtk::Button.new("Créer Profil")
     @boutonChargerProfil = Gtk::Button.new("Charger Profil")
     @boutonPrecedent = Gtk::Button.new('Précédent')
+    @textePseudoExistant = Gtk::Label.new("")
+    @textePseudoInexistant = Gtk::Label.new("")
     
     @entreeNomProfil.set_max_length(20)
     @entreeNomProfil.set_text("player")
@@ -50,11 +52,33 @@ class FenetreProfil < Fenetre
     hBoxBoutons.pack_start(@boutonCreerProfil, false, false, 0)
     hBoxBoutons.pack_start(@boutonChargerProfil, false, false, 0)
     
-    vBox.pack_start(hBoxNom, true, true, 20)
+    vBox.pack_start(hBoxNom, true, true, 10)
+    vBox.pack_start(@textePseudoExistant, true, true, 10)
+    vBox.pack_start(@textePseudoInexistant, true, true, 10)
     vBox.pack_start(hBoxBoutons, false, true, 20)
     vBox.pack_start(@boutonPrecedent, false, true, 0)
     
     @fenetre.add(vBox)
+  end
+  
+  def affichageDepart
+    
+    @textePseudoExistant.hide_all()
+    @textePseudoInexistant.hide_all()
+  end
+  
+  def affichagePseudoExistant
+    
+    @textePseudoInexistant.hide_all()
+    @textePseudoExistant.set_markup("<span foreground='red'>Le pseudo \"" + @entreeNomProfil.text() + "\" est déjà utilisé</span>")
+    @textePseudoExistant.show_all()
+  end
+  
+  def affichagePseudoInexistant
+    
+    @textePseudoExistant.hide_all()
+    @textePseudoInexistant.set_markup("<span foreground='red'>Le pseudo \"" + @entreeNomProfil.text() + "\" n'existe pas</span>")
+    @textePseudoInexistant.show_all()
   end
   
 end

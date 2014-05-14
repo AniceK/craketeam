@@ -151,9 +151,15 @@ class EventsEditeur < Events
           dialogue.popup.destroy()
           return false
           
+        when Gtk::Dialog::RESPONSE_DELETE_EVENT
+          
+          puts "Fenêtre fermée !"
+          dialogue.popup.destroy()
+          return false
+          
         else
           
-          puts "Erreur: Réception boutons Dialogue Enregistrer"
+          puts "[EventsEditeur]Erreur: Réception signal Dialogue Enregistrer ==> " + reponse.to_s
           
         end
       end

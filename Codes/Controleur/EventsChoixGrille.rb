@@ -64,9 +64,21 @@ class EventsChoixGrille < Events
       
       puts "> Grilles perso"
       
+      tailleCreation = @jeu.tailleGrille()
+      
       afficheTout = false
       
-      mouvement(EventsChoixCreation.new(@jeu, position() , afficheTout))
+      # => Renvoie un tableau de grilles ayant des variables "taille", "nom", "date"
+      if listeCreations = @jeu.chargerListeGrillesExistantes(tailleCreation, afficheTout) then
+      
+        puts "Liste des créations : " + listeCreations.to_s
+        mouvement(EventsChoixCreation.new(@jeu, position() , listeCreations, afficheTout))
+        
+      else
+        
+        puts "Erreur: Pas de créations"
+        
+      end
     }
     
     @fenetre.boutonGrilleAleatoire.signal_connect('clicked'){

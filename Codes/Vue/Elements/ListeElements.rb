@@ -27,28 +27,15 @@ class ListeElements
     
     liste.each_with_index do |e, i|
       
-      puts e.to_s
-      
       reference = modele.append
     
-      #  À utiliser par la suite
-      # 
        modele.set_value(reference, TAILLE, liste[i][0])
        modele.set_value(reference, NOM, liste[i][1])
        modele.set_value(reference, DATE, liste[i][2].asctime())
       
-      #modele.set_value(reference, TAILLE, liste[i].taille)
-      #modele.set_value(reference, NOM, liste[i].nom)
-      #modele.set_value(reference, DATE, liste[i].date.asctime())
-      
     end
     
     affichage.model = modele
-    
-    affichage.signal_connect('button_release_event') do |widget,event|
-      
-      @selection = widget.selection.selected[1]
-    end
     
     @listeDeroulante.add(affichage)
     @listeDeroulante.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
@@ -97,9 +84,9 @@ class ListeElements
   end
   
   
-  def selectionne()
+  def selectionCourante()
     
-    return @selection
+    return @selection = widget.child.selection.selected[1]
   end
   
 end

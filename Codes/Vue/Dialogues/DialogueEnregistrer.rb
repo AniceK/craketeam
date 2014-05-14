@@ -51,7 +51,6 @@ class DialogueEnregistrer < Dialogue
   
   def nomExistant(nom)
     
-    #@labelNomExistant.set_text("Le nom \"" + nom + "\" est déjà utilisé")
     @labelNomExistant.set_markup("<span foreground='red'>Nom \"" + nom + "\" déjà utilisé</span>")
     @labelNomExistant.show_all()
   end
