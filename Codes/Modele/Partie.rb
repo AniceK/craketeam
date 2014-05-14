@@ -119,18 +119,18 @@ class Partie
             puts "Ouverture de grilles.yml dans #{taille}, et on choisit toute les grilles? #{toutes}"
             tab = Array.new()
             tab = YAML::load(File.open('grilles.yml'))
+            tabInter = Array.new
             unTab = Array.new()
         
             if !toutes then
 
                 puts "on vire tout ce qui n'appartient pas au joueur #{@joueur}"
-                tab.delete_if { |x|
+                tabInter = tab.find_all { |x|
 
-                    x[1].createur != @joueur
-                    puts "On a viré de la liste une grille appartenant à #{x[1].nom}"
+                    x[1].createur == @joueur
                 }
             end
-            tab.each { |x|
+            tabInter.each { |x|
             
                 unTab.push([x[1].taille, x[0], x[1].date])
             }
