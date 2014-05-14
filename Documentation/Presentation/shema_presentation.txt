@@ -44,8 +44,8 @@ Diapo sept à neuf
 =================
     Choix de conception
         --> Très grosse partie, énumération et justification des choix de conception (résumé du dossier de conception)
-			shémas issus du Dossier de Conception (diagramme de classe, PERT....), ainsi que Design Pattern utilisés que
-			l'utilisation de YAML pour la sérialisation et pourquoi
+			shémas issus du Dossier de Conception (diagramme de classe, PERT....), ainsi que les Design Pattern utilisés
+			et l'utilisation de YAML pour la sérialisation et pourquoi
 
 ==================
 Diapo dix à treize
