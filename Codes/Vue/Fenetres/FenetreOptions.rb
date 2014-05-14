@@ -9,12 +9,16 @@ require_relative 'Fenetre'
 
 class FenetreOptions < Fenetre
   
+  @texteInfos
   @boutonViderGrilles
   @boutonViderSauvegardes
   @boutonPrecedent
+  @hBoxVider
   
-  attr_reader :boutonViderGrilles,
+  attr_reader :texteInfos,
+              :boutonViderGrilles,
               :boutonViderSauvegardes,
+              :hBoxVider,
               :boutonPrecedent
   
   public_class_method :new
@@ -23,6 +27,8 @@ class FenetreOptions < Fenetre
     super()
     
     @fenetre.set_title("Options")
+    
+    @texteInfos = Gtk::Label.new("")
     
     @boutonViderGrilles = Gtk::Button.new('Réinitialiser Créations')
     @boutonViderSauvegardes = Gtk::Button.new('Réinitialiser Sauvegarde')
@@ -34,19 +40,40 @@ class FenetreOptions < Fenetre
     
     @boutonPrecedent.set_size_request(-1, 50)
     
-    hBoxVider = Gtk::HBox.new(true, 0)
+    @hBoxVider = Gtk::HBox.new(true, 0)
     vBox = Gtk::VBox.new(false, 0)
     
-    hBoxVider.set_border_width(5)
+    @hBoxVider.set_border_width(5)
     vBox.set_border_width(5)
     
-    hBoxVider.pack_start(@boutonViderGrilles, false, false, 0)
-    hBoxVider.pack_start(@boutonViderSauvegardes, false, false, 0)
+    @hBoxVider.pack_start(@boutonViderGrilles, false, false, 0)
+    @hBoxVider.pack_start(@boutonViderSauvegardes, false, false, 0)
     
-    vBox.pack_start(hBoxVider, true, false, 10)
+    vBox.pack_start(@hBoxVider, true, false, 10)
     vBox.pack_end(@boutonPrecedent, false, true, 0)
+    vBox.pack_end(@texteInfos, false, false, 0)
     
     @fenetre.add(vBox)
+  end
+  
+  def affichageDepart()
+    
+    @texteInfos.hide_all()
+  end
+  
+  def affichageSimple()
+    
+    @hBoxVider.hide_all()
+  end
+  
+  def affichageProfil()
+    
+    @hBoxVider.show_all()
+  end
+  
+  def affichageInfos(message)
+    
+    @texteInfos.set_text(message)
   end
   
 end

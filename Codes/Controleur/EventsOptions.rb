@@ -21,6 +21,21 @@ class EventsOptions < Events
     super(jeu, position)
     
     @fenetre.afficher()
+    @fenetre.affichageDepart()
+    
+    if @jeu.profilConnecte?() then
+      
+      @fenetre.affichageProfil()
+      
+    elsif !@jeu.profilConnecte?() then
+      
+      @fenetre.affichageSimple()
+      
+    else
+      
+      puts "[EventsOptions]Erreur: Test si profil connecté"
+      
+    end
     
     @fenetre.boutonViderGrilles.signal_connect('clicked'){
       
