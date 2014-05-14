@@ -137,6 +137,9 @@ class Partie
 
                     x[1].createur == @joueur
                 }
+            else
+                
+                tabInter = tab
             end
             tabInter.each { |x|
             
