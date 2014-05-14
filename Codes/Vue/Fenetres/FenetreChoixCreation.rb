@@ -80,7 +80,7 @@ class FenetreChoixCreation < Fenetre
   
   def choixCreation()
     
-    return @listeCreations.selectionne()
+    return @listeCreations.selectionCourante()
   end
   
 end

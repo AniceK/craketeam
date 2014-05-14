@@ -80,7 +80,7 @@ class FenetreChoixSauvegarde < Fenetre
   
   def choixSauvegarde()
     
-    return @listeSauvegardes.selectionne()
+    return @listeSauvegardes.selectionCourante()
   end
   
 end

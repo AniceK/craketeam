@@ -114,25 +114,23 @@ class Partie
         FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
         
-        if File.size('grilles.yml') == 0 then
+        if File.size('grilles.yml') > 0 then
            
-          FileUtils.cd('../..')
-          return nil
-        else
-            
+            puts "Ouverture de grilles.yml dans #{taille}, et on choisit toute les grilles? #{toutes}"
             tab = Array.new()
             tab = YAML::load(File.open('grilles.yml'))
+            tabInter = Array.new
             unTab = Array.new()
-
+        
             if !toutes then
 
-                tab.delete_if{ |x|
-                
-                    x[0] != @joueur
+                puts "on vire tout ce qui n'appartient pas au joueur #{@joueur}"
+                tabInter = tab.find_all { |x|
+
+                    x[1].createur == @joueur
                 }
             end
-        
-            tab.each { |x|
+            tabInter.each { |x|
             
                 unTab.push([x[1].taille, x[0], x[1].date])
             }
@@ -140,6 +138,10 @@ class Partie
             FileUtils.cd('../..')
 
             return unTab
+        else
+
+            FileUtils.cd('../..')
+            return nil
         end
 
 	end

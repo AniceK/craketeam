@@ -434,31 +434,50 @@ class Jeu
 	end
     
 # Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
-    def supprimmerPartie(p)
+    def supprimmerPartie(unNom)
 
         if @profil != nil then
             
-            if @verbose then puts "suppression d'une partie!" end
+            if @verbose then 
+                
+                puts "suppression d'une partie!" 
+            end
+
             liste = Array.new()
             FileUtils.cd('Profil')
             FileUtils.cd(@profil.nom)
-            FileUtils.cd('Parties')
 
             if File.size('parties.yml') > 0 then
             
                 liste = YAML::load(File.open('parties.yml'))
-            end
-            
-            if liste.empty? then
+                listeNoms = Array.new()
+                
+                liste.each { |x|
 
-                if @verbose then puts "Aucune partie n'est sauvegardée, impossible de supprimer" end
-                return false
+                    listeNoms.push(x[0])
+                }
+                if (index = listeNoms.index(unNom)) != nil then
+
+                    sup = liste.delete_at(index)
+                    File.delete('parties.yml')
+                    File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+                    FileUtils.cd('../..')
+                    return (sup == p)
+                else
+                   
+                    raise "erreur : aucune sauvegarde nommée #{unNom}"
+                end
             else
-                sup = liste.delete(p)
-                File.delete('parties.yml')
-                File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-                FileUtils.cd('../../..')
-                return (sup == p)
+            
+               if @verbose then 
+                   
+                   puts "Aucune partie n'est sauvegardée, impossible de supprimer" 
+               end
+               
+               FileUtils.cd('../..')
+
+               return false
+
             end
         else
             raise "Aucun profil n'est chargé : impossible de supprimer une partie!"
@@ -531,9 +550,9 @@ class Jeu
 
         @partie = nil
     end
-#==============================================
+#===============================================
     #Gestion de la Partie /de l'éditeur en Cours
-#==============================================
+#===============================================
 
 # Méthode sauvegardant la partie en cours
 	def sauvegarderPartie(nomSauvegarde)
@@ -543,25 +562,31 @@ class Jeu
             if @partie.class == Partie then
             
                 liste = Array.new()
-                @partie.tuerChrono()
-                @partie.actualiser()
                 FileUtils.cd('Profil')
                 FileUtils.cd(@profil.nom)
-                if File.size("parties.yml") != 0 then
+
+                if File.size("parties.yml") > 0 then
                 
                     liste = YAML::load(File.open('parties.yml'))
                     listenom = Array.new()
                     liste.each { |x|
+
                         listenom.push(x[0])
                     }
                     if listenom.include?(nomSauvegarde) then
+                       
+                        FileUtils.cd('../..')
                         return false
                     end
                 end
+                @partie.tuerChrono()
+                @partie.actualiser()
                 liste.push([nomSauvegarde, @partie])
+                File.delete('parties.yml')
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../..')
                 return true
+
             else
 
                 @profil.ajouterUneGrille()
@@ -570,7 +595,7 @@ class Jeu
 
         else
             
-            raise "Aucune partie n'est en cours!"
+            raise "Rien (ni éditeur, ni partie) n'est en cours!"
         end
     end
 
@@ -797,4 +822,15 @@ class Jeu
 
         @partie = nil
     end
+
+# Méthode pour remplacer une sauvegarde existante par une nouvelle partie
+    def remplacerSauvegarde(unNom)
+
+        if @partie.class == Partie then
+
+            self.supprimmerPartie(unNom)
+            self.sauvegarderPartie(unNom)
+        end
+    end
+
 end
