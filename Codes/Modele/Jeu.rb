@@ -434,7 +434,7 @@ class Jeu
 	end
     
 # Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
-    def supprimmerPartie(p)
+    def supprimmerPartie(unNom)
 
         if @profil != nil then
             
@@ -447,18 +447,16 @@ class Jeu
             if File.size('parties.yml') > 0 then
             
                 liste = YAML::load(File.open('parties.yml'))
-            end
-            
-            if liste.empty? then
-
-                if @verbose then puts "Aucune partie n'est sauvegardée, impossible de supprimer" end
-                return false
-            else
                 sup = liste.delete(p)
                 File.delete('parties.yml')
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../../..')
                 return (sup == p)
+            else
+            
+               if @verbose then puts "Aucune partie n'est sauvegardée, impossible de supprimer" end
+                return false
+
             end
         else
             raise "Aucun profil n'est chargé : impossible de supprimer une partie!"
@@ -797,4 +795,15 @@ class Jeu
 
         @partie = nil
     end
+
+# Méthode pour remplacer une sauvegarde existante par une nouvelle partie
+    def remplacerSAuvegarde(unNom)
+
+        if @partie.class == Partie then
+
+            self.supprimmerPartie(unNom)
+            self.sauvegarderPartie(unNom)
+        end
+    end
+
 end
