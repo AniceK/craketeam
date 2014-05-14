@@ -842,5 +842,6 @@ class Jeu
             return @partie.nom
         else
             raise "erreur : une partie doit être en cours pour demander le nom de la dernière sauvegarde de cette partie"
+        end
     end
 end

@@ -98,6 +98,21 @@ class EventsJeu < Events
     
     self.initialiserChrono()
     
+    if nomSauvegardeDefaut = @jeu.nomSauvegardeDefaut() then
+      
+      puts "La sauvegarde en cours a pour nom: " + nomSauvegardeDefaut
+      @fenetre.nomSauvegardeDefaut(nomSauvegardeDefaut)
+      
+    elsif @jeu.nomSauvegardeDefaut() == nil then
+      
+      puts "Le jeu n'est pas issu d'une sauvegarde"
+      
+    else
+      
+      puts "[EventJeu]Erreur: Récupération du nom de sauvegarde si existante"
+      
+    end
+    
     @fenetre.afficher()
     
     @fenetre.affichageDepart()
