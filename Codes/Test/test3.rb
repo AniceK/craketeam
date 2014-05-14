@@ -41,13 +41,13 @@ ra.afficher()
 
 =end
 
-taille = 5
+taille = 10
    
 puts "Test de la Grille"
 g1 = Grille.creer("toto", taille)
 aide = Aide.creer(1)
 
-g1.genererAleatoire(90)
+g1.genererAleatoire(50)
 
 g1.afficher()
 

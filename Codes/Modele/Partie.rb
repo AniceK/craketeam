@@ -13,8 +13,9 @@ require 'fileutils'
 
 class Partie
 
-    @grille
-    @date           #heure et date de la sauvegarde de la partie
+    @grille         # Grille de jeu
+    @date           # heure et date de la derniere sauvegarde de la partie
+    @nom            # nom de la derniere sauvegarde de la partie
     @joueur         #nom du joueur qui joue (différent du créateur de la grille)
     @type           #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
     @aide           #contient l'IA d'aide
@@ -23,7 +24,7 @@ class Partie
     @active         #booleen définissant si la partie est active (lancée, en cours) ou non
 
 
-    attr_reader :grille, :type, :aide, :date, :joueur, :temps, :chronometre, :active
+    attr_reader :grille, :type, :aide, :date, :joueur, :temps, :chronometre, :active, :nom
 
 # Constructeur de la classe Partie
     def Partie.creer(taille, difficulte, nom)
@@ -37,6 +38,7 @@ class Partie
 
 		@grille = Grille.creer(nom, taille)
 		@date = Time.now
+        @nom = nil
         @joueur = nom
         @aide = Aide.creer(difficulte)
         @temps = 0
@@ -89,6 +91,12 @@ class Partie
         end
 	end
 
+# Méthode pour écrire le nom de la sauvegarde dans la partie
+    def ecrireNom(unNom)
+
+        @nom = unNom
+    end
+
 #méthode chargée de mettre le chronomètre et la partie en pause
     def pause()
 
@@ -114,25 +122,23 @@ class Partie
         FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
         
-        if File.size('grilles.yml') == 0 then
+        if File.size('grilles.yml') > 0 then
            
-          FileUtils.cd('../..')
-          return nil
-        else
-            
+            puts "Ouverture de grilles.yml dans #{taille}, et on choisit toute les grilles? #{toutes}"
             tab = Array.new()
             tab = YAML::load(File.open('grilles.yml'))
+            tabInter = Array.new
             unTab = Array.new()
-
+        
             if !toutes then
 
-                tab.delete_if{ |x|
-                
-                    x[0] != @joueur
+                puts "on vire tout ce qui n'appartient pas au joueur #{@joueur}"
+                tabInter = tab.find_all { |x|
+
+                    x[1].createur == @joueur
                 }
             end
-        
-            tab.each { |x|
+            tabInter.each { |x|
             
                 unTab.push([x[1].taille, x[0], x[1].date])
             }
@@ -140,6 +146,10 @@ class Partie
             FileUtils.cd('../..')
 
             return unTab
+        else
+
+            FileUtils.cd('../..')
+            return nil
         end
 
 	end

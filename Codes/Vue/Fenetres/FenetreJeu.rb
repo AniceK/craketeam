@@ -92,8 +92,7 @@ class FenetreJeu < Fenetre
     @vBoxPause.pack_start(@vBoxSauvegarde, false, false, 0)
     @vBoxPause.pack_start(@boutonPauseMenuPrincipal, false, false, 0)
     
-    
-    
+        
     ################################################################
     #                                                              #
     #                          Chronomètre                          #
@@ -141,11 +140,9 @@ class FenetreJeu < Fenetre
     @alignePause.add(@boutonPause)
     
     @aligneConditionsH = Gtk::Alignment.new(1,0,0,1)
-    @aligneConditionsH.set_padding(10, 0, 0, 0)
     @aligneConditionsH.add(@tableauConditionsH)
     
     @aligneConditionsV = Gtk::Alignment.new(0,1,1,0)
-    @aligneConditionsV.set_padding(0, 0, 10, 0)
     @aligneConditionsV.add(@tableauConditionsV)
     
     @tableauGeneral.set_row_spacings(10)
@@ -213,14 +210,25 @@ class FenetreJeu < Fenetre
   
   def grandesConditions
     
+    @aligneConditionsV.set_padding(0, 0, 10, 0)
     @tableauConditionsV.set_column_spacings(25)
+    
+    @aligneConditionsH.set_padding(10, 0, 0, 0)
     @tableauConditionsH.set_row_spacings(19)
   end
   
   def petitesConditions
     
+    @aligneConditionsV.set_padding(0, 0, 5, 0)
     @tableauConditionsV.set_column_spacings(15)
+    
+    @aligneConditionsH.set_padding(5, 0, 0, 0)
     @tableauConditionsH.set_row_spacings(9.3)
+  end
+  
+  def nomSauvegardeDefaut(nomParDefaut)
+    
+    @entreeSauvegarde.set_text(nomParDefaut)
   end
   
   def affichagePauseProfil()
@@ -232,6 +240,8 @@ class FenetreJeu < Fenetre
     
     @tableauGeneral.hide_all()   
     @vBoxPause.show_all()
+    
+    @entreeSauvegarde.set_focus(true)
   end
   
   def affichagePauseSimple()

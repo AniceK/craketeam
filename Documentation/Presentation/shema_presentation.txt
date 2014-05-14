@@ -1,0 +1,92 @@
+shema_presentation.txt
+
+:Author: Erwan Marchand (mccartnay)
+:Email: Erwan.Marchand.Etu@univ-lemans.fr
+:Date: 2014-05-14 15:59
+
+
+
+=========
+Diapo une
+=========
+    Nom du Projet & Nom de l'équipe
+
+==========
+Diapo deux
+==========
+    Membre de l'équipe & photo
+        --> Rapide présentation de l'équipe, à savoir nom prénom et rôle dans l'équipe (peut être pas trop insiter sur
+		    le rôle, on risquerait d'avoir l'air prétencieux)
+        --> Présentation succinte du projet, réalisation d'un picross et rapide présentation de ce qu'est le picross
+
+===========
+Diapo trois
+===========
+    Sommaire
+        --> Présentation du déroulement de le présentation, énumération des différentes parties
+
+============
+Diapo quatre
+============
+    Introduction
+        --> Projet dans le cadre de notre L3 blablabla..... (langage imposé, séances hebdomadaireis, cahier des charges,
+			dossier de conception...)
+
+=================
+Diapo cinq et six
+=================
+    Attente du client
+        --> Enumération des attentes du client (résumé du cahier des charges)
+			énumértion des fonctionnalités obligatoires et du langage imposé en mettant un ou deux shémas issus du CDCF
+
+=================
+Diapo sept à neuf
+=================
+    Choix de conception
+        --> Très grosse partie, énumération et justification des choix de conception (résumé du dossier de conception)
+			shémas issus du Dossier de Conception (diagramme de classe, PERT....), ainsi que les Design Pattern utilisés
+			et l'utilisation de YAML pour la sérialisation et pourquoi
+
+==================
+Diapo dix à treize
+==================
+    Déroulement du projet
+        --> Explication de l'organisation (répartion des tâches dans le temps et entre les différentes équipes)
+			planning prévisionnel et planning réel, difficultés rencontrées (seulement celles qui peuvent intéresser un
+			client)
+
+======================
+Diapo quatorze à seize
+======================
+    Résultat
+        --> Enumération des fonctionnalités demandées mise en place (une liste bête et méchante)
+        --> Enumération des fonctionnalités ajoutées par nos soins (idem)
+        --> Enumération des fonctionnalités prévues mais non abouties (idem)
+
+==============
+Diapo dix-sept
+==============
+    Démo
+        --> Présentation de la gestion de profil (possibilité dans créer un ou non et de charger les parties
+			enregistrées précédement)
+        --> Préparation d'une partie et de ses différentes fonctionnalités (lancement d'une partie avec choix de taille
+			et de type de création ainsi que des actions du jeu et d'une séquence de sauvegarde et surtout du magnifique
+			module d'aide créé par notre non moins magnifique chef de projet....un peu de cirage de pompe n'a jamais tué
+			personne^^
+        --> Présentation de l'éditeur (édition et sauvegarde d'une grille à la main)
+
+==============
+Diapo dix-huit
+==============
+    Conclusion
+        --> Le truc bateau, à savoir ce que l'on a appris ce que l'on va en retenir blablabla...... (répartition des
+			tâches de manière équitable et relation entre les taĉhes compliquent la gestion d'un projet mené à plusieurs)
+
+=======================
+Diapo dix-neuf et vingt
+=======================
+    Remerciement & Questions
+        --> Remerciements hypocrites de rigueur (remercier les concepteurs de ruby et de YAML ainsi que l'inconnu
+			inventeur du picross et peut être nos profs, mais ça je ne sais pas si ça vaut le coup ou si c'est même
+			crédible)
+        --> Questions ?

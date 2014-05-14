@@ -96,6 +96,7 @@ class EventsAccueil < Events
     }
     
     @fenetre.boutonDeconnexion.signal_connect('clicked'){
+      
       puts "> Accueil (Déconnexion)"
       
       @jeu.deconnecter()
