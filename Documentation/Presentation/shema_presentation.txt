@@ -70,7 +70,9 @@ Diapo dix-sept
         --> Présentation de la gestion de profil (possibilité dans créer un ou non et de charger les parties
 			enregistrées précédement)
         --> Préparation d'une partie et de ses différentes fonctionnalités (lancement d'une partie avec choix de taille
-			et de type de création ainsi que des actions du jeu et d'une séquence de sauvegarde)
+			et de type de création ainsi que des actions du jeu et d'une séquence de sauvegarde et surtout du magnifique
+			module d'aide créé par notre non moins magnifique chef de projet....un peu de cirage de pompe n'a jamais tué
+			personne^^
         --> Présentation de l'éditeur (édition et sauvegarde d'une grille à la main)
 
 ==============
