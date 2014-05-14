@@ -29,7 +29,7 @@ Diapo trois
 Diapo quatre
 ============
     Introduction
-        --> Projet dans le cadre de notre L3 blablabla..... (langage imposé, séances hebdomadaire, cahier des charges,
+        --> Projet dans le cadre de notre L3 blablabla..... (langage imposé, séances hebdomadaireis, cahier des charges,
 			dossier de conception...)
 
 =================
@@ -51,7 +51,7 @@ Diapo sept à neuf
 Diapo dix à treize
 ==================
     Déroulement du projet
-        --> Explication de l'organisation (répartion des taĉhes dans le temps et entre les différentes équipes)
+        --> Explication de l'organisation (répartion des tâches dans le temps et entre les différentes équipes)
 			planning prévisionnel et planning réel, difficultés rencontrées (seulement celles qui peuvent intéresser un
 			client)
 
