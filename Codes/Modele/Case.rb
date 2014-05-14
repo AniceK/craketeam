@@ -14,17 +14,15 @@ class Case
     @y          #coordonnees en ordonnees
 
     attr :etat, false
-    def Case.creer(x, y)
+    def Case.creer()
 
-		new(x, y)
+		new()
 
     end
 
-    def initialize(x, y)
+    def initialize()
 
 		  @etat = 0
-          @x = x
-          @y = y
 
     end
 

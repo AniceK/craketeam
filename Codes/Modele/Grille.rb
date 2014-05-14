@@ -41,13 +41,13 @@ class Grille
 
         for i in (0 .. taille-1)
 
-            @colonne[i] = Rangee.creer(taille, i, false)
-            @ligne[i] = Rangee.creer(taille, i, true)
+            @colonne[i] = Rangee.creer(taille)
+            @ligne[i] = Rangee.creer(taille)
             @grille[i] = Array.new(taille)
             
             for j in (0 .. taille-1)
 
-                @grille[i][j] = Case.creer(i, j)
+                @grille[i][j] = Case.creer()
             end
         end
 
