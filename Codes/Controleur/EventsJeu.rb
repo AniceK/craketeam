@@ -103,9 +103,10 @@ class EventsJeu < Events
       puts "La sauvegarde en cours a pour nom: " + nomSauvegardeDefaut
       @fenetre.nomSauvegardeDefaut(nomSauvegardeDefaut)
       
-    elsif @jeu.nomSauvegardeDefaut() == nil then
+    elsif !@jeu.nomSauvegardeDefaut() == nil then
       
       puts "Le jeu n'est pas issu d'une sauvegarde"
+      @fenetre.nomSauvegardeDefaut(@jeu.nomProfil() + " " + @tailleGrille.to_s + "x" + @tailleGrille.to_s)
       
     else
       

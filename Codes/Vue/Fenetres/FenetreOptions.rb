@@ -74,6 +74,7 @@ class FenetreOptions < Fenetre
   def affichageInfos(message)
     
     @texteInfos.set_text(message)
+    @texteInfos.show_all()
   end
   
 end
