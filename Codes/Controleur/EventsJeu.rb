@@ -321,10 +321,12 @@ class EventsJeu < Events
       if widget.etatCourant() == @marquee then
         
         widget.changerEtat(@vide)
+        @jeu.marquer(x, y)
         
       elsif widget.etatCourant() == @vide then
         
         widget.changerEtat(@marquee)
+        @jeu.marquer(x, y)
         
       end
       
@@ -389,11 +391,7 @@ class EventsJeu < Events
       
       @nbConditionsRangee = @jeu.nbConditionsH(x)
       
-      if @nbConditionsRangee == 0 then
-        
-        @fenetre.tableauConditionsH.attach(Gtk::Label.new("0"), x, x+1, @tailleConditions - 1, @tailleConditions, @optionsTableau, @optionsTableau)
-        
-      else
+      if @nbConditionsRangee > 0 then
         
         # Variable incrémentant la boucle interne
         yCondition = @tailleConditions
@@ -423,6 +421,10 @@ class EventsJeu < Events
              y -= 1
            end
          end
+         
+      else
+         
+         puts "[EventJeu]Erreur: la ligne " + x.to_s + "n'a pas de conditions"
       end
     end
   end

@@ -142,9 +142,9 @@ class Grille
 
 	def marquerCase(coordX, coordY)
 
-	    @colonne[coordY].marquer(coordX)
-	    @ligne[coordX].marquer(coordY)
-        @grille[coordX][coordY].marquer()
+	    @colonne[coordX].marquer(coordY)
+	    @ligne[coordY].marquer(coordX)
+        @grille[coordY][coordX].marquer()
 
     end
     
@@ -268,7 +268,7 @@ class Grille
 # Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
     def etatCase(x, y)
 
-            return @grille[x][y].etat
+            return @grille[y][x].etat
     end
 
 end
