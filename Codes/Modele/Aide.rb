@@ -25,7 +25,7 @@ class Aide
 
     def initialize(uneDifficulte)
 
-		  @difficulte = uneDifficulte
+	  @difficulte = uneDifficulte
       @tabCondCol = Array.new()
       @tabCondLig = Array.new()
 
@@ -46,9 +46,7 @@ class Aide
     tabLig.each{ |x|
       @tabCondLig.push(x.conditions)
     }
-    
-    toto = 2
-    puts tabCol[toto].valide()
+
     
     case difficulte
       
@@ -79,20 +77,13 @@ class Aide
         
         #puts "Total de la colonne #{pos} : #{totalCol}"
       
-        if(tabCol[2].valide() == false) then
+        if(tabCol[pos-1].valide == false) then
       
             if totalCol == tabTaille then
               if difficulte == 1
                 strMessage += "Colonne #{pos} : pleine\n"
               else
                 strMessage += "Colonne #{pos}\n" 
-              end
-        
-            elsif totalCol == 0
-              if difficulte == 1
-                 strMessage += "Colonne #{pos} : vide\n"
-              else
-                 strMessage += "Colonne #{pos}\n"
               end
         
             elsif col.count > tabTaille/2 && tabTaille%2 == 1
@@ -130,7 +121,7 @@ class Aide
             end
       
         else
-            puts "Valide"
+            strMessage += "Colonne #{pos} : valide\n"
         end
         
         pos += 1
@@ -151,6 +142,8 @@ class Aide
       
         #puts "Total de la ligne #{pos} : #{totalLig}"
       
+      if(tabLig[pos-1].valide == false) then
+        
         if totalLig == tabTaille then
           if difficulte == 1
             strMessage += "Ligne #{pos} : pleine\n"
@@ -158,9 +151,6 @@ class Aide
           else
             strMessage += "Ligne #{pos}\n"
           end
-        
-        elsif totalLig == 0 
-          strMessage += "Ligne #{pos} : vide\n"
         
         elsif lig.count > tabTaille/2 && tabTaille%2 == 1
           if difficulte == 1
@@ -198,36 +188,15 @@ class Aide
             #strMessage += "Ligne #{pos} : aucune aide disponible\n"
           end
         end
+        
+        else
+            strMessage += "Ligne #{pos} : valide\n"
+        end
       
         pos += 1
       end
     end
     
-    strMessage += "\nVérification des lignes et des colonnes\n"
-    
-    #puts "\nVérification des lignes\n"
-    posLig = 0
-    for x in tabLig
-      tmp = true
-      if x.valide() == false then #Change to true pour les tests
-        tmp = false
-      end
-  
-      strMessage += "Ligne #{posLig+=1} #{tmp ? "bonne":"erronnée"}\n"
-  
-    end
-    
-    #puts "\nVérification des colonnes\n"
-    posCol = 0
-    for y in tabCol
-      tmp = true
-      if y.valide() == false then
-        tmp = false
-      end
-      
-      strMessage += "Colonne #{posCol+=1} #{tmp ? "bonne":"erronnée"}\n"
-      
-    end
   
     return strMessage
   

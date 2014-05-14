@@ -2,9 +2,9 @@
 ##Test des cases
 #
 
-require "../Modele/Grille.rb"
-require "../Modele/Aide.rb"
-require "../Modele/Rangee.rb"
+require_relative "../Modele/Grille.rb"
+require_relative  "../Modele/Aide.rb"
+require_relative  "../Modele/Rangee.rb"
 
 =begin
 my_case = Case.creer()
@@ -47,13 +47,7 @@ puts "Test de la Grille"
 g1 = Grille.creer("toto", taille)
 aide = Aide.creer(1)
 
-g1.genererAleatoire(50)
-
-g1.noircir(0, 4)
-g1.noircir(0, 3)
-g1.noircir(0, 2)
-g1.noircir(0, 1)
-g1.noircir(0, 0)
+g1.genererAleatoire(90)
 
 g1.afficher()
 
