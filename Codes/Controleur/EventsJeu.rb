@@ -320,7 +320,7 @@ class EventsJeu < Events
     x = widget.coordonneeX
     y = widget.coordonneeY
     
-    puts "Case[" + x.to_s + "][" + y.to_s + "]"
+    #puts "Case[" + x.to_s + "][" + y.to_s + "]"
     
     if evenement.button() == 1 then
       

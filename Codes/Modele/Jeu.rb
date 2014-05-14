@@ -561,7 +561,7 @@ class Jeu
 
                 FileUtils.cd(i.to_s)
                 File.delete('grilles.yml')
-                File.new('grilles.yml')
+                File.new('grilles.yml', "w")
                 FileUtils.cd('..')
             end
             FileUtils.cd('..')
@@ -579,7 +579,7 @@ class Jeu
             FileUtils.cd('Profil')
             FileUtils.cd(self.nomProfil())
             File.delete('parties.yml')
-            File.new('parties.yml')
+            File.new('parties.yml', "w")
             FileUtils.cd('../..')
         end
     end
