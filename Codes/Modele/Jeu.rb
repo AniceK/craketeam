@@ -500,19 +500,24 @@ class Jeu
     def afficherScores(tous)
 
         liste = Array.new()
-        liste = YAML::load(File.open('scores.yml'))        
+        if File.size('scores.yml')> 0 then
+            
+            liste = YAML::load(File.open('scores.yml'))        
 
-        if @profil == nil or tous then
+            if @profil == nil or tous then
             
-            if liste.empty? then
+                if liste.empty? then
             
-                return nil
+                    return nil
+                else
+                    return liste.sort()
+                end
             else
-                return liste
+
+                return liste.find_all {|i| i[0] == @profil.nom}
             end
         else
-
-            return liste.find_all {|i| i[0] == @profil.nom}
+            return nil
         end
     end
 
