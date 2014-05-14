@@ -92,6 +92,13 @@ class Aide
               else
                 strMessage += "Colonne #{pos}\n"
               end
+              
+          elsif totalCol > tabTaille/2 && col.count > 1
+              if difficulte == 1
+                  strMessage += "Colonne #{pos} : #{col.max() - (tabTaille - (totalCol + (col.count -1)))} case#{(col.max() - (tabTaille - (totalCol + (col.count -1)))>1 ? "s":"")} à colorier\n"
+              else
+                  strMessage += "Colonne #{pos}\n"
+              end
         
             elsif col.count == 1 && totalCol > tabTaille/2 
               if tabTaille%2 == 1
@@ -158,6 +165,13 @@ class Aide
           
           else
             strMessage += "Ligne #{pos}\n"
+          end
+          
+      elsif totalLig > tabTaille/2 && lig.count > 1
+          if difficulte == 1
+              strMessage += "Ligne #{pos} : #{lig.max() - (tabTaille - (totalLig + (lig.count -1)))} case#{(lig.max() - (tabTaille - (totalLig + (lig.count -1)))>1 ? "s":"")} à colorier\n"
+          else
+              strMessage += "Ligne #{pos}\n"
           end
         
         elsif lig.count == 1 && totalLig > tabTaille/2
