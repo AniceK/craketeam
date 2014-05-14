@@ -562,8 +562,6 @@ class Jeu
             if @partie.class == Partie then
             
                 liste = Array.new()
-                @partie.tuerChrono()
-                @partie.actualiser()
                 FileUtils.cd('Profil')
                 FileUtils.cd(@profil.nom)
 
@@ -576,12 +574,15 @@ class Jeu
                         listenom.push(x[0])
                     }
                     if listenom.include?(nomSauvegarde) then
-                        
+                       
+                        FileUtils.cd('../..')
                         return false
                     end
                 end
-
+                @partie.tuerChrono()
+                @partie.actualiser()
                 liste.push([nomSauvegarde, @partie])
+                File.delete('parties.yml')
                 File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
                 FileUtils.cd('../..')
                 return true
@@ -823,7 +824,7 @@ class Jeu
     end
 
 # Méthode pour remplacer une sauvegarde existante par une nouvelle partie
-    def remplacerSAuvegarde(unNom)
+    def remplacerSauvegarde(unNom)
 
         if @partie.class == Partie then
 

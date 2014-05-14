@@ -14,16 +14,17 @@ class Case
     @y          #coordonnees en ordonnees
 
     attr :etat, false
+
     def Case.creer()
 
 		new()
 
     end
 
+# Méthode de classe : on initialise l'état de la case à zéro à sa création
     def initialize()
 
 		  @etat = 0
-
     end
 
 # Les deux méthodes suivantes sont là pour changer l'état de la case : on bascule dans l'état correspondant à la méthode
@@ -33,7 +34,7 @@ class Case
 	#  - Vierge avec la valeur 0
 	#  - Noirci avec la valeur 1
 	#  - Marqué avec la valeur 2
-
+# Méthode pour passer l'état la Case de zéro à un ou de un à zéro
     def noircir()
 
         if @etat == 1 then
@@ -47,6 +48,7 @@ class Case
 
     end
 
+# Méthode pour passer l'état de la case de zéro à deux ou de deux à zéro
 	def marquer()
 
 			if @etat == 2 then
@@ -67,7 +69,7 @@ class Case
 
 	end
 
-#Methode d'affichage en terminal pour les tests
+#Methode d'affichage en terminal pour les tests uniquement
     def afficher()
         print "|" + @etat.to_s
     end
