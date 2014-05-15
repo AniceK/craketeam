@@ -12,11 +12,13 @@ class FenetreChoixSauvegarde < Fenetre
   
   @texteChoixSauvegarde
   @boutonPrecedent
+  @boutonSupprimer
   @boutonSuivant
   @listeSauvegarde
   
   
   attr_reader :boutonPrecedent,
+              :boutonSupprimer,
               :boutonSuivant,
               :texteChoixSauvegarde,
               :listeSauvegarde
@@ -35,6 +37,7 @@ class FenetreChoixSauvegarde < Fenetre
     @texteChoixSauvegarde = Gtk::Label.new("Choisissez votre sauvegarde")
     
     @boutonPrecedent = Gtk::Button.new('Précédent')
+    @boutonSupprimer = Gtk::Button.new('Supprimer')
     @boutonSuivant = Gtk::Button.new('Suivant')
     
     @listeSauvegardes = ListeElements.new(listeSauvegardes, false)
@@ -44,6 +47,7 @@ class FenetreChoixSauvegarde < Fenetre
     #==================================================#
     
     @boutonPrecedent.set_size_request(-1, 50)
+    @boutonSupprimer.set_size_request(-1, 50)
     @boutonSuivant.set_size_request(-1, 50)
     
     #==================================================#
@@ -64,8 +68,9 @@ class FenetreChoixSauvegarde < Fenetre
     #                  Remplissage Box                 #
     #==================================================#
     
-    hBoxNavigation.pack_start(@boutonPrecedent)
-    hBoxNavigation.pack_end(@boutonSuivant)
+    hBoxNavigation.pack_start(@boutonPrecedent, true, true, 5)
+    hBoxNavigation.pack_start(@boutonSupprimer, true, true, 5)
+    hBoxNavigation.pack_start(@boutonSuivant, true, true, 5)
     
     vBox.pack_start(@texteChoixSauvegarde, false, false, 5)
     vBox.pack_start(@listeSauvegardes.widget(), true, true, 5)
