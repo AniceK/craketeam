@@ -636,7 +636,7 @@ class Jeu
                 return @partie.sauvegarderGrille(unNom)
             else
                 @profil.ajouterUneGrille()
-                return @partie.sauvegarder(nomSauvegarde)
+                return @partie.sauvegarderGrille(unNom)
             end
         else
             raise "Erreur dans Jeu::sauvegarderGrille(String) : Aucune partie n'est en cours"

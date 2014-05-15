@@ -227,8 +227,8 @@ class EventsJeu < Events
     @fenetre.boutonNettoyerGrille.signal_connect('clicked'){
       
       puts "> Nettoyer grille"
-      @jeu.nettoyerGrille() # => À implémenter
-      self.initialiserTableauJeu()
+      @jeu.nettoyerGrille()
+      self.nettoyerTableauJeu()
       @fenetre.texteInfosNettoyer.show_all()
     }
     
@@ -262,6 +262,8 @@ class EventsJeu < Events
     
     @fenetre.boutonNouvellePartie.signal_connect('clicked'){
       
+      @jeu.quitterPartie()
+      
       if @jeu.profilConnecte?() then
         
         puts "> Choix Partie"
@@ -283,6 +285,7 @@ class EventsJeu < Events
       
       puts "> Menu Principal"
       
+      @jeu.quitterPartie()
       mouvement(EventsAccueil.new(@jeu, position() ))
     }
     
@@ -290,11 +293,68 @@ class EventsJeu < Events
       
       puts "> Enregistrer Grille"
       
-      dialogue = DialogueEnregistrer.new(@fenetre.widget())
-      
-      #mouvement(EventsAccueil.new(@jeu, position() ))
+      doitEnregistrerEtQuitter = dialogueEnregistrer()
+  
+      if doitEnregistrerEtQuitter then
+        
+        puts "> Accueil (Nom de la grille créée: \"" + doitEnregistrerEtQuitter + "\")"
+        @jeu.quitterPartie()
+        mouvement(EventsAccueil.new(@jeu, position() ))
+        
+      else
+        
+        puts "> Jeu"
+        
+      end
     }
     
+  end
+  
+  def dialogueEnregistrer()
+
+    dialogue = DialogueEnregistrer.new(@fenetre.widget())
+
+    while true
+      
+      dialogue.popup.run() do |reponse|
+      
+        case reponse
+        
+        when Gtk::Dialog::RESPONSE_ACCEPT
+          
+          nomSauvegarde = dialogue.entreeNomSauvegarde.text()
+        
+          if @jeu.sauvegarderGrille(nomSauvegarde) then
+            
+            puts "Nom de sauvegarde valide"
+            dialogue.popup.destroy()
+            return nomSauvegarde
+            
+          else
+            
+            puts "Nom existant !"
+            dialogue.nomExistant(nomSauvegarde)
+          
+          end
+          
+        when Gtk::Dialog::RESPONSE_REJECT
+          
+          dialogue.popup.destroy()
+          return false
+          
+        when Gtk::Dialog::RESPONSE_DELETE_EVENT
+          
+          puts "Fenêtre fermée !"
+          dialogue.popup.destroy()
+          return false
+          
+        else
+          
+          puts "[EventsEditeur]Erreur: Réception signal Dialogue Enregistrer ==> " + reponse.to_s
+          
+        end
+      end
+    end
   end
   
   def initialiserChrono()
@@ -326,7 +386,6 @@ class EventsJeu < Events
     
     @chronometre.exit()
   end
-  
   
   def initialiserGrille(largeurFenetre, hauteurFenetre)
     
@@ -383,7 +442,7 @@ class EventsJeu < Events
         
         #@evenementCase.signal_emit_stop('button_press_event') # => Empêcher appuie sur case
         # => Nettoyage cases marquées
-        @jeu.quitterPartie()
+        
         @fenetre.affichageFin(estTermine)
         
       end
@@ -525,10 +584,43 @@ class EventsJeu < Events
           
         end
         
+        #puts "Initialisation Case[" + x.to_s + "][" + y.to_s + "] : "+ etat.to_s
+        
         caseCartesienne = CaseCartesienne.new(x, y, etat)
         
         caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
       
+          caseCliquee(widget, evenement)
+        }
+        
+        @fenetre.tableauJeu.attach(caseCartesienne, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
+      end
+    end
+  end
+    
+  def nettoyerTableauJeu()
+    
+    0.upto(@tailleGrille - 1) do |x|
+      0.upto(@tailleGrille - 1) do |y|
+        
+        case @jeu.etatCase(x, y)
+          
+        when 0 then etat = @vide
+        when 1 then etat = @noircie
+        when 2 then etat = @marquee
+          
+        else
+          
+            puts "Erreur: L'état de la case à initialiser est inconnu ==> " + @jeu.etatCase(x, y).to_s
+          
+        end
+        
+        puts "Initialisation Case[" + x.to_s + "][" + y.to_s + "] : "+ etat.to_s
+        
+        caseCartesienne = CaseCartesienne.new(x, y, etat)
+        
+        caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
+        
           caseCliquee(widget, evenement)
         }
         
