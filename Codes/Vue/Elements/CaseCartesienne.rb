@@ -11,12 +11,14 @@ class CaseCartesienne < Gtk::EventBox
   @coordonneeX
   @coordonneeY
   @etat
+  @signalID
   @image
   
   attr_reader :coordonneeX,
               :coordonneeY,
               :image,
-              :etat
+              :etat,
+              :signalID
   
   def initialize(x, y, etat)
     
@@ -31,8 +33,6 @@ class CaseCartesienne < Gtk::EventBox
     
     self.add(@image)
     
-    #self.events = Gdk::Event::BUTTON_PRESS_MASK
-    
   end
   
   def etatCourant()
@@ -45,6 +45,31 @@ class CaseCartesienne < Gtk::EventBox
     @etat = etat
     @image.set_pixbuf(@etat)
   end
+  
+  def ajouterSignalID(id)
+    
+    @signalID = id
+  end
+  
+  def recupererSignalID()
+    
+    return @signalID
+  end
+  
+  #  def reagitClic()
+  #    
+  #    if self.events == Gdk::Event::BUTTON_PRESS_MASK then puts "Masque bouton appuyé" end
+  #      
+  #    self.set_events(Gdk::Event::BUTTON_PRESS_MASK)
+  #    self.realize()
+  #    
+  #    if self.events == Gdk::Event::BUTTON_PRESS_MASK then puts "Masque bouton appuyé" end
+  #  end
+  #  
+  #  def reagitSurvoler()
+  #    
+  #    self.add_events(Gdk::Event::BUTTON_RELEASE_MASK && Gdk::Event::ENTER_NOTIFY_MASK)
+  #  end
   
 end
 
