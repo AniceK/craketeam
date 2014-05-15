@@ -23,7 +23,7 @@ class Fenetre
     @fenetreHints = Gdk::Geometry.new()
     
     # Permet de centrer la redimension d'une fenêtre sur son centre
-    @fenetreHints.set_win_gravity(Gdk::Window::GRAVITY_SOUTH)
+    @fenetreHints.set_win_gravity(Gdk::Window::GRAVITY_CENTER)
     
     @fenetre.set_geometry_hints(@fenetre,
                                 @fenetreHints,
@@ -61,11 +61,11 @@ class Fenetre
   
   def redimensionner(x, y)
     
-    if @fenetre.gravity() == Gdk::Window::GRAVITY_CENTER then
-      puts "GRAVITY_CENTER !"
-    else
-      puts "Pas Center..."
-    end
+    #  if @fenetre.gravity() == Gdk::Window::GRAVITY_CENTER then
+    #    puts "GRAVITY_CENTER !"
+    #  else
+    #    puts "Pas Center..."
+    #  end
     
     # Fixation largeur
     @fenetreHints.set_min_width(x)
@@ -79,12 +79,6 @@ class Fenetre
                                 @fenetreHints,
                                 Gdk::Window::HINT_MIN_SIZE |
                                 Gdk::Window::HINT_MAX_SIZE)
-                                
-    if @fenetre.gravity() == Gdk::Window::GRAVITY_CENTER then
-      puts "GRAVITY_CENTER !"
-    else
-      puts "Pas Center..."
-    end
   end
   
   def titre(pseudo)
