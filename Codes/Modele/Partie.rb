@@ -211,6 +211,7 @@ class Partie
           end
 
           scores.push([@grille.taille(),@joueur, temps * 3,])
+          File.delete('scores.yml')
           File.open('scores.yml',"w"){|out| out.puts scores.to_yaml()}
           return temps
 

@@ -44,32 +44,32 @@ class Jeu
         #Creation de l'arborescence
 
             if @verbose then puts "Le Dossier n'existe pas.. Création de l'arborescence" end
-          FileUtils.mkdir('Picross')
-          FileUtils.cd('Picross')
-          FileUtils.mkdir('Profil')
-          FileUtils.mkdir('Grille')
-          File.new("scores.yml", "w")
-          FileUtils.cd('Grille')
-          FileUtils.mkdir('5')
-          FileUtils.cd('5')
-          File.open("grilles.yml", "w")
-          FileUtils.cd('..')
-          FileUtils.mkdir('10')
-          FileUtils.cd('10')
-          File.open("grilles.yml", "w")
-          FileUtils.cd('..')
-          FileUtils.mkdir('15')
-          FileUtils.cd('15')
-          File.open("grilles.yml", "w")
-          FileUtils.cd('..')
-          FileUtils.mkdir('20')
-          FileUtils.cd('20')
-          File.open("grilles.yml", "w")
-          FileUtils.cd('..')
-          FileUtils.mkdir('25')
-          FileUtils.cd('25')
-          File.open("grilles.yml", "w")
-          FileUtils.cd('../..')
+            FileUtils.mkdir('Picross')
+            FileUtils.cd('Picross')
+            FileUtils.mkdir('Profil')
+            FileUtils.mkdir('Grille')
+            File.new("scores.yml", "w")
+            FileUtils.cd('Grille')
+            FileUtils.mkdir('5')
+            FileUtils.cd('5')
+            File.open("grilles.yml", "w")
+            FileUtils.cd('..')
+            FileUtils.mkdir('10')
+            FileUtils.cd('10')
+            File.open("grilles.yml", "w")
+            FileUtils.cd('..')
+            FileUtils.mkdir('15')
+            FileUtils.cd('15')
+            File.open("grilles.yml", "w")
+            FileUtils.cd('..')
+            FileUtils.mkdir('20')
+            FileUtils.cd('20')
+            File.open("grilles.yml", "w")
+            FileUtils.cd('..')
+            FileUtils.mkdir('25')
+            FileUtils.cd('25')
+            File.open("grilles.yml", "w")
+            FileUtils.cd('../..')
 
         else
         
@@ -93,8 +93,6 @@ class Jeu
             FileUtils.cd('..')
 
           end
-
-          File.open("scores.yml", "w")
 
           begin
 
