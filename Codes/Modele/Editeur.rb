@@ -41,7 +41,7 @@ class Editeur
 	end
 
 # Méthode permettant de sauvegarder la grille
-	def sauvegarder(nom)
+	def sauvegarderGrille(nom)
 
         self.conditionsDeterminer()
         return @grille.sauvegarder(nom)
