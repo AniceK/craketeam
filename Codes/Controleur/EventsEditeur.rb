@@ -76,7 +76,6 @@ class EventsEditeur < Events
     # Affichage
 
     @fenetre.afficher()
-    #@fenetre.move(@jeu.positionX(), @jeu.positionY()) # => @jeu.positionX() renvoie position[0] et Y -> position[1]
 
     @fenetre.boutonEnregistrer.signal_connect('clicked'){
       puts "> Enregistrer"
@@ -115,8 +114,7 @@ class EventsEditeur < Events
 
 
   end
-  
-  
+    
   def dialogueEnregistrer()
 
     dialogue = DialogueEnregistrer.new(@fenetre.widget())
@@ -166,7 +164,6 @@ class EventsEditeur < Events
     end
   end
 
-
   def initialiserGrille(largeurFenetre, hauteurFenetre)
 
     @fenetre.redimensionner(largeurFenetre, hauteurFenetre)
@@ -182,72 +179,48 @@ class EventsEditeur < Events
 
   end
 
-
   def caseCliquee(widget, evenement)
 
-    x = (widget.allocation.x / 32) - 1
-    y = (widget.allocation.y / 32) - 1
-
-    puts "widget.class = " + widget.class.to_s + "\nCase[" + x.to_s + "][" + y.to_s + "]"
-
+    x = widget.coordonneeX
+    y = widget.coordonneeY
+    
+    puts "Case[" + x.to_s + "][" + y.to_s + "]"
+    
     if evenement.button() == 1 then
-  
-      if widget.child.pixbuf() == @pixCaseVide then
-    
-        @jeu.noircir(x, y)
-        widget.child.set_pixbuf(@pixCaseNoircie)
-    
-      elsif widget.child.pixbuf() == @pixCaseNoircie then
-    
-        @jeu.noircir(x, y)
-        widget.child.set_pixbuf(@pixCaseVide)
-    
-      else
-    
-        puts "Erreur: case n'est pas considérée comme vide ou noircie"
-    
+      
+      if widget.etatCourant() == @vide then
+        
+        estTermine = @jeu.noircir(x, y)
+        widget.changerEtat(@noircie)
+        
+      elsif widget.etatCourant() == @noircie then
+        
+        estTermine = @jeu.noircir(x, y)
+        widget.changerEtat(@vide)
+        
       end
-  
+     
+    elsif evenement.button() == 2 then
+      
+      puts "Impossible de marquer une case dans l'éditeur"
+      
+    else
+      
+      puts "[EventsEditeur]Erreur: Mauvaise gestion caseCliquée"
     end
   
   end
 
-  # Retourne une case vide cliquable
-  def caseDefault()
-
-    imageCaseVide = Gtk::Image.new(@pixCaseVide)
-
-    evenementCase = Gtk::EventBox.new()
-    evenementCase.events = Gdk::Event::BUTTON_PRESS_MASK
-    evenementCase.add(imageCaseVide)
-
-    evenementCase.signal_connect('button_press_event') { |widget, evenement|
-  
-      caseCliquee(widget, evenement)
-    }
-
-    # => Evenement en cas de cliqué-glissé (drag_enter_event ?)
-    #evenementCase.signal_connect('enter_notify_event') { |widget, evenement|
-    #  
-    #  caseCliquee(widget, evenement)
-    #}
-
-    return evenementCase
-
-  end
-
   def initialiserImages()
 
-    @pixCaseVide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
-    @pixCaseNoircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
+    @vide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
+    @noircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
   end
 
   def initialiserTableauJeu()
 
-    #@fenetre.tableauJeu.resize(@tailleGrille, @tailleGrille)
-
-    1.upto(@tailleGrille) do |x|
-      1.upto(@tailleGrille) do |y|
+    0.upto(@tailleGrille-1) do |x|
+      0.upto(@tailleGrille-1) do |y|
     
         # Ajout séparation toutes les 5 lignes
     
@@ -255,8 +228,15 @@ class EventsEditeur < Events
         #  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), 0, @tailleGrille-1, y, y+1)
         #  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)
         #end
+        
+        caseCartesienne = CaseCartesienne.new(x, y, @vide)
+        
+        caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
+      
+          caseCliquee(widget, evenement)
+        }
     
-        @fenetre.tableauJeu.attach(caseDefault(), x, x+1, y, y+1, @optionsTableau, @optionsTableau)
+        @fenetre.tableauJeu.attach(caseCartesienne, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end

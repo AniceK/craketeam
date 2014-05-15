@@ -224,11 +224,24 @@ class Partie
 #=================================================
     #ici commencent les méthodes de retransmission
 #=================================================
- 
+
+# Méthode pour sauvegarder une grille à la fin d'une partie
+    def sauvegarderGrille(unNom)
+
+        return @grille.sauvegarder(unNom)
+    end
+
 # Méthode pour créer une grille aléatoirement
     def genererAleatoirementGrille()
 
         @grille.genererAleatoire(50)
+    end
+
+# Méthode pour remettre la grille en cours à zéro (nettoyer)
+    def nettoyerGrille()
+
+        puts "on a demandée a la grille de se remettre à zéro"
+        @grille.razGrille()
     end
 
 # Methode de marquage d'une case (X, Y)

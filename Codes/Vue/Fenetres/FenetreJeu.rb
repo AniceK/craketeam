@@ -35,6 +35,7 @@ class FenetreJeu < Fenetre
   @texteGagne
   @boutonNouvellePartie
   @boutonFinMenuPrincipal
+  @boutonEnregistrerGriller
   @vBoxNavigation
   
   
@@ -59,6 +60,7 @@ class FenetreJeu < Fenetre
               :boutonNouvellePartie,
               :texteGagne,
               :boutonFinMenuPrincipal,
+              :boutonEnregistrerGrille,
               :vBoxNavigation
               
   attr_accessor :tableauConditionsV,
@@ -170,12 +172,8 @@ class FenetreJeu < Fenetre
     @tableauGeneral.attach_defaults(@tableauJeu, 1, 2, 1, 2)
     
     @hBoxTemps = Gtk::HBox.new(true, 0)
-    @vBoxDroite = Gtk::VBox.new(true, 0)
-    @hBoxPrincipale = Gtk::HBox.new(false, 5)
     
     @hBoxTemps.set_border_width(5)
-    @vBoxDroite.set_border_width(5)
-    @hBoxPrincipale.set_border_width(5)
     
     @hBoxTemps.pack_start(@texteTemps, false, false, 0)
     @hBoxTemps.pack_start(@afficheTemps, false, false, 20)
@@ -190,21 +188,39 @@ class FenetreJeu < Fenetre
     
     @boutonNouvellePartie = Gtk::Button.new('Nouvelle Partie')
     @boutonFinMenuPrincipal = Gtk::Button.new('Menu Principal')
+    @boutonEnregistrerGrille = Gtk::Button.new('Enregistrer Grille')
     
-    @boutonNouvellePartie.set_size_request(-1, 50)
-    @boutonFinMenuPrincipal.set_size_request(-1, 50)
+    @boutonNouvellePartie.set_size_request(-1, 30)
+    @boutonFinMenuPrincipal.set_size_request(-1, 30)
+    @boutonEnregistrerGrille.set_size_request(-1, 30)
     
     @texteGagne = Gtk::Label.new("")
     
+    @vBoxDroiteFin = Gtk::VBox.new(false, 0)
     
-    ### Finalisation de la fenêtre
+    @vBoxDroiteFin.pack_start(@texteGagne, false, false, 20)
+    @vBoxDroiteFin.pack_start(@boutonNouvellePartie, false, false, 10)
+    @vBoxDroiteFin.pack_start(@boutonEnregistrerGrille, false, false, 10)
+    @vBoxDroiteFin.pack_end(@boutonFinMenuPrincipal, false, false, 10)
+    
+    
+    ################################################################
+    #                                                              #
+    #                 Finalisation de la fenêtre                   #
+    #                                                              #
+    ###############################################################
+    
+    
+    @vBoxDroite = Gtk::VBox.new(true, 0)
+    @hBoxPrincipale = Gtk::HBox.new(false, 5)
+    
+    @vBoxDroite.set_border_width(5)
+    @hBoxPrincipale.set_border_width(5)
     
     @vBoxDroite.pack_start(@hBoxTemps, false, false, 30)
     @vBoxDroite.pack_start(@alignePause, false, false, 30)
     @vBoxDroite.pack_end(@boutonAide, false, false, 30)
-    @vBoxDroite.pack_start(@texteGagne, false, false, 30)
-    @vBoxDroite.pack_start(@boutonNouvellePartie, false, false, 40)
-    @vBoxDroite.pack_end(@boutonFinMenuPrincipal, false, false, 0)
+    @vBoxDroite.pack_start(@vBoxDroiteFin, false, false, 0)
     
     
     @hBoxPrincipale.pack_start(@vBoxPause, true, false, 40)  # DEBUG
@@ -306,6 +322,7 @@ class FenetreJeu < Fenetre
     @texteGagne.hide_all()
     @boutonNouvellePartie.hide_all()
     @boutonFinMenuPrincipal.hide_all()
+    @boutonEnregistrerGrille.hide_all()
   end
   
   def affichageFin(temps)
@@ -328,6 +345,7 @@ class FenetreJeu < Fenetre
     
     @texteGagne.show_all()
     @boutonNouvellePartie.show_all()
+    @boutonEnregistrerGrille.show_all()
     @boutonFinMenuPrincipal.show_all()
   end
   

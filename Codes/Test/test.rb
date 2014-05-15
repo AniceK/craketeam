@@ -121,7 +121,7 @@ t = Time.now
 timer(1) do
   p Time.now - t 
 end
-=end
+
 
 temps = 0
 pause = false
@@ -158,3 +158,9 @@ end
 pause = true
 
 puts chronometre.to_yaml()
+
+=end
+
+FileUtils.rm_r('test')
+FileUtils.mkdir('test')
+FileUtils.rm_r('test')

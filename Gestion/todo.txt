@@ -40,10 +40,34 @@ Séance du 12/05
 
 Demande : 
 
-- Mettre un message pour un pseudo déjà utilisé dans le chargement de profil
-- Message pour la sauvegarde partie/grille
-- Mettre le pseudo en haut de la fenêtre lors du chargement de profil, dans l’accueil 
-- Créer une fenêtre d’affichage des scores
-- Améliorer la réception des coordonnées graphiques des cases
-- Choix des grilles et prise en compte de la liste des grilles VIDE 
-- Gerer ses parties dans les options de profils
+- Sélection cases en glissant
+- Bouton effacer sauvegarde/grilles
+- Sauvegarder grille finie
+- Gravité fenêtre (galère)
+- Sélection image dans éditeur
+- Mettre nouvelles cases dans éditeur
+- ÉPURER CODE !!!
+ 
+———— Colas ————
+
+- Nettoyer grille en cours
+@jeu.nettoyerGrille() ==> Remet toutes les cases à vide
+
+- Bouton tout réinitialiser
+@jeu.viderTout() ==> Tout supprimer
+
+———————————
+
+Version gtk pour placement conditions:
+
+[2, 24, 23] ==> Mac OS X (Rémi, Anice)
+[2, 24, 20] ==> Mac OS X (Rémi, Anice)
+[2, 24, 22] ==> Linux (Antoine)
+
+
+
+
+
+
+
+

@@ -47,29 +47,8 @@ class Jeu
             FileUtils.mkdir('Picross')
             FileUtils.cd('Picross')
             FileUtils.mkdir('Profil')
-            FileUtils.mkdir('Grille')
             File.new("scores.yml", "w")
-            FileUtils.cd('Grille')
-            FileUtils.mkdir('5')
-            FileUtils.cd('5')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('10')
-            FileUtils.cd('10')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('15')
-            FileUtils.cd('15')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('20')
-            FileUtils.cd('20')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('25')
-            FileUtils.cd('25')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('../..')
+            self.creerArboGrille()
 
         else
         
@@ -83,9 +62,17 @@ class Jeu
 
           rescue Errno::ENOENT => e
 
-              if @verbose then puts "Pas de dossier profil.." end
+            if @verbose then 
+                
+                puts "Pas de dossier profil.." 
+            end
+            
             FileUtils.mkdir('Profil')
-            if @verbose then puts "Dossier Profil créé !" end
+            
+            if @verbose then 
+                
+                puts "Dossier Profil créé !" 
+            end
 
           else
 
@@ -102,29 +89,7 @@ class Jeu
 
             if @verbose then puts "Pas de dossier grille.. Creation de l'arborescence correspondante" end
             
-            FileUtils.mkdir('Grille')
-            FileUtils.cd('Grille')
-            FileUtils.mkdir('5')
-            FileUtils.cd('5')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('10')
-            FileUtils.cd('10')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('15')
-            FileUtils.cd('15')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('20')
-            FileUtils.cd('20')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('25')
-            FileUtils.cd('25')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-
+            self.creerArboGrille()
             if @verbose then puts "Dossier Grille crée !" end
             FileUtils.cd('..')
 
@@ -140,17 +105,23 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 5.." end
-                FileUtils.mkdir('5')
-                FileUtils.cd('5')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-
-                if @verbose then puts "Dossier 5 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 5.." 
+                end
+                self.creerArboTaille(5)
+                
+                if @verbose then 
+                    
+                    puts "Dossier 5 créé !"
+                end
 
             else
 
-                if @verbose then puts "Dossier 5 présent" end
+                if @verbose then
+                    
+                    puts "Dossier 5 présent"
+                end
                 FileUtils.cd('..')
 
             end
@@ -161,16 +132,19 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 10.."end
-                FileUtils.mkdir('10')
-                FileUtils.cd('10')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-                if @verbose then puts "Dossier 10 créé !" end
+                if @verbose then 
+                    puts "Pas de dossier 10.."
+                end
+                self.creerArboTaille(10)
+                if @verbose then 
+                    puts "Dossier 10 créé !" 
+                end
 
             else
 
-                if @verbose then puts "Dossier 10 présent" end
+                if @verbose then 
+                    puts "Dossier 10 présent" 
+                end
                 FileUtils.cd('..')
 
             end
@@ -182,12 +156,15 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 15.." end
-                FileUtils.mkdir('15')
-                FileUtils.cd('15')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-                if @verbose then puts "Dossier 15 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 15.." 
+                end
+                self.creerArboTaille(15)
+                if @verbose then 
+                    
+                    puts "Dossier 15 créé !" 
+                end
 
             else
 
@@ -203,12 +180,15 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 20.." end
-                FileUtils.mkdir('20')
-                FileUtils.cd('20')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-                if @verbose then puts "Dossier 20 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 20.." 
+                end
+                self.creerArboTaille(20)
+                if @verbose then 
+                    
+                    puts "Dossier 20 créé !" 
+                end
 
             else
 
@@ -224,13 +204,15 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 25.." end
-                FileUtils.mkdir('25')
-                FileUtils.cd('25')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-
-                if @verbose then puts "Dossier 25 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 25.." 
+                end
+                self.creerArboTaille(25)
+                if @verbose then 
+                    
+                    puts "Dossier 25 créé !" 
+                end
 
             else
 
@@ -256,6 +238,38 @@ class Jeu
 
     end    #marqueur de fin d initialize
 
+# Méthode pour créer l'arborescence du dossier Grille
+    def creerArboGrille()
+
+        FileUtils.mkdir('Grille')
+        FileUtils.cd('Grille')
+
+        for i in [5, 10, 15, 20, 25]
+            creerArboTaille(i)
+        end
+        FileUtils.cd('..')
+    end
+
+# Méthode pour créer l'arborescence d'un dossier de taille de grille
+    def creerArboTaille(taille)
+        
+        FileUtils.mkdir(taille.to_s())
+        FileUtils.cd(taille.to_s())
+        File.open("grilles.yml", "w")
+        FileUtils.cd('..')
+        
+    end
+
+# Méthode pour réinitialiser l'arborescence
+    def viderTout()
+
+        FileUtils.rm_r('Profil')
+        FileUtils.rm_r('Grille')
+        File.delete('scores.yml')
+        FileUtils.mkdir('Profil')
+        self.creerArboGrille()
+        File.new('scores.yml', "w")
+    end
 
 # Méthode permettant de charger le Profil du joueur
 	def chargerProfil(unNom)
@@ -336,7 +350,10 @@ class Jeu
     #Si le Dossier au nom du profil cree existe deja, alors on le signale
           else
 
-              if @verbose then puts "Le profil #{aName} existe déjà" end
+            if @verbose then 
+                
+                puts "Le profil #{aName} existe déjà" 
+            end
             resultat = false
             FileUtils.cd('../..')
 
@@ -353,7 +370,7 @@ class Jeu
 
         if @profil == nil then
             
-            raise "Aucun profil n'est chargé : impossible de charger la liste des Partie Sauvegardées!"
+            raise "Erreur dans Jeu::chargerListePartiesSauvegardees() : un Profil doit être actif"
         else
             
             if @verbose then puts "chargement de la liste des parties sauvegardees du profil" + @profil.nom end
@@ -463,22 +480,13 @@ class Jeu
                     return (sup == p)
                 else
                    
-                    raise "erreur : aucune sauvegarde nommée #{unNom}"
+                    raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde sous ce nom : #{unNom}"
                 end
             else
-            
-               if @verbose then 
-                   
-                   puts "Aucune partie n'est sauvegardée, impossible de supprimer" 
-               end
-               
-               FileUtils.cd('../..')
-
-               return false
-
+                raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
             end
         else
-            raise "Aucun profil n'est chargé : impossible de supprimer une partie!"
+            raise "Erreur dans Jeu::supprimerPartie(String) : un Profil doit être actif"
         end
  
     end
@@ -513,7 +521,7 @@ class Jeu
 
         if @profil == nil then
 
-            raise "Impossible d'utiliser l'editeur sans avoir chargé un profil!"
+            raise "Erreur dans Jeu::creerEditeur(int) : un Profil doit être actif"
         else
             @partie = Editeur.creer(@profil.nom, taille)
         end
@@ -527,7 +535,7 @@ class Jeu
             @profil.sauvegarder()
             @profil = nil
         else
-            raise "Erreur : pas de profil "
+            raise "Erreur dans Jeu::deconnecter() : un Profil doit être actif"
         end
     end
 
@@ -559,7 +567,7 @@ class Jeu
             FileUtils.cd('..')
         else
 
-            raise "Erreur, un profil doit être connecté"
+            raise "Erreur dans Jeu::viderGrille() : un Profil doit être actif"
         end
     end
 
@@ -583,46 +591,66 @@ class Jeu
 # Méthode sauvegardant la partie en cours
 	def sauvegarderPartie(nomSauvegarde)
 
-        if @partie != nil then
+        if @partie.class == Partie then
+        
+            liste = Array.new()
+            FileUtils.cd('Profil')
+            FileUtils.cd(@profil.nom)
 
-            if @partie.class == Partie then
+            if File.size("parties.yml") > 0 then
             
-                liste = Array.new()
-                FileUtils.cd('Profil')
-                FileUtils.cd(@profil.nom)
+                liste = YAML::load(File.open('parties.yml'))
+                listenom = Array.new()
+                liste.each { |x|
 
-                if File.size("parties.yml") > 0 then
-                
-                    liste = YAML::load(File.open('parties.yml'))
-                    listenom = Array.new()
-                    liste.each { |x|
-
-                        listenom.push(x[0])
-                    }
-                    if listenom.include?(nomSauvegarde) then
-                       
-                        FileUtils.cd('../..')
-                        return false
-                    end
+                    listenom.push(x[0])
+                }
+                if listenom.include?(nomSauvegarde) then
+                   
+                    FileUtils.cd('../..')
+                    return false
                 end
-                @partie.tuerChrono()
-                @partie.actualiser()
-                @partie.ecrireNom(nomSauvegarde)
-                liste.push([nomSauvegarde, @partie])
-                File.delete('parties.yml')
-                File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-                FileUtils.cd('../..')
-                return true
-
-            else
-
-                @profil.ajouterUneGrille()
-                return @partie.sauvegarder(nomSauvegarde)
             end
+            @partie.tuerChrono()
+            @partie.actualiser()
+            @partie.ecrireNom(nomSauvegarde)
+            liste.push([nomSauvegarde, @partie])
+            File.delete('parties.yml')
+            File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+            FileUtils.cd('../..')
+            return true
 
         else
             
-            raise "Rien (ni éditeur, ni partie) n'est en cours!"
+            raise "Erreur dans Jeu::sauvegarderPartie(String) : une Partie doit être active"
+        end
+    end
+
+# Méthode pour sauvegarder une grille, soit par l'éditeur, soit à la fin d'une partie
+    def sauvegarderGrille(unNom)
+
+        if @partie!= nil then
+
+            if @partie.class == Partie then
+
+                return @partie.sauvegarderGrille(unNom)
+            else
+                @profil.ajouterUneGrille()
+                return @partie.sauvegarder(nomSauvegarde)
+            end
+        else
+            raise "Erreur dans Jeu::sauvegarderGrille(String) : Aucune partie n'est en cours"
+        end
+    end
+
+# Méthode pour vider/nettoyer la grille(tout remettre à zéro)
+    def nettoyerGrille()
+
+        if @partie != nil then
+
+            @partie.nettoyerGrille()
+        else
+            raise "Erreur : impossible de nettoyer la grille si ni éditeur ou partie n'ont été lancés!"
         end
     end
 
