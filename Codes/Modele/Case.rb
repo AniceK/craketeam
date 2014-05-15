@@ -1,5 +1,4 @@
 # encoding: utf-8
-# :markup! RDoc
 #! /usr/bin/env ruby
 ##
 #25/02/2014
@@ -11,8 +10,7 @@
 class Case
 
     @etat
-# Variable représentant l'état, un entier qui indique si la case a été noircie, cochée/marquée ou laissée blanche.
-    
+# Variable représentant l'état, un entier qui indique si la case a été noircie, cochée/marquée ou laissée blanche.    
     attr :etat, false
 
     private_class_method :new

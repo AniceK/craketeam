@@ -4,9 +4,6 @@
 #13/03/2014
 #Projet Picross equipe CrakeTeam
 #
-# :markup! RDoc
-# = Rangee
-#
 #Ce fichier contient la classe Rangee, qui est constituee de Case
 #ici une description de la classe Rangee.
 
@@ -18,10 +15,11 @@ class Rangee
     @conditions
     @valide
 # Variable destinée à contenir le tableau de +Case+ de la Rangée
+    attr_reader :cases
 # Variable destinée à contenir le tableau de conditions (entiers naturels positifs) de la Rangée
-# Variable destinée à contenir le booleen indiquant si la disposition des Cases respecte les conditions
-
-    attr_reader :cases, :conditions, :valide
+    attr_reader :conditions
+# Variable destinée à contenir le booleen indiquant si la disposition des Cases respecte les conditions 
+    attr_reader :valide
 
     private_class_method :new
 
@@ -51,9 +49,10 @@ class Rangee
 
     end    #marqueur de fin d initialize
 
-    # == Méthodes d'écriture des donnees
+#= Méthodes d'écriture
 
 # Méthode permettant de déterminer les conditions à partir d'un tableau
+# :category: Ecriture de Données
 	def conditionsDeterminer()
 
         cpt = 0
@@ -93,6 +92,7 @@ class Rangee
 	end
 
 # Méthode réinitialisant l'état des cases de la Rangée
+# :category: Ecriture de Données
 	def razCases()
 		
         @cases.each { |x|
@@ -102,6 +102,7 @@ class Rangee
 	end
 
 # Méthode d'instance vérifiant si la rangée est considérée comme finie (les cases respectent les contraintes). On retourne le résultat.
+# :category: Ecriture de Données
     def verifier()
 
         nbreCaseNoircie = 0
@@ -171,6 +172,7 @@ class Rangee
     end     #marqueur de fin de verifier
 
 # Méthode d'instance, appelant la methode noircir de la case NUMERO (entier passe en paramètre).
+# :category: Ecriture de Données
     def noircir(numero)
 
         @cases[numero].noircir()
@@ -178,20 +180,23 @@ class Rangee
     end     #marqueur de fin de noircir
 
 # Méthode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
+# :category: Ecriture de Données
     def marquer(numero)
 
         @cases[numero].marquer()
     end
 
-    # == Méthode de lecture de données
+#= Méthode de lecture de données
 
 # Méthode vérifiant si la case numero est noircie
+# :category: Lecture de Données
     def noircie?(numero)
         
         return @cases[numero].etat == 1
     end
 
 #methode d'affichage dans un terminal pour les tests
+# :category: Lecture de Données
     def afficher()
         
         print @conditions.to_s()
@@ -202,13 +207,15 @@ class Rangee
     end
 
 # Méthode pour retourner la condition x, pour l'interface graphique
+# :category: Lecture de Données
     def condition(x)
 
             return @conditions[x]
     end
 
 # Méthode pour retourner la taille du tableau de condition, pour l'interface graphique
-    def nbConditions
+# :category: Lecture de Données
+    def nbConditions()
 
         return @conditions.size()
     end
