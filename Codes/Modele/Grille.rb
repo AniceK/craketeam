@@ -230,7 +230,7 @@ class Grille
     def sauvegarder(unNom)
 
     # La grille est remise à zéro (pas de case noircie ou marquée)
-        self.raz()
+        self.razGrille()
         @nom = unNom
 
     # On se déplace dans le répertoir /Grille/Taille, pour charger le fichier contenant toutes les grilles de cette taille

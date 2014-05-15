@@ -82,8 +82,10 @@ class EventsReinitialiser < Events
       
       if dialog.doitReinitialiser then
       
-        @jeu.viderTout() # => Doit tout remettre à zéro
         @fenetre.affichageInfos("Toutes les données ont été effacées")
+        @jeu.deconnecter()
+        @jeu.viderTout()
+        mouvement(EventsAccueil.new(@jeu, position() ))
         
       elsif !dialog.doitReinitialiser then
         
