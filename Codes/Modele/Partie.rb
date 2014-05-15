@@ -158,23 +158,28 @@ class Partie
             tab = YAML::load(File.open('grilles.yml'))
             unTab = Array.new()
 
+         # Tous les noms des sauvegardes sont enregistrés dans un autre tableau
             tab.each { |x|
 
                 unTab.push(x[0])
             }
 
+         # Le nom de grille a charger est chercher dans ce second tableau
             if unTab.include?(nom) then
 
+            # S'il y est, on charge la grille correspondante, et on renvoie true
                 @grille = tab[unTab.index(nom)][1]
                 FileUtils.cd('../..')
                 return true
             else
-
+            
+            # Si le nom n'y est pas, on renvoie false
                 FileUtils.cd('../..')
                 return false
             end
         else
             raise "Erreur dans Partie::chargerGrille(String, int) : aucune grille de cette taille n'existe"
+        end
     end
 
 
