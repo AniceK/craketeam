@@ -12,24 +12,23 @@ class Editeur
 	@grille
 
 
-	# Constructeur
+# Méthode de classe de construction de la classe Editeur
 	def Editeur.creer(nom, taille)
 
 		new(nom, taille)
 
 	end
 
+# Méthode de classe d'intialisation de la classe Éditeur
 	def initialize(nom, taille)
 
 		@grille = Grille.creer(nom, taille)
-
 	end
 
 # Méthode permettant de noircir une case de la grille (ou de la blanchir si elle était déjà noircie)
 	def noircir(coordX, coordY)
 
 		@grille.noircir(coordX, coordY)
-
 	end
 
 
@@ -37,7 +36,6 @@ class Editeur
 	def conditionsDeterminer()
 
 		@grille.conditionsDeterminer()
-
 	end
 
 # Méthode permettant de sauvegarder la grille

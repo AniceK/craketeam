@@ -13,18 +13,19 @@ require 'fileutils'
 
 class Partie
 
-    @grille         # Grille de jeu
-    @date           # heure et date de la derniere sauvegarde de la partie
-    @nom            # nom de la derniere sauvegarde de la partie
-    @joueur         #nom du joueur qui joue (différent du créateur de la grille)
-    @type           #entier signalant de quelle type de partie il s'agit. Pour l'instant, on laisse ce paramètre inutilisé
-    @aide           #contient l'IA d'aide
-    @temps          #compteur de temps pour la partie, utilisé pour évaluer le score
-    @chronometre    #Processus fils comptant les secondes
-    @active         #booleen définissant si la partie est active (lancée, en cours) ou non
+    @grille         # Variable contenant Grille de jeu
+    @date           # Variable contenant l'heure et date de la derniere sauvegarde de la partie
+    @nom            # Variable contenant le nom de la derniere sauvegarde de la partie
+    @joueur         # Variable contenant le nom du joueur qui joue (différent du créateur de la grille)
+    @aide           # Variable contient l'IA d'aide
+    @temps          # Variable contenant un compteur de temps pour la partie, utilisé pour évaluer le score
+    @chronometre    # Variable contenant un processus fils comptant les secondes
+    @active         # Variable contenant un booleen définissant si la partie est active (lancée, en cours) ou non
 
 
-    attr_reader :grille, :type, :aide, :date, :joueur, :temps, :chronometre, :active, :nom
+    attr_reader :grille, :aide, :date, :joueur, :temps, :chronometre, :active, :nom
+
+    private_class_method :new
 
 # Méthode de classe de construction de la classe Partie, avec trois paramètres, taille de la grille, difficulte de l'aide, nom du joueur
     def Partie.creer(taille, difficulte, nom)
@@ -54,9 +55,9 @@ class Partie
 
     end    #marqueur de fin d initialize
 
-#==================================================================================
+#***************************************
     # Méthodes de gestion du chronomètre(variables @temps, @active et @chronometre)
-#==================================================================================
+#***************************************
 
 # Méthode pour initialiser le chronometre, à la création de la partie et à son chargement pour la sérialisation
     def initialiserChrono()
@@ -122,9 +123,9 @@ class Partie
         end
     end
 
-#=======================================================
+#*************************************
     # Méthodes d'écriture des données
-        # Liste
+        # Liste de ces méthodes
         # -noircir(int, int)
         # -chargerGrille(String, int)
         # -termine()
@@ -132,11 +133,11 @@ class Partie
         # -genererAleatoirementGrille()
         # -nettoyerGrille()
         # -marquer(int, int)
-#=======================================================
+#*************************************
     
-    #*****************************************************
-        #Méthodes de gestion de la grille en lors d'un jeu
-    #*****************************************************
+    #------------------------------------
+        # Méthodes de gestion de la grille en lors d'un jeu 
+    #------------------------------------
 # Methode pour noircir une case et verifier si la colonne et la ligne correspondante sont validées
     def noircir(coordX, coordY)
 
@@ -232,9 +233,9 @@ class Partie
         @grille.marquerCase(x, y)
     end
 
-    #**********************************************************************
-        # Autres méthodesi, pour la sauvegarde d'une partie ou d'une grille
-    #**********************************************************************
+    #--------------------------
+        # Autres méthodes, pour la sauvegarde d'une partie ou d'une grille
+    #--------------------------
 # Méthode pour écrire le nom de la sauvegarde dans la partie
     def ecrireNom(unNom)
 
@@ -252,9 +253,9 @@ class Partie
         @date = Time.now()
     end
 
-#=======================================================
-    # Méthodes de lecture de donnée
-#=======================================================
+#***********************************
+    # Méthodes de lecture de données
+#***********************************
 
 # Méthode pour retourner la taille de la grille
     def tailleGrille()
@@ -298,17 +299,17 @@ class Partie
         FileUtils.cd('Grille')
         FileUtils.cd(taille.to_s())
         
+    # Si le fichier contenant les grilles n'est pas vide, il est chargé
         if File.size('grilles.yml') > 0 then
            
-            puts "Ouverture de grilles.yml dans #{taille}, et on choisit toute les grilles? #{toutes}"
             tab = Array.new()
             tab = YAML::load(File.open('grilles.yml'))
             tabInter = Array.new
             unTab = Array.new()
         
+        # S'il est spécifié qu'on ne veut que les grilles du Profil actuel, toutes ses grilles sont stockées dans un autre tableau
             if !toutes then
 
-                puts "on vire tout ce qui n'appartient pas au joueur #{@joueur}"
                 tabInter = tab.find_all { |x|
 
                     x[1].createur == @joueur
@@ -317,6 +318,7 @@ class Partie
                 
                 tabInter = tab
             end
+        # Dans un troisieme tableau sont rangées la taille, le nom et la date de création de la grille. Ce tableau est renvoyé
             tabInter.each { |x|
             
                 unTab.push([x[1].taille, x[0], x[1].date])
@@ -332,12 +334,4 @@ class Partie
         end
 
 	end
-
-#===================================================================================
-
-#=================================================
-    #ici commencent les méthodes de retransmission
-#=================================================
-
-
 end

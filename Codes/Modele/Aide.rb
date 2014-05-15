@@ -16,7 +16,9 @@ class Aide
   
     attr_reader :difficulte, :tabCondCol, :tabCondLig
   
-	# Constructeur de la classe Aide
+    private_class_method :new
+
+# Constructeur de la classe Aide
     def Aide.creer(uneDifficulte)
 
 		  new(uneDifficulte)

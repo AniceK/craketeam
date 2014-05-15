@@ -17,6 +17,8 @@ class Rangee
 
     attr_reader :cases, :conditions, :valide
 
+    private_class_method :new
+
 # Méthode de classe de création de la classe Rangee. Récupère en argument le nombre de cases de la rangée
     def Rangee.creer(nbreCase)
 
@@ -43,9 +45,9 @@ class Rangee
 
     end    #marqueur de fin d initialize
 
-#====================================
+#***********************************
     #Méthodes d'écriture des donnees
-#====================================
+#***********************************
 
 # Méthode permettant de déterminer les conditions à partir d'un tableau
 	def conditionsDeterminer()
@@ -86,8 +88,7 @@ class Rangee
 
 	end
 
-	#Méthode réinitialisant l'état des cases de la Rangée
-
+# Méthode réinitialisant l'état des cases de la Rangée
 	def razCases()
 		
         @cases.each { |x|
@@ -177,11 +178,10 @@ class Rangee
 
         @cases[numero].marquer()
     end
-    
-#============================================
-    # Méthode de lecture de données
-#============================================
 
+#**********************************
+    # Méthode de lecture de données
+#**********************************
 
 # Méthode vérifiant si la case numero est noircie
     def noircie?(numero)

@@ -9,12 +9,13 @@
 
 class Case
 
-    @etat       #l'état est un entier qui indique si la case a été noircie, cochée par le joueur ou laissée blanche.
-    @x          #coordonnees en abcisse
-    @y          #coordonnees en ordonnees
+# Variable représentant l'état, un entier qui indique si la case a été noircie, cochée/marquée ou laissée blanche.
+    @etat
 
     attr :etat, false
 
+    private_class_method :new
+    
     def Case.creer()
 
 		new()
@@ -45,7 +46,6 @@ class Case
 
             @etat = 1
         end
-
     end
 
 # Méthode pour passer l'état de la case de zéro à deux ou de deux à zéro
@@ -66,7 +66,6 @@ class Case
 	def raz()
 
 		@etat = 0
-
 	end
 
 #Methode d'affichage en terminal pour les tests uniquement

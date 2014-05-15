@@ -15,21 +15,23 @@ require_relative './Profil'
 require_relative './Editeur'
 
 class Jeu
+    
+    @profil       # Variable contenant le profil actif, initialisée à nil
+    @partie       # Variable contenant la Partie ou l'Editeur en cours, initialisée à nil
+    @evenements   # Variable contenant un evenment (pour le contrôleur)
+    @verbose      # Variable contenant un boolean pour afficher les étapes
 
-  @profil       #profil actif, courant, initialisé à nil
-  @partie       #partie ou editeur en cours, si il n'y a rien, il y a nil
-  @evenements   #evenement (pour le controleur)
-  @verbose      #booleen pour debuggage
+    attr_reader :profil, :partie, :evenements, :verbose
 
-  attr_reader :profil, :partie, :evenements, :verbose
+    private_class_method :new
 
-  # Constructeur de la classe Jeu
+# Méthode de classe de construction de la classe Jeu
     def Jeu.creer(v)
 
         new(v)
     end    #marqueur de fin de constructeur
 
-#méthode de classe d'initialisation, ou on initialise les valeurs à nil
+# Méthode de classe d'initialisation
     def initialize(v)
 
     @verbose = v
@@ -43,7 +45,10 @@ class Jeu
 
         #Creation de l'arborescence
 
-            if @verbose then puts "Le Dossier n'existe pas.. Création de l'arborescence" end
+            if @verbose then 
+                
+                puts "Le Dossier n'existe pas.. Création de l'arborescence" 
+            end
             FileUtils.mkdir('Picross')
             FileUtils.cd('Picross')
             FileUtils.mkdir('Profil')
@@ -54,51 +59,65 @@ class Jeu
         
         #Si le dossier existe, on vérifie toutefois son contenu
 
-            if @verbose then puts "Dossier Picross trouvé, vérification de son contenu..." end
+          if @verbose then 
+              
+              puts "Dossier Picross trouvé, vérification de son contenu..."
+          end
 
           begin
-
-            Dir.chdir "Profil"
+              
+              Dir.chdir "Profil"
 
           rescue Errno::ENOENT => e
+              
+              if @verbose then 
+                  
+                  puts "Pas de dossier profil.." 
+              end
 
-            if @verbose then 
-                
-                puts "Pas de dossier profil.." 
-            end
-            
-            FileUtils.mkdir('Profil')
-            
-            if @verbose then 
-                
-                puts "Dossier Profil créé !" 
-            end
+              FileUtils.mkdir('Profil')
+
+              if @verbose then 
+                  
+                  puts "Dossier Profil créé !" 
+              end
 
           else
 
               if @verbose then puts "Dossier Profil présent" end
-            FileUtils.cd('..')
+              FileUtils.cd('..')
 
           end
 
           begin
-
-            Dir.chdir "Grille"
+              
+              Dir.chdir "Grille"
 
           rescue Errno::ENOENT => f
-
-            if @verbose then puts "Pas de dossier grille.. Creation de l'arborescence correspondante" end
+              
+              if @verbose then
+                  
+                  puts "Pas de dossier grille.. Creation de l'arborescence correspondante" 
+              end
             
-            self.creerArboGrille()
-            if @verbose then puts "Dossier Grille crée !" end
-            FileUtils.cd('..')
+              self.creerArboGrille()
+              
+              if @verbose then 
+                  
+                  puts "Dossier Grille crée !" 
+              end
+              
+              FileUtils.cd('..')
 
           else
 
-              if @verbose then puts "Dossier Grille présent" end
+              if @verbose then 
+                  
+                  puts "Dossier Grille présent" 
+              end
             
-            #test de l'existence des cinq dossiers correspondant aux tailles
-            #test de l'existence du dossier 5
+          #test de l'existence des cinq dossiers correspondant aux tailles
+          #test de l'existence du dossier 5
             begin
 
                 Dir.chdir "5"
@@ -228,7 +247,10 @@ class Jeu
 
         ensure
 
-            if @verbose then puts "Initialisation du répertoire fini !" end
+            if @verbose then 
+                
+                puts "Initialisation du répertoire fini !" 
+            end
 
         end
 
@@ -238,6 +260,11 @@ class Jeu
 
     end    #marqueur de fin d initialize
 
+
+#**************************************
+    #Méthodes de gestion d'arborescence
+#**************************************
+    #
 # Méthode pour créer l'arborescence du dossier Grille
     def creerArboGrille()
 
@@ -245,6 +272,7 @@ class Jeu
         FileUtils.cd('Grille')
 
         for i in [5, 10, 15, 20, 25]
+            
             creerArboTaille(i)
         end
         FileUtils.cd('..')
@@ -257,7 +285,6 @@ class Jeu
         FileUtils.cd(taille.to_s())
         File.open("grilles.yml", "w")
         FileUtils.cd('..')
-        
     end
 
 # Méthode pour réinitialiser l'arborescence
@@ -270,6 +297,46 @@ class Jeu
         self.creerArboGrille()
         File.new('scores.yml', "w")
     end
+
+
+# Méthode pour vider toutes les grilles existantes
+    def viderGrilles()
+
+        if @profil!= nil then
+            
+            FileUtils.cd('Grille')
+            for i in [5, 10, 15, 20, 25]
+
+                FileUtils.cd(i.to_s)
+                File.delete('grilles.yml')
+                File.new('grilles.yml', "w")
+                FileUtils.cd('..')
+            end
+            FileUtils.cd('..')
+        else
+
+            raise "Erreur dans Jeu::viderGrille() : un Profil doit être actif"
+        end
+    end
+
+# Méthode pour vider les parties sauvegardées
+    def viderParties
+
+        if @profil != nil then
+
+            FileUtils.cd('Profil')
+            FileUtils.cd(self.nomProfil())
+            File.delete('parties.yml')
+            File.new('parties.yml', "w")
+            FileUtils.cd('../..')
+        end
+    end
+
+
+
+#****************************************
+    # Méthodes de gestion du Profil actif
+#****************************************
 
 # Méthode permettant de charger le Profil du joueur
 	def chargerProfil(unNom)
@@ -316,12 +383,6 @@ class Jeu
         end
     end
 
-# Méthode qui récupère un evenement et initialize evenement
-    def ajouterEvenement(event)
-
-        @evenements = event
-    end
-
 #Methode d'instance qui initialise la variable d'instance @profil en creant l arborescence correpondante. On retourne un boolen indiquant si le profil existait ou pas (true pour nouveau, false sinon)
 	def creerProfil(unNom)
 
@@ -365,6 +426,82 @@ class Jeu
 
 	end
 
+# Méthode pour déconnecter un profil
+    def deconnecter()
+
+        if @profil != nil then
+            
+            @profil.sauvegarder()
+            @profil = nil
+        else
+            raise "Erreur dans Jeu::deconnecter() : un Profil doit être actif"
+        end
+    end
+
+# Méthode pour verifier si un profil est connecté
+    def profilConnecte?()
+
+        return @profil != nil
+    end
+
+#***********************************
+    # Méthodes d'écriture de données
+#***********************************
+
+# Méthode qui récupère un evenement et initialize evenement
+    def ajouterEvenement(event)
+
+        @evenements = event
+    end
+
+# Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
+    def supprimmerPartie(unNom)
+
+        if @profil != nil then
+            
+            if @verbose then 
+                
+                puts "suppression d'une partie!" 
+            end
+
+            liste = Array.new()
+            FileUtils.cd('Profil')
+            FileUtils.cd(@profil.nom)
+
+            if File.size('parties.yml') > 0 then
+            
+                liste = YAML::load(File.open('parties.yml'))
+                listeNoms = Array.new()
+                
+                liste.each { |x|
+
+                    listeNoms.push(x[0])
+                }
+                if (index = listeNoms.index(unNom)) != nil then
+
+                    sup = liste.delete_at(index)
+                    File.delete('parties.yml')
+                    File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+                    FileUtils.cd('../..')
+                    return (sup == p)
+                else
+                   
+                    raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde sous ce nom : #{unNom}"
+                end
+            else
+                raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
+            end
+        else
+            raise "Erreur dans Jeu::supprimerPartie(String) : un Profil doit être actif"
+        end
+ 
+    end
+
+
+#**********************************
+    # Méthode de lecture de données
+#**********************************
+
 # Méthode d instance renvoyant la liste des parties sauvegardees du profil en cours
     def chargerListePartiesSauvegardees()
 
@@ -402,7 +539,28 @@ class Jeu
 
     end
 
+# Méthode pour afficher les scores
+    def afficherScores()
 
+        liste = Array.new()
+        if File.size('scores.yml')> 0 then
+            
+            liste = YAML::load(File.open('scores.yml'))        
+            return liste.sort()
+        else
+
+            return nil
+        end
+    end
+
+
+#****************************************
+    #Méthode de gestion de Partie/Editeur
+#****************************************
+
+    #---------------------
+    #Méthode d'écriture
+    #---------------------
 # Méthode recuperant une partie passée en paramètre, et fait de cette partie la partie en cours.
 	def chargerPartie(unNom)
 
@@ -448,48 +606,6 @@ class Jeu
         end
 	end
     
-# Méthode supprimant une partie passée en paramètre de la liste des parties sauvegardées
-    def supprimmerPartie(unNom)
-
-        if @profil != nil then
-            
-            if @verbose then 
-                
-                puts "suppression d'une partie!" 
-            end
-
-            liste = Array.new()
-            FileUtils.cd('Profil')
-            FileUtils.cd(@profil.nom)
-
-            if File.size('parties.yml') > 0 then
-            
-                liste = YAML::load(File.open('parties.yml'))
-                listeNoms = Array.new()
-                
-                liste.each { |x|
-
-                    listeNoms.push(x[0])
-                }
-                if (index = listeNoms.index(unNom)) != nil then
-
-                    sup = liste.delete_at(index)
-                    File.delete('parties.yml')
-                    File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-                    FileUtils.cd('../..')
-                    return (sup == p)
-                else
-                   
-                    raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde sous ce nom : #{unNom}"
-                end
-            else
-                raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
-            end
-        else
-            raise "Erreur dans Jeu::supprimerPartie(String) : un Profil doit être actif"
-        end
- 
-    end
 
 # Méthode creeant une partie a partir des paramètres
 	def creerPartie(taille, difficulte)
@@ -499,20 +615,6 @@ class Jeu
             @partie = Partie.creer(taille, difficulte, @profil.nom())
         else
             @partie = Partie.creer(taille, difficulte, "Visiteur")
-        end
-    end
-
-# Méthode pour afficher les scores, avec le choix entre tous les scores, ou juste ceux du profil en cours
-    def afficherScores()
-
-        liste = Array.new()
-        if File.size('scores.yml')> 0 then
-            
-            liste = YAML::load(File.open('scores.yml'))        
-            return liste.sort()
-        else
-
-            return nil
         end
     end
 
@@ -527,66 +629,11 @@ class Jeu
         end
     end
 
-# Méthode pour déconnecter un profil
-    def deconnecter()
-
-        if @profil != nil then
-            
-            @profil.sauvegarder()
-            @profil = nil
-        else
-            raise "Erreur dans Jeu::deconnecter() : un Profil doit être actif"
-        end
-    end
-
-# Méthode pour verifier si un profil est connecté
-    def profilConnecte?()
-
-        return @profil != nil
-    end
-
 # Méthode pour vider le contenu de @partie
     def quitterPartie()
 
         @partie = nil
     end
-
-# Méthode pour vider toutes les grilles existantes
-    def viderGrilles()
-
-        if @profil!= nil then
-            
-            FileUtils.cd('Grille')
-            for i in [5, 10, 15, 20, 25]
-
-                FileUtils.cd(i.to_s)
-                File.delete('grilles.yml')
-                File.new('grilles.yml', "w")
-                FileUtils.cd('..')
-            end
-            FileUtils.cd('..')
-        else
-
-            raise "Erreur dans Jeu::viderGrille() : un Profil doit être actif"
-        end
-    end
-
-# Méthode pour vider les parties sauvegardées
-    def viderParties
-
-        if @profil != nil then
-
-            FileUtils.cd('Profil')
-            FileUtils.cd(self.nomProfil())
-            File.delete('parties.yml')
-            File.new('parties.yml', "w")
-            FileUtils.cd('../..')
-        end
-    end
-
-#===============================================
-    #Gestion de la Partie /de l'éditeur en Cours
-#===============================================
 
 # Méthode sauvegardant la partie en cours
 	def sauvegarderPartie(nomSauvegarde)
@@ -653,18 +700,6 @@ class Jeu
             raise "Erreur : impossible de nettoyer la grille si ni éditeur ou partie n'ont été lancés!"
         end
     end
-
-# Méthode pour retourner la taille de la grille de la partie
-    def tailleGrille()
-
-        if @partie != nil then
-
-            return @partie.tailleGrille()
-        else
-            raise "Aucune partie n'est chargée!"
-        end
-    end
-
 
 # Méthode activant/lançant la partie
     def lancerPartie()
@@ -746,6 +781,49 @@ class Jeu
         end
     end
 
+# Méthode pour charger une grille dont le nom est passé en paramètre
+    def chargerGrille(nom, taille)
+
+        if @partie.class == Partie then
+
+            return @partie.chargerGrille(nom, taille)
+        else
+            raise "erreur : une partie doit etre en cours"
+        end
+    end
+
+# Méthode pour vider le contenu de @partie
+    def quitterPartie()
+
+        @partie = nil
+    end
+
+# Méthode pour remplacer une sauvegarde existante par une nouvelle partie
+    def remplacerSauvegarde(unNom)
+
+        if @partie.class == Partie then
+
+            self.supprimmerPartie(unNom)
+            self.sauvegarderPartie(unNom)
+        end
+    end
+
+    #--------------------
+    # Méthodes de lecture
+    #--------------------
+
+# Méthode pour retourner la taille de la grille de la partie
+    def tailleGrille()
+
+        if @partie != nil then
+
+            return @partie.tailleGrille()
+        else
+            raise "Aucune partie n'est chargée!"
+        end
+    end
+
+
 # Méthode pour activer l'aide
     def chercherAide()
 
@@ -798,17 +876,6 @@ class Jeu
         end
     end
 
-# Méthode pour charger une grille dont le nom est passé en paramètre
-    def chargerGrille(nom, taille)
-
-        if @partie.class == Partie then
-
-            return @partie.chargerGrille(nom, taille)
-        else
-            raise "erreur : une partie doit etre en cours"
-        end
-    end
-
 # Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
     def nbConditionsV(x)
 
@@ -829,6 +896,7 @@ class Jeu
             raise "Erreur, une Partie doit être commencée"
         end
     end
+
 # Méthode pour retourner la condition y dans la colonne x passe en parametre
     def conditionV(x, y)
 
@@ -839,6 +907,7 @@ class Jeu
             raise "Erreur, une Partie doit être commencée"
         end
     end
+
 # Méthode pour retourner la condition y dans la ligne y passe en parametre
     def conditionH(x, y)
 
@@ -869,22 +938,6 @@ class Jeu
             return @partie.etatCase(x, y)
         else
             raise "erreur : cette methode doit etre appelee lorsqu'une partie est active"
-        end
-    end
-
-# Méthode pour vider le contenu de @partie
-    def quitterPartie()
-
-        @partie = nil
-    end
-
-# Méthode pour remplacer une sauvegarde existante par une nouvelle partie
-    def remplacerSauvegarde(unNom)
-
-        if @partie.class == Partie then
-
-            self.supprimmerPartie(unNom)
-            self.sauvegarderPartie(unNom)
         end
     end
 

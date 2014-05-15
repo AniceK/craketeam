@@ -22,6 +22,8 @@ class Grille
 
     attr_reader :colonne, :ligne, :grille, :createur, :taille, :nom, :date
 
+    private_class_method :new
+
 # Méthode de classe de Création de la classe Grille, ou la taille et le nom du créateur sont passés en paramètres
     def Grille.creer(nom, taille)
     
@@ -53,11 +55,11 @@ class Grille
 
     end
 
-# ========================================
+#************************************
     # Méthodes d'écriture des données
-#========================================
-	# Méthode vérifiant la validité du coup joué
+#************************************
 
+# Méthode vérifiant la validité du coup joué
     def verifierCoup(coordX, coordY)
 
       @colonne[coordX].verifier()
@@ -150,9 +152,9 @@ class Grille
         self.razGrille()
     end
 
-#=====================================================
+#************************************
     # Méthodes de lecture des données
-#=====================================================
+#************************************
 
 # Méthode renvoyant la taille de la grille
     def getTaille()
@@ -222,9 +224,9 @@ class Grille
     end
 
 
-#=====================================================
-    # Méthode de sérialisation
-#=====================================================
+#*****************************
+    # Méthode de sérialisation 
+#*****************************
 
 # Méthode de sérialisation de la grille, avec remise à zéro préalable des tableaux de cases des Rangées
     def sauvegarder(unNom)
