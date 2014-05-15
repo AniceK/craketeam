@@ -83,6 +83,7 @@ class Rangee
             @valide = true
             @conditions.push(0)
         end
+
 	end
 
 	#Méthode réinitialisant l'état des cases de la Rangée
@@ -174,7 +175,7 @@ class Rangee
 # Méthode d'instance, appelant la methode marquer de la case NUMERO(entier passé en paramètre)
     def marquer(numero)
 
-        @cases[numero].marquer
+        @cases[numero].marquer()
     end
     
 #============================================

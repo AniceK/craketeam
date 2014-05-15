@@ -210,7 +210,7 @@ class Partie
               scores = YAML::load( File.open("scores.yml"))
           end
 
-          scores.push([@joueur, temps * 3, @grille.taille()])
+          scores.push([@grille.taille(),@joueur, temps * 3,])
           File.open('scores.yml',"w"){|out| out.puts scores.to_yaml()}
           return temps
 
