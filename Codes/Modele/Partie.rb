@@ -26,41 +26,58 @@ class Partie
 
     attr_reader :grille, :type, :aide, :date, :joueur, :temps, :chronometre, :active, :nom
 
-# Constructeur de la classe Partie
+# Méthode de classe de construction de la classe Partie, avec trois paramètres, taille de la grille, difficulte de l'aide, nom du joueur
     def Partie.creer(taille, difficulte, nom)
 
 		  new(taille, difficulte, nom)
-
     end
 
-#méthode de classe d'initialisation prenant en paramètre la taille de la grille, le niveau de difficulté de l'aide et le nom du joueur
+# Méthode de classe d'initialisation prenant en paramètre la taille de la grille, le niveau de difficulté de l'aide et le nom du joueur
     def initialize(taille, difficulte, nom)
 
+    # Creation d'une grille(voir Grille.rb)
 		@grille = Grille.creer(nom, taille)
+    # Initialisation de la date de création/ de sauvegarde
 		@date = Time.now
+    # Le nom de sauvegarde n'est pas intialisé
         @nom = nil
+    # Le joueur est initialisé avec le nom du Profil actuel ou avec par défaut
         @joueur = nom
+    # Creation d'une Aide (voir Aide.rb)
         @aide = Aide.creer(difficulte)
+    # Le temps de jeu est initialisé à zéro
         @temps = 0
+    # La partie n'est pas active (en cours) à sa création
         @active = false
+    # Une méthode supplémentaire initialise le chronomètre
         self.initialiserChrono()
 
     end    #marqueur de fin d initialize
 
-# Méthode pour initialiser le chronometre, en dehors du initialize de Partie pour la sérialisation
+#==================================================================================
+    # Méthodes de gestion du chronomètre(variables @temps, @active et @chronometre)
+#==================================================================================
+
+# Méthode pour initialiser le chronometre, à la création de la partie et à son chargement pour la sérialisation
     def initialiserChrono()
         
+    # Un processus fils (pf) est créé pour pouvoir le mettre en pause et le reprendre
         @chronometre = Thread.new {
             
+        # Ce pf récupère une date précise à la microseconde
             time = Time.now
+        # Le pf boucle ensuite de manière infine
             loop do
                
+            # Si jamais la partie n'est plus ou pas active, le chronomètre s'arrête
                 if !@active then
+                    
                     Thread.stop()
                 end
 
                 sleep 0.1
                 
+             # S'il s'est passé plus d'une seconde depuis le dernier tour de boucle, on incrémente le temps
                 if Time.now() - time >= 1.0 then
 
                     @temps += 1
@@ -81,6 +98,7 @@ class Partie
 # Méthode lançant la partie, en activant le chronomètre
 	def lancer()
 
+    # Si la partie n'est pas déjà active, alors on la rend active, et on (re)lance le chronomètre
         if !@active then
             
             @active = true
@@ -90,12 +108,6 @@ class Partie
             raise "Partie déjà en cours!"
         end
 	end
-
-# Méthode pour écrire le nom de la sauvegarde dans la partie
-    def ecrireNom(unNom)
-
-        @nom = unNom
-    end
 
 #méthode chargée de mettre le chronomètre et la partie en pause
     def pause()
@@ -110,10 +122,169 @@ class Partie
         end
     end
 
+#=======================================================
+    # Méthodes d'écriture des données
+        # Liste
+        # -noircir(int, int)
+        # -chargerGrille(String, int)
+        # -termine()
+        # -chercherAide()
+        # -genererAleatoirementGrille()
+        # -nettoyerGrille()
+        # -marquer(int, int)
+#=======================================================
+    
+    #*****************************************************
+        #Méthodes de gestion de la grille en lors d'un jeu
+    #*****************************************************
+# Methode pour noircir une case et verifier si la colonne et la ligne correspondante sont validées
+    def noircir(coordX, coordY)
+
+        @grille.noircir(coordX, coordY)
+        @grille.verifierCoup(coordX, coordY)
+    end
+
+# Methode pour charger une grille dont le nom et la taille sont passes en parametre
+    def chargerGrille(nom, taille)
+
+    # On se déplace dans le dossier correspondant, Grille/taille
+        FileUtils.cd('Grille')
+        FileUtils.cd(taille.to_s())
+        tab = Array.new()
+
+    # Si le fichier de sauvegarde n'est pas vide, on le charge
+        if File.size('grilles.yml') > 0 then
+            
+            tab = YAML::load(File.open('grilles.yml'))
+            unTab = Array.new()
+
+            tab.each { |x|
+
+                unTab.push(x[0])
+            }
+
+            if unTab.include?(nom) then
+
+                @grille = tab[unTab.index(nom)][1]
+                FileUtils.cd('../..')
+                return true
+            else
+
+                FileUtils.cd('../..')
+                return false
+            end
+        else
+            raise "Erreur dans Partie::chargerGrille(String, int) : aucune grille de cette taille n'existe"
+    end
+
+
+# Méthode testant la fin de partie et l'arretant le cas echeant
+	def termine()
+        
+        if @grille.termine?() then
+
+          @chronometre.kill()
+          scores = Array.new()
+          if File.size("scores.yml") > 0 then
+          
+              scores = YAML::load( File.open("scores.yml"))
+          end
+
+          scores.push([@grille.taille(),@joueur, temps * 3,])
+          File.delete('scores.yml')
+          File.open('scores.yml',"w"){|out| out.puts scores.to_yaml()}
+          return temps
+
+      else
+          return nil
+	  end
+    end
+
+
+# Methode pour actualiser l'aide, avec ajout de 10 au temps en tant que pénalité
+    def chercherAide()
+
+        @temps += 10
+        return @aide.chercherAide(@grille.colonne, @grille.ligne)
+    end
+
+# Méthode pour créer une grille aléatoirement
+    def genererAleatoirementGrille()
+
+        @grille.genererAleatoire(50)
+    end
+
+# Méthode pour remettre la grille en cours à zéro (nettoyer)
+    def nettoyerGrille()
+
+        puts "on a demandée a la grille de se remettre à zéro"
+        @grille.razGrille()
+    end
+
+# Methode de marquage d'une case (X, Y)
+    def marquer(x, y)
+
+        @grille.marquerCase(x, y)
+    end
+
+    #**********************************************************************
+        # Autres méthodesi, pour la sauvegarde d'une partie ou d'une grille
+    #**********************************************************************
+# Méthode pour écrire le nom de la sauvegarde dans la partie
+    def ecrireNom(unNom)
+
+        @nom = unNom
+    end
+
+# Méthode pour sauvegarder une grille à la fin d'une partie
+    def sauvegarderGrille(unNom)
+
+        return @grille.sauvegarder(unNom)
+    end
 # Méthode  pour actualiser la date au moment de la sauvegarde
     def actualiser
 
         @date = Time.now()
+    end
+
+#=======================================================
+    # Méthodes de lecture de donnée
+#=======================================================
+
+# Méthode pour retourner la taille de la grille
+    def tailleGrille()
+
+        return @grille.getTaille()
+    end
+
+# Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
+    def nbConditionsV(x)
+
+            return @grille.nbConditionsV(x)
+    end
+
+# Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
+    def nbConditionsH(x)
+
+            return @grille.nbConditionsH(x)
+    end
+
+# Méthode pour retourner la condition y dans la colonne x passe en parametre
+    def conditionV(x, y)
+
+            return @grille.conditionV(x, y)
+    end
+
+# Méthode pour retourner la condition y dans la ligne x passe en parametre
+    def conditionH(x, y)
+
+            return @grille.conditionH(x, y)
+    end
+
+# Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
+    def etatCase(x, y)
+
+            return @grille.etatCase(x, y)
     end
 
 # Méthode permettant de renvoyer la Liste des grilles deja existante
@@ -157,132 +328,11 @@ class Partie
 
 	end
 
-# Methode pour charger une grille dont le nom est passe en parametre
-    def chargerGrille(nom, taille)
-
-        FileUtils.cd('Grille')
-        FileUtils.cd(taille.to_s())
-        tab = Array.new()
-        tab = YAML::load(File.open('grilles.yml'))
-        unTab = Array.new()
-
-        tab.each { |x|
-
-            unTab.push(x[0])
-        }
-
-        if unTab.include?(nom) then
-
-            @grille = tab[unTab.index(nom)][1]
-            FileUtils.cd('../..')
-            return true
-        else
-
-            FileUtils.cd('../..')
-            return false
-        end
-    end
-
-
-# Methode pour actualiser l'aide
-    def chercherAide()
-
-        @temps += 10
-        return @aide.chercherAide(@grille.colonne, @grille.ligne)
-    end
-
-# Methode pour noircir une case et verifier si la colonne et la grille correspondante sont validées
-    def noircir(coordX, coordY)
-
-        @grille.noircir(coordX, coordY)
-        @grille.verifierCoup(coordX, coordY)
-    end
-
-# Méthode testant la fin de partie et l'arretant le cas echeant
-	def termine()
-        
-        if @grille.termine?() then
-
-          @chronometre.kill()
-          scores = Array.new()
-          if File.size("scores.yml") > 0 then
-          
-              scores = YAML::load( File.open("scores.yml"))
-          end
-
-          scores.push([@grille.taille(),@joueur, temps * 3,])
-          File.delete('scores.yml')
-          File.open('scores.yml',"w"){|out| out.puts scores.to_yaml()}
-          return temps
-
-      else
-          return nil
-	  end
-    end
-
+#===================================================================================
 
 #=================================================
     #ici commencent les méthodes de retransmission
 #=================================================
 
-# Méthode pour sauvegarder une grille à la fin d'une partie
-    def sauvegarderGrille(unNom)
 
-        return @grille.sauvegarder(unNom)
-    end
-
-# Méthode pour créer une grille aléatoirement
-    def genererAleatoirementGrille()
-
-        @grille.genererAleatoire(50)
-    end
-
-# Méthode pour remettre la grille en cours à zéro (nettoyer)
-    def nettoyerGrille()
-
-        puts "on a demandée a la grille de se remettre à zéro"
-        @grille.razGrille()
-    end
-
-# Methode de marquage d'une case (X, Y)
-    def marquer(x, y)
-
-        @grille.marquerCase(x, y)
-    end
-
-# Méthode pour retourner la taille de la grille
-    def tailleGrille()
-
-        return @grille.getTaille()
-    end
-
-# Méthode pour retourner le nombre de conditions dans la colonne passe en parametre
-    def nbConditionsV(x)
-
-            return @grille.nbConditionsV(x)
-    end
-
-# Méthode pour retourner le nombre de conditions dans la ligne passe en parametre
-    def nbConditionsH(x)
-
-            return @grille.nbConditionsH(x)
-    end
-
-# Méthode pour retourner la condition y dans la colonne x passe en parametre
-    def conditionV(x, y)
-
-            return @grille.conditionV(x, y)
-    end
-
-# Méthode pour retourner la condition y dans la ligne x passe en parametre
-    def conditionH(x, y)
-
-            return @grille.conditionH(x, y)
-    end
-
-# Méthode pour récuperer l'état d'une case dont on passe les coordonnees en parametres
-    def etatCase(x, y)
-
-            return @grille.etatCase(x, y)
-    end
 end
