@@ -4,6 +4,9 @@
 #13/03/2014
 #Projet Picross equipe CrakeTeam
 #
+# :markup! RDoc
+# = Rangee
+#
 #Ce fichier contient la classe Rangee, qui est constituee de Case
 #ici une description de la classe Rangee.
 
@@ -11,9 +14,12 @@ require_relative "Case.rb"
 
 class Rangee
 
-    @cases          # Variable destinée à contenir le tableau de Case de la Rangée
-    @conditions     # Variable destinée à contenir le tableau de conditions (entiers naturels positifs) de la Rangée
-    @valide         # Variable destinée à contenir le booleen indiquant si la disposition des Ces respecte les conditions
+    @cases
+    @conditions
+    @valide
+# Variable destinée à contenir le tableau de +Case+ de la Rangée
+# Variable destinée à contenir le tableau de conditions (entiers naturels positifs) de la Rangée
+# Variable destinée à contenir le booleen indiquant si la disposition des Cases respecte les conditions
 
     attr_reader :cases, :conditions, :valide
 
@@ -45,9 +51,7 @@ class Rangee
 
     end    #marqueur de fin d initialize
 
-#***********************************
-    #Méthodes d'écriture des donnees
-#***********************************
+    # == Méthodes d'écriture des donnees
 
 # Méthode permettant de déterminer les conditions à partir d'un tableau
 	def conditionsDeterminer()
@@ -179,9 +183,7 @@ class Rangee
         @cases[numero].marquer()
     end
 
-#**********************************
-    # Méthode de lecture de données
-#**********************************
+    # == Méthode de lecture de données
 
 # Méthode vérifiant si la case numero est noircie
     def noircie?(numero)

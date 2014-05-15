@@ -1,6 +1,7 @@
 # encoding: utf-8
 #! /usr/bin/env ruby
 ##
+# :markup! RDoc
 #25/02/2014
 #Projet Picross equipe CrakeTeam
 #
@@ -12,13 +13,20 @@ require 'fileutils'
 
 class Grille
 
-    @colonne        # Variable contenant un tableau de Rangée destinées à être verticales
-    @ligne          # Variable contenant un tableau de Rangée destinées à être horizontales
-    @grille         # Variable contenant une matrice de case
-    @createur       # Variable contenant le nom du profil ayant créé la grille
-    @taille         # Variable définissant la taille de la grille
-    @nom            # Variable contenant le nom de la grille
-    @date           # Variable contenant la date de création de la grille
+    @colonne
+# Variable contenant un tableau de +Rangee+ destinées à être verticales 
+    @ligne          
+    # Variable contenant un tableau de Rangée destinées à être horizontales
+    @grille         
+    # Variable contenant une matrice de case
+    @createur       
+    # Variable contenant le nom du profil ayant créé la grille
+    @taille         
+    # Variable définissant la taille de la grille
+    @nom            
+    # Variable contenant le nom de la grille
+    @date           
+    # Variable contenant la date de création de la grille
 
     attr_reader :colonne, :ligne, :grille, :createur, :taille, :nom, :date
 

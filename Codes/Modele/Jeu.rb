@@ -1,4 +1,5 @@
 # encoding: utf-8
+# :markup! RDoc
 #! /usr/bin/env ruby
 ##
 #13/03/2014

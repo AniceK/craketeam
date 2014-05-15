@@ -1,4 +1,5 @@
 # encoding: utf-8
+# :markup! RDoc
 #! /usr/bin/env ruby
 ##
 #25/02/2014
@@ -9,9 +10,9 @@
 
 class Case
 
-# Variable représentant l'état, un entier qui indique si la case a été noircie, cochée/marquée ou laissée blanche.
     @etat
-
+# Variable représentant l'état, un entier qui indique si la case a été noircie, cochée/marquée ou laissée blanche.
+    
     attr :etat, false
 
     private_class_method :new
@@ -32,9 +33,10 @@ class Case
 	# sauf si la case était déjà dans cet état, dans cette situation on rebascule à l'état initial.
 	#
 	# Les états possible sont les suivants :
-	#  - Vierge avec la valeur 0
-	#  - Noirci avec la valeur 1
-	#  - Marqué avec la valeur 2
+	#  *Vierge avec la valeur 0
+	#  * Noirci avec la valeur 1
+	#  * Marqué avec la valeur 2
+
 # Méthode pour passer l'état la Case de zéro à un ou de un à zéro
     def noircir()
 

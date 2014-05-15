@@ -1,4 +1,5 @@
 # encoding: utf-8
+# :markup! RDoc
 #! /usr/bin/env ruby
 ##
 # Classe Editeur,
