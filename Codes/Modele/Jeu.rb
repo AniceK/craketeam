@@ -503,20 +503,9 @@ class Jeu
         if File.size('scores.yml')> 0 then
             
             liste = YAML::load(File.open('scores.yml'))        
-
-            if @profil == nil then
-            
-                if liste.empty? then
-            
-                    return nil
-                else
-                    return liste.sort()
-                end
-            else
-
-                return liste.find_all {|i| i[0] == @profil.nom}
-            end
+            return liste.find_all {|i| i[0] == @profil.nom}
         else
+
             return nil
         end
     end
