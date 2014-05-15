@@ -350,7 +350,10 @@ class Jeu
     #Si le Dossier au nom du profil cree existe deja, alors on le signale
           else
 
-              if @verbose then puts "Le profil #{aName} existe déjà" end
+            if @verbose then 
+                
+                puts "Le profil #{aName} existe déjà" 
+            end
             resultat = false
             FileUtils.cd('../..')
 
@@ -367,7 +370,7 @@ class Jeu
 
         if @profil == nil then
             
-            raise "Aucun profil n'est chargé : impossible de charger la liste des Partie Sauvegardées!"
+            raise "Erreur dans Jeu::chargerListePartiesSauvegardees() : un Profil doit être actif"
         else
             
             if @verbose then puts "chargement de la liste des parties sauvegardees du profil" + @profil.nom end
@@ -477,22 +480,13 @@ class Jeu
                     return (sup == p)
                 else
                    
-                    raise "erreur : aucune sauvegarde nommée #{unNom}"
+                    raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde sous ce nom : #{unNom}"
                 end
             else
-            
-               if @verbose then 
-                   
-                   puts "Aucune partie n'est sauvegardée, impossible de supprimer" 
-               end
-               
-               FileUtils.cd('../..')
-
-               return false
-
+                raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
             end
         else
-            raise "Aucun profil n'est chargé : impossible de supprimer une partie!"
+            raise "Erreur dans Jeu::supprimerPartie(String) : un Profil doit être actif"
         end
  
     end
@@ -527,7 +521,7 @@ class Jeu
 
         if @profil == nil then
 
-            raise "Impossible d'utiliser l'editeur sans avoir chargé un profil!"
+            raise "Erreur dans Jeu::creerEditeur(int) : un Profil doit être actif"
         else
             @partie = Editeur.creer(@profil.nom, taille)
         end
@@ -541,7 +535,7 @@ class Jeu
             @profil.sauvegarder()
             @profil = nil
         else
-            raise "Erreur : pas de profil "
+            raise "Erreur dans Jeu::deconnecter() : un Profil doit être actif"
         end
     end
 
@@ -573,7 +567,7 @@ class Jeu
             FileUtils.cd('..')
         else
 
-            raise "Erreur, un profil doit être connecté"
+            raise "Erreur dans Jeu::viderGrille() : un Profil doit être actif"
         end
     end
 
@@ -597,46 +591,55 @@ class Jeu
 # Méthode sauvegardant la partie en cours
 	def sauvegarderPartie(nomSauvegarde)
 
-        if @partie != nil then
+        if @partie.class == Partie then
+        
+            liste = Array.new()
+            FileUtils.cd('Profil')
+            FileUtils.cd(@profil.nom)
 
-            if @partie.class == Partie then
+            if File.size("parties.yml") > 0 then
             
-                liste = Array.new()
-                FileUtils.cd('Profil')
-                FileUtils.cd(@profil.nom)
+                liste = YAML::load(File.open('parties.yml'))
+                listenom = Array.new()
+                liste.each { |x|
 
-                if File.size("parties.yml") > 0 then
-                
-                    liste = YAML::load(File.open('parties.yml'))
-                    listenom = Array.new()
-                    liste.each { |x|
-
-                        listenom.push(x[0])
-                    }
-                    if listenom.include?(nomSauvegarde) then
-                       
-                        FileUtils.cd('../..')
-                        return false
-                    end
+                    listenom.push(x[0])
+                }
+                if listenom.include?(nomSauvegarde) then
+                   
+                    FileUtils.cd('../..')
+                    return false
                 end
-                @partie.tuerChrono()
-                @partie.actualiser()
-                @partie.ecrireNom(nomSauvegarde)
-                liste.push([nomSauvegarde, @partie])
-                File.delete('parties.yml')
-                File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-                FileUtils.cd('../..')
-                return true
-
-            else
-
-                @profil.ajouterUneGrille()
-                return @partie.sauvegarder(nomSauvegarde)
             end
+            @partie.tuerChrono()
+            @partie.actualiser()
+            @partie.ecrireNom(nomSauvegarde)
+            liste.push([nomSauvegarde, @partie])
+            File.delete('parties.yml')
+            File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+            FileUtils.cd('../..')
+            return true
 
         else
             
-            raise "Rien (ni éditeur, ni partie) n'est en cours!"
+            raise "Erreur dans Jeu::sauvegarderPartie(String) : une Partie doit être active"
+        end
+    end
+
+# Méthode pour sauvegarder une grille, soit par l'éditeur, soit à la fin d'une partie
+    def sauvegarderGrille(unNom)
+
+        if @partie!= nil then
+
+            if @partie.class == Partie then
+
+                return @partie.sauvegarderGrille(unNom)
+            else
+                @profil.ajouterUneGrille()
+                return @partie.sauvegarder(nomSauvegarde)
+            end
+        else
+            raise "Erreur dans Jeu::sauvegarderGrille(String) : Aucune partie n'est en cours"
         end
     end
 
