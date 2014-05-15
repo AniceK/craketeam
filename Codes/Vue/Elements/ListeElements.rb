@@ -8,19 +8,38 @@
 TAILLE = 0;
 NOM = 1;
 DATE  = 2;
+SCORE = 2;
 
 class ListeElements
   
   @listeDeroulante
   @selection
+  @@afficheScore
   
   attr_reader :listeDeroulante,
-              :selection
+              :selection,
+              :afficheScore
   
-  def initialize(liste)
+  def initialize(liste, afficheScore)
+    
+    @afficheScore = afficheScore
     
     affichage = Gtk::TreeView.new()
-    modele = Gtk::ListStore.new(Integer, String, String)
+    
+    if @afficheScore then
+      
+      modele = Gtk::ListStore.new(Integer, String, Integer)
+      
+    elsif !@afficheScore then
+      
+      modele = Gtk::ListStore.new(Integer, String, String)
+      
+    else
+      
+      puts "[ListeElements]Erreur: Le booléen décidant l'affichage du score ou de la date est incorrect"
+      
+    end
+    
     @listeDeroulante = Gtk::ScrolledWindow.new()
     
     parametrerAffichage(affichage, modele)
@@ -31,7 +50,16 @@ class ListeElements
     
        modele.set_value(reference, TAILLE, liste[i][0])
        modele.set_value(reference, NOM, liste[i][1])
-       modele.set_value(reference, DATE, liste[i][2].asctime())
+       
+       if @afficheScore then
+         
+         modele.set_value(reference, DATE, liste[i][2])
+         
+       elsif !@afficheScore then
+         
+         modele.set_value(reference, SCORE, liste[i][2].asctime())
+         
+       end
       
     end
     
@@ -65,15 +93,44 @@ class ListeElements
     
     colonneTaille = Gtk::TreeViewColumn.new("Taille", rendreRouge,  :text => TAILLE)
     colonneNom = Gtk::TreeViewColumn.new("Nom", rendreNoir, :text => NOM)
-    colonneDate = Gtk::TreeViewColumn.new("Date", rendreNoir, :text => DATE)
+    
+    if @afficheScore then
+      
+      colonneScore = Gtk::TreeViewColumn.new("Score", rendreNoir, :text => SCORE)
+      
+    elsif !@afficheScore then
+      
+      colonneDate = Gtk::TreeViewColumn.new("Date", rendreNoir, :text => DATE)
+      
+    end
+    
     
     self.triable(colonneTaille, TAILLE)
     self.triable(colonneNom, NOM)
-    self.triable(colonneDate, DATE)
+    
+    if @afficheScore then
+      
+      self.triable(colonneScore, SCORE)
+      
+    elsif !@afficheScore then
+      
+      self.triable(colonneDate, DATE)
+      
+    end
     
     affichage.append_column(colonneTaille)
     affichage.append_column(colonneNom)
-    affichage.append_column(colonneDate)
+    
+    if @afficheScore then
+      
+      affichage.append_column(colonneScore)
+      
+    elsif !@afficheScore then
+      
+      affichage.append_column(colonneDate)
+      
+    end
+    
   end
   
   

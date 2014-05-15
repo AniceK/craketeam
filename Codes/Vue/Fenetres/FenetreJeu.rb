@@ -27,6 +27,9 @@ class FenetreJeu < Fenetre
   @boutonPauseMenuPrincipal
   @entreeSauvegarde
   @boutonSauvegarder
+  @texteInfosSauvegarde
+  @boutonNettoyerGrille
+  @texteInfosNettoyer
   @vBoxPause
   
   @texteGagne
@@ -48,6 +51,9 @@ class FenetreJeu < Fenetre
               :boutonPauseMenuPrincipal,
               :entreeSauvegarde,
               :boutonSauvegarder,
+              :texteInfosSauvegarde,
+              :boutonNettoyerGrille,
+              :texteInfosNettoyer,
               :vBoxPause,
               
               :boutonNouvellePartie,
@@ -78,18 +84,30 @@ class FenetreJeu < Fenetre
     texteSauvegarde = Gtk::Label.new("Nom de la sauvegarde :")
     @entreeSauvegarde = Gtk::Entry.new()
     @boutonSauvegarder = Gtk::Button.new("Sauvegarder")
+    @texteInfosSauvegarde = Gtk::Label.new.set_markup("<span foreground='red'>Le nom de sauvegarde\ndoit contenir\nau moins 3 lettres</span>")
+    @boutonNettoyerGrille = Gtk::Button.new("Nettoyer Grille")
+    @texteInfosNettoyer = Gtk::Label.new.set_markup("<span foreground='red'>La grille est nettoyée</span>")
+    
     @vBoxSauvegarde = Gtk::VBox.new(true, 0)
+    vBoxNettoyer = Gtk::VBox.new(true, 0)
     @vBoxPause = Gtk::VBox.new(true, 0)
     
-    @boutonPauseMenuPrincipal.set_size_request(-1, 50)
+    @boutonPauseMenuPrincipal.set_size_request(150, 30)
     @entreeSauvegarde.set_max_length(30)
-    @boutonSauvegarder.set_size_request(-1, 50)
+    @boutonSauvegarder.set_size_request(150, 30)
+    @boutonNettoyerGrille.set_size_request(150, 30)
     
     @vBoxSauvegarde.pack_start(texteSauvegarde, false, false, 0)
     @vBoxSauvegarde.pack_start(@entreeSauvegarde, false, false, 0)
     @vBoxSauvegarde.pack_start(@boutonSauvegarder, false, false, 0)
+    @vBoxSauvegarde.pack_start(@texteInfosSauvegarde, false, false, 0)
+    
+    vBoxNettoyer.pack_start(@boutonNettoyerGrille, false, false, 0)
+    vBoxNettoyer.pack_start(@texteInfosNettoyer, false, false, 0)
+    
     @vBoxPause.pack_start(@vBoxSauvegarde, false, false, 0)
-    @vBoxPause.pack_start(@boutonPauseMenuPrincipal, false, false, 0)
+    @vBoxPause.pack_start(vBoxNettoyer, false, false, 0)
+    @vBoxPause.pack_end(@boutonPauseMenuPrincipal, false, false, 0)
     
         
     ################################################################
@@ -217,15 +235,23 @@ class FenetreJeu < Fenetre
   end
   
   def petitesConditions
-    
-    #puts Gtk::VERSION.to_s
+  
     @aligneConditionsV.set_padding(0, 0, 5, 0)
-    @tableauConditionsV.set_column_spacings(15)
-    #@tableauConditionsV.set_column_spacings(10)
+    
+    if Gtk::VERSION.to_s == "[2, 24, 22]" then
+      
+      @tableauConditionsV.set_column_spacings(10)
+      @tableauConditionsH.set_row_spacings(7)
+      
+    else
+      
+      @tableauConditionsV.set_column_spacings(15)
+      @tableauConditionsH.set_row_spacings(9.3)
+    
+    end
     
     @aligneConditionsH.set_padding(5, 0, 0, 0)
-    @tableauConditionsH.set_row_spacings(9.3)
-    #@tableauConditionsH.set_row_spacings(7)
+    
   end
   
   def nomSauvegardeDefaut(nomParDefaut)
@@ -242,6 +268,8 @@ class FenetreJeu < Fenetre
     
     @tableauGeneral.hide_all()   
     @vBoxPause.show_all()
+    @texteInfosSauvegarde.hide_all()
+    @texteInfosNettoyer.hide_all()
     
     @entreeSauvegarde.set_focus(true)
   end
@@ -256,6 +284,7 @@ class FenetreJeu < Fenetre
     @tableauGeneral.hide_all()   
     @vBoxPause.show_all()
     @vBoxSauvegarde.hide_all()
+    @texteInfosNettoyer.hide_all()
   end
   
   def affichageJeu()

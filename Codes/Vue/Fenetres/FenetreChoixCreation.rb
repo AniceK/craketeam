@@ -41,7 +41,7 @@ class FenetreChoixCreation < Fenetre
     @boutonPrecedent = Gtk::Button.new('Précédent')
     @boutonSuivant = Gtk::Button.new('Suivant')
     
-    @listeCreations = ListeElements.new(listeCreations)
+    @listeCreations = ListeElements.new(listeCreations, false)
     
     #==================================================#
     #               Paramètrage éléments               #

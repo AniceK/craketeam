@@ -8,6 +8,8 @@
 require 'gtk2'
 
 require_relative 'Events'
+require_relative 'EventsReinitialiser'
+require_relative 'EventsAfficherScores'
 require './Vue/Fenetres/FenetreOptions'
 
 class EventsOptions < Events
@@ -21,7 +23,6 @@ class EventsOptions < Events
     super(jeu, position)
     
     @fenetre.afficher()
-    @fenetre.affichageDepart()
     
     if @jeu.profilConnecte?() then
       
@@ -37,20 +38,48 @@ class EventsOptions < Events
       
     end
     
-    @fenetre.boutonViderGrilles.signal_connect('clicked'){
+    @fenetre.boutonReinitialiser.signal_connect('clicked'){
       
-      puts ("> Vider Grilles")
+      puts ("> Réinitialiser")
       
-      @jeu.viderGrilles()
-      @fenetre.affichageInfos("Les grilles du profil ont été effacées")
+      self.mouvement(EventsReinitialiser.new(@jeu, position() ))
     }
     
-    @fenetre.boutonViderSauvegardes.signal_connect('clicked'){
+    @fenetre.boutonAfficherScores.signal_connect('clicked'){
       
-      puts ("> Vider Sauvegardes")
+      puts ("> High Score")
       
-      @jeu.viderParties()
-      @fenetre.affichageInfos("Les sauvegardes du profil ont été effacées")
+      
+      # Liste temporaire à supprimer après l'implémentation de @jeu.chargerScores()
+      
+      ###################################################
+                                                        #
+      listeTemporaire = Array.new()                     #
+      listeTemporaire[0] = [5, "Rémi", 1000]            #
+      listeTemporaire[1] = [5, "Colas", 300]            #
+      listeTemporaire[2] = [10, "Kévin", 50000]         #
+      listeTemporaire[3] = [10, "Erwan", 99999999]      #
+      listeTemporaire[4] = [25, "Anice", 69]            #
+      listeTemporaire[5] = [25, "Coco", 19812]          #
+      listeTemporaire[6] = [20, "Jacoboni", 1]          #
+      listeTemporaire[7] = [15, "Despres", 1]           #
+                                                        #
+      ###################################################
+      
+      
+      if listeScores = listeTemporaire #@jeu.chargerScores() then # Renvoie la liste des scores [taille, pseudo, score]
+         
+        self.mouvement(EventsAfficherScores.new(@jeu, position(), listeScores))
+        
+      elsif @jeu.chargerScores() == nil then
+        
+        @fenetre.affichageInfos("Il n'y a aucun score à afficher")
+        
+      else
+        
+        puts "[EventsOptions]Erreur: Mauvaise gestion chargement des scores"
+        
+      end
     }
     
     @fenetre.boutonPrecedent.signal_connect('clicked'){

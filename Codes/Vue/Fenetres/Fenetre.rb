@@ -22,9 +22,14 @@ class Fenetre
     
     @fenetreHints = Gdk::Geometry.new()
     
-    redimensionner(500, 250)
+    # Permet de centrer la redimension d'une fenêtre sur son centre
+    @fenetreHints.set_win_gravity(Gdk::Window::GRAVITY_SOUTH)
     
-    @fenetre.set_gravity(Gdk::Window::GRAVITY_CENTER) # =>  À faire fonctionner
+    @fenetre.set_geometry_hints(@fenetre,
+                                @fenetreHints,
+                                Gdk::Window::HINT_WIN_GRAVITY)
+    
+    self.redimensionner(500, 250)
 
     @fenetre.signal_connect('destroy') {fermeture}
   end
@@ -56,18 +61,30 @@ class Fenetre
   
   def redimensionner(x, y)
     
-    #@fenetre.resize(x, y)
+    if @fenetre.gravity() == Gdk::Window::GRAVITY_CENTER then
+      puts "GRAVITY_CENTER !"
+    else
+      puts "Pas Center..."
+    end
     
+    # Fixation largeur
     @fenetreHints.set_min_width(x)
-    @fenetreHints.set_min_height(y)
-    
     @fenetreHints.set_max_width(x)
+    
+    # Fixation hauteur
+    @fenetreHints.set_min_height(y)
     @fenetreHints.set_max_height(y)
     
     @fenetre.set_geometry_hints(@fenetre,
                                 @fenetreHints,
                                 Gdk::Window::HINT_MIN_SIZE |
                                 Gdk::Window::HINT_MAX_SIZE)
+                                
+    if @fenetre.gravity() == Gdk::Window::GRAVITY_CENTER then
+      puts "GRAVITY_CENTER !"
+    else
+      puts "Pas Center..."
+    end
   end
   
   def titre(pseudo)
@@ -76,13 +93,13 @@ class Fenetre
   end
   
   ### Fin de l'exécution ###
-  def fermeture     
+  def fermeture()
         
     puts "Fermeture fenêtre !"
     quitter()
   end
   
-  def quitter
+  def quitter()
     
     puts "Quitte GUI"
     Gtk.main_quit

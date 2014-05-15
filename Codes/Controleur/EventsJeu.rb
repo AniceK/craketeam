@@ -14,6 +14,7 @@ require './Vue/Dialogues/DialogueQuitterPartie'
 require './Vue/Dialogues/DialogueEcraserSauvegarde'
 require './Vue/Dialogues/DialogueAide'
 
+
 #===============================================================================#
 #                                                                               #
 #               La classe EventsJeu créé une fenêtre de jeu.                    #
@@ -75,52 +76,67 @@ class EventsJeu < Events
     @nbConditionsRangee = 0
     @optionsTableau = Gtk::FILL | Gtk::SHRINK
     
-    
+   
+    # Initialise la grille en fonction de la taille de cette dernière 
     case @tailleGrille
     when 5
       initialiserGrille(500, 300)
-      initialiserPositionsCases(2, 3)
     when 10
       initialiserGrille(700, 550)
-      initialiserPositionsCases(3, 5)
     when 15
       initialiserGrille(800, 500)
-      initialiserPositionsCases(4, 5)
     when 20
       initialiserGrille(1100, 650)
-      initialiserPositionsCases(5, 6)
     when 25
       initialiserGrille(1300, 800)
-      initialiserPositionsCases(6, 6)
     else
       puts "Erreur: La taille n'est pas valide"
     end
     
+    # Prépare le chrono
     self.initialiserChrono()
     
-    if nomSauvegardeDefaut = @jeu.nomSauvegardeDefaut() then
+    # Établi nom de sauvegarde par défaut
+    if @jeu.profilConnecte?() then
       
-      puts "La sauvegarde en cours a pour nom: " + nomSauvegardeDefaut
-      @fenetre.nomSauvegardeDefaut(nomSauvegardeDefaut)
+      if nomSauvegardeDefaut = @jeu.nomSauvegardeDefaut() then
+        
+        puts "La sauvegarde en cours a pour nom: " + nomSauvegardeDefaut
+        @fenetre.nomSauvegardeDefaut(nomSauvegardeDefaut)
+        
+      elsif @jeu.nomSauvegardeDefaut() == nil then
+          
+        puts "Le jeu n'est pas issu d'une sauvegarde (pseudo: " + @jeu.nomProfil() + ")"
+        @fenetre.nomSauvegardeDefaut(@jeu.nomProfil() + " " + @tailleGrille.to_s + "x" + @tailleGrille.to_s) 
+          
+      else
+          
+        puts "[EventJeu]Erreur: Récupération du nom de sauvegarde si existante"
+          
+      end
+        
+    elsif !@jeu.profilConnecte?()
       
-    elsif !@jeu.nomSauvegardeDefaut() == nil then
-      
-      puts "Le jeu n'est pas issu d'une sauvegarde"
-      @fenetre.nomSauvegardeDefaut(@jeu.nomProfil() + " " + @tailleGrille.to_s + "x" + @tailleGrille.to_s)
+      puts "> Pas de nom de sauvegarde par défaut"
       
     else
-      
-      puts "[EventJeu]Erreur: Récupération du nom de sauvegarde si existante"
-      
+        
+      puts "[EventJeu]Erreur: Mauvais test si profil connecté ou non"
+        
     end
     
+    # Affichage de tous les éléments de la fenêtre
     @fenetre.afficher()
     
+    # Affichage du nécessaire uniquement
     @fenetre.affichageDepart()
     
+    # Lancement d'une partie au niveau du moteur
     @jeu.lancerPartie()
+    # Lancement de l'incrémentation du chrono
     self.lancerChrono()
     
+    # Affiche un popup d'aide
     @fenetre.boutonAide.signal_connect('clicked'){
       puts "> Aide"
       
@@ -129,6 +145,7 @@ class EventsJeu < Events
       dialogue = DialogueAide.new(@fenetre.widget(), message)
     }
     
+    # Cache la grille et arrête le chrono pour afficher le menu de pause
     @fenetre.boutonPause.signal_connect('clicked'){
       
       # Inversion du booléen
@@ -166,36 +183,55 @@ class EventsJeu < Events
     #                                                              #
     ################################################################
     
-    
+    # Permet de sauvegarder la partie avec un nom (si profil connecté)
     @fenetre.boutonSauvegarder.signal_connect('clicked'){
       
       nomSauvegarde = @fenetre.entreeSauvegarde.text()
-      puts "> Accueil (nom de sauvegarde: " + nomSauvegarde + ")"
       
-      if @jeu.sauvegarderPartie(nomSauvegarde) then
-        
-        mouvement(EventsAccueil.new(@jeu, position() ))
-        
-      else
-        
-        puts "Erreur: nom de sauvegarde existant"
-        dialog = DialogueEcraserSauvegarde.new(@fenetre.widget())
-        
-        if dialog.doitEcraser == true then
+      if nomSauvegarde.length() > 2 then
+      
+        if @jeu.sauvegarderPartie(nomSauvegarde) then
           
-          puts "Sauvegarde écrasée"
-          @jeu.remplacerSauvegarde(nomSauvegarde)
+          puts "> Accueil (nom de sauvegarde: " + nomSauvegarde + ")"
           mouvement(EventsAccueil.new(@jeu, position() ))
           
-        elsif dialog.doitEcraser == false then
+        else
           
-          puts "Sauvegarde non écrasée"
+          puts "Erreur: nom de sauvegarde existant"
+          dialog = DialogueEcraserSauvegarde.new(@fenetre.widget())
+          
+          if dialog.doitEcraser == true then
+            
+            puts "Sauvegarde écrasée"
+            @jeu.remplacerSauvegarde(nomSauvegarde)
+            mouvement(EventsAccueil.new(@jeu, position() ))
+            
+          elsif dialog.doitEcraser == false then
+            
+            puts "Sauvegarde non écrasée"
+            
+          end
           
         end
+          
+      else
         
+        puts "> Nom de sauvegarde trop court ("+ nomSauvegarde.length.to_s + " caractère(s))"
+        @fenetre.texteInfosSauvegarde.show_all()
+          
       end
     }
     
+    # RAZ de la grille
+    @fenetre.boutonNettoyerGrille.signal_connect('clicked'){
+      
+      puts "> Nettoyer grille"
+      #@jeu.nettoyerGrille() # => À implémenter
+      self.initialiserTableauJeu()
+      @fenetre.texteInfosNettoyer.show_all()
+    }
+    
+    # Retour au menu principal à partir du menu de pause
     @fenetre.boutonPauseMenuPrincipal.signal_connect('clicked'){
       
       puts "> Dialogue Menu Principal"
@@ -296,10 +332,10 @@ class EventsJeu < Events
       @fenetre.petitesConditions()
     end
     
-    initialiserImages()
-    initialiserConditionsV()
-    initialiserConditionsH()
-    initialiserTableauJeu()
+    self.initialiserImages()
+    self.initialiserConditionsV()
+    self.initialiserConditionsH()
+    self.initialiserTableauJeu()
     
   end
   
@@ -308,12 +344,6 @@ class EventsJeu < Events
     @vide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
     @noircie = Gdk::Pixbuf.new('../Vue/Images/noircie.gif', @tailleCase, @tailleCase)
     @marquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
-  end
-  
-  def initialiserPositionsCases(x, y)
-    
-    @decalagePositionX = x
-    @decalagePositionY = y
   end
   
   def caseCliquee(widget, evenement)
@@ -487,7 +517,7 @@ class EventsJeu < Events
           
         end
         
-        caseCartesienne = CaseCartesienne.new(x, y, etat)  # => Remplacer "@vide" par "etat"
+        caseCartesienne = CaseCartesienne.new(x, y, etat)
         
         caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
       

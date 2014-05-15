@@ -8,49 +8,44 @@
 require_relative 'Fenetre'
 require './Vue/Elements/ListeElements'
 
-class FenetreChoixSauvegarde < Fenetre
+class FenetreAfficherScores < Fenetre
   
-  @texteChoixSauvegarde
+  @texteAfficherScores
   @boutonPrecedent
-  @boutonSuivant
-  @listeSauvegarde
+  @listeScores
   
   
   attr_reader :boutonPrecedent,
-              :boutonSuivant,
-              :texteChoixSauvegarde,
-              :listeSauvegarde
+              :texteAfficherScores,
+              :listeScores
   
   public_class_method :new
   
-  def initialize(listeSauvegardes)
+  def initialize(listeScores)
     super()
     
-    @fenetre.set_title("ChoixSauvegarde")
+    @fenetre.set_title("High Score")
     
     #==================================================#
     #           Déclaration / Initialisation           #
     #==================================================#
     
-    @texteChoixSauvegarde = Gtk::Label.new("Choisissez votre sauvegarde")
+    @texteAfficherScores = Gtk::Label.new("Voici les meilleurs joueurs de Picross")
     
     @boutonPrecedent = Gtk::Button.new('Précédent')
-    @boutonSuivant = Gtk::Button.new('Suivant')
     
-    @listeSauvegardes = ListeElements.new(listeSauvegardes, false)
+    @listeScores = ListeElements.new(listeScores, true)
     
     #==================================================#
     #               Paramètrage éléments               #
     #==================================================#
     
     @boutonPrecedent.set_size_request(-1, 50)
-    @boutonSuivant.set_size_request(-1, 50)
     
     #==================================================#
     #                  Déclaration Box                 #
     #==================================================#
     
-    hBoxNavigation = Gtk::HBox.new(true, 0)
     vBox = Gtk::VBox.new(false, 0)
     
     #==================================================#
@@ -58,29 +53,21 @@ class FenetreChoixSauvegarde < Fenetre
     #==================================================#
     
     vBox.set_border_width(5)
-    hBoxNavigation.set_border_width(5)
     
     #==================================================#
     #                  Remplissage Box                 #
     #==================================================#
     
-    hBoxNavigation.pack_start(@boutonPrecedent)
-    hBoxNavigation.pack_end(@boutonSuivant)
     
-    vBox.pack_start(@texteChoixSauvegarde, false, false, 5)
-    vBox.pack_start(@listeSauvegardes.widget(), true, true, 5)
-    vBox.pack_end(hBoxNavigation, false, true, 0)
+    vBox.pack_start(@texteAfficherScores, false, false, 5)
+    vBox.pack_start(@listeScores.widget(), true, true, 5)
+    vBox.pack_end(@boutonPrecedent, false, true, 0)
     
     #==================================================#
     #                Ajout à la fenêtre                #
     #==================================================#
     
     @fenetre.add(vBox)
-  end
-  
-  def choixSauvegarde()
-    
-    return @listeSauvegardes.selectionCourante()
   end
   
 end

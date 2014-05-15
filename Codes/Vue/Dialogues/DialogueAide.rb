@@ -19,20 +19,19 @@ class DialogueAide < Dialogue
   
   def initialize(fenetreParent, message)
     
-    super(fenetreParent, 380, 250, "Aide", message)
-    
-    @popup.resize(380, 350)
+    super(fenetreParent, 390, 350, "Aide", message)
              
     @popup.add_button(Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT)
     
     @popup.default_response = Gtk::Dialog::RESPONSE_ACCEPT
     
-    @messageCentre.set_wrap(true)
+    messageAGauche = @messageCentre.set_justify(Gtk::JUSTIFY_LEFT)
+    messageAGauche.set_wrap(true)
     
     scrollMessage = Gtk::ScrolledWindow.new()
     scrollMessage.border_width = 5
     scrollMessage.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
-    scrollMessage.add_with_viewport(@messageCentre)
+    scrollMessage.add_with_viewport(messageAGauche)
     
     @popup.vbox.add(scrollMessage)
     
