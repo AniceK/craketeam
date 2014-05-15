@@ -100,11 +100,15 @@
 
   <section class="description">
     
-<p>Classe <a href="Editeur.html">Editeur</a>, il s&#39;agit d&#39;un module
-complémentaire à ajouter au Picross afin de pouvoir créer ses propre <a
-href="Grille.html">Grille</a> en noircissant une à une les cases qui nous
-intéresse. L&#39;Editeur se chargera de calculer le jeu de conditions et de
-l&#39;ajouter à la liste de vos Grilles.</p>
+<pre>:markup! RDoc</pre>
+
+<p>! /usr/bin/env ruby</p>
+
+<pre class="ruby"><span class="ruby-constant">Classe</span> <span class="ruby-constant">Editeur</span>,
+<span class="ruby-identifier">il</span> <span class="ruby-identifier">s</span><span class="ruby-string">&#39;agit d&#39;</span><span class="ruby-identifier">un</span> <span class="ruby-keyword">module</span> <span class="ruby-identifier">complémentaire</span> <span class="ruby-identifier">à</span> <span class="ruby-identifier">ajouter</span> <span class="ruby-identifier">au</span> <span class="ruby-constant">Picross</span>
+<span class="ruby-identifier">afin</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">pouvoir</span> <span class="ruby-identifier">créer</span> <span class="ruby-identifier">ses</span> <span class="ruby-identifier">propre</span> <span class="ruby-constant">Grille</span> <span class="ruby-identifier">en</span> <span class="ruby-identifier">noircissant</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">à</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">cases</span> <span class="ruby-identifier">qui</span> <span class="ruby-identifier">nous</span> <span class="ruby-identifier">intéresse</span>.
+<span class="ruby-constant">L</span><span class="ruby-string">&#39;Editeur se chargera de calculer le jeu de conditions et de l&#39;</span><span class="ruby-identifier">ajouter</span> <span class="ruby-identifier">à</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">liste</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">vos</span> <span class="ruby-constant">Grilles</span>.
+</pre>
 
   </section>
 
@@ -147,7 +151,7 @@ href="Editeur.html">Editeur</a></p>
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 15</span>
+            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Editeur</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
 
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
@@ -182,7 +186,7 @@ href="Editeur.html">Editeur</a></p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 22</span>
+            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
 
         <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
@@ -225,7 +229,7 @@ cases noircies</p>
 
           
           <div class="method-source-code" id="conditionsDeterminer-source">
-            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 35</span>
+            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionsDeterminer</span>()
 
         <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">conditionsDeterminer</span>()
@@ -260,7 +264,7 @@ l&#39;utilisateur de se faciliter la création de la grille</p>
 
           
           <div class="method-source-code" id="genenerAleatoirementGrille-source">
-            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 48</span>
+            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">genenerAleatoirementGrille</span>()
 
     <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">genererAleatoire</span>()
@@ -295,7 +299,7 @@ elle était déjà noircie)</p>
 
           
           <div class="method-source-code" id="noircir-source">
-            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 28</span>
+            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
 
         <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
@@ -329,7 +333,7 @@ elle était déjà noircie)</p>
 
           
           <div class="method-source-code" id="sauvegarderGrille-source">
-            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 41</span>
+            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 42</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier">sauvegarderGrille</span>(<span class="ruby-identifier">nom</span>)
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">conditionsDeterminer</span>()
@@ -364,7 +368,7 @@ elle était déjà noircie)</p>
 
           
           <div class="method-source-code" id="tailleGrille-source">
-            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 54</span>
+            <pre><span class="ruby-comment"># File Modele/Editeur.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">tailleGrille</span>()
 
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getTaille</span>()

@@ -98,6 +98,8 @@
 
   <section class="description">
     
+<pre>:markup! RDoc</pre>
+
 <p>25/02/2014 Projet Picross équipe CrakeTeam</p>
 
 <p>Ce fichier contient la classe <a href="Case.html">Case</a>, brique de base
@@ -130,7 +132,8 @@ du jeu ici une description de la classe <a href="Case.html">Case</a>.</p>
 
         <div class="method-description">
         
-        
+        <p>Variable représentant l&#39;état, un entier qui indique si la case a été
+noircie, cochée/marquée ou laissée blanche.</p>
         
         </div>
       </div>
@@ -164,7 +167,7 @@ du jeu ici une description de la classe <a href="Case.html">Case</a>.</p>
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 18</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Case</span>.<span class="ruby-identifier">creer</span>()
 
             <span class="ruby-identifier">new</span>()
@@ -200,7 +203,7 @@ création</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 25</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>()
 
               <span class="ruby-ivar">@etat</span> = <span class="ruby-value">0</span>
@@ -242,7 +245,7 @@ création</p>
 
           
           <div class="method-source-code" id="afficher-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 71</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">afficher</span>()
     <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;|&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@etat</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -275,7 +278,7 @@ création</p>
 
           
           <div class="method-source-code" id="marquer-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 51</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">marquer</span>()
 
                 <span class="ruby-keyword">if</span> <span class="ruby-ivar">@etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
@@ -310,24 +313,14 @@ création</p>
 
         <div class="method-description">
           
-          <p>Les deux méthodes suivantes sont là pour changer l&#39;état de la case : on
-bascule dans l&#39;état correspondant à la méthode sauf si la case était
-déjà dans cet état, dans cette situation on rebascule à l&#39;état initial.</p>
-
-<p>Les états possible sont les suivants :</p>
-
-<pre>- Vierge avec la valeur 0
-- Noirci avec la valeur 1
-- Marqué avec la valeur 2</pre>
-
-<p>Méthode pour passer l&#39;état la <a href="Case.html">Case</a> de zéro à un
+          <p>Méthode pour passer l&#39;état la <a href="Case.html">Case</a> de zéro à un
 ou de un à zéro</p>
           
           
 
           
           <div class="method-source-code" id="noircir-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 38</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noircir</span>()
 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
@@ -368,7 +361,7 @@ ou de un à zéro</p>
 
           
           <div class="method-source-code" id="raz-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 65</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">raz</span>()
 
         <span class="ruby-ivar">@etat</span> = <span class="ruby-value">0</span>

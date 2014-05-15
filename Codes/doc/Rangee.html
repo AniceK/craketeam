@@ -135,7 +135,10 @@
 
         <div class="method-description">
         
-        
+        <p>Variable destinée à contenir le tableau de <code>Case</code> de la Rangée
+Variable destinée à contenir le tableau de conditions (entiers naturels
+positifs) de la Rangée Variable destinée à contenir le booleen indiquant si
+la disposition des Cases respecte les conditions</p>
         
         </div>
       </div>
@@ -148,7 +151,10 @@
 
         <div class="method-description">
         
-        
+        <p>Variable destinée à contenir le tableau de <code>Case</code> de la Rangée
+Variable destinée à contenir le tableau de conditions (entiers naturels
+positifs) de la Rangée Variable destinée à contenir le booleen indiquant si
+la disposition des Cases respecte les conditions</p>
         
         </div>
       </div>
@@ -161,7 +167,10 @@
 
         <div class="method-description">
         
-        
+        <p>Variable destinée à contenir le tableau de <code>Case</code> de la Rangée
+Variable destinée à contenir le tableau de conditions (entiers naturels
+positifs) de la Rangée Variable destinée à contenir le booleen indiquant si
+la disposition des Cases respecte les conditions</p>
         
         </div>
       </div>
@@ -197,7 +206,7 @@ la rangée</p>
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 22</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Rangee</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nbreCase</span>)
 
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nbreCase</span>)
@@ -233,7 +242,7 @@ la rangee</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 29</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">nbre</span>)
 
 <span class="ruby-comment"># On initialise @cases et @conditions avec des tableaux, et on spécifie la taille du tableau de case</span>
@@ -288,7 +297,7 @@ la rangee</p>
 
           
           <div class="method-source-code" id="afficher-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 192</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 194</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">afficher</span>()
     
     <span class="ruby-identifier">print</span> <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">to_s</span>()
@@ -326,7 +335,7 @@ la rangee</p>
 
           
           <div class="method-source-code" id="condition-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 202</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">condition</span>(<span class="ruby-identifier">x</span>)
 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@conditions</span>[<span class="ruby-identifier">x</span>]
@@ -360,7 +369,7 @@ la rangee</p>
 
           
           <div class="method-source-code" id="conditionsDeterminer-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 52</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 56</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionsDeterminer</span>()
 
     <span class="ruby-identifier">cpt</span> = <span class="ruby-value">0</span>
@@ -428,7 +437,7 @@ NUMERO(entier passé en paramètre)</p>
 
           
           <div class="method-source-code" id="marquer-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 176</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 180</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">marquer</span>(<span class="ruby-identifier">numero</span>)
 
     <span class="ruby-ivar">@cases</span>[<span class="ruby-identifier">numero</span>].<span class="ruby-identifier">marquer</span>()
@@ -463,7 +472,7 @@ l&#39;interface graphique</p>
 
           
           <div class="method-source-code" id="nbConditions-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 208</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 210</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nbConditions</span>
 
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">size</span>()
@@ -497,7 +506,7 @@ l&#39;interface graphique</p>
 
           
           <div class="method-source-code" id="noircie-3F-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 186</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 188</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noircie?</span>(<span class="ruby-identifier">numero</span>)
     
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@cases</span>[<span class="ruby-identifier">numero</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
@@ -532,7 +541,7 @@ l&#39;interface graphique</p>
 
           
           <div class="method-source-code" id="noircir-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 169</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">numero</span>)
 
     <span class="ruby-ivar">@cases</span>[<span class="ruby-identifier">numero</span>].<span class="ruby-identifier">noircir</span>()
@@ -567,7 +576,7 @@ l&#39;interface graphique</p>
 
           
           <div class="method-source-code" id="razCases-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 91</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">razCases</span>()
         
 <span class="ruby-ivar">@cases</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
@@ -605,7 +614,7 @@ l&#39;interface graphique</p>
 
           
           <div class="method-source-code" id="verifier-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 100</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">verifier</span>()
 
     <span class="ruby-identifier">nbreCaseNoircie</span> = <span class="ruby-value">0</span>
