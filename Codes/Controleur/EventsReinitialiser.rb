@@ -30,33 +30,21 @@ class EventsReinitialiser < Events
     @fenetre.boutonViderGrilles.signal_connect('clicked'){
       
       puts ("> Vider Grilles")
+        
+      dialog = DialogueReinitialiser.new(@fenetre.widget())
       
-      if @jeu.grillesEnregistrees?() then
+      if dialog.doitReinitialiser then
+      
+        @jeu.viderGrilles()
+        @fenetre.affichageInfos("Les grilles du profil ont été effacées")
         
-        dialog = DialogueReinitialiser.new(@fenetre.widget())
+      elsif !dialog.doitReinitialiser then
         
-        if dialog.doitReinitialiser then
-        
-          @jeu.viderGrilles()
-          @fenetre.affichageInfos("Les grilles du profil ont été effacées")
-          
-        elsif !dialog.doitReinitialiser then
-          
-          @fenetre.affichageInfos("Aucune grille n'a été effacée")
-          
-        else
-          
-          puts "[EventsReinitialiser]Erreur: Mauvaise réception de la réponse du popup de confirmation de réinitialisation"
-          
-        end
-        
-      elsif !@jeu.grillesEnregistrees?() then
-        
-        @fenetre.affichageInfos("Il n'y a pas de grilles enregistrées")
+        @fenetre.affichageInfos("Aucune grille n'a été effacée")
         
       else
         
-        puts "[EventsReinitialiser]Erreur: Mauvais test s'il y a des grilles enregistrées"
+        puts "[EventsReinitialiser]Erreur: Mauvaise réception de la réponse du popup de confirmation de réinitialisation"
         
       end
     }
@@ -65,68 +53,45 @@ class EventsReinitialiser < Events
     @fenetre.boutonViderSauvegardes.signal_connect('clicked'){
       
       puts ("> Vider Sauvegardes")
+     
+      dialog = DialogueReinitialiser.new(@fenetre.widget())
       
-      if @jeu.sauvegardesEnregistrees?() then
+      if dialog.doitReinitialiser then
       
-        dialog = DialogueReinitialiser.new(@fenetre.widget())
+        @jeu.viderParties()
+        @fenetre.affichageInfos("Les sauvegardes du profil ont été effacées")
         
-        if dialog.doitReinitialiser then
+      elsif !dialog.doitReinitialiser then
         
-          @jeu.viderParties()
-          @fenetre.affichageInfos("Les sauvegardes du profil ont été effacées")
-          
-        elsif !dialog.doitReinitialiser then
-          
-          @fenetre.affichageInfos("Aucune sauvegarde n'a été effacée")
-          
-        else
-          
-          puts "[EventsReinitialiser]Erreur: Mauvaise réception de la réponse du popup de confirmation de réinitialisation"
-          
-        end
-        
-      elsif !@jeu.sauvegardesEnregistrees?() then
-        
-        @fenetre.affichageInfos("Il n'y a pas de sauvegardes enregistrées")
+        @fenetre.affichageInfos("Aucune sauvegarde n'a été effacée")
         
       else
         
-        puts "[EventsReinitialiser]Erreur: Mauvais test s'il y a des sauvegardes enregistrées"
+        puts "[EventsReinitialiser]Erreur: Mauvaise réception de la réponse du popup de confirmation de réinitialisation"
         
       end
+        
     }
     
     # Efface toutes les données enregistrées
     @fenetre.boutonViderTout.signal_connect('clicked'){
       
       puts ("> Réinitialisatioin totale")
+        
+      dialog = DialogueReinitialiser.new(@fenetre.widget())
       
-      if @jeu.donneesEnregistrees?() then
+      if dialog.doitReinitialiser then
+      
+        @jeu.viderTout() # => Doit tout remettre à zéro
+        @fenetre.affichageInfos("Toutes les données ont été effacées")
         
-        dialog = DialogueReinitialiser.new(@fenetre.widget())
+      elsif !dialog.doitReinitialiser then
         
-        if dialog.doitReinitialiser then
-        
-          @jeu.viderTout() # => Doit tout remettre à zéro
-          @fenetre.affichageInfos("Toutes les données ont été effacées")
-          
-        elsif !dialog.doitReinitialiser then
-          
-          @fenetre.affichageInfos("Aucune donnée n'a été effacée")
-          
-        else
-          
-          puts "[EventsReinitialiser]Erreur: Mauvaise réception de la réponse du popup de confirmation de réinitialisation"
-          
-        end
-        
-      elsif !@jeu.donneesEnregistrees?() then
-        
-        @fenetre.affichageInfos("Il n'y a pas de données enregistrées")
+        @fenetre.affichageInfos("Aucune donnée n'a été effacée")
         
       else
         
-        puts "[EventsReinitialiser]Erreur: Mauvais test s'il y a des données enregistrées"
+        puts "[EventsReinitialiser]Erreur: Mauvaise réception de la réponse du popup de confirmation de réinitialisation"
         
       end
     }

@@ -52,26 +52,26 @@ class EventsOptions < Events
       
       # Liste temporaire à supprimer après l'implémentation de @jeu.chargerScores()
       
-      ###################################################
-                                                        #
-      listeTemporaire = Array.new()                     #
-      listeTemporaire[0] = [5, "Rémi", 1000]            #
-      listeTemporaire[1] = [5, "Colas", 300]            #
-      listeTemporaire[2] = [10, "Kévin", 50000]         #
-      listeTemporaire[3] = [10, "Erwan", 99999999]      #
-      listeTemporaire[4] = [25, "Anice", 69]            #
-      listeTemporaire[5] = [25, "Coco", 19812]          #
-      listeTemporaire[6] = [20, "Jacoboni", 1]          #
-      listeTemporaire[7] = [15, "Despres", 1]           #
-                                                        #
-      ###################################################
+     #####################################################
+     #                                                   #
+     # listeTemporaire = Array.new()                     #
+     # listeTemporaire[0] = [5, "Rémi", 1000]            #
+     # listeTemporaire[1] = [5, "Colas", 300]            #
+     # listeTemporaire[2] = [10, "Kévin", 50000]         #
+     # listeTemporaire[3] = [10, "Erwan", 99999999]      #
+     # listeTemporaire[4] = [25, "Anice", 69]            #
+     # listeTemporaire[5] = [25, "Coco", 19812]          #
+     # listeTemporaire[6] = [20, "Jacoboni", 1]          #
+     # listeTemporaire[7] = [15, "Despres", 1]           #
+     #                                                   #
+     #####################################################
       
       
-      if listeScores = listeTemporaire #@jeu.chargerScores() then # Renvoie la liste des scores [taille, pseudo, score]
+      if listeScores = jeu.afficherScores() then # Renvoie la liste des scores [taille, pseudo, score]
          
         self.mouvement(EventsAfficherScores.new(@jeu, position(), listeScores))
         
-      elsif @jeu.chargerScores() == nil then
+      elsif @jeu.afficherScores() == nil then
         
         @fenetre.affichageInfos("Il n'y a aucun score à afficher")
         

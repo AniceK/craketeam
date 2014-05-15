@@ -357,24 +357,24 @@ class EventsJeu < Events
       
       if widget.etatCourant() == @vide then
         
-        @jeu.noircir(x, y)
+        estTermine = @jeu.noircir(x, y)
         widget.changerEtat(@noircie)
         
       elsif widget.etatCourant() == @noircie then
         
-        @jeu.noircir(x, y)
+        estTermine = @jeu.noircir(x, y)
         widget.changerEtat(@vide)
         
       end
       
-      if temps = @jeu.termine?() then
+      if estTermine then
         
-        puts "> Partie gagnée (Temps = " + temps.to_s + ", Score = " + (temps * 3).to_s + ")"
+        puts "> Partie gagnée (Temps = " + estTermine.to_s + ", Score = " + (estTermine * 3).to_s + ")"
         
         #@evenementCase.signal_emit_stop('button_press_event') # => Empêcher appuie sur case
         # => Nettoyage cases marquées
         @jeu.quitterPartie()
-        @fenetre.affichageFin(temps)
+        @fenetre.affichageFin(estTermine)
         
       end
      
