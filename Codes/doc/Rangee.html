@@ -56,7 +56,20 @@
   
 
   <div id="class-metadata">
+    <div id="sections-section" class="nav-section">
+  <h3>Sections</h3>
+
+  <ul class="link-list" role="directory">
     
+      <li><a href="#5Buntitled-5D"></a></li>
+    
+      <li><a href="#Ecriture+de+Donn-C3-A9es">Ecriture de Données</a></li>
+    
+      <li><a href="#Lecture+de+Donn-C3-A9es">Lecture de Données</a></li>
+    
+  </ul>
+</div>
+
     <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
@@ -135,10 +148,7 @@
 
         <div class="method-description">
         
-        <p>Variable destinée à contenir le tableau de <code>Case</code> de la Rangée
-Variable destinée à contenir le tableau de conditions (entiers naturels
-positifs) de la Rangée Variable destinée à contenir le booleen indiquant si
-la disposition des Cases respecte les conditions</p>
+        <p>Variable destinée à contenir le tableau de <code>Case</code> de la Rangée</p>
         
         </div>
       </div>
@@ -151,10 +161,8 @@ la disposition des Cases respecte les conditions</p>
 
         <div class="method-description">
         
-        <p>Variable destinée à contenir le tableau de <code>Case</code> de la Rangée
-Variable destinée à contenir le tableau de conditions (entiers naturels
-positifs) de la Rangée Variable destinée à contenir le booleen indiquant si
-la disposition des Cases respecte les conditions</p>
+        <p>Variable destinée à contenir le tableau de conditions (entiers naturels
+positifs) de la Rangée</p>
         
         </div>
       </div>
@@ -167,10 +175,8 @@ la disposition des Cases respecte les conditions</p>
 
         <div class="method-description">
         
-        <p>Variable destinée à contenir le tableau de <code>Case</code> de la Rangée
-Variable destinée à contenir le tableau de conditions (entiers naturels
-positifs) de la Rangée Variable destinée à contenir le booleen indiquant si
-la disposition des Cases respecte les conditions</p>
+        <p>Variable destinée à contenir le booleen indiquant si la disposition des
+Cases respecte les conditions</p>
         
         </div>
       </div>
@@ -206,7 +212,7 @@ la rangée</p>
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 28</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Rangee</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nbreCase</span>)
 
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nbreCase</span>)
@@ -242,7 +248,7 @@ la rangee</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 35</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">nbre</span>)
 
 <span class="ruby-comment"># On initialise @cases et @conditions avec des tableaux, et on spécifie la taille du tableau de case</span>
@@ -272,82 +278,33 @@ la rangee</p>
     
     </section>
   
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+  </section>
+
+  
+  
+  <section id="Ecriture+de+Donn-C3-A9es" class="documentation-section">
+    
+    <header class="documentation-section-title">
+      <h2>
+        Ecriture de Données
+      </h2>
+      <span class="section-click-top">
+        <a href="#top">&uarr; top</a>
+      </span>
+    </header>
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-Ecriture+de+Donn-C3-A9es-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
-
-    
-      <div id="method-i-afficher" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">afficher</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>methode d&#39;affichage dans un terminal pour les tests</p>
-          
-          
-
-          
-          <div class="method-source-code" id="afficher-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 194</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">afficher</span>()
-    
-    <span class="ruby-identifier">print</span> <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">to_s</span>()
-    <span class="ruby-ivar">@cases</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">afficher</span>()
-    }
-    <span class="ruby-comment">#puts @valide.to_s()</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-condition" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">condition</span><span
-            class="method-args">(x)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Méthode pour retourner la condition x, pour l&#39;interface graphique</p>
-          
-          
-
-          
-          <div class="method-source-code" id="condition-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 204</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">condition</span>(<span class="ruby-identifier">x</span>)
-
-        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@conditions</span>[<span class="ruby-identifier">x</span>]
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
 
     
       <div id="method-i-conditionsDeterminer" class="method-detail ">
@@ -369,7 +326,7 @@ la rangee</p>
 
           
           <div class="method-source-code" id="conditionsDeterminer-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 56</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 55</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionsDeterminer</span>()
 
     <span class="ruby-identifier">cpt</span> = <span class="ruby-value">0</span>
@@ -437,79 +394,10 @@ NUMERO(entier passé en paramètre)</p>
 
           
           <div class="method-source-code" id="marquer-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 180</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 183</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">marquer</span>(<span class="ruby-identifier">numero</span>)
 
     <span class="ruby-ivar">@cases</span>[<span class="ruby-identifier">numero</span>].<span class="ruby-identifier">marquer</span>()
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-nbConditions" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">nbConditions</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Méthode pour retourner la taille du tableau de condition, pour
-l&#39;interface graphique</p>
-          
-          
-
-          
-          <div class="method-source-code" id="nbConditions-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 210</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">nbConditions</span>
-
-    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">size</span>()
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-noircie-3F" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">noircie?</span><span
-            class="method-args">(numero)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Méthode vérifiant si la case numero est noircie</p>
-          
-          
-
-          
-          <div class="method-source-code" id="noircie-3F-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 188</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">noircie?</span>(<span class="ruby-identifier">numero</span>)
-    
-    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@cases</span>[<span class="ruby-identifier">numero</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -541,7 +429,7 @@ l&#39;interface graphique</p>
 
           
           <div class="method-source-code" id="noircir-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 173</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">numero</span>)
 
     <span class="ruby-ivar">@cases</span>[<span class="ruby-identifier">numero</span>].<span class="ruby-identifier">noircir</span>()
@@ -614,7 +502,7 @@ l&#39;interface graphique</p>
 
           
           <div class="method-source-code" id="verifier-source">
-            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 104</span>
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">verifier</span>()
 
     <span class="ruby-identifier">nbreCaseNoircie</span> = <span class="ruby-value">0</span>
@@ -681,6 +569,178 @@ l&#39;interface graphique</p>
     <span class="ruby-ivar">@valide</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+  
+  
+  <section id="Lecture+de+Donn-C3-A9es" class="documentation-section">
+    
+    <header class="documentation-section-title">
+      <h2>
+        Lecture de Données
+      </h2>
+      <span class="section-click-top">
+        <a href="#top">&uarr; top</a>
+      </span>
+    </header>
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-Lecture+de+Donn-C3-A9es-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficher" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficher</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>methode d&#39;affichage dans un terminal pour les tests</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficher-source">
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 199</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">afficher</span>()
+    
+    <span class="ruby-identifier">print</span> <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">to_s</span>()
+    <span class="ruby-ivar">@cases</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">afficher</span>()
+    }
+    <span class="ruby-comment">#puts @valide.to_s()</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-condition" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">condition</span><span
+            class="method-args">(x)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour retourner la condition x, pour l&#39;interface graphique</p>
+          
+          
+
+          
+          <div class="method-source-code" id="condition-source">
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">condition</span>(<span class="ruby-identifier">x</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@conditions</span>[<span class="ruby-identifier">x</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbConditions" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbConditions</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour retourner la taille du tableau de condition, pour
+l&#39;interface graphique</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nbConditions-source">
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nbConditions</span>()
+
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">size</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-noircie-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">noircie?</span><span
+            class="method-args">(numero)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode vérifiant si la case numero est noircie</p>
+          
+          
+
+          
+          <div class="method-source-code" id="noircie-3F-source">
+            <pre><span class="ruby-comment"># File Modele/Rangee.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">noircie?</span>(<span class="ruby-identifier">numero</span>)
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@cases</span>[<span class="ruby-identifier">numero</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

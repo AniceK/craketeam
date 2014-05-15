@@ -98,8 +98,6 @@
 
   <section class="description">
     
-<pre>:markup! RDoc</pre>
-
 <p>25/02/2014 Projet Picross équipe CrakeTeam</p>
 
 <p>Ce fichier contient la classe <a href="Case.html">Case</a>, brique de base
@@ -167,7 +165,7 @@ noircie, cochée/marquée ou laissée blanche.</p>
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 19</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Case</span>.<span class="ruby-identifier">creer</span>()
 
             <span class="ruby-identifier">new</span>()
@@ -203,7 +201,7 @@ création</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 26</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>()
 
               <span class="ruby-ivar">@etat</span> = <span class="ruby-value">0</span>
@@ -245,7 +243,7 @@ création</p>
 
           
           <div class="method-source-code" id="afficher-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 73</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">afficher</span>()
     <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;|&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@etat</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -278,7 +276,7 @@ création</p>
 
           
           <div class="method-source-code" id="marquer-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 53</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">marquer</span>()
 
                 <span class="ruby-keyword">if</span> <span class="ruby-ivar">@etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
@@ -320,7 +318,7 @@ ou de un à zéro</p>
 
           
           <div class="method-source-code" id="noircir-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 40</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noircir</span>()
 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
@@ -361,7 +359,7 @@ ou de un à zéro</p>
 
           
           <div class="method-source-code" id="raz-source">
-            <pre><span class="ruby-comment"># File Modele/Case.rb, line 67</span>
+            <pre><span class="ruby-comment"># File Modele/Case.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">raz</span>()
 
         <span class="ruby-ivar">@etat</span> = <span class="ruby-value">0</span>

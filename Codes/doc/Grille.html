@@ -261,7 +261,7 @@ passés en paramètres</p>
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 35</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
 
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
@@ -296,7 +296,7 @@ href="Grille.html">Grille</a></p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 41</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
 
     <span class="ruby-ivar">@taille</span> = <span class="ruby-identifier">taille</span>
@@ -358,7 +358,7 @@ terminal</p>
 
           
           <div class="method-source-code" id="afficher-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 194</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 193</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">afficher</span>()
 
     <span class="ruby-ivar">@ligne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
@@ -396,7 +396,7 @@ terminal</p>
 
           
           <div class="method-source-code" id="conditionH-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 222</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 221</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionH</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">condition</span>(<span class="ruby-identifier">y</span>)
@@ -430,7 +430,7 @@ terminal</p>
 
           
           <div class="method-source-code" id="conditionV-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 216</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 215</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionV</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">condition</span>(<span class="ruby-identifier">y</span>)
@@ -465,7 +465,7 @@ terminal</p>
 
           
           <div class="method-source-code" id="conditionsDeterminer-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 107</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionsDeterminer</span>()
 
         <span class="ruby-ivar">@colonne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
@@ -511,7 +511,7 @@ coordonnees en parametres</p>
 
           
           <div class="method-source-code" id="etatCase-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 228</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 227</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">y</span>][<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span>
@@ -546,7 +546,7 @@ l&#39;aide d&#39;un coefficient des cases</p>
 
           
           <div class="method-source-code" id="genererAleatoire-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 134</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">genererAleatoire</span>(<span class="ruby-identifier">unCoef</span>)
 
 <span class="ruby-comment"># Les colonnes et les lignes sont préalablement remises à zéro</span>
@@ -603,7 +603,7 @@ l&#39;aide d&#39;un coefficient des cases</p>
 
           
           <div class="method-source-code" id="getTaille-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 167</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 166</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getTaille</span>()
 
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@taille</span>
@@ -638,7 +638,7 @@ n&#39;étant pas à cocher à partir de ses coordonnées</p>
 
           
           <div class="method-source-code" id="marquerCase-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 125</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 124</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier">marquerCase</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
 
         <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">marquer</span>(<span class="ruby-identifier">coordY</span>)
@@ -676,7 +676,7 @@ parametre</p>
 
           
           <div class="method-source-code" id="nbConditionsH-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 210</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nbConditionsH</span>(<span class="ruby-identifier">x</span>)
 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">nbConditions</span>()
@@ -711,7 +711,7 @@ parametre</p>
 
           
           <div class="method-source-code" id="nbConditionsV-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 204</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 203</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nbConditionsV</span>(<span class="ruby-identifier">x</span>)
 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">nbConditions</span>()
@@ -746,7 +746,7 @@ ses coordonnées</p>
 
           
           <div class="method-source-code" id="noircir-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 77</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
 
     <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">coordY</span>)
@@ -783,7 +783,7 @@ tableaux de cases, et non pas ceux de conditions</p>
 
           
           <div class="method-source-code" id="razGrille-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 85</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">razGrille</span>()
   
   <span class="ruby-ivar">@colonne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
@@ -834,7 +834,7 @@ tableaux de cases des Rangées</p>
 
           
           <div class="method-source-code" id="sauvegarder-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 239</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 238</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sauvegarder</span>(<span class="ruby-identifier">unNom</span>)
 
 <span class="ruby-comment"># La grille est remise à zéro (pas de case noircie ou marquée)</span>
@@ -907,7 +907,7 @@ validité de chacune des Rangées</p>
 
           
           <div class="method-source-code" id="termine-3F-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 173</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 172</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">termine?</span>()
 
     <span class="ruby-identifier">res</span> = <span class="ruby-keyword">true</span>
@@ -956,7 +956,7 @@ validité de chacune des Rangées</p>
 
           
           <div class="method-source-code" id="verifierCoup-source">
-            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 70</span>
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">verifierCoup</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
 
   <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">verifier</span>()
