@@ -48,6 +48,9 @@ class FenetreEditeur < Fenetre
     @tableauJeu.set_column_spacings(2)
     @tableauJeu.set_row_spacings(2)
     
+    aligneTableau = Gtk::Alignment.new(0.5, 0.5, 0, 0)
+    alignetableau.add(@tableauJeu)
+    
     @vBoxDroite = Gtk::VBox.new(true, 0)
     @hBoxPrincipale = Gtk::HBox.new(false, 5)
     
@@ -57,7 +60,7 @@ class FenetreEditeur < Fenetre
     @vBoxDroite.pack_end(@boutonQuitter, false, false, 30)
     @vBoxDroite.pack_end(@boutonEnregistrer, false, false, 30)
     
-    @hBoxPrincipale.pack_start(@tableauJeu, true, true, 0)
+    @hBoxPrincipale.pack_start(aligneTableau, true, true, 0)
     @hBoxPrincipale.pack_end(@vBoxDroite, false, false, 10)
     @hBoxPrincipale.pack_end(Gtk::VSeparator.new(), false, false, 0)
     

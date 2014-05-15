@@ -12,6 +12,7 @@ require './Vue/Fenetres/FenetreJeu'
 require './Vue/Elements/CaseCartesienne'
 require './Vue/Dialogues/DialogueQuitterPartie'
 require './Vue/Dialogues/DialogueEcraserSauvegarde'
+require './Vue/Dialogues/DialogueEnregistrer'
 require './Vue/Dialogues/DialogueAide'
 
 
@@ -226,7 +227,7 @@ class EventsJeu < Events
     @fenetre.boutonNettoyerGrille.signal_connect('clicked'){
       
       puts "> Nettoyer grille"
-      #@jeu.nettoyerGrille() # => À implémenter
+      @jeu.nettoyerGrille() # => À implémenter
       self.initialiserTableauJeu()
       @fenetre.texteInfosNettoyer.show_all()
     }
@@ -283,6 +284,15 @@ class EventsJeu < Events
       puts "> Menu Principal"
       
       mouvement(EventsAccueil.new(@jeu, position() ))
+    }
+    
+    @fenetre.boutonEnregistrerGrille.signal_connect('clicked'){
+      
+      puts "> Enregistrer Grille"
+      
+      dialogue = DialogueEnregistrer.new(@fenetre.widget())
+      
+      #mouvement(EventsAccueil.new(@jeu, position() ))
     }
     
   end
@@ -504,8 +514,6 @@ class EventsJeu < Events
         #  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), 0, @tailleGrille-1, y, y+1)
         #  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)
         #end
-        
-        # => À décommenter quand méthode de récupération de l'état de la case[x,y] opérationnelle
         
         case @jeu.etatCase(x, y)
           
