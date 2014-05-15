@@ -53,7 +53,6 @@ g1.afficher()
 
 for i in (0 ... taille)
     for j in (0 ... taille)
-
         g1.verifierCoup(i, j)
     end
 end
