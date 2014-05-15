@@ -10,11 +10,11 @@
 
 class Aide
   
-  @difficulte
-  @tabCondCol
-  @tabCondLig
+    @difficulte
+    @tabCondCol
+    @tabCondLig
   
-   attr_reader :difficulte, :tabCondCol, :tabCondLig
+    attr_reader :difficulte, :tabCondCol, :tabCondLig
   
 	# Constructeur de la classe Aide
     def Aide.creer(uneDifficulte)
@@ -25,10 +25,9 @@ class Aide
 
     def initialize(uneDifficulte)
 
-	  @difficulte = uneDifficulte
-      @tabCondCol = Array.new()
-      @tabCondLig = Array.new()
-
+	     @difficulte = uneDifficulte
+         @tabCondCol = Array.new()
+         @tabCondLig = Array.new()
     end   
     
     def chercherAide(tabCol, tabLig)

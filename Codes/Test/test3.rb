@@ -45,7 +45,7 @@ taille = 10
    
 puts "Test de la Grille"
 g1 = Grille.creer("toto", taille)
-aide = Aide.creer(3)
+aide = Aide.creer(1)
 
 g1.genererAleatoire(50)
 
