@@ -73,7 +73,7 @@ class Grille
 	end
 
 # Méthode pour remettre la grille à zéro : cela implique uniquement les tableaux de cases, et non pas ceux de conditions
-  def raz()
+  def razGrille()
     
     @colonne.each { |x|
       
@@ -125,23 +125,7 @@ class Grille
     def genererAleatoire(unCoef)
 
     # Les colonnes et les lignes sont préalablement remises à zéro
-        @ligne.each { |x|
-            
-            x.razCases()
-        }
-        
-        @colonne.each { |x| 
-            
-            x.razCases()
-        }
-        @grille.each { |x|
-
-            x.each { |y|
-
-                y.raz()
-            }
-        }
-
+       self.razGrille() 
         # Deux boucles parcours l'ensemble des cases, et noircissent selon le coefficient passé en paramètres certaines cases
         for i in (0..@taille-1)
       
@@ -163,7 +147,7 @@ class Grille
 	    self.conditionsDeterminer()
 
         # Toutes les cases noircies sont passées à zéro.
-        self.raz()
+        self.razGrille()
     end
 
 #=====================================================

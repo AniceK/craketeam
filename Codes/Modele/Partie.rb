@@ -234,7 +234,8 @@ class Partie
 # Méthode pour remettre la grille en cours à zéro (nettoyer)
     def nettoyerGrille()
 
-        @grille.raz()
+        puts "on a demandée a la grille de se remettre à zéro"
+        @grille.razGrille()
     end
 
 # Methode de marquage d'une case (X, Y)
