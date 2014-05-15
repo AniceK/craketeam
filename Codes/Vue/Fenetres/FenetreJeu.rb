@@ -137,7 +137,7 @@ class FenetreJeu < Fenetre
     @boutonAide = Gtk::Button.new('Aide')
     @boutonPause = Gtk::Button.new()
     @tableauGeneral = Gtk::Table.new(0, 0, false)
-    @tableauConditionsV = Gtk::Table.new(0, 0, true)
+    @tableauConditionsV = Gtk::Table.new(0, 0, false)
     @tableauConditionsH = Gtk::Table.new(0, 0, true)
     @tableauJeu = Gtk::Table.new(0, 0, true)
     tableauDefile = Gtk::ScrolledWindow.new

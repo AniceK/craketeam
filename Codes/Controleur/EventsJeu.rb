@@ -228,7 +228,7 @@ class EventsJeu < Events
       
       puts "> Nettoyer grille"
       @jeu.nettoyerGrille()
-      self.nettoyerTableauJeu()
+      self.toutActualiser()
       @fenetre.texteInfosNettoyer.show_all()
     }
     
@@ -417,6 +417,9 @@ class EventsJeu < Events
   
   def caseCliquee(widget, evenement)
     
+    # GTK EVENT MASK ==> ENTER_NOTIFY_EVENT
+    # GTK EVENT MASK ==> BUTTON_RELEASE_EVENT
+    
     x = widget.coordonneeX
     y = widget.coordonneeY
     
@@ -440,8 +443,7 @@ class EventsJeu < Events
         
         puts "> Partie gagnée (Temps = " + estTermine.to_s + ", Score = " + (estTermine * 3).to_s + ")"
         
-        #@evenementCase.signal_emit_stop('button_press_event') # => Empêcher appuie sur case
-        # => Nettoyage cases marquées
+        self.nettoyerGrilleFinie()
         
         @fenetre.affichageFin(estTermine)
         
@@ -498,14 +500,15 @@ class EventsJeu < Events
              
              xCondition -= 1
              
-             # On prend la condition de la ligne et on décrémente la variable interne
-             condition.set_text(@jeu.conditionV(y, xCondition).to_s)
+             valeurCondition = @jeu.conditionV(y, xCondition)
              
+             # On prend la condition de la ligne et on décrémente la variable interne
+             condition.set_text(valeurCondition.to_s)
            end
            
            # Si la condition est à prendre en compte
            if xCondition >= 0 then
-               
+             
              # On ajoute la condition non-vide au tableau par le bas  
              @fenetre.tableauConditionsV.attach(condition, y, y+1, x, x+1, @optionsTableau, @optionsTableau)
              
@@ -584,49 +587,68 @@ class EventsJeu < Events
           
         end
         
-        #puts "Initialisation Case[" + x.to_s + "][" + y.to_s + "] : "+ etat.to_s
-        
         caseCartesienne = CaseCartesienne.new(x, y, etat)
         
-        caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
+        # Lorsqu'on clic, on noircie tout ce qui survolé jusqu'au déclic
+        signalCaseCliquee = caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
       
           caseCliquee(widget, evenement)
         }
+        
+        caseCartesienne.ajouterSignalID(signalCaseCliquee)
         
         @fenetre.tableauJeu.attach(caseCartesienne, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
     end
   end
     
-  def nettoyerTableauJeu()
+  def toutActualiser()
     
-    0.upto(@tailleGrille - 1) do |x|
-      0.upto(@tailleGrille - 1) do |y|
+    @fenetre.tableauJeu.each{ |caseTableau|
+      
+      x = caseTableau.coordonneeX
+      y = caseTableau.coordonneeY
+      
+      case @jeu.etatCase(x, y)
         
-        case @jeu.etatCase(x, y)
+      when 0 then etat = @vide
+      when 1 then etat = @noircie
+      when 2 then etat = @marquee
+        
+      else
           
-        when 0 then etat = @vide
-        when 1 then etat = @noircie
-        when 2 then etat = @marquee
-          
-        else
-          
-            puts "Erreur: L'état de la case à initialiser est inconnu ==> " + @jeu.etatCase(x, y).to_s
-          
-        end
+          puts "Erreur: L'état de la case à initialiser est inconnu ==> " + @jeu.etatCase(x, y).to_s
         
-        puts "Initialisation Case[" + x.to_s + "][" + y.to_s + "] : "+ etat.to_s
-        
-        caseCartesienne = CaseCartesienne.new(x, y, etat)
-        
-        caseCartesienne.signal_connect('button_press_event') { |widget, evenement|
-        
-          caseCliquee(widget, evenement)
-        }
-        
-        @fenetre.tableauJeu.attach(caseCartesienne, x, x+1, y, y+1, @optionsTableau, @optionsTableau)
       end
-    end
+      
+      caseTableau.changerEtat(etat)
+    }
+  end
+  
+  def nettoyerGrilleFinie()
+    
+    @fenetre.tableauJeu.each{ |caseTableau|
+      
+      x = caseTableau.coordonneeX
+      y = caseTableau.coordonneeY
+      
+      case @jeu.etatCase(x, y)
+        
+      when 0 then etat = @vide
+      when 1 then etat = @noircie
+      when 2 then etat = @vide
+        
+      else
+          
+          puts "Erreur: L'état de la case à initialiser est inconnu ==> " + @jeu.etatCase(x, y).to_s
+        
+      end
+      
+      caseTableau.changerEtat(etat)
+      
+      signalID = caseTableau.recupererSignalID()
+      caseTableau.signal_handler_disconnect(signalID)
+    }
   end
   
 end

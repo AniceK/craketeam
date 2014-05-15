@@ -32,6 +32,27 @@ class EventsChoixSauvegarde < Events
       mouvement(EventsChoixPartie.new(@jeu, position() ))
     }
     
+    @fenetre.boutonSupprimer.signal_connect('clicked'){
+      
+      nomSauvegarde = @fenetre.choixSauvegarde()
+      
+      if @jeu.supprimerPartie(nomSauvegarde) then
+        
+        puts "> Suppression Sauvegarde"
+        
+      elsif !@jeu.supprimerPartie(nomSauvegarde) then
+        
+        puts "[EventsChoixSauvegardes]Erreur: Problème suppression sauvegarde"
+        
+      else
+        
+        puts "[EventsChoixSauvegardes]Erreur: Problème suppression sauvegarde"
+        
+      end
+        
+        
+    }
+    
     @fenetre.boutonSuivant.signal_connect('clicked'){
       
       nomSauvegarde = @fenetre.choixSauvegarde()

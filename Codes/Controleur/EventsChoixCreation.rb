@@ -54,6 +54,27 @@ class EventsChoixCreation < Events
       mouvement(EventsChoixGrille.new(@jeu, position() ))
     }
     
+    @fenetre.boutonSupprimer.signal_connect('clicked'){
+      
+      nomCreation = @fenetre.choixCreation()
+      
+      if @jeu.supprimerGrille(nomCreation) then
+        
+        puts "> Suppression Création"
+        
+      elsif !@jeu.supprimerGrille(nomCreation) then
+        
+        puts "[EventsChoixSauvegardes]Erreur: Problème suppression création"
+        
+      else
+        
+        puts "[EventsChoixSauvegardes]Erreur: Problème suppression création"
+        
+      end
+        
+        
+    }
+    
     @fenetre.boutonSuivant.signal_connect('clicked'){
       
       
