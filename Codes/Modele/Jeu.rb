@@ -497,14 +497,14 @@ class Jeu
     end
 
 # Méthode pour afficher les scores, avec le choix entre tous les scores, ou juste ceux du profil en cours
-    def afficherScores(tous)
+    def afficherScores()
 
         liste = Array.new()
         if File.size('scores.yml')> 0 then
             
             liste = YAML::load(File.open('scores.yml'))        
 
-            if @profil == nil or tous then
+            if @profil == nil then
             
                 if liste.empty? then
             
