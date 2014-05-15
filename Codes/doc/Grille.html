@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Grille - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficher">#afficher</a>
+    
+    <li ><a href="#method-i-conditionH">#conditionH</a>
+    
+    <li ><a href="#method-i-conditionV">#conditionV</a>
+    
+    <li ><a href="#method-i-conditionsDeterminer">#conditionsDeterminer</a>
+    
+    <li ><a href="#method-i-etatCase">#etatCase</a>
+    
+    <li ><a href="#method-i-genererAleatoire">#genererAleatoire</a>
+    
+    <li ><a href="#method-i-getTaille">#getTaille</a>
+    
+    <li ><a href="#method-i-marquerCase">#marquerCase</a>
+    
+    <li ><a href="#method-i-nbConditionsH">#nbConditionsH</a>
+    
+    <li ><a href="#method-i-nbConditionsV">#nbConditionsV</a>
+    
+    <li ><a href="#method-i-noircir">#noircir</a>
+    
+    <li ><a href="#method-i-razGrille">#razGrille</a>
+    
+    <li ><a href="#method-i-sauvegarder">#sauvegarder</a>
+    
+    <li ><a href="#method-i-termine-3F">#termine?</a>
+    
+    <li ><a href="#method-i-verifierCoup">#verifierCoup</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Grille">
+  <h1 id="class-Grille" class="class">
+    class Grille
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-colonne" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">colonne</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-createur" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">createur</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-date" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">date</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-grille" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">grille</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-ligne" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ligne</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nom" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nom</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-taille" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">taille</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(nom, taille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de classe de Création de la classe <a
+href="Grille.html">Grille</a>, ou la taille et le nom du créateur sont
+passés en paramètres</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
+
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(nom, taille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de classe d&#39;initialisation de la classe <a
+href="Grille.html">Grille</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">taille</span>)
+
+    <span class="ruby-ivar">@taille</span> = <span class="ruby-identifier">taille</span>
+    <span class="ruby-ivar">@date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>()                  <span class="ruby-comment"># La date est définie à la création</span>
+    <span class="ruby-ivar">@colonne</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille</span>)        <span class="ruby-comment"># Création des tableaux pour accueuillir les Rangées</span>
+    <span class="ruby-ivar">@ligne</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille</span>)
+    <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille</span>)
+    <span class="ruby-ivar">@createur</span> = <span class="ruby-identifier">nom</span>                     <span class="ruby-comment"># Récupération du nom du créateur passé en paramètre</span>
+
+<span class="ruby-comment"># Une boucle est utilisé afin chaque éléments de @ligne, @colonne et @grille avec des Rangées ou des tableaux de Case</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+
+        <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Rangee</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">taille</span>)
+        <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Rangee</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">taille</span>)
+        <span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille</span>)
+        
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+
+            <span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] = <span class="ruby-constant">Case</span>.<span class="ruby-identifier">creer</span>()
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficher" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficher</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;affichage reservee aux tests, affichage des lignes dans le
+terminal</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficher-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">afficher</span>()
+
+    <span class="ruby-ivar">@ligne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">afficher</span>()
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;|&quot;</span>
+}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-conditionH" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">conditionH</span><span
+            class="method-args">(x, y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour retourner la condition y dans la ligne x passe en parametre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="conditionH-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 214</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionH</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">condition</span>(<span class="ruby-identifier">y</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-conditionV" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">conditionV</span><span
+            class="method-args">(x, y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour retourner la condition y dans la colonne x passe en parametre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="conditionV-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionV</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">condition</span>(<span class="ruby-identifier">y</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-conditionsDeterminer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">conditionsDeterminer</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode permettant de déterminer les conditions de remplissage de la grille
+à partir des cases noircies</p>
+          
+          
+
+          
+          <div class="method-source-code" id="conditionsDeterminer-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">conditionsDeterminer</span>()
+
+        <span class="ruby-ivar">@colonne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+
+                <span class="ruby-identifier">x</span>.<span class="ruby-identifier">conditionsDeterminer</span>()
+
+        }
+
+        <span class="ruby-ivar">@ligne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+
+                <span class="ruby-identifier">x</span>.<span class="ruby-identifier">conditionsDeterminer</span>()
+
+        }
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-etatCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">etatCase</span><span
+            class="method-args">(x, y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour récuperer l&#39;état d&#39;une case dont on passe les
+coordonnees en parametres</p>
+          
+          
+
+          
+          <div class="method-source-code" id="etatCase-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 220</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">y</span>][<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-genererAleatoire" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">genererAleatoire</span><span
+            class="method-args">(unCoef)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de génération aléatoire d&#39;une grille, noircissant au hasarad à
+l&#39;aide d&#39;un coefficient des cases</p>
+          
+          
+
+          
+          <div class="method-source-code" id="genererAleatoire-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">genererAleatoire</span>(<span class="ruby-identifier">unCoef</span>)
+
+<span class="ruby-comment"># Les colonnes et les lignes sont préalablement remises à zéro</span>
+   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">razGrille</span>() 
+    <span class="ruby-comment"># Deux boucles parcours l&#39;ensemble des cases, et noircissent selon le coefficient passé en paramètres certaines cases</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+      
+            <span class="ruby-identifier">alea</span> = <span class="ruby-value">0</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Random</span>.<span class="ruby-identifier">rand</span>(<span class="ruby-value">100</span>)
+      
+            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">alea</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">unCoef</span>) <span class="ruby-keyword">then</span>
+          
+                <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">j</span>)
+                <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">i</span>)
+                <span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">noircir</span>()
+
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Pour chaque ligne et colonne les conditions sont déterminées</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">conditionsDeterminer</span>()
+
+    <span class="ruby-comment"># Toutes les cases noircies sont passées à zéro.</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">razGrille</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getTaille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getTaille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode renvoyant la taille de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getTaille-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getTaille</span>()
+
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@taille</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-marquerCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">marquerCase</span><span
+            class="method-args">(coordX, coordY)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode permettant de marquer une <a href="Case.html">Case</a> comme
+n&#39;étant pas à cocher à partir de ses coordonnées</p>
+          
+          
+
+          
+          <div class="method-source-code" id="marquerCase-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 117</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">marquerCase</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
+
+        <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">marquer</span>(<span class="ruby-identifier">coordY</span>)
+        <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">coordY</span>].<span class="ruby-identifier">marquer</span>(<span class="ruby-identifier">coordX</span>)
+    <span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">coordY</span>][<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">marquer</span>()
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbConditionsH" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbConditionsH</span><span
+            class="method-args">(x)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour retourner le nombre de conditions dans la ligne x passe en
+parametre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nbConditionsH-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 202</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nbConditionsH</span>(<span class="ruby-identifier">x</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">nbConditions</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbConditionsV" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbConditionsV</span><span
+            class="method-args">(x)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour retourner le nombre de conditions dans la colonne x passe en
+parametre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nbConditionsV-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 196</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nbConditionsV</span>(<span class="ruby-identifier">x</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">nbConditions</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-noircir" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">noircir</span><span
+            class="method-args">(coordX, coordY)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode permettant de noircir une <a href="Case.html">Case</a> à partir de
+ses coordonnées</p>
+          
+          
+
+          
+          <div class="method-source-code" id="noircir-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
+
+    <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">coordY</span>)
+    <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">coordY</span>].<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">coordX</span>)
+<span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">coordY</span>][<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">noircir</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-razGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">razGrille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour remettre la grille à zéro : cela implique uniquement les
+tableaux de cases, et non pas ceux de conditions</p>
+          
+          
+
+          
+          <div class="method-source-code" id="razGrille-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">razGrille</span>()
+  
+  <span class="ruby-ivar">@colonne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+    
+    <span class="ruby-identifier">x</span>.<span class="ruby-identifier">razCases</span>()
+  }
+  
+  <span class="ruby-ivar">@ligne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+  
+    <span class="ruby-identifier">x</span>.<span class="ruby-identifier">razCases</span>()
+  }
+  
+  <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+  
+    <span class="ruby-identifier">x</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+    
+      <span class="ruby-identifier">y</span>.<span class="ruby-identifier">raz</span>()
+    }
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sauvegarder" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sauvegarder</span><span
+            class="method-args">(unNom)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de sérialisation de la grille, avec remise à zéro préalable des
+tableaux de cases des Rangées</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sauvegarder-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 231</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sauvegarder</span>(<span class="ruby-identifier">unNom</span>)
+
+<span class="ruby-comment"># La grille est remise à zéro (pas de case noircie ou marquée)</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">razGrille</span>()
+    <span class="ruby-ivar">@nom</span> = <span class="ruby-identifier">unNom</span>
+
+<span class="ruby-comment"># On se déplace dans le répertoir /Grille/Taille, pour charger le fichier contenant toutes les grilles de cette taille</span>
+    <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cd</span>(<span class="ruby-string">&#39;Grille&#39;</span>)
+    <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cd</span>(<span class="ruby-ivar">@taille</span>.<span class="ruby-identifier">to_s</span>())
+    <span class="ruby-identifier">tab</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+<span class="ruby-comment"># Si la taille de ce fichier est supérieur à 0 (il n&#39;est donc pas vide), son contenu est chargé dans un tableau tab</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">size</span>(<span class="ruby-string">&#39;grilles.yml&#39;</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+    
+        <span class="ruby-identifier">tab</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;grilles.yml&#39;</span>)))
+        <span class="ruby-identifier">tabnom</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+    <span class="ruby-comment"># Dans un second tableau, on récupère tous les noms de grilles déjà enregistrées</span>
+        <span class="ruby-identifier">tab</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">tabnom</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>])
+        }
+    <span class="ruby-comment"># Si le nom proposé par l&#39;utilisateur est déjà pris, on remonte dans l&#39;arborescence jusqu&#39;à Picross, et on retourne Faux</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tabnom</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">unNom</span>) <span class="ruby-keyword">then</span>
+
+            <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cd</span>(<span class="ruby-string">&#39;../..&#39;</span>)
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># On ajoute au tableau tab la dernière grille sous la forme d&#39;un tableau contenant son nom de sauvegarde et la grille</span>
+    <span class="ruby-identifier">tab</span>.<span class="ruby-identifier">push</span>([<span class="ruby-ivar">@nom</span>, <span class="ruby-keyword">self</span>])
+
+<span class="ruby-comment"># On supprime le fichier précédent, pour éviter d&#39;écrire deux fois le tableau tab</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;grilles.yml&#39;</span>)
+
+<span class="ruby-comment"># On enregistre via YAML le tableau dans le fichier</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;grilles.yml&#39;</span>,<span class="ruby-string">&quot;w&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">out</span><span class="ruby-operator">|</span> <span class="ruby-identifier">out</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">tab</span>.<span class="ruby-identifier">to_yaml</span>()}
+
+<span class="ruby-comment">#On remonte dans l&#39;arborescence et on retourne true, signe que tout s&#39;est bien passé.</span>
+    <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cd</span>(<span class="ruby-string">&#39;../..&#39;</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-termine-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">termine?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode vérifiant si la partie est terminée, en passant en revue la
+validité de chacune des Rangées</p>
+          
+          
+
+          
+          <div class="method-source-code" id="termine-3F-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">termine?</span>()
+
+    <span class="ruby-identifier">res</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-comment"># Chaque colonne et chaque ligne sont parcourues pour vérifier si leurs éléments sont valides</span>
+    <span class="ruby-ivar">@colonne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valide</span>() <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">then</span>
+            <span class="ruby-identifier">res</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+    }
+    <span class="ruby-ivar">@ligne</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valide</span>() <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">then</span>
+            
+            <span class="ruby-identifier">res</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+    }
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-verifierCoup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verifierCoup</span><span
+            class="method-args">(coordX, coordY)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode vérifiant la validité du coup joué</p>
+          
+          
+
+          
+          <div class="method-source-code" id="verifierCoup-source">
+            <pre><span class="ruby-comment"># File Modele/Grille.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verifierCoup</span>(<span class="ruby-identifier">coordX</span>, <span class="ruby-identifier">coordY</span>)
+
+  <span class="ruby-ivar">@colonne</span>[<span class="ruby-identifier">coordX</span>].<span class="ruby-identifier">verifier</span>()
+  <span class="ruby-ivar">@ligne</span>[<span class="ruby-identifier">coordY</span>].<span class="ruby-identifier">verifier</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

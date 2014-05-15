@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Documentation - RDoc Documentation</title>
+
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Modele/Documentation_txt.html">Documentation</a>
+  
+    <li><a href="../Modele/Regles_txt.html">Regles</a>
+  
+    <li><a href="../Modele/doc/Case_html.html">Case.html</a>
+  
+    <li><a href="../Modele/doc/Grille_html.html">Grille.html</a>
+  
+    <li><a href="../Modele/doc/Partie_html.html">Partie.html</a>
+  
+    <li><a href="../Modele/doc/Rangee_html.html">Rangee.html</a>
+  
+    <li><a href="../Modele/doc/fonts_css.html">fonts.css</a>
+  
+    <li><a href="../Modele/doc/index_html.html">index.html</a>
+  
+    <li><a href="../Modele/doc/js/darkfish_js.html">darkfish.js</a>
+  
+    <li><a href="../Modele/doc/js/jquery_js.html">jquery.js</a>
+  
+    <li><a href="../Modele/doc/js/navigation_js.html">navigation.js</a>
+  
+    <li><a href="../Modele/doc/js/search_js.html">search.js</a>
+  
+    <li><a href="../Modele/doc/js/search_index_js.html">search_index.js</a>
+  
+    <li><a href="../Modele/doc/js/searcher_js.html">searcher.js</a>
+  
+    <li><a href="../Modele/doc/rdoc_css.html">rdoc.css</a>
+  
+    <li><a href="../Modele/doc/table_of_contents_html.html">table_of_contents.html</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page Modele/Documentation.txt">
+
+<p>Ceci est un document intermédiaire de documentation. Il doit permettre de
+rassembler un certain nombre d&#39;informations devenues nécesaire, afin
+d&#39;éviter à chacun de parcourir tous les fichiers pour trouver une
+méthode ou son nombre d&#39;argument.</p>
+
+<p>Il fait la liste pour chacun(e) des composants/classes de ses différents
+attributs et méthodes. Il indique également les spécificités
+d&#39;utilisation lorsqu&#39;il y en a.</p>
+
+<p>Les abbréviations suivantes sont utilisées :</p>
+<dl class="rdoc-list label-list"><dt>M.C
+<dd>
+<p>: méthode de classe</p>
+</dd><dt>M.I
+<dd>
+<p>: méthode d&#39;instance</p>
+</dd><dt>A.C
+<dd>
+<p>: attribut de classe</p>
+</dd><dt>R
+<dd>
+<p>: attribut déclaré en lecture</p>
+</dd><dt>W
+<dd>
+<p>: attribut déclaré en écriture</p>
+</dd></dl>
+
+<p>@[a-z]* : attributs</p>
+<hr>
+
+<p>Classe <a href="../Case.html">Case</a> :</p>
+
+<pre>-Attributs :
+
+    -etat [R]  : l&#39;etat d&#39;une Case est un entier indiquant si la case est vierge(0), noircie(1) ou marquée(2)
+
+-Méthodes :
+
+    -creer()   [M.C] : crée une Case et appelle initialize()
+    -initialize() [M.C] : est appelée uniquement par créer() et fixe l&#39;@etat de la Case à 0
+    -noircir() [M.I] : fixe l&#39;@etat de la Case à 1 si ce dernier était à 0, et vice versa. Noircie ou dé-noircie la Case.
+    -marquer() [M.I] : fixe l&#39;@etat de la Case à 2 si ce dernier était à 0, et vice versa. Marque ou dé-marque la Case
+    -raz()  [M.I] : fixe l&#39;@etat de la Case à 0 quelque ce soit l&#39;@etat précédent.
+    -afficher() [M.I] : affiche l&#39;@etat. À utiliser uniquement dans les tests.</pre>
+<hr>
+
+<p>Classe Rangée</p>
+
+<pre>-Attributs :
+
+    -cases [R] : @cases est un tableau de Case, comme défini précédemment
+    -conditions [R] : @conditions est un tableau d&#39;entier indiquant le nombre et l&#39;ordre des Cases à noircir.
+    -valide [R] : booléen indiquant si la rangée est valide, cad si @cases respecte les conditions
+
+-Méthodes :
+
+    -creer(entier)    [M.C] : crée une Rangée en faisant appel à initialize(entier).
+    -initialize(entier) [M.C] : initialise @cases en tant que tableau de taille &quot;entier&quot;, initialise @conditions en tant que tableau, fixe @valide à faux/false, et crée &quot;entier&quot; Cases qui sont ajoutées dans @cases.
+    -remplir(tableau)   [M.I] : remplit @cases avec le tableau passé en paramètre
+    -determinerConditions() [M.I] : détermine avec quelles valeurs remplir @conditions à partir de @cases.
+    -razCases() [M.I] : appelle la méthode raz() de toutes les Case de @cases
+    -verifier() [M.I] : vérifie si @cases respecte @conditions, renvoie un booleen, et met @valide à true.
+    -noircir(entier)    [M.I] : appelle la méthode noircir() de @cases[numero]
+    -marquer(entier)    [M.I] : appelle la méthode marquer() de @cases[numero]
+    -noircie?(entier)   [M.I] : verifie si @cases[entier] est noircie
+    -afficher() [M.I] : affiche la Rangee, avec @conditions et l@etat de chaque element de @cases</pre>
+<hr>
+
+<p>Classe <a href="../Grille.html">Grille</a></p>
+
+<pre>-Attributs
+
+    -ligne [R] : @ligne est un tableau de Rangée, comme défini précédemment, représentant les lignes de la Grille
+    -colonne [R] : @colonne est un tableau de Rangée, comme défini précédemment, représentant les colonnes de la Grille.
+    -grille [R] : @grille est une matrice de Case. Elle est utilisé notemment pour faciliter les représentations de la grille.
+    -createur [R] : chaine de caractère indiquant qui a créé ou généré aléatoirement cette grille.
+    -taille [R] : entier définissant la taille de la grille.
+
+-Méthodes
+    -creer(nom, entier)  [M.C] : méthode créant une grille en appelant initialize(nom, entier).
+    -initialize(nom, entier) : initialise @ligne et @colonne en tant que tableau de Rangée de taille &quot;entier&quot;, initialise @grille en tant que matrice de Case de &quot;entier&quot; x &quot;entier&quot;, initialise @taille avec entier et createur avec nom.</pre>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
