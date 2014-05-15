@@ -231,6 +231,12 @@ class Partie
         @grille.genererAleatoire(50)
     end
 
+# Méthode pour remettre la grille en cours à zéro (nettoyer)
+    def nettoyerGrille()
+
+        @grille.raz()
+    end
+
 # Methode de marquage d'une case (X, Y)
     def marquer(x, y)
 

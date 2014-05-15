@@ -47,29 +47,8 @@ class Jeu
             FileUtils.mkdir('Picross')
             FileUtils.cd('Picross')
             FileUtils.mkdir('Profil')
-            FileUtils.mkdir('Grille')
             File.new("scores.yml", "w")
-            FileUtils.cd('Grille')
-            FileUtils.mkdir('5')
-            FileUtils.cd('5')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('10')
-            FileUtils.cd('10')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('15')
-            FileUtils.cd('15')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('20')
-            FileUtils.cd('20')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('25')
-            FileUtils.cd('25')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('../..')
+            self.creerArboGrille()
 
         else
         
@@ -83,9 +62,17 @@ class Jeu
 
           rescue Errno::ENOENT => e
 
-              if @verbose then puts "Pas de dossier profil.." end
+            if @verbose then 
+                
+                puts "Pas de dossier profil.." 
+            end
+            
             FileUtils.mkdir('Profil')
-            if @verbose then puts "Dossier Profil créé !" end
+            
+            if @verbose then 
+                
+                puts "Dossier Profil créé !" 
+            end
 
           else
 
@@ -102,29 +89,7 @@ class Jeu
 
             if @verbose then puts "Pas de dossier grille.. Creation de l'arborescence correspondante" end
             
-            FileUtils.mkdir('Grille')
-            FileUtils.cd('Grille')
-            FileUtils.mkdir('5')
-            FileUtils.cd('5')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('10')
-            FileUtils.cd('10')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('15')
-            FileUtils.cd('15')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('20')
-            FileUtils.cd('20')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-            FileUtils.mkdir('25')
-            FileUtils.cd('25')
-            File.open("grilles.yml", "w")
-            FileUtils.cd('..')
-
+            self.creerArboGrille()
             if @verbose then puts "Dossier Grille crée !" end
             FileUtils.cd('..')
 
@@ -140,17 +105,23 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 5.." end
-                FileUtils.mkdir('5')
-                FileUtils.cd('5')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-
-                if @verbose then puts "Dossier 5 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 5.." 
+                end
+                self.creerArboTaille(5)
+                
+                if @verbose then 
+                    
+                    puts "Dossier 5 créé !"
+                end
 
             else
 
-                if @verbose then puts "Dossier 5 présent" end
+                if @verbose then
+                    
+                    puts "Dossier 5 présent"
+                end
                 FileUtils.cd('..')
 
             end
@@ -161,16 +132,19 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 10.."end
-                FileUtils.mkdir('10')
-                FileUtils.cd('10')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-                if @verbose then puts "Dossier 10 créé !" end
+                if @verbose then 
+                    puts "Pas de dossier 10.."
+                end
+                self.creerArboTaille(10)
+                if @verbose then 
+                    puts "Dossier 10 créé !" 
+                end
 
             else
 
-                if @verbose then puts "Dossier 10 présent" end
+                if @verbose then 
+                    puts "Dossier 10 présent" 
+                end
                 FileUtils.cd('..')
 
             end
@@ -182,12 +156,15 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 15.." end
-                FileUtils.mkdir('15')
-                FileUtils.cd('15')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-                if @verbose then puts "Dossier 15 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 15.." 
+                end
+                self.creerArboTaille(15)
+                if @verbose then 
+                    
+                    puts "Dossier 15 créé !" 
+                end
 
             else
 
@@ -203,12 +180,15 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 20.." end
-                FileUtils.mkdir('20')
-                FileUtils.cd('20')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-                if @verbose then puts "Dossier 20 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 20.." 
+                end
+                self.creerArboTaille(20)
+                if @verbose then 
+                    
+                    puts "Dossier 20 créé !" 
+                end
 
             else
 
@@ -224,13 +204,15 @@ class Jeu
 
             rescue Errno::ENOENT => e
 
-                if @verbose then puts "Pas de dossier 25.." end
-                FileUtils.mkdir('25')
-                FileUtils.cd('25')
-                File.open("grilles.yml", "w")
-                FileUtils.cd('..')
-
-                if @verbose then puts "Dossier 25 créé !" end
+                if @verbose then 
+                    
+                    puts "Pas de dossier 25.." 
+                end
+                self.creerArboTaille(25)
+                if @verbose then 
+                    
+                    puts "Dossier 25 créé !" 
+                end
 
             else
 
@@ -256,6 +238,38 @@ class Jeu
 
     end    #marqueur de fin d initialize
 
+# Méthode pour créer l'arborescence du dossier Grille
+    def creerArboGrille()
+
+        FileUtils.mkdir('Grille')
+        FileUtils.cd('Grille')
+
+        for i in [5, 10, 15, 20, 25]
+            creerArboTaille(i)
+        end
+        FileUtils.cd('..')
+    end
+
+# Méthode pour créer l'arborescence d'un dossier de taille de grille
+    def creerArboTaille(taille)
+        
+        FileUtils.mkdir(taille.to_s())
+        FileUtils.cd(taille.to_s())
+        File.open("grilles.yml", "w")
+        FileUtils.cd('..')
+        
+    end
+
+# Méthode pour réinitialiser l'arborescence
+    def viderTout()
+
+        FileUtils.rm_r('Profil')
+        FileUtils.rm_r('Grille')
+        File.delete('scores.yml')
+        FileUtils.mkdir('Profil')
+        self.creerArboGrille()
+        File.new('scores.yml', "w")
+    end
 
 # Méthode permettant de charger le Profil du joueur
 	def chargerProfil(unNom)
@@ -623,6 +637,17 @@ class Jeu
         else
             
             raise "Rien (ni éditeur, ni partie) n'est en cours!"
+        end
+    end
+
+# Méthode pour vider/nettoyer la grille(tout remettre à zéro)
+    def nettoyerGrille()
+
+        if @partie != nil then
+
+            @partie.nettoyerGrille()
+        else
+            raise "Erreur : impossible de nettoyer la grille si ni éditeur ou partie n'ont été lancés!"
         end
     end
 
