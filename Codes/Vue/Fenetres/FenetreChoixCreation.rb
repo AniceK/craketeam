@@ -13,12 +13,14 @@ class FenetreChoixCreation < Fenetre
   @texteChoixCreation
   @boutonPrecedent
   @boutonSuivant
+  @boutonSupprimer
   @listeCreation
   @texteAucuneCreationSelectionnee
   
   
   attr_reader :boutonPrecedent,
               :boutonSuivant,
+              :boutonSupprimer,
               :texteChoixCreation,
               :listeCreation,
               :texteAucuneCreationSelectionnee
@@ -39,6 +41,7 @@ class FenetreChoixCreation < Fenetre
     @texteAucuneCreationSelectionnee = Gtk::Label.new.set_markup("<span foreground='red'>Veuillez sélectionner une création</span>")
     
     @boutonPrecedent = Gtk::Button.new('Précédent')
+    @boutonSupprimer = Gtk::Button.new('Supprimer')
     @boutonSuivant = Gtk::Button.new('Suivant')
     
     @listeCreations = ListeElements.new(listeCreations, false)
@@ -48,6 +51,7 @@ class FenetreChoixCreation < Fenetre
     #==================================================#
     
     @boutonPrecedent.set_size_request(-1, 50)
+    @boutonSupprimer.set_size_request(-1, 50)
     @boutonSuivant.set_size_request(-1, 50)
     
     #==================================================#
@@ -68,8 +72,9 @@ class FenetreChoixCreation < Fenetre
     #                  Remplissage Box                 #
     #==================================================#
     
-    hBoxNavigation.pack_start(@boutonPrecedent)
-    hBoxNavigation.pack_end(@boutonSuivant)
+    hBoxNavigation.pack_start(@boutonPrecedent, true, true, 5)
+    hBoxNavigation.pack_start(@boutonSupprimer, true, true, 5)
+    hBoxNavigation.pack_start(@boutonSuivant, true, true, 5)
     
     vBox.pack_start(@texteChoixCreation, false, false, 5)
     vBox.pack_start(@listeCreations.widget(), true, true, 5)
@@ -82,6 +87,10 @@ class FenetreChoixCreation < Fenetre
     
     @fenetre.add(vBox)
   end
+  
+    #==================================================#
+    #                      Méthodes                    #
+    #==================================================#
   
   def choixCreation()
     

@@ -25,7 +25,7 @@ class DialogueEnregistrer < Dialogue
     
     super(fenetreParent, 380, 140,
           "Sauvegarder et quitter ?",
-          "Veuillez entrer un nom pour votre création :")
+          "Veuillez entrer un nom pour votre grille :")
   
     @popup.add_button("Sauvegarder et Quitter", Gtk::Dialog::RESPONSE_ACCEPT)
     @popup.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT)

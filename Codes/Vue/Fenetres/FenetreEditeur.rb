@@ -49,7 +49,7 @@ class FenetreEditeur < Fenetre
     @tableauJeu.set_row_spacings(2)
     
     aligneTableau = Gtk::Alignment.new(0.5, 0.5, 0, 0)
-    alignetableau.add(@tableauJeu)
+    aligneTableau.add(@tableauJeu)
     
     @vBoxDroite = Gtk::VBox.new(true, 0)
     @hBoxPrincipale = Gtk::HBox.new(false, 5)

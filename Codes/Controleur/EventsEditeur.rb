@@ -84,7 +84,7 @@ class EventsEditeur < Events
   
       if doitEnregistrerEtQuitter then
         
-        #puts "> Accueil (Nom de la grille créée: \"" + dialogue.nomSauvegarde + "\")"
+        puts "> Accueil (Nom de la grille créée: \"" + doitEnregistrerEtQuitter + "\")"
         mouvement(EventsAccueil.new(@jeu, position() ))
         
       else
@@ -130,11 +130,11 @@ class EventsEditeur < Events
           puts "Sauvegarder cliqué !"
           nomSauvegarde = dialogue.entreeNomSauvegarde.text()
         
-          if @jeu.sauvegarderPartie(nomSauvegarde) then
+          if @jeu.sauvegarderGrille(nomSauvegarde) then
             
             puts "Nom de sauvegarde valide !"
             dialogue.popup.destroy()
-            return true
+            return nomSauvegarde
             
           else
             
