@@ -1,116 +1,536 @@
-<!DOCTYPE html>
-
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-<title>class Object - RDoc Documentation</title>
+  <title>Class: Object</title>
 
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
-<script type="text/javascript">
-  var rdoc_rel_prefix = "./";
-</script>
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
-<script src="./js/darkfish.js"></script>
+</head>
+<body id="top" class="class">
 
-
-<body id="top" role="document" class="class">
-<nav role="navigation">
-  <div id="project-navigation">
-    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
-  <h2>
-    <a href="./index.html" rel="home">Home</a>
-  </h2>
-
-  <div id="table-of-contents-navigation">
-    <a href="./table_of_contents.html#pages">Pages</a>
-    <a href="./table_of_contents.html#classes">Classes</a>
-    <a href="./table_of_contents.html#methods">Methods</a>
-  </div>
-</div>
-
-    <div id="search-section" role="search" class="project-section initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <div id="search-field-wrapper">
-      <input id="search-field" role="combobox" aria-label="Search"
-             aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
-             title="Type to search, Up and Down to navigate, Enter to load">
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
     </div>
 
-    <ul id="search-results" aria-label="Search Results"
-        aria-busy="false" aria-expanded="false"
-        aria-atomic="false" class="initially-hidden"></ul>
-  </form>
-</div>
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./Modele/Grille_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Modele/Grille.rb">Modele/Grille.rb</a></li>
+          
+            <li><a href="./Modele/Partie_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Modele/Partie.rb">Modele/Partie.rb</a></li>
+          
+            <li><a href="./Modele/Rangee_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Modele/Rangee.rb">Modele/Rangee.rb</a></li>
+          
+            <li><a href="./Modele/TraitementImage_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Modele/TraitementImage.rb">Modele/TraitementImage.rb</a></li>
+          
+            <li><a href="./Test/test4_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Test/test4.rb">Test/test4.rb</a></li>
+          
+            <li><a href="./Vue/Elements/ListeElements_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Elements/ListeElements.rb">Vue/Elements/ListeElements.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreAccueil_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreAccueil.rb">Vue/Fenetres/FenetreAccueil.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreAfficherScores_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreAfficherScores.rb">Vue/Fenetres/FenetreAfficherScores.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreChoixCreation_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreChoixCreation.rb">Vue/Fenetres/FenetreChoixCreation.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreChoixGrille_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreChoixGrille.rb">Vue/Fenetres/FenetreChoixGrille.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreChoixPartie_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreChoixPartie.rb">Vue/Fenetres/FenetreChoixPartie.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreChoixSauvegarde_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreChoixSauvegarde.rb">Vue/Fenetres/FenetreChoixSauvegarde.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreCredits_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreCredits.rb">Vue/Fenetres/FenetreCredits.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreEditeur_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreEditeur.rb">Vue/Fenetres/FenetreEditeur.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreJeu_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreJeu.rb">Vue/Fenetres/FenetreJeu.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreOptions_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreOptions.rb">Vue/Fenetres/FenetreOptions.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetrePreparation_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetrePreparation.rb">Vue/Fenetres/FenetrePreparation.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreProfil_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreProfil.rb">Vue/Fenetres/FenetreProfil.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreReinitialiser_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreReinitialiser.rb">Vue/Fenetres/FenetreReinitialiser.rb</a></li>
+          
+            <li><a href="./Vue/Fenetres/FenetreTailleEditeur_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Vue/Fenetres/FenetreTailleEditeur.rb">Vue/Fenetres/FenetreTailleEditeur.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
 
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">BasicObject</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-..-2FModele-2FTraitementImage.rb">#../Modele/TraitementImage.rb</a></li>
+          
+          <li><a href="#method-i-Case.rb">#Case.rb</a></li>
+          
+          <li><a href="#method-i-Fenetre">#Fenetre</a></li>
+          
+          <li><a href="#method-i-Grille">#Grille</a></li>
+          
+          <li><a href="#method-i-Rangee.rb">#Rangee.rb</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><span class="include">Magick</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./Modele/Documentation_txt.html">Documentation.txt</a></li>
+        
+          <li class="file"><a href="./Modele/Regles_txt.html">Regles.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./Aide.html">Aide</a></li>
+        
+          <li><a href="./Case.html">Case</a></li>
+        
+          <li><a href="./CaseCartesienne.html">CaseCartesienne</a></li>
+        
+          <li><a href="./Dialogue.html">Dialogue</a></li>
+        
+          <li><a href="./DialogueAide.html">DialogueAide</a></li>
+        
+          <li><a href="./DialogueEcraserSauvegarde.html">DialogueEcraserSauvegarde</a></li>
+        
+          <li><a href="./DialogueEnregistrer.html">DialogueEnregistrer</a></li>
+        
+          <li><a href="./DialogueQuitter.html">DialogueQuitter</a></li>
+        
+          <li><a href="./DialogueQuitterEditeur.html">DialogueQuitterEditeur</a></li>
+        
+          <li><a href="./DialogueQuitterPartie.html">DialogueQuitterPartie</a></li>
+        
+          <li><a href="./DialogueReinitialiser.html">DialogueReinitialiser</a></li>
+        
+          <li><a href="./Editeur.html">Editeur</a></li>
+        
+          <li><a href="./Events.html">Events</a></li>
+        
+          <li><a href="./EventsAccueil.html">EventsAccueil</a></li>
+        
+          <li><a href="./EventsAfficherScores.html">EventsAfficherScores</a></li>
+        
+          <li><a href="./EventsChoixCreation.html">EventsChoixCreation</a></li>
+        
+          <li><a href="./EventsChoixGrille.html">EventsChoixGrille</a></li>
+        
+          <li><a href="./EventsChoixPartie.html">EventsChoixPartie</a></li>
+        
+          <li><a href="./EventsChoixSauvegarde.html">EventsChoixSauvegarde</a></li>
+        
+          <li><a href="./EventsCredits.html">EventsCredits</a></li>
+        
+          <li><a href="./EventsEditeur.html">EventsEditeur</a></li>
+        
+          <li><a href="./EventsJeu.html">EventsJeu</a></li>
+        
+          <li><a href="./EventsOptions.html">EventsOptions</a></li>
+        
+          <li><a href="./EventsPreparation.html">EventsPreparation</a></li>
+        
+          <li><a href="./EventsProfil.html">EventsProfil</a></li>
+        
+          <li><a href="./EventsReinitialiser.html">EventsReinitialiser</a></li>
+        
+          <li><a href="./EventsTailleEditeur.html">EventsTailleEditeur</a></li>
+        
+          <li><a href="./Fenetre.html">Fenetre</a></li>
+        
+          <li><a href="./FenetreAccueil.html">FenetreAccueil</a></li>
+        
+          <li><a href="./FenetreAfficherScores.html">FenetreAfficherScores</a></li>
+        
+          <li><a href="./FenetreChoixCreation.html">FenetreChoixCreation</a></li>
+        
+          <li><a href="./FenetreChoixGrille.html">FenetreChoixGrille</a></li>
+        
+          <li><a href="./FenetreChoixPartie.html">FenetreChoixPartie</a></li>
+        
+          <li><a href="./FenetreChoixSauvegarde.html">FenetreChoixSauvegarde</a></li>
+        
+          <li><a href="./FenetreCredits.html">FenetreCredits</a></li>
+        
+          <li><a href="./FenetreEditeur.html">FenetreEditeur</a></li>
+        
+          <li><a href="./FenetreJeu.html">FenetreJeu</a></li>
+        
+          <li><a href="./FenetreOptions.html">FenetreOptions</a></li>
+        
+          <li><a href="./FenetrePreparation.html">FenetrePreparation</a></li>
+        
+          <li><a href="./FenetreProfil.html">FenetreProfil</a></li>
+        
+          <li><a href="./FenetreReinitialiser.html">FenetreReinitialiser</a></li>
+        
+          <li><a href="./FenetreTailleEditeur.html">FenetreTailleEditeur</a></li>
+        
+          <li><a href="./Grille.html">Grille</a></li>
+        
+          <li><a href="./Jeu.html">Jeu</a></li>
+        
+          <li><a href="./ListeElements.html">ListeElements</a></li>
+        
+          <li><a href="./NouveauJeu.html">NouveauJeu</a></li>
+        
+          <li><a href="./Object.html">Object</a></li>
+        
+          <li><a href="./Partie.html">Partie</a></li>
+        
+          <li><a href="./Profil.html">Profil</a></li>
+        
+          <li><a href="./Rangee.html">Rangee</a></li>
+        
+          <li><a href="./TraitementImage.html">TraitementImage</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
   </div>
 
-  
+  <div id="documentation">
+    <h1 class="class">Object</h1>
 
-  <div id="class-metadata">
-    
-    <div id="parent-class-section" class="nav-section">
-  <h3>Parent</h3>
-
-  
-  <p class="link">BasicObject
-  
-</div>
-
-    <div id="includes-section" class="nav-section">
-  <h3>Included Modules</h3>
-
-  <ul class="link-list">
-  
-  
-    <li><span class="include">Magick</span>
-  
-  
-  </ul>
-</div>
+    <div id="description" class="description">
+      
+    </div><!-- description -->
 
     
     
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="DATE">DATE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="NOM">NOM</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="SCORE">SCORE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="TAILLE">TAILLE</a></dt>
+          
+          <dd class="description"><p>Auteur CrakeTeam Version 0.1 : Date : Mon Mar 17 09:42 2013</p></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="..-2FModele-2FTraitementImage.rb-method" class="method-detail ">
+          <a name="method-i-..-2FModele-2FTraitementImage.rb"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">../Modele/TraitementImage.rb</span><span
+              class="method-args"></span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Auteur CrakeTeam Version 0.1 : Date : Mon Mar 17 09:42 2013</p>
+
+<p>Test du traitement d’image</p>
+            
+
+            
+            <div class="method-source-code" id="..-2FModele-2FTraitementImage.rb-source">
+<pre>
+<span class="ruby-comment"># File Test/test4.rb, line 8</span>
+<span class="ruby-identifier">load</span> <span class="ruby-string">&quot;../Modele/TraitementImage.rb&quot;</span>
+</pre>
+            </div><!-- ..-2FModele-2FTraitementImage.rb-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ..-2FModele-2FTraitementImage.rb-method -->
+
+      
+        <div id="Case.rb-method" class="method-detail ">
+          <a name="method-i-Case.rb"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">Case.rb</span><span
+              class="method-args"></span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>13/03/2014 Projet Picross equipe CrakeTeam</p>
+
+<p>Ce fichier contient la classe <a href="Rangee.html">Rangee</a>, qui est
+constituee de <a href="Case.html">Case</a> ici une description de la classe
+<a href="Rangee.html">Rangee</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="Case.rb-source">
+<pre>
+<span class="ruby-comment"># File Modele/Rangee.rb, line 9</span>
+<span class="ruby-identifier">require_relative</span> <span class="ruby-string">&quot;Case.rb&quot;</span>
+</pre>
+            </div><!-- Case.rb-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- Case.rb-method -->
+
+      
+        <div id="Fenetre-method" class="method-detail ">
+          <a name="method-i-Fenetre"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">Fenetre</span><span
+              class="method-args"></span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Auteur CrakeTeam Version 0.1 : Date : Mon Mar 17 09:42 2013</p>
+            
+
+            
+            <div class="method-source-code" id="Fenetre-source">
+<pre>
+<span class="ruby-comment"># File Vue/Fenetres/FenetreAccueil.rb, line 7</span>
+<span class="ruby-identifier">require_relative</span> <span class="ruby-string">'Fenetre'</span>
+</pre>
+            </div><!-- Fenetre-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- Fenetre-method -->
+
+      
+        <div id="Grille-method" class="method-detail ">
+          <a name="method-i-Grille"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">Grille</span><span
+              class="method-args"></span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>13/03/2014 Projet Picross équipe CrakeTeam</p>
+
+<p>Ce fichier contient la classe <a href="Partie.html">Partie</a>, qui est
+constituée d’une <a href="Grille.html">Grille</a> et de diverses paramètres
+ici une description de la classe <a href="Partie.html">Partie</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="Grille-source">
+<pre>
+<span class="ruby-comment"># File Modele/Partie.rb, line 9</span>
+<span class="ruby-identifier">require_relative</span> <span class="ruby-string">'Grille'</span>
+</pre>
+            </div><!-- Grille-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- Grille-method -->
+
+      
+        <div id="Rangee.rb-method" class="method-detail ">
+          <a name="method-i-Rangee.rb"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">Rangee.rb</span><span
+              class="method-args"></span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>25/02/2014 Projet Picross equipe CrakeTeam</p>
+
+<p>Ce fichier contient la classe <a href="Grille.html">Grille</a>, qui est
+constituee de <a href="Case.html">Case</a> ici une description de la classe
+<a href="Grille.html">Grille</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="Rangee.rb-source">
+<pre>
+<span class="ruby-comment"># File Modele/Grille.rb, line 9</span>
+<span class="ruby-identifier">require_relative</span> <span class="ruby-string">&quot;Rangee.rb&quot;</span>
+</pre>
+            </div><!-- Rangee.rb-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- Rangee.rb-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
   </div>
-</nav>
 
-<main role="main" aria-labelledby="class-Object">
-  <h1 id="class-Object" class="class">
-    class Object
-  </h1>
-
-  <section class="description">
-    
-  </section>
-
-  
-  
-  
-  <section id="5Buntitled-5D" class="documentation-section">
-    
-
-    
-
-    
-
-    
-
-    
-  </section>
-</main>
-
-
-<footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
-</footer>
+</body>
+</html>
 

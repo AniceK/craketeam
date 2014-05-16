@@ -28,18 +28,25 @@ require './Vue/Dialogues/DialogueAide'
 class EventsJeu < Events
   
   @tailleGrille
+  # Taille de la grille de jeu
   @tailleConditions
+  # Taille maximale des conditions
   @tailleCase
+  # Taille d'une case en pixel
   @nbConditionsRangee
+  # Nombre de conditions d'une rangée
   @estEnPause
+  # Booléen déterminant si le jeu est en pause ou non
   @optionsTableau
+  # Contient les options FILL et EXPAND à utiliser pour un tableau
   @chronometre
+  # Thread incrémentant une valeur toutes les secondes
   @pixCaseVide
+  # Contient l'image d'une case vide
   @pixCaseNoircie
-  @evenementCase
-  @decalagePositionX
-  @decalagePositionY
+  # COnient l'image d'une case noircie
   
+  # Toutes les variables sont en lecture uniquement
   attr_reader :tailleGrille,
               :tailleConditions,
               :tailleCase,
@@ -48,15 +55,12 @@ class EventsJeu < Events
               :optionsTableau,
               :chronometre,
               :pixCaseVide,
-              :pixCaseNoircie,
-              :decalagePositionX,
-              :decalagePositionY,
-              :evenementCase
-              
-              
-  
+              :pixCaseNoircie
+             
+  # On peut instancier la classe EventsJeu
   public_class_method :new
   
+  # Initialisation de la partie
   def initialize(jeu, position)
     
     @fenetre = FenetreJeu.new()
@@ -259,7 +263,7 @@ class EventsJeu < Events
     #                                                              #
     ################################################################
     
-    
+    # Retour à la préparation d'une partie
     @fenetre.boutonNouvellePartie.signal_connect('clicked'){
       
       @jeu.quitterPartie()
@@ -281,6 +285,7 @@ class EventsJeu < Events
       end
     }
     
+    # Retour au menu principal
     @fenetre.boutonFinMenuPrincipal.signal_connect('clicked'){
       
       puts "> Menu Principal"
@@ -289,6 +294,7 @@ class EventsJeu < Events
       mouvement(EventsAccueil.new(@jeu, position() ))
     }
     
+    # Enregistre la grille dans les grilles perso
     @fenetre.boutonEnregistrerGrille.signal_connect('clicked'){
       
       puts "> Enregistrer Grille"
@@ -310,6 +316,7 @@ class EventsJeu < Events
     
   end
   
+  # Ouvre une fenêtre popup pour enregistrer la grille une fois celle-ci terminée
   def dialogueEnregistrer()
 
     dialogue = DialogueEnregistrer.new(@fenetre.widget())
@@ -357,6 +364,7 @@ class EventsJeu < Events
     end
   end
   
+  # Initialise le Thread du chronomètre à zéro et attend son lancement
   def initialiserChrono()
     
     @chronometre = Thread.new {
@@ -377,16 +385,20 @@ class EventsJeu < Events
     
   end
   
+  # Lance le Thread du chronomètre
   def lancerChrono()
     
     @chronometre.run()
   end
   
+  # Arrête le Thread du chronomètre
   def arreterChrono()
     
     @chronometre.exit()
   end
   
+  # Initialise la grille en redimensionnant la taille de la fenêtre pour s'adapter à la taille de la grille
+  # Puis remplit le tableau de case et de conditions
   def initialiserGrille(largeurFenetre, hauteurFenetre)
     
     @fenetre.redimensionner(largeurFenetre, hauteurFenetre)
@@ -408,6 +420,7 @@ class EventsJeu < Events
     
   end
   
+  # Prépare les images à mettre dans les cases
   def initialiserImages()
     
     @vide = Gdk::Pixbuf.new('../Vue/Images/vide.gif', @tailleCase, @tailleCase)
@@ -415,15 +428,11 @@ class EventsJeu < Events
     @marquee = Gdk::Pixbuf.new('../Vue/Images/marquee.gif', @tailleCase, @tailleCase)
   end
   
+  # Action à réaliser après un clic sur une case
   def caseCliquee(widget, evenement)
-    
-    # GTK EVENT MASK ==> ENTER_NOTIFY_EVENT
-    # GTK EVENT MASK ==> BUTTON_RELEASE_EVENT
     
     x = widget.coordonneeX
     y = widget.coordonneeY
-    
-    #puts "Case[" + x.to_s + "][" + y.to_s + "]"
     
     if evenement.button() == 1 then
       
@@ -472,6 +481,7 @@ class EventsJeu < Events
       
   end
   
+  # Remplit le tableau de conditions verticales
   def initialiserConditionsV()
     
     #@fenetre.tableauConditionsV.resize(@tailleGrille, 3)
@@ -519,6 +529,7 @@ class EventsJeu < Events
     end
   end
   
+  # Remplit le tableau de conditions horizontales
   def initialiserConditionsH()
     
     #@fenetre.tableauConditionsH.resize(3, @tailleGrille)
@@ -565,6 +576,7 @@ class EventsJeu < Events
     end
   end
 
+  # Remplit le tableau par des cases vides, noircies ou marquées selon leur état dans le jeu
   def initialiserTableauJeu()
     
     0.upto(@tailleGrille - 1) do |x|
@@ -602,6 +614,8 @@ class EventsJeu < Events
     end
   end
     
+  # Permet de changer l'état des cases du tableau en fonction de l'état dans le jeu
+  # Utile ici pour la remise à zéro de la grille
   def toutActualiser()
     
     @fenetre.tableauJeu.each{ |caseTableau|
@@ -625,6 +639,7 @@ class EventsJeu < Events
     }
   end
   
+  # Actualise la grille en enlevant les cases marquées et les signaux de toutes les cases pour l'affichage de fin
   def nettoyerGrilleFinie()
     
     @fenetre.tableauJeu.each{ |caseTableau|
