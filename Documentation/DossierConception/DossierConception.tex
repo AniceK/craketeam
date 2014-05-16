@@ -180,15 +180,47 @@ une autres à l'interieur de l'application.
 		\caption{Schéma de navigation}
 	\end{figure}
 
-\subsection{Diagramme de classe}
+\newpage
 
-Le diagramme de classe est composée .
+\subsection{Diagramme de classe}
 
 	\begin{figure}[!ht]
 		\centering
-		\includegraphics[width=18.5cm]{./Diagrammes/Schema_navigation.png}
-		\caption{Schéma de navigation}
+		\includegraphics[width=18.5cm]{./Diagrammes/DC_Ensemble.png}
+		\caption{Vue d'ensemble du diagramme de classe}
 	\end{figure}
+
+Comme on peut le voir le diagramme de classe est composée de 3 partie qui sont reliée entre elles et qui compose le modèle MVC.
+
+\newpage
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=18.5cm]{./Diagrammes/DC_Modele.png}
+		\caption{Partie Modele du diagramme de classe}
+	\end{figure}
+
+Voicie la partie Modèle du modèle MVC qui permet de faire tout les traitements de l'application.
+
+\newpage
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=18.5cm]{./Diagrammes/DC_Vue_fenetre.png}
+		\caption{Partie Vue du diagramme de classe}
+	\end{figure}
+
+Ceci est la partie Vue du modèle MVC qui retranscrit toutes les classes qui représente la partie graphique de l'application (ce que l'utilisateur voie).
+
+\newpage
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=18.5cm]{./Diagrammes/DC_Controleur.png}
+		\caption{Partie Controleur du diagramme de classe}
+	\end{figure}
+
+Enfin nous avons la partie Controleur qui est le noyau du modèle MVC, cette partie représente les classes qui permettent de liée la Vue aux Modele. 
+
+On peut voir sur cette image la classe NouveauJeu qui permet de lancer l'application en initialisant une classe de la partie Controleur.
 
 %----------------------------------------------------------------------------------------
 %	Modélisation de la base de données
