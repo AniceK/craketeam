@@ -95,6 +95,14 @@ class Aide
                         else
                             strMessage += "Colonne #{pos}\n"
                         end
+                        
+                    elsif col.count == 1 && totalCol > tabTaille/2 
+                        if tabTaille%2 == 1
+                            if difficulte == 1 then
+                                strMessage += "Colonne #{pos} : #{tabTaille-((tabTaille-totalCol)*2)} case#{ (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} à colorier au centre\n"
+                            else
+                                strMessage += "Colonne #{pos}\n"
+                            end
 
                     elsif totalCol > tabTaille/2 && col.count > 1
 
@@ -104,7 +112,7 @@ class Aide
                         if difficulte == 1
                             #puts "valeur col.max #{col.max} - tabTaille #{tabTaille} - totalCol #{totalCol} - col.count #{col.count}"      
                             if(glueCol > 0) then
-                                strMessage += "Colonne #{pos} : #{glueCol} case#{glueCol>1 ? "s":""} à colorier au niveau de la condition max\n"
+                                strMessage += "Colonne #{pos} : #{glueCol} case#{glueCol>1 ? "s":""} à colorier au niveau de la plus grande conditions\n"
                             end
                         else
                             if(glueCol > 0) then
@@ -112,14 +120,6 @@ class Aide
                             end
                         end
 
-                    elsif col.count == 1 && totalCol > tabTaille/2 
-                        if tabTaille%2 == 1
-                            if difficulte == 1 then
-                                strMessage += "Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} case#{ (tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} à colorier au centre\n"
-                            else
-                                strMessage += "Colonne #{pos}\n"
-                            end
-            
                         else
                             if difficulte == 1 then
                                 strMessage += "Colonne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} cases à colorier au centre\n"
@@ -181,6 +181,14 @@ class Aide
                                 strMessage += "Ligne #{pos}\n"
                             end
 
+                        elsif lig.count == 1 && totalLig > tabTaille/2
+                            if tabTaille%2 == 1 then
+                                if difficulte == 1 then
+                                    strMessage += "Ligne #{pos} : #{tabTaille-((tabTaille-totalCol)*2)} case#{(tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} a colorier au centre\n"
+                                else
+                                    strMessage += "Ligne #{pos}\n"
+                                end
+
                         elsif totalLig > tabTaille/2 && lig.count > 1
 
                             glueLig = (lig.max() - (tabTaille - (totalLig + lig.count - 1)))
@@ -197,14 +205,6 @@ class Aide
                                     strMessage += "Ligne #{pos}\n"
                                 end
                             end
-
-                        elsif lig.count == 1 && totalLig > tabTaille/2
-                            if tabTaille%2 == 1 then
-                                if difficulte == 1 then
-                                    strMessage += "Ligne #{pos} : #{tabTaille-(tabTaille-totalCol)*2} case#{(tabTaille-(tabTaille-totalCol)*2)>1 ? "s":""} a colorier au centre\n"
-                                else
-                                    strMessage += "Ligne #{pos}\n"
-                                end
 
                             else
                                 if difficulte == 1 then
