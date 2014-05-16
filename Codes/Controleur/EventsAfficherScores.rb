@@ -11,11 +11,18 @@ require_relative 'Events'
 require_relative 'EventsOptions'
 require './Vue/Fenetres/FenetreAfficherScores'
 
+#===============================================================================#
+#                                                                               #
+#    La classe EventsAfficheScores crée une fenêtre d'affichage des scores.     #
+#                 Elle permet d'afficher la liste de scores                     #
+#                                                                               #
+#===============================================================================#
 
 class EventsAfficherScores < Events
   
   public_class_method :new
   
+  # Crée la fenêtre des scores
   def initialize(jeu, position, listeScores)
     
     @fenetre = FenetreAfficherScores.new(listeScores)

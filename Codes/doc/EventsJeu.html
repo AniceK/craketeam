@@ -1,0 +1,1746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: EventsJeu</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./Controleur/EventsJeu_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="Controleur/EventsJeu.rb">Controleur/EventsJeu.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="Events.html">Events</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-arreterChrono">#arreterChrono</a></li>
+          
+          <li><a href="#method-i-caseCliquee">#caseCliquee</a></li>
+          
+          <li><a href="#method-i-dialogueEnregistrer">#dialogueEnregistrer</a></li>
+          
+          <li><a href="#method-i-initialiserChrono">#initialiserChrono</a></li>
+          
+          <li><a href="#method-i-initialiserConditionsH">#initialiserConditionsH</a></li>
+          
+          <li><a href="#method-i-initialiserConditionsV">#initialiserConditionsV</a></li>
+          
+          <li><a href="#method-i-initialiserGrille">#initialiserGrille</a></li>
+          
+          <li><a href="#method-i-initialiserImages">#initialiserImages</a></li>
+          
+          <li><a href="#method-i-initialiserTableauJeu">#initialiserTableauJeu</a></li>
+          
+          <li><a href="#method-i-lancerChrono">#lancerChrono</a></li>
+          
+          <li><a href="#method-i-nettoyerGrilleFinie">#nettoyerGrilleFinie</a></li>
+          
+          <li><a href="#method-i-toutActualiser">#toutActualiser</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./Modele/Documentation_txt.html">Documentation.txt</a></li>
+        
+          <li class="file"><a href="./Modele/Regles_txt.html">Regles.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./Aide.html">Aide</a></li>
+        
+          <li><a href="./Case.html">Case</a></li>
+        
+          <li><a href="./CaseCartesienne.html">CaseCartesienne</a></li>
+        
+          <li><a href="./Dialogue.html">Dialogue</a></li>
+        
+          <li><a href="./DialogueAide.html">DialogueAide</a></li>
+        
+          <li><a href="./DialogueEcraserSauvegarde.html">DialogueEcraserSauvegarde</a></li>
+        
+          <li><a href="./DialogueEnregistrer.html">DialogueEnregistrer</a></li>
+        
+          <li><a href="./DialogueQuitter.html">DialogueQuitter</a></li>
+        
+          <li><a href="./DialogueQuitterEditeur.html">DialogueQuitterEditeur</a></li>
+        
+          <li><a href="./DialogueQuitterPartie.html">DialogueQuitterPartie</a></li>
+        
+          <li><a href="./DialogueReinitialiser.html">DialogueReinitialiser</a></li>
+        
+          <li><a href="./Editeur.html">Editeur</a></li>
+        
+          <li><a href="./Events.html">Events</a></li>
+        
+          <li><a href="./EventsAccueil.html">EventsAccueil</a></li>
+        
+          <li><a href="./EventsAfficherScores.html">EventsAfficherScores</a></li>
+        
+          <li><a href="./EventsChoixCreation.html">EventsChoixCreation</a></li>
+        
+          <li><a href="./EventsChoixGrille.html">EventsChoixGrille</a></li>
+        
+          <li><a href="./EventsChoixPartie.html">EventsChoixPartie</a></li>
+        
+          <li><a href="./EventsChoixSauvegarde.html">EventsChoixSauvegarde</a></li>
+        
+          <li><a href="./EventsCredits.html">EventsCredits</a></li>
+        
+          <li><a href="./EventsEditeur.html">EventsEditeur</a></li>
+        
+          <li><a href="./EventsJeu.html">EventsJeu</a></li>
+        
+          <li><a href="./EventsOptions.html">EventsOptions</a></li>
+        
+          <li><a href="./EventsPreparation.html">EventsPreparation</a></li>
+        
+          <li><a href="./EventsProfil.html">EventsProfil</a></li>
+        
+          <li><a href="./EventsReinitialiser.html">EventsReinitialiser</a></li>
+        
+          <li><a href="./EventsTailleEditeur.html">EventsTailleEditeur</a></li>
+        
+          <li><a href="./Fenetre.html">Fenetre</a></li>
+        
+          <li><a href="./FenetreAccueil.html">FenetreAccueil</a></li>
+        
+          <li><a href="./FenetreAfficherScores.html">FenetreAfficherScores</a></li>
+        
+          <li><a href="./FenetreChoixCreation.html">FenetreChoixCreation</a></li>
+        
+          <li><a href="./FenetreChoixGrille.html">FenetreChoixGrille</a></li>
+        
+          <li><a href="./FenetreChoixPartie.html">FenetreChoixPartie</a></li>
+        
+          <li><a href="./FenetreChoixSauvegarde.html">FenetreChoixSauvegarde</a></li>
+        
+          <li><a href="./FenetreCredits.html">FenetreCredits</a></li>
+        
+          <li><a href="./FenetreEditeur.html">FenetreEditeur</a></li>
+        
+          <li><a href="./FenetreJeu.html">FenetreJeu</a></li>
+        
+          <li><a href="./FenetreOptions.html">FenetreOptions</a></li>
+        
+          <li><a href="./FenetrePreparation.html">FenetrePreparation</a></li>
+        
+          <li><a href="./FenetreProfil.html">FenetreProfil</a></li>
+        
+          <li><a href="./FenetreReinitialiser.html">FenetreReinitialiser</a></li>
+        
+          <li><a href="./FenetreTailleEditeur.html">FenetreTailleEditeur</a></li>
+        
+          <li><a href="./Grille.html">Grille</a></li>
+        
+          <li><a href="./Jeu.html">Jeu</a></li>
+        
+          <li><a href="./ListeElements.html">ListeElements</a></li>
+        
+          <li><a href="./NouveauJeu.html">NouveauJeu</a></li>
+        
+          <li><a href="./Object.html">Object</a></li>
+        
+          <li><a href="./Partie.html">Partie</a></li>
+        
+          <li><a href="./Profil.html">Profil</a></li>
+        
+          <li><a href="./Rangee.html">Rangee</a></li>
+        
+          <li><a href="./TraitementImage.html">TraitementImage</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">EventsJeu</h1>
+
+    <div id="description" class="description">
+      
+<h79>#</h79>
+
+<pre>                                                                            #
+            La classe EventsJeu créé une fenêtre de jeu.                    #
+   Elle permet au joueur de jouer une partie sur une grille de picross.     #
+Elle met également en place le menu de pause qui est intégré à la fenêtre.  #
+                                                                            #</pre>
+
+<h79>#</h79>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="chronometre-attribute-method" class="method-detail">
+          <a name="chronometre"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">chronometre</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="estEnPause-attribute-method" class="method-detail">
+          <a name="estEnPause"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">estEnPause</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="nbConditionsRangee-attribute-method" class="method-detail">
+          <a name="nbConditionsRangee"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">nbConditionsRangee</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="optionsTableau-attribute-method" class="method-detail">
+          <a name="optionsTableau"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">optionsTableau</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="pixCaseNoircie-attribute-method" class="method-detail">
+          <a name="pixCaseNoircie"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">pixCaseNoircie</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="pixCaseVide-attribute-method" class="method-detail">
+          <a name="pixCaseVide"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">pixCaseVide</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="tailleCase-attribute-method" class="method-detail">
+          <a name="tailleCase"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">tailleCase</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="tailleConditions-attribute-method" class="method-detail">
+          <a name="tailleConditions"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">tailleConditions</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+        <div id="tailleGrille-attribute-method" class="method-detail">
+          <a name="tailleGrille"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">tailleGrille</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Toutes les variables sont en lecture uniquement</p>
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(jeu, position)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>On transmet les données du jeu entre les évènements</p>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File Controleur/Events.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">jeu</span>, <span class="ruby-identifier">position</span>)
+  
+  <span class="ruby-ivar">@jeu</span> = <span class="ruby-identifier">jeu</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">position</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Window</span><span class="ruby-operator">::</span><span class="ruby-constant">POS_CENTER</span> <span class="ruby-keyword">then</span>
+    
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">bouger</span>(<span class="ruby-identifier">position</span>)
+    
+  <span class="ruby-keyword">else</span>
+    
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">widget</span>.<span class="ruby-identifier">set_window_position</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Window</span><span class="ruby-operator">::</span><span class="ruby-constant">POS_CENTER</span>)
+    
+  <span class="ruby-keyword">end</span>
+  
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>() <span class="ruby-keyword">then</span>
+    
+    <span class="ruby-identifier">pseudoTitre</span> = <span class="ruby-identifier">jeu</span>.<span class="ruby-identifier">profil</span>.<span class="ruby-identifier">nom</span>
+    
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>() <span class="ruby-keyword">then</span>
+    
+    <span class="ruby-identifier">pseudoTitre</span> = <span class="ruby-string">&quot;Visiteur&quot;</span>
+    
+  <span class="ruby-keyword">else</span>
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: Problème de détection du profil&quot;</span>
+    
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">titre</span>(<span class="ruby-identifier">pseudoTitre</span>)
+  
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(jeu, position)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Initialisation de la partie</p>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">jeu</span>, <span class="ruby-identifier">position</span>)
+  
+  <span class="ruby-ivar">@fenetre</span> = <span class="ruby-constant">FenetreJeu</span>.<span class="ruby-identifier">new</span>()
+  
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">jeu</span>, <span class="ruby-identifier">position</span>)
+  
+  
+  <span class="ruby-comment">################################################################</span>
+  <span class="ruby-comment">#                                                              #</span>
+  <span class="ruby-comment">#                             Jeu                              #</span>
+  <span class="ruby-comment">#                                                              #</span>
+  <span class="ruby-comment">################################################################</span>
+  
+  <span class="ruby-ivar">@estEnPause</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@tailleGrille</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">tailleGrille</span>()
+  <span class="ruby-ivar">@tailleConditions</span> = (<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">/</span> <span class="ruby-value">2.0</span>).<span class="ruby-identifier">round</span>()
+  <span class="ruby-ivar">@tailleCase</span> = <span class="ruby-value">30</span>
+  <span class="ruby-ivar">@nbConditionsRangee</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@optionsTableau</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">FILL</span> <span class="ruby-operator">|</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">SHRINK</span>
+  
+ 
+  <span class="ruby-comment"># Initialise la grille en fonction de la taille de cette dernière </span>
+  <span class="ruby-keyword">case</span> <span class="ruby-ivar">@tailleGrille</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">5</span>
+    <span class="ruby-identifier">initialiserGrille</span>(<span class="ruby-value">500</span>, <span class="ruby-value">300</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">10</span>
+    <span class="ruby-identifier">initialiserGrille</span>(<span class="ruby-value">700</span>, <span class="ruby-value">550</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">15</span>
+    <span class="ruby-identifier">initialiserGrille</span>(<span class="ruby-value">800</span>, <span class="ruby-value">500</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">20</span>
+    <span class="ruby-identifier">initialiserGrille</span>(<span class="ruby-value">1100</span>, <span class="ruby-value">650</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">25</span>
+    <span class="ruby-identifier">initialiserGrille</span>(<span class="ruby-value">1300</span>, <span class="ruby-value">800</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: La taille n'est pas valide&quot;</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Prépare le chrono</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiserChrono</span>()
+  
+  <span class="ruby-comment"># Établi nom de sauvegarde par défaut</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>() <span class="ruby-keyword">then</span>
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">nomSauvegardeDefaut</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nomSauvegardeDefaut</span>() <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;La sauvegarde en cours a pour nom: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nomSauvegardeDefaut</span>
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">nomSauvegardeDefaut</span>(<span class="ruby-identifier">nomSauvegardeDefaut</span>)
+      
+    <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nomSauvegardeDefaut</span>() <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+        
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Le jeu n'est pas issu d'une sauvegarde (pseudo: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nomProfil</span>() <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">nomSauvegardeDefaut</span>(<span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nomProfil</span>() <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@tailleGrille</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;x&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@tailleGrille</span>.<span class="ruby-identifier">to_s</span>) 
+        
+    <span class="ruby-keyword">else</span>
+        
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;[EventJeu]Erreur: Récupération du nom de sauvegarde si existante&quot;</span>
+        
+    <span class="ruby-keyword">end</span>
+      
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>()
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Pas de nom de sauvegarde par défaut&quot;</span>
+    
+  <span class="ruby-keyword">else</span>
+      
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;[EventJeu]Erreur: Mauvais test si profil connecté ou non&quot;</span>
+      
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Affichage de tous les éléments de la fenêtre</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">afficher</span>()
+  
+  <span class="ruby-comment"># Affichage du nécessaire uniquement</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">affichageDepart</span>()
+  
+  <span class="ruby-comment"># Lancement d'une partie au niveau du moteur</span>
+  <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">lancerPartie</span>()
+  <span class="ruby-comment"># Lancement de l'incrémentation du chrono</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lancerChrono</span>()
+  
+  <span class="ruby-comment"># Affiche un popup d'aide</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonAide</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Aide&quot;</span>
+    
+    <span class="ruby-identifier">message</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">chercherAide</span>()
+    
+    <span class="ruby-identifier">dialogue</span> = <span class="ruby-constant">DialogueAide</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">widget</span>(), <span class="ruby-identifier">message</span>)
+  }
+  
+  <span class="ruby-comment"># Cache la grille et arrête le chrono pour afficher le menu de pause</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonPause</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    
+    <span class="ruby-comment"># Inversion du booléen</span>
+    <span class="ruby-ivar">@estEnPause</span> = <span class="ruby-ivar">@estEnPause</span>.<span class="ruby-operator">!</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@estEnPause</span>
+      
+      <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">partieEnPause</span>()
+      
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>() <span class="ruby-keyword">then</span>
+      
+        <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">affichagePauseProfil</span>()
+        
+      <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>() <span class="ruby-keyword">then</span>
+        
+        <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">affichagePauseSimple</span>()
+        
+      <span class="ruby-keyword">end</span>
+      
+    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@estEnPause</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">affichageJeu</span>()
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lancerChrono</span>()
+      <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">lancerPartie</span>()
+      
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur du booléen \&quot;@estEnPause\&quot; déterminant la pause ou la lecture&quot;</span>
+    <span class="ruby-keyword">end</span>
+  }
+  
+  
+  <span class="ruby-comment">################################################################</span>
+  <span class="ruby-comment">#                                                              #</span>
+  <span class="ruby-comment">#                          Menu Pause                          #</span>
+  <span class="ruby-comment">#                                                              #</span>
+  <span class="ruby-comment">################################################################</span>
+  
+  <span class="ruby-comment"># Permet de sauvegarder la partie avec un nom (si profil connecté)</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonSauvegarder</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    
+    <span class="ruby-identifier">nomSauvegarde</span> = <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">entreeSauvegarde</span>.<span class="ruby-identifier">text</span>()
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">nomSauvegarde</span>.<span class="ruby-identifier">length</span>() <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+    
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">sauvegarderPartie</span>(<span class="ruby-identifier">nomSauvegarde</span>) <span class="ruby-keyword">then</span>
+        
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Accueil (nom de sauvegarde: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nomSauvegarde</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>
+        <span class="ruby-identifier">mouvement</span>(<span class="ruby-constant">EventsAccueil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>, <span class="ruby-identifier">position</span>() ))
+        
+      <span class="ruby-keyword">else</span>
+        
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: nom de sauvegarde existant&quot;</span>
+        <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">DialogueEcraserSauvegarde</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">widget</span>())
+        
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">doitEcraser</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Sauvegarde écrasée&quot;</span>
+          <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">remplacerSauvegarde</span>(<span class="ruby-identifier">nomSauvegarde</span>)
+          <span class="ruby-identifier">mouvement</span>(<span class="ruby-constant">EventsAccueil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>, <span class="ruby-identifier">position</span>() ))
+          
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">doitEcraser</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">then</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Sauvegarde non écrasée&quot;</span>
+          
+        <span class="ruby-keyword">end</span>
+        
+      <span class="ruby-keyword">end</span>
+        
+    <span class="ruby-keyword">else</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Nom de sauvegarde trop court (&quot;</span><span class="ruby-operator">+</span> <span class="ruby-identifier">nomSauvegarde</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; caractère(s))&quot;</span>
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">texteInfosSauvegarde</span>.<span class="ruby-identifier">show_all</span>()
+        
+    <span class="ruby-keyword">end</span>
+  }
+  
+  <span class="ruby-comment"># RAZ de la grille</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonNettoyerGrille</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Nettoyer grille&quot;</span>
+    <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nettoyerGrille</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">toutActualiser</span>()
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">texteInfosNettoyer</span>.<span class="ruby-identifier">show_all</span>()
+  }
+  
+  <span class="ruby-comment"># Retour au menu principal à partir du menu de pause</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonPauseMenuPrincipal</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Dialogue Menu Principal&quot;</span>
+    
+    <span class="ruby-identifier">dialogue</span> = <span class="ruby-constant">DialogueQuitterPartie</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">widget</span>())
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">doitArreterPartie</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Accueil&quot;</span>
+      <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quitterPartie</span>()
+      <span class="ruby-identifier">mouvement</span>(<span class="ruby-constant">EventsAccueil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>, <span class="ruby-identifier">position</span>() ))
+      
+    <span class="ruby-keyword">else</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Jeu&quot;</span>
+      
+    <span class="ruby-keyword">end</span>
+  }
+  
+  
+  <span class="ruby-comment">################################################################</span>
+  <span class="ruby-comment">#                                                              #</span>
+  <span class="ruby-comment">#                        Partie Gagnée                         #</span>
+  <span class="ruby-comment">#                                                              #</span>
+  <span class="ruby-comment">################################################################</span>
+  
+  <span class="ruby-comment"># Retour à la préparation d'une partie</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonNouvellePartie</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    
+    <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quitterPartie</span>()
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>() <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Choix Partie&quot;</span>
+      <span class="ruby-identifier">mouvement</span>(<span class="ruby-constant">EventsChoixPartie</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>, <span class="ruby-identifier">position</span>() ))
+    
+    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">profilConnecte?</span>() <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Préparation Partie&quot;</span>
+      <span class="ruby-identifier">mouvement</span>(<span class="ruby-constant">EventsPreparation</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>, <span class="ruby-identifier">position</span>() ))
+      
+    <span class="ruby-keyword">else</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: Problème booléen indiquant si un profil est connecté&quot;</span>
+      
+    <span class="ruby-keyword">end</span>
+  }
+  
+  <span class="ruby-comment"># Retour au menu principal</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonFinMenuPrincipal</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Menu Principal&quot;</span>
+    
+    <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quitterPartie</span>()
+    <span class="ruby-identifier">mouvement</span>(<span class="ruby-constant">EventsAccueil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>, <span class="ruby-identifier">position</span>() ))
+  }
+  
+  <span class="ruby-comment"># Enregistre la grille dans les grilles perso</span>
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">boutonEnregistrerGrille</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'clicked'</span>){
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Enregistrer Grille&quot;</span>
+    
+    <span class="ruby-identifier">doitEnregistrerEtQuitter</span> = <span class="ruby-identifier">dialogueEnregistrer</span>()
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">doitEnregistrerEtQuitter</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Accueil (Nom de la grille créée: \&quot;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">doitEnregistrerEtQuitter</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\&quot;)&quot;</span>
+      <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quitterPartie</span>()
+      <span class="ruby-identifier">mouvement</span>(<span class="ruby-constant">EventsAccueil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>, <span class="ruby-identifier">position</span>() ))
+      
+    <span class="ruby-keyword">else</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Jeu&quot;</span>
+      
+    <span class="ruby-keyword">end</span>
+  }
+  
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="arreterChrono-method" class="method-detail ">
+          <a name="method-i-arreterChrono"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">arreterChrono</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Arrête le Thread du chronomètre</p>
+            
+
+            
+            <div class="method-source-code" id="arreterChrono-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 394</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">arreterChrono</span>()
+  
+  <span class="ruby-ivar">@chronometre</span>.<span class="ruby-identifier">exit</span>()
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- arreterChrono-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- arreterChrono-method -->
+
+      
+        <div id="caseCliquee-method" class="method-detail ">
+          <a name="method-i-caseCliquee"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">caseCliquee</span><span
+              class="method-args">(widget, evenement)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Action à réaliser après un clic sur une case</p>
+            
+
+            
+            <div class="method-source-code" id="caseCliquee-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 431</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">caseCliquee</span>(<span class="ruby-identifier">widget</span>, <span class="ruby-identifier">evenement</span>)
+  
+  <span class="ruby-identifier">x</span> = <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">coordonneeX</span>
+  <span class="ruby-identifier">y</span> = <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">coordonneeY</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">evenement</span>.<span class="ruby-identifier">button</span>() <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">etatCourant</span>() <span class="ruby-operator">==</span> <span class="ruby-ivar">@vide</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">estTermine</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+      <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-ivar">@noircie</span>)
+      
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">etatCourant</span>() <span class="ruby-operator">==</span> <span class="ruby-ivar">@noircie</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">estTermine</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">noircir</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+      <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-ivar">@vide</span>)
+      
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">estTermine</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&gt; Partie gagnée (Temps = &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">estTermine</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;, Score = &quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">estTermine</span> * <span class="ruby-value">3</span>).<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>
+      
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nettoyerGrilleFinie</span>()
+      
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">affichageFin</span>(<span class="ruby-identifier">estTermine</span>)
+      
+    <span class="ruby-keyword">end</span>
+   
+    <span class="ruby-comment"># Gestion du marquage</span>
+    
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">evenement</span>.<span class="ruby-identifier">button</span>() <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-keyword">then</span>
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">etatCourant</span>() <span class="ruby-operator">==</span> <span class="ruby-ivar">@marquee</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-ivar">@vide</span>)
+      <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">marquer</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+      
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">etatCourant</span>() <span class="ruby-operator">==</span> <span class="ruby-ivar">@vide</span> <span class="ruby-keyword">then</span>
+      
+      <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-ivar">@marquee</span>)
+      <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">marquer</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+      
+    <span class="ruby-keyword">end</span>
+    
+  <span class="ruby-keyword">else</span>
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Mauvaise gestion caseCliquée&quot;</span>
+  <span class="ruby-keyword">end</span>
+    
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- caseCliquee-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- caseCliquee-method -->
+
+      
+        <div id="dialogueEnregistrer-method" class="method-detail ">
+          <a name="method-i-dialogueEnregistrer"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">dialogueEnregistrer</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Ouvre une fenêtre popup pour enregistrer la grille une fois celle-ci
+terminée</p>
+            
+
+            
+            <div class="method-source-code" id="dialogueEnregistrer-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 319</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dialogueEnregistrer</span>()
+
+  <span class="ruby-identifier">dialogue</span> = <span class="ruby-constant">DialogueEnregistrer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">widget</span>())
+
+  <span class="ruby-keyword">while</span> <span class="ruby-keyword">true</span>
+    
+    <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">popup</span>.<span class="ruby-identifier">run</span>() <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">reponse</span><span class="ruby-operator">|</span>
+    
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">reponse</span>
+      
+      <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">RESPONSE_ACCEPT</span>
+        
+        <span class="ruby-identifier">nomSauvegarde</span> = <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">entreeNomSauvegarde</span>.<span class="ruby-identifier">text</span>()
+      
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">sauvegarderGrille</span>(<span class="ruby-identifier">nomSauvegarde</span>) <span class="ruby-keyword">then</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Nom de sauvegarde valide&quot;</span>
+          <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
+          <span class="ruby-keyword">return</span> <span class="ruby-identifier">nomSauvegarde</span>
+          
+        <span class="ruby-keyword">else</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Nom existant !&quot;</span>
+          <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">nomExistant</span>(<span class="ruby-identifier">nomSauvegarde</span>)
+        
+        <span class="ruby-keyword">end</span>
+        
+      <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">RESPONSE_REJECT</span>
+        
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        
+      <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">RESPONSE_DELETE_EVENT</span>
+        
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Fenêtre fermée !&quot;</span>
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        
+      <span class="ruby-keyword">else</span>
+        
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;[EventsEditeur]Erreur: Réception signal Dialogue Enregistrer ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">reponse</span>.<span class="ruby-identifier">to_s</span>
+        
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- dialogueEnregistrer-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- dialogueEnregistrer-method -->
+
+      
+        <div id="initialiserChrono-method" class="method-detail ">
+          <a name="method-i-initialiserChrono"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initialiserChrono</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Initialise le Thread du chronomètre à zéro et attend son lancement</p>
+            
+
+            
+            <div class="method-source-code" id="initialiserChrono-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 367</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserChrono</span>()
+  
+  <span class="ruby-ivar">@chronometre</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> {
+    
+    <span class="ruby-keyword">while</span>(<span class="ruby-keyword">true</span>)
+      
+      <span class="ruby-identifier">temps</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">tempsActuel</span>()
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">minutes</span> = (<span class="ruby-identifier">temps</span> <span class="ruby-operator">/</span> <span class="ruby-value">60</span>).<span class="ruby-identifier">round</span>()
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">secondes</span> = <span class="ruby-identifier">temps</span> <span class="ruby-operator">%</span> <span class="ruby-value">60</span>
+      
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">actualiserTemps</span>()
+      
+      <span class="ruby-identifier">sleep</span> <span class="ruby-value">1.0</span>
+      
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@estEnPause</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span>() <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  }
+  
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initialiserChrono-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initialiserChrono-method -->
+
+      
+        <div id="initialiserConditionsH-method" class="method-detail ">
+          <a name="method-i-initialiserConditionsH"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initialiserConditionsH</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remplit le tableau de conditions horizontales</p>
+            
+
+            
+            <div class="method-source-code" id="initialiserConditionsH-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 532</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserConditionsH</span>()
+    
+    <span class="ruby-comment">#@fenetre.tableauConditionsH.resize(3, @tailleGrille)</span>
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-ivar">@nbConditionsRangee</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nbConditionsH</span>(<span class="ruby-identifier">x</span>)
+      
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@nbConditionsRangee</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+        
+        <span class="ruby-comment"># Variable incrémentant la boucle interne</span>
+        <span class="ruby-identifier">yCondition</span> = <span class="ruby-ivar">@tailleConditions</span>
+        <span class="ruby-identifier">y</span> = <span class="ruby-ivar">@tailleConditions</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+           
+         <span class="ruby-comment"># Tant que l'on est pas arrivé à la dernière conditions</span>
+         <span class="ruby-keyword">while</span> (<span class="ruby-identifier">yCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">do</span>
+           
+           <span class="ruby-identifier">condition</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
+         
+           <span class="ruby-comment"># Tant qu'on obtient une condition vide et que l'on reste dans la taille des conditions</span>
+           <span class="ruby-keyword">while</span> (<span class="ruby-identifier">condition</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">yCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">do</span>
+             
+             <span class="ruby-identifier">yCondition</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+             
+             <span class="ruby-comment"># On prend la condition de la ligne et on décrémente la variable interne</span>
+             <span class="ruby-identifier">condition</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">conditionH</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">yCondition</span>).<span class="ruby-identifier">to_s</span>)
+             
+           <span class="ruby-keyword">end</span>
+           
+           <span class="ruby-comment"># Si la condition est à prendre en compte</span>
+           <span class="ruby-keyword">if</span> <span class="ruby-identifier">yCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+               
+             <span class="ruby-comment"># On ajoute la condition non-vide au tableau par la droite  </span>
+             <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauConditionsH</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">condition</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-ivar">@optionsTableau</span>, <span class="ruby-ivar">@optionsTableau</span>)
+             
+             <span class="ruby-identifier">y</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+           <span class="ruby-keyword">end</span>
+         <span class="ruby-keyword">end</span>
+         
+      <span class="ruby-keyword">else</span>
+         
+         <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;[EventJeu]Erreur: la ligne &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;n'a pas de conditions&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Remplit le tableau par des cases vides, noircies ou marquées selon leur état dans le jeu</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserTableauJeu</span>()
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+        
+        <span class="ruby-comment"># Ajout séparation toutes les 5 lignes</span>
+        
+        <span class="ruby-comment">#if (x%5 == 0) &amp;&amp; (y%5 == 0) then</span>
+        <span class="ruby-comment">#  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), 0, @tailleGrille-1, y, y+1)</span>
+        <span class="ruby-comment">#  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)</span>
+        <span class="ruby-comment">#end</span>
+        
+        <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+          
+        <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@marquee</span>
+          
+        <span class="ruby-keyword">else</span> <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+          
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-identifier">caseCartesienne</span> = <span class="ruby-constant">CaseCartesienne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">etat</span>)
+        
+        <span class="ruby-comment"># Lorsqu'on clic, on noircie tout ce qui survolé jusqu'au déclic</span>
+        <span class="ruby-identifier">signalCaseCliquee</span> = <span class="ruby-identifier">caseCartesienne</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'button_press_event'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>, <span class="ruby-identifier">evenement</span><span class="ruby-operator">|</span>
+      
+          <span class="ruby-identifier">caseCliquee</span>(<span class="ruby-identifier">widget</span>, <span class="ruby-identifier">evenement</span>)
+        }
+        
+        <span class="ruby-identifier">caseCartesienne</span>.<span class="ruby-identifier">ajouterSignalID</span>(<span class="ruby-identifier">signalCaseCliquee</span>)
+        
+        <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">caseCartesienne</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-ivar">@optionsTableau</span>, <span class="ruby-ivar">@optionsTableau</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+    
+  <span class="ruby-comment"># Permet de changer l'état des cases du tableau en fonction de l'état dans le jeu</span>
+  <span class="ruby-comment"># Utile ici pour la remise à zéro de la grille</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">toutActualiser</span>()
+    
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">caseTableau</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-identifier">x</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeX</span>
+      <span class="ruby-identifier">y</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeY</span>
+      
+      <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+        
+      <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@marquee</span>
+        
+      <span class="ruby-keyword">else</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+        
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-identifier">etat</span>)
+    }
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Actualise la grille en enlevant les cases marquées et les signaux de toutes les cases pour l'affichage de fin</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">nettoyerGrilleFinie</span>()
+    
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">caseTableau</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-identifier">x</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeX</span>
+      <span class="ruby-identifier">y</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeY</span>
+      
+      <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+        
+      <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+        
+      <span class="ruby-keyword">else</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+        
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-identifier">etat</span>)
+      
+      <span class="ruby-identifier">signalID</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">recupererSignalID</span>()
+      <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">signal_handler_disconnect</span>(<span class="ruby-identifier">signalID</span>)
+    }
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+            </div><!-- initialiserConditionsH-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initialiserConditionsH-method -->
+
+      
+        <div id="initialiserConditionsV-method" class="method-detail ">
+          <a name="method-i-initialiserConditionsV"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initialiserConditionsV</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remplit le tableau de conditions verticales</p>
+            
+
+            
+            <div class="method-source-code" id="initialiserConditionsV-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 484</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserConditionsV</span>()
+    
+    <span class="ruby-comment">#@fenetre.tableauConditionsV.resize(@tailleGrille, 3)</span>
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-ivar">@nbConditionsRangee</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nbConditionsV</span>(<span class="ruby-identifier">y</span>)
+      
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@nbConditionsRangee</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+        
+        <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauConditionsV</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;0&quot;</span>), <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-ivar">@tailleConditions</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-ivar">@tailleConditions</span>, <span class="ruby-ivar">@optionsTableau</span>, <span class="ruby-ivar">@optionsTableau</span>)
+        
+      <span class="ruby-keyword">else</span>
+        
+        <span class="ruby-comment"># Variable incrémentant la boucle interne</span>
+        <span class="ruby-identifier">xCondition</span> = <span class="ruby-ivar">@tailleConditions</span>
+        <span class="ruby-identifier">x</span> = <span class="ruby-ivar">@tailleConditions</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+           
+         <span class="ruby-comment"># Tant que l'on est pas arrivé à la dernière conditions</span>
+         <span class="ruby-keyword">while</span> (<span class="ruby-identifier">xCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">do</span>
+           
+           <span class="ruby-identifier">condition</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
+         
+           <span class="ruby-comment"># Tant qu'on obtient une condition vide et que l'on reste dans la taille des conditions</span>
+           <span class="ruby-keyword">while</span> (<span class="ruby-identifier">condition</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">xCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">do</span>
+             
+             <span class="ruby-identifier">xCondition</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+             
+             <span class="ruby-identifier">valeurCondition</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">conditionV</span>(<span class="ruby-identifier">y</span>, <span class="ruby-identifier">xCondition</span>)
+             
+             <span class="ruby-comment"># On prend la condition de la ligne et on décrémente la variable interne</span>
+             <span class="ruby-identifier">condition</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-identifier">valeurCondition</span>.<span class="ruby-identifier">to_s</span>)
+           <span class="ruby-keyword">end</span>
+           
+           <span class="ruby-comment"># Si la condition est à prendre en compte</span>
+           <span class="ruby-keyword">if</span> <span class="ruby-identifier">xCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+             
+             <span class="ruby-comment"># On ajoute la condition non-vide au tableau par le bas  </span>
+             <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauConditionsV</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">condition</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-ivar">@optionsTableau</span>, <span class="ruby-ivar">@optionsTableau</span>)
+             
+             <span class="ruby-identifier">x</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+           <span class="ruby-keyword">end</span>
+         <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Remplit le tableau de conditions horizontales</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserConditionsH</span>()
+    
+    <span class="ruby-comment">#@fenetre.tableauConditionsH.resize(3, @tailleGrille)</span>
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-ivar">@nbConditionsRangee</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">nbConditionsH</span>(<span class="ruby-identifier">x</span>)
+      
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@nbConditionsRangee</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+        
+        <span class="ruby-comment"># Variable incrémentant la boucle interne</span>
+        <span class="ruby-identifier">yCondition</span> = <span class="ruby-ivar">@tailleConditions</span>
+        <span class="ruby-identifier">y</span> = <span class="ruby-ivar">@tailleConditions</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+           
+         <span class="ruby-comment"># Tant que l'on est pas arrivé à la dernière conditions</span>
+         <span class="ruby-keyword">while</span> (<span class="ruby-identifier">yCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">do</span>
+           
+           <span class="ruby-identifier">condition</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
+         
+           <span class="ruby-comment"># Tant qu'on obtient une condition vide et que l'on reste dans la taille des conditions</span>
+           <span class="ruby-keyword">while</span> (<span class="ruby-identifier">condition</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">yCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">do</span>
+             
+             <span class="ruby-identifier">yCondition</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+             
+             <span class="ruby-comment"># On prend la condition de la ligne et on décrémente la variable interne</span>
+             <span class="ruby-identifier">condition</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">conditionH</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">yCondition</span>).<span class="ruby-identifier">to_s</span>)
+             
+           <span class="ruby-keyword">end</span>
+           
+           <span class="ruby-comment"># Si la condition est à prendre en compte</span>
+           <span class="ruby-keyword">if</span> <span class="ruby-identifier">yCondition</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+               
+             <span class="ruby-comment"># On ajoute la condition non-vide au tableau par la droite  </span>
+             <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauConditionsH</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">condition</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-ivar">@optionsTableau</span>, <span class="ruby-ivar">@optionsTableau</span>)
+             
+             <span class="ruby-identifier">y</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+           <span class="ruby-keyword">end</span>
+         <span class="ruby-keyword">end</span>
+         
+      <span class="ruby-keyword">else</span>
+         
+         <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;[EventJeu]Erreur: la ligne &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;n'a pas de conditions&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Remplit le tableau par des cases vides, noircies ou marquées selon leur état dans le jeu</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserTableauJeu</span>()
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+        
+        <span class="ruby-comment"># Ajout séparation toutes les 5 lignes</span>
+        
+        <span class="ruby-comment">#if (x%5 == 0) &amp;&amp; (y%5 == 0) then</span>
+        <span class="ruby-comment">#  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), 0, @tailleGrille-1, y, y+1)</span>
+        <span class="ruby-comment">#  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)</span>
+        <span class="ruby-comment">#end</span>
+        
+        <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+          
+        <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@marquee</span>
+          
+        <span class="ruby-keyword">else</span> <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+          
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-identifier">caseCartesienne</span> = <span class="ruby-constant">CaseCartesienne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">etat</span>)
+        
+        <span class="ruby-comment"># Lorsqu'on clic, on noircie tout ce qui survolé jusqu'au déclic</span>
+        <span class="ruby-identifier">signalCaseCliquee</span> = <span class="ruby-identifier">caseCartesienne</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'button_press_event'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>, <span class="ruby-identifier">evenement</span><span class="ruby-operator">|</span>
+      
+          <span class="ruby-identifier">caseCliquee</span>(<span class="ruby-identifier">widget</span>, <span class="ruby-identifier">evenement</span>)
+        }
+        
+        <span class="ruby-identifier">caseCartesienne</span>.<span class="ruby-identifier">ajouterSignalID</span>(<span class="ruby-identifier">signalCaseCliquee</span>)
+        
+        <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">caseCartesienne</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-ivar">@optionsTableau</span>, <span class="ruby-ivar">@optionsTableau</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+    
+  <span class="ruby-comment"># Permet de changer l'état des cases du tableau en fonction de l'état dans le jeu</span>
+  <span class="ruby-comment"># Utile ici pour la remise à zéro de la grille</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">toutActualiser</span>()
+    
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">caseTableau</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-identifier">x</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeX</span>
+      <span class="ruby-identifier">y</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeY</span>
+      
+      <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+        
+      <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@marquee</span>
+        
+      <span class="ruby-keyword">else</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+        
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-identifier">etat</span>)
+    }
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Actualise la grille en enlevant les cases marquées et les signaux de toutes les cases pour l'affichage de fin</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">nettoyerGrilleFinie</span>()
+    
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">caseTableau</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-identifier">x</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeX</span>
+      <span class="ruby-identifier">y</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeY</span>
+      
+      <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+        
+      <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+        
+      <span class="ruby-keyword">else</span>
+          
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+        
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-identifier">etat</span>)
+      
+      <span class="ruby-identifier">signalID</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">recupererSignalID</span>()
+      <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">signal_handler_disconnect</span>(<span class="ruby-identifier">signalID</span>)
+    }
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+            </div><!-- initialiserConditionsV-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initialiserConditionsV-method -->
+
+      
+        <div id="initialiserGrille-method" class="method-detail ">
+          <a name="method-i-initialiserGrille"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initialiserGrille</span><span
+              class="method-args">(largeurFenetre, hauteurFenetre)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Initialise la grille en redimensionnant la taille de la fenêtre pour
+s’adapter à la taille de la grille Puis remplit le tableau de case et de
+conditions</p>
+            
+
+            
+            <div class="method-source-code" id="initialiserGrille-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 401</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserGrille</span>(<span class="ruby-identifier">largeurFenetre</span>, <span class="ruby-identifier">hauteurFenetre</span>)
+  
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">redimensionner</span>(<span class="ruby-identifier">largeurFenetre</span>, <span class="ruby-identifier">hauteurFenetre</span>)
+  
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Taille la grille = &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@tailleGrille</span>.<span class="ruby-identifier">to_s</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">15</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@tailleCase</span> = <span class="ruby-value">30</span>
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">grandesConditions</span>()
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@tailleCase</span> = <span class="ruby-value">20</span>
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">petitesConditions</span>()
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiserImages</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiserConditionsV</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiserConditionsH</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiserTableauJeu</span>()
+  
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initialiserGrille-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initialiserGrille-method -->
+
+      
+        <div id="initialiserImages-method" class="method-detail ">
+          <a name="method-i-initialiserImages"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initialiserImages</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Prépare les images à mettre dans les cases</p>
+            
+
+            
+            <div class="method-source-code" id="initialiserImages-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 423</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserImages</span>()
+  
+  <span class="ruby-ivar">@vide</span> = <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'../Vue/Images/vide.gif'</span>, <span class="ruby-ivar">@tailleCase</span>, <span class="ruby-ivar">@tailleCase</span>)
+  <span class="ruby-ivar">@noircie</span> = <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'../Vue/Images/noircie.gif'</span>, <span class="ruby-ivar">@tailleCase</span>, <span class="ruby-ivar">@tailleCase</span>)
+  <span class="ruby-ivar">@marquee</span> = <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'../Vue/Images/marquee.gif'</span>, <span class="ruby-ivar">@tailleCase</span>, <span class="ruby-ivar">@tailleCase</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initialiserImages-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initialiserImages-method -->
+
+      
+        <div id="initialiserTableauJeu-method" class="method-detail ">
+          <a name="method-i-initialiserTableauJeu"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initialiserTableauJeu</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remplit le tableau par des cases vides, noircies ou marquées selon leur
+état dans le jeu</p>
+            
+
+            
+            <div class="method-source-code" id="initialiserTableauJeu-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 579</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialiserTableauJeu</span>()
+  
+  <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-comment"># Ajout séparation toutes les 5 lignes</span>
+      
+      <span class="ruby-comment">#if (x%5 == 0) &amp;&amp; (y%5 == 0) then</span>
+      <span class="ruby-comment">#  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), 0, @tailleGrille-1, y, y+1)</span>
+      <span class="ruby-comment">#  @fenetre.tableauJeu.attach_defaults(Gtk::HSeparator.new(), x, x+1, 0, @tailleGrille-1)</span>
+      <span class="ruby-comment">#end</span>
+      
+      <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+        
+      <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@marquee</span>
+        
+      <span class="ruby-keyword">else</span> <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+        
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-identifier">caseCartesienne</span> = <span class="ruby-constant">CaseCartesienne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">etat</span>)
+      
+      <span class="ruby-comment"># Lorsqu'on clic, on noircie tout ce qui survolé jusqu'au déclic</span>
+      <span class="ruby-identifier">signalCaseCliquee</span> = <span class="ruby-identifier">caseCartesienne</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">'button_press_event'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>, <span class="ruby-identifier">evenement</span><span class="ruby-operator">|</span>
+    
+        <span class="ruby-identifier">caseCliquee</span>(<span class="ruby-identifier">widget</span>, <span class="ruby-identifier">evenement</span>)
+      }
+      
+      <span class="ruby-identifier">caseCartesienne</span>.<span class="ruby-identifier">ajouterSignalID</span>(<span class="ruby-identifier">signalCaseCliquee</span>)
+      
+      <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">caseCartesienne</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-ivar">@optionsTableau</span>, <span class="ruby-ivar">@optionsTableau</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initialiserTableauJeu-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initialiserTableauJeu-method -->
+
+      
+        <div id="lancerChrono-method" class="method-detail ">
+          <a name="method-i-lancerChrono"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">lancerChrono</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Lance le Thread du chronomètre</p>
+            
+
+            
+            <div class="method-source-code" id="lancerChrono-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 388</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lancerChrono</span>()
+  
+  <span class="ruby-ivar">@chronometre</span>.<span class="ruby-identifier">run</span>()
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- lancerChrono-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- lancerChrono-method -->
+
+      
+        <div id="nettoyerGrilleFinie-method" class="method-detail ">
+          <a name="method-i-nettoyerGrilleFinie"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">nettoyerGrilleFinie</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Actualise la grille en enlevant les cases marquées et les signaux de toutes
+les cases pour l’affichage de fin</p>
+            
+
+            
+            <div class="method-source-code" id="nettoyerGrilleFinie-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 642</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nettoyerGrilleFinie</span>()
+  
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">caseTableau</span><span class="ruby-operator">|</span>
+    
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeX</span>
+    <span class="ruby-identifier">y</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeY</span>
+    
+    <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+      
+    <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+      
+    <span class="ruby-keyword">else</span>
+        
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+      
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-identifier">etat</span>)
+    
+    <span class="ruby-identifier">signalID</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">recupererSignalID</span>()
+    <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">signal_handler_disconnect</span>(<span class="ruby-identifier">signalID</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- nettoyerGrilleFinie-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- nettoyerGrilleFinie-method -->
+
+      
+        <div id="toutActualiser-method" class="method-detail ">
+          <a name="method-i-toutActualiser"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">toutActualiser</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Permet de changer l’état des cases du tableau en fonction de l’état dans le
+jeu Utile ici pour la remise à zéro de la grille</p>
+            
+
+            
+            <div class="method-source-code" id="toutActualiser-source">
+<pre>
+<span class="ruby-comment"># File Controleur/EventsJeu.rb, line 618</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">toutActualiser</span>()
+  
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">tableauJeu</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">caseTableau</span><span class="ruby-operator">|</span>
+    
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeX</span>
+    <span class="ruby-identifier">y</span> = <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">coordonneeY</span>
+    
+    <span class="ruby-keyword">case</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+      
+    <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@vide</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@noircie</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">etat</span> = <span class="ruby-ivar">@marquee</span>
+      
+    <span class="ruby-keyword">else</span>
+        
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur: L'état de la case à initialiser est inconnu ==&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">etatCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">to_s</span>
+      
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-identifier">caseTableau</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-identifier">etat</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- toutActualiser-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- toutActualiser-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
