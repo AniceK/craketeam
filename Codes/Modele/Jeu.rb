@@ -473,21 +473,25 @@ class Jeu
                 liste = YAML::load(File.open('parties.yml'))
                 listeNoms = Array.new()
                 
-                liste.each { |x|
+                if !list.empty?() then
+                
+                    liste.each { |x|
 
-                    listeNoms.push(x[0])
-                }
-                if (index = listeNoms.index(unNom)) != nil then
+                        listeNoms.push(x[0])
+                    }
+                    if (index = listeNoms.index(unNom)) != nil then
 
-                    sup = liste.delete_at(index)
-                    File.delete('parties.yml')
-                    File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
-                    FileUtils.cd('../..')
-                    return (sup == p)
-                else
+                        sup = liste.delete_at(index)
+                        File.delete('parties.yml')
+                        File.open('parties.yml',"w"){|out| out.puts liste.to_yaml()}
+                        FileUtils.cd('../..')
+                        return (sup == p)
+                    else
                    
-                    raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde sous ce nom : #{unNom}"
-                end
+                        raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde sous ce nom : #{unNom}"
+                    end
+                else
+                    raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
             else
                 raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
             end
@@ -517,12 +521,14 @@ class Jeu
             if listeNom.include?(unNom) then
 
                 liste.delete_at(listeNom.index(unNom))
+                FileUtils.cd('../..')
                 return true
             else
-
+                FileUtils.cd('../..')
                 return false
             end
         else
+            FileUtils.cd('../..')
             return false
         end
     end
@@ -555,14 +561,19 @@ class Jeu
                 liste = YAML::load(File.open('parties.yml'))
                 FileUtils.cd('../..')
 
-                tab = Array.new()
+                if !list.empty?() then
+                    tab = Array.new()
 
-                liste.each{ |x|
+                    liste.each{ |x|
 
-                    tab.push([x[1].tailleGrille(), x[0], x[1].date])
-                }
+                        tab.push([x[1].tailleGrille(), x[0], x[1].date])
+                    }
 
-                return tab
+                    return tab
+                    
+                else
+                    return nil
+                end
             end
         end
 
