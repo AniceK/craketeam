@@ -92,7 +92,7 @@ class FenetreChoixCreation < Fenetre
     #                      Méthodes                    #
     #==================================================#
   
-  def nomChoixCreation()
+  def choixCreation()
     
     if (selection = @listeCreations.selectionCourante() ) != nil then
     
