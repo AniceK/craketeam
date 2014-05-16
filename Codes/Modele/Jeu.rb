@@ -492,6 +492,7 @@ class Jeu
                     end
                 else
                     raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
+                end
             else
                 raise "Erreur dans Jeu::supprimerPartie(String) : aucune sauvegarde existante"
             end
@@ -561,7 +562,7 @@ class Jeu
                 liste = YAML::load(File.open('parties.yml'))
                 FileUtils.cd('../..')
 
-                if !list.empty?() then
+                if !liste.empty?() then
                     tab = Array.new()
 
                     liste.each{ |x|

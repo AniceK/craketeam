@@ -10,8 +10,11 @@ require_relative 'Fenetre'
 class FenetreJeu < Fenetre
   
   @texteTemps
+  # Affiche le texte "Temps écoulé :"
   @minutes
+  # Contient les minutes écoulées
   @secondes
+  # Contient les secondes écoulées
   @afficheTemps
   @hBoxTemps
   @tableauGeneral
@@ -81,6 +84,9 @@ class FenetreJeu < Fenetre
     #                                                              #
     ################################################################
     
+    #==================================================#
+    #           Déclaration / Initialisation           #
+    #==================================================#
     
     @boutonPauseMenuPrincipal = Gtk::Button.new("Menu Principal")
     texteSauvegarde = Gtk::Label.new("Nom de la sauvegarde :")
@@ -90,14 +96,26 @@ class FenetreJeu < Fenetre
     @boutonNettoyerGrille = Gtk::Button.new("Nettoyer Grille")
     @texteInfosNettoyer = Gtk::Label.new.set_markup("<span foreground='red'>La grille est nettoyée</span>")
     
-    @vBoxSauvegarde = Gtk::VBox.new(true, 0)
-    vBoxNettoyer = Gtk::VBox.new(true, 0)
-    @vBoxPause = Gtk::VBox.new(true, 0)
+    #==================================================#
+    #               Paramètrage éléments               #
+    #==================================================#
     
     @boutonPauseMenuPrincipal.set_size_request(150, 30)
     @entreeSauvegarde.set_max_length(30)
     @boutonSauvegarder.set_size_request(150, 30)
     @boutonNettoyerGrille.set_size_request(150, 30)
+    
+    #==================================================#
+    #                  Déclaration Box                 #
+    #==================================================#
+    
+    @vBoxSauvegarde = Gtk::VBox.new(true, 0)
+    vBoxNettoyer = Gtk::VBox.new(true, 0)
+    @vBoxPause = Gtk::VBox.new(true, 0)
+    
+    #==================================================#
+    #                 Remplissage Box                  #
+    #==================================================#
     
     @vBoxSauvegarde.pack_start(texteSauvegarde, false, false, 0)
     @vBoxSauvegarde.pack_start(@entreeSauvegarde, false, false, 0)
@@ -130,30 +148,44 @@ class FenetreJeu < Fenetre
     #                                                              #
     ################################################################
     
+    #==================================================#
+    #           Déclaration / Initialisation           #
+    #==================================================#
     
     @fenetre.set_title("Jouez !")
     
     @afficheTemps =  Gtk::Label.new("")
+    
     @boutonAide = Gtk::Button.new('Aide')
     @boutonPause = Gtk::Button.new()
+    
     @tableauGeneral = Gtk::Table.new(0, 0, false)
     @tableauConditionsV = Gtk::Table.new(0, 0, false)
     @tableauConditionsH = Gtk::Table.new(0, 0, true)
     @tableauJeu = Gtk::Table.new(0, 0, true)
     tableauDefile = Gtk::ScrolledWindow.new
+    
     pixPause = Gdk::Pixbuf.new('../Vue/Images/pause.gif')
-    @imagePause = Gtk::Image.new(pixPause)
     pixLecture = Gdk::Pixbuf.new('../Vue/Images/lecture.gif')
+    
+    @imagePause = Gtk::Image.new(pixPause)
     @imageLecture = Gtk::Image.new(pixLecture)
     
     @boutonAide.set_size_request(80, 30)
-  
-    @boutonPause.set_image(imagePause)
     
+    @boutonPause.set_image(imagePause)
+
     @tableauConditionsH.set_column_spacings(5)
     
     @tableauJeu.set_column_spacings(2)
     @tableauJeu.set_row_spacings(2)
+    
+    @tableauGeneral.set_row_spacings(10)
+    @tableauGeneral.set_column_spacings(10)
+    
+    #==================================================#
+    #               Gestion alignement                 #
+    #==================================================#
     
     @alignePause = Gtk::Alignment.new(0.5,0,0,0)
     @alignePause.add(@boutonPause)
@@ -164,16 +196,29 @@ class FenetreJeu < Fenetre
     @aligneConditionsV = Gtk::Alignment.new(0,1,1,0)
     @aligneConditionsV.add(@tableauConditionsV)
     
-    @tableauGeneral.set_row_spacings(10)
-    @tableauGeneral.set_column_spacings(10)
+    #==================================================#
+    #               Remplissage tableau                #
+    #==================================================#
     
     @tableauGeneral.attach_defaults(@aligneConditionsV, 1, 2, 0, 1)
     @tableauGeneral.attach_defaults(@aligneConditionsH, 0, 1, 1, 2)
     @tableauGeneral.attach_defaults(@tableauJeu, 1, 2, 1, 2)
     
+    #==================================================#
+    #                  Déclaration Box                 #
+    #==================================================#
+    
     @hBoxTemps = Gtk::HBox.new(true, 0)
     
+    #==================================================#
+    #                 Paramètrage Box                  #
+    #==================================================#
+    
     @hBoxTemps.set_border_width(5)
+    
+    #==================================================#
+    #                  Remplissage Box                 #
+    #==================================================#
     
     @hBoxTemps.pack_start(@texteTemps, false, false, 0)
     @hBoxTemps.pack_start(@afficheTemps, false, false, 20)

@@ -159,6 +159,23 @@ class ListeElements
     
   end
   
+  def tailleSelectionCourante()
+    
+    if widget.child.selection.selected() != nil then
+      
+      return @selection = widget.child.selection.selected[0]
+      
+    elsif widget.child.selection.selected() == nil then
+      
+      return nil
+      
+    else
+      
+      puts "[ListeElements]Erreur: Mauvaise réception de la sélection courante"
+      
+    end
+  end
+  
 end
 
 
