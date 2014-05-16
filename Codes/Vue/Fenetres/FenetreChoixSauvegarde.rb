@@ -8,10 +8,19 @@
 require_relative 'Fenetre'
 require './Vue/Elements/ListeElements'
 
+#===============================================================================#
+#                                                                               #
+#   La classe FenetreChoixSauvegarde n'est pas instantiable est instantiable    #
+#    Elle permet de créer une fenêtre qui permettra de choisir une sauvegarde   #
+#                                                                               #
+#===============================================================================#
+
 class FenetreChoixSauvegarde < Fenetre
   
   @texteChoixSauvegarde
+  # Texte "Choisissez votre sauvegarde"
   @boutonPrecedent
+  
   @boutonSupprimer
   @boutonSuivant
   @listeSauvegarde
@@ -69,7 +78,7 @@ class FenetreChoixSauvegarde < Fenetre
     #==================================================#
     
     hBoxNavigation.pack_start(@boutonPrecedent, true, true, 5)
-    hBoxNavigation.pack_start(@boutonSupprimer, true, true, 5)
+    #hBoxNavigation.pack_start(@boutonSupprimer, true, true, 5)
     hBoxNavigation.pack_start(@boutonSuivant, true, true, 5)
     
     vBox.pack_start(@texteChoixSauvegarde, false, false, 5)

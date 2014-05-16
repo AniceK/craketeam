@@ -73,7 +73,7 @@ class FenetreChoixCreation < Fenetre
     #==================================================#
     
     hBoxNavigation.pack_start(@boutonPrecedent, true, true, 5)
-    hBoxNavigation.pack_start(@boutonSupprimer, true, true, 5)
+    #hBoxNavigation.pack_start(@boutonSupprimer, true, true, 5)
     hBoxNavigation.pack_start(@boutonSuivant, true, true, 5)
     
     vBox.pack_start(@texteChoixCreation, false, false, 5)
@@ -92,13 +92,31 @@ class FenetreChoixCreation < Fenetre
     #                      Méthodes                    #
     #==================================================#
   
-  def choixCreation()
+  def nomChoixCreation()
     
     if (selection = @listeCreations.selectionCourante() ) != nil then
     
       return selection
       
     elsif @listeCreations.selectionCourante() == nil
+      
+      return nil
+      
+    else
+      
+      puts "[FenetreChoixCreation]Erreur: Problème dans le choix de création"
+      
+    end
+    
+  end
+  
+  def tailleChoixCreation()
+    
+    if (selection = @listeCreations.selectionCourante() ) != nil then
+    
+      return selection
+      
+    elsif @listeCreations.tailleSelectionCourante() == nil
       
       return nil
       

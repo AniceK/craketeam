@@ -117,6 +117,15 @@ INPUT /usr/local/texlive/2013/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 OUTPUT DossierConception.toc
+INPUT ./Diagrammes/UserCase.png
+INPUT ./Diagrammes/UserCase.png
+INPUT ./Diagrammes/UserCase.png
+INPUT ./Diagrammes/DiagrammeDeSequence.png
+INPUT ./Diagrammes/DiagrammeDeSequence.png
+INPUT ./Diagrammes/DiagrammeDeSequence.png
+INPUT ./Diagrammes/Schema_navigation.png
+INPUT ./Diagrammes/Schema_navigation.png
+INPUT ./Diagrammes/Schema_navigation.png
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 INPUT ./IHM/accueil.png

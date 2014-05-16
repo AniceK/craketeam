@@ -12,14 +12,7 @@ require_relative 'EventsChoixGrille'
 require_relative 'EventsJeu'
 require './Vue/Fenetres/FenetreChoixCreation'
 
-###################### À supprimer par la suite #########################
-#                                                                       #
-# class GroceryItem                                                     #
-#   attr_accessor :taille, :nom, :date                                  #
-#   def initialize(t, n, d); @taille, @nom, @date = t, n, d; end        #
-# end                                                                   #
-#                                                                       #
-#########################################################################
+
 
 class EventsChoixCreation < Events
   
@@ -30,18 +23,6 @@ class EventsChoixCreation < Events
     @fenetre = FenetreChoixCreation.new(listeCreations)
     
     super(jeu, position)
-    
-    ################# À supprimer par la suite ########################################
-    #                                                                                 #
-    # listeCreations = Array.new                                                      #
-    # listeCreations[0] = GroceryItem.new(5,  "ma_grille_5", "01/07/14")              #
-    # listeCreations[1] = GroceryItem.new(5,  "ma_grille_mal_barree", "02/03/14")     #
-    # listeCreations[2] = GroceryItem.new(10, "ma_grille_10", "03/03/15")             #
-    # listeCreations[3] = GroceryItem.new(15,  "ma_grille_15", "04/04/14")            #
-    # listeCreations[4] = GroceryItem.new(20, "ma_grille_20", "05/03/13")             #
-    # listeCreations[5] = GroceryItem.new(25,  "ma_grille_25", "06/03/14")            #
-    #                                                                                 #
-    ###################################################################################
     
     
     @fenetre.afficher()
@@ -54,23 +35,25 @@ class EventsChoixCreation < Events
       mouvement(EventsChoixGrille.new(@jeu, position() ))
     }
     
+    # Implémentation non terminée
     @fenetre.boutonSupprimer.signal_connect('clicked'){
       
-      nomCreation = @fenetre.choixCreation()
-      
-      if @jeu.supprimerGrille(nomCreation) then
-        
-        puts "> Suppression Création"
-        
-      elsif !@jeu.supprimerGrille(nomCreation) then
-        
-        puts "[EventsChoixSauvegardes]Erreur: Problème suppression création"
-        
-      else
-        
-        puts "[EventsChoixSauvegardes]Erreur: Problème suppression création"
-        
-      end
+    #  nomCreation = @fenetre.nomChoixCreation()
+    #  tailleCreation = @fenetre.tailleChoixCreation()
+    #  
+    #  if @jeu.supprimerGrille(nomCreation, tailleCreation) then
+    #    
+    #    puts "> Suppression Création"
+    #    
+    #  elsif !@jeu.supprimerGrille(nomCreation, tailleCreation) then
+    #    
+    #    puts "[EventsChoixSauvegardes]Erreur: Problème suppression création"
+    #    
+    #  else
+    #    
+    #    puts "[EventsChoixSauvegardes]Erreur: Problème suppression création"
+    #    
+    #  end
         
         
     }
