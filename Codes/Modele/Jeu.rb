@@ -493,10 +493,39 @@ class Jeu
             end
         else
             raise "Erreur dans Jeu::supprimerPartie(String) : un Profil doit être actif"
-        end
- 
+        end 
     end
 
+# Méthode pour supprimer une grille dont on passe le nom et la taille en paramètre
+    def supprimerGrille(unNom, taille)
+
+        FileUtils.cd('Grille')
+        FileUtils.cd(taille.to_s())
+
+        if File.size('grilles.yml') > 0 then
+
+            liste = Array.new()
+            liste = YAML::load(File.open('grilles.yml'))
+
+            listeNom = Array.new()
+
+            liste.each { |x|
+
+                listeNom.push(x[0])
+            }
+
+            if listeNom.include?(unNom) then
+
+                liste.delete_at(listeNom.index(unNom))
+                return true
+            else
+
+                return false
+            end
+        else
+            return false
+        end
+    end
 
 #**********************************
     # Méthode de lecture de données
